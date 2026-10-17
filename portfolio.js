@@ -52,8 +52,8 @@ const copy = {
         category: "COMMERCE / RECOVERY",
         question: "No response. Is it safe to reserve again?",
         description:
-          "Recover the result of a request after losing its response. A separate experiment examines retries after the receiver deletes its deduplication record.",
-        cta: "Read the experiment",
+          "Recover a reservation after a lost response, without letting a superseded request overwrite the current screen. A separate experiment examines retries after deduplication records are deleted.",
+        cta: "Recovery UI decisions",
         tags: ["React + TypeScript", "HTTP + SQLite", "Crash recovery"],
       },
       change: {
@@ -128,8 +128,8 @@ const copy = {
         category: "커머스 / 복구",
         question: "응답을 못 받은 예약, 다시 요청해도 될까?",
         description:
-          "응답을 못 받은 요청의 결과를 복구합니다. 별도 실험에서는 중복 방지 기록이 삭제된 뒤 같은 키로 재시도할 때의 문제를 확인했습니다.",
-        cta: "실험 내용 읽기",
+          "응답이 끊겨도 예약 결과를 다시 확인하고, 이전 요청의 응답이 현재 화면을 덮지 않도록 합니다. 중복 방지 기록이 삭제된 뒤의 재시도도 별도 실험으로 살펴봤습니다.",
+        cta: "복구 UI의 설계 판단",
         tags: ["React + TypeScript", "HTTP + SQLite", "프로세스 종료 후 복구"],
       },
       change: {
@@ -159,6 +159,10 @@ const projects = [
     revision: "e081192",
     url: "evidence/intent/",
     note: "notes/retention-boundary/",
+    design: {
+      en: "https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/design.md",
+      ko: "https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/design.ko.md",
+    },
     history: "evidence/history/",
   },
   {
@@ -196,6 +200,7 @@ function renderProjects(t) {
   const focused = document.activeElement;
   const cardId = focused?.closest("#projects article")?.id;
   const focusedHref = cardId ? focused.getAttribute("href") : null;
+  const focusedAction = cardId ? focused.dataset.projectAction : null;
   const focusedSummary = cardId && focused.tagName === "SUMMARY";
   const opened = new Set(
     [...document.querySelectorAll("#projects details[open]")].map(
@@ -219,7 +224,8 @@ function renderProjects(t) {
       const tags = element("p", "project-tech", text.tags.join(" / "));
       const links = element("div", "project-links");
       const note = element("a", "text-link", text.cta);
-      note.href = project.note;
+      note.dataset.projectAction = "read";
+      note.href = project.design?.[language] ?? project.note;
       note.append(element("span", "link-arrow", "↗"));
       note.setAttribute("aria-label", project.title + " — " + text.cta);
       const source = element("a", "source-link", t.source + " ↗");
@@ -274,7 +280,9 @@ function renderProjects(t) {
       : [...document.querySelectorAll("#projects article a")].find(
           (link) =>
             link.closest("article").id === cardId &&
-            link.getAttribute("href") === focusedHref,
+            (focusedAction
+              ? link.dataset.projectAction === focusedAction
+              : link.getAttribute("href") === focusedHref),
         );
     replacement?.focus({ preventScroll: true });
   }
