@@ -30,6 +30,8 @@
           다릅니다.
         </p>
       </section>
+<section class="reader-context" aria-label="Context / 실험 안내"><div class="reader-ko" lang="ko"><p class="reader-label">이 기록을 읽기 전에</p><p><strong>예약 완료 응답을 받은 뒤 조회했는데 “없음”이라고 나옵니다. 마지막 장부에 예약이 남아 있다는 사실만으로 이 응답을 설명할 수 있을까요?</strong></p><p>이 개인 실험은 두 서버 프로세스와 SQLite에서 수집한 요청·응답 순서를 검사합니다. “장부”는 저장된 예약 상태입니다. 대조군은 실제 관측 중 조회 응답 한 건만 의도적으로 바꾼 기록이며, 실제 서버 장애를 재현한 결과가 아닙니다.</p><a href="https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/history-check.ko.md">관측 순서를 검사하는 방법 →</a></div><div class="reader-en" lang="en"><p class="reader-label">Before reading the capture</p><p><strong>A reservation is confirmed, but a later lookup says it is absent. Can a correct final ledger explain what the caller saw?</strong></p><p>This independent experiment checks request/response histories captured from two server processes and SQLite. The ledger is the stored reservation state. The control deliberately changes one recorded lookup response; it is not a reproduced server fault.</p><a href="https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/history-check.md">How the history check works →</a></div></section>
+
       <div class="recording-line">
         <span class="dot" aria-hidden="true"></span><span id="recording-state"></span
         ><time id="recording-date"></time>

@@ -17,16 +17,16 @@
     <meta property="og:title" content="‘통과’의 의미까지 검증하기 — Minjae Lee" />
     <meta property="og:description" content="검사 결과에는 무엇을 검사했는지와 어떤 통과 기준을 적용했는지가 함께 남아야 합니다." />
     <meta property="og:url" content="https://minjae-lee-kr.github.io/notes/verified-change/" />
-    <meta property="og:image" content="https://minjae-lee-kr.github.io/assets/social/change.png" />
+    <meta property="og:image" content="https://minjae-lee-kr.github.io/assets/social/change.png?v=0310d45e409b" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="The code passed. Who set the rules? Code and check policy connect to an approval question. A conceptual illustration for an independent scripted experiment." />
+    <meta property="og:image:alt" content="Green checks. Wrong rules? A candidate setting says noCheck: true beside a passing check, asking who defines pass. Concept diagram for an independent Git verification experiment." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="‘통과’의 의미까지 검증하기 — Minjae Lee" />
     <meta name="twitter:description" content="검사 결과에는 무엇을 검사했는지와 어떤 통과 기준을 적용했는지가 함께 남아야 합니다." />
-    <meta name="twitter:image" content="https://minjae-lee-kr.github.io/assets/social/change.png" />
-    <meta name="twitter:image:alt" content="The code passed. Who set the rules? Code and check policy connect to an approval question. A conceptual illustration for an independent scripted experiment." />
+    <meta name="twitter:image" content="https://minjae-lee-kr.github.io/assets/social/change.png?v=0310d45e409b" />
+    <meta name="twitter:image:alt" content="Green checks. Wrong rules? A candidate setting says noCheck: true beside a passing check, asking who defines pass. Concept diagram for an independent Git verification experiment." />
     <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
     <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../notes.css" />
@@ -91,14 +91,14 @@
             >
           </h1>
           <p class="lead" data-lang="ko" lang="ko">
-            자동화가 만든 패치는 코드와 검사 설정을 함께 바꿀 수 있습니다.
-            승인하기 전에, 통과 결과가 어떤 코드와 어떤 기준에 해당하는지
-            확인해야 합니다.
+            코드에 타입 오류가 남아 있는데 타입 검사는 통과했습니다.
+            변경안에 검사 설정도 포함된다면, 그 통과 결과를 승인 근거로
+            삼아도 될까요?
           </p>
           <p class="lead" data-lang="en" lang="en" hidden>
-            An automated patch can change both the code and its checking
-            configuration. Before approval, a green result needs to identify the
-            code examined and the rules applied.
+            The type check passed while type errors remained in the code.
+            If a patch can also change the checking configuration, is that
+            passing result enough to approve the change?
           </p>
           <div class="byline">
             <span>Minjae Lee</span
@@ -158,14 +158,17 @@
           </h2>
           <div class="prose" data-lang="ko" lang="ko">
             <p>
-              암묵적 <code>any</code> 매개변수가 두 개 있는 코드를 검사했지만,
-              TypeScript 프로세스는 오류를 보고하지 않고 종료했습니다. 설정에는
-              여전히 <code>strict: true</code>가 있었습니다.
+              Verified Change는 코드 변경안을 검사·승인한 뒤 해당 Git 커밋을
+              선택하는 로컬 실험입니다. 여기서 ‘후보’는 검사할 코드와 설정을
+              담은 변경안입니다. 스크립트로 준비했으며 LLM은 호출하지 않았습니다.
+              검사 기준을 누가 정하는지, 승인한 코드가 실제 검사한 코드와
+              같은지를 확인합니다.
             </p>
             <p>
-              스크립트로 준비한 동일한 변경안을 두 개의 컴파일러 프로세스로
-              검사했습니다. LLM을 호출한 실험은 아닙니다. 후보의 설정을 읽은
-              비교용 검사기는 종료 코드 <strong>0</strong>을 반환했습니다.
+              암묵적 <code>any</code> 매개변수 두 개를 포함한 같은 후보를
+              두 TypeScript 프로세스로 검사했습니다. <code>strict: true</code>가
+              남아 있는 후보의 설정을 읽은 비교용 검사기는 오류를 보고하지
+              않고 종료 코드 <strong>0</strong>을 반환했습니다.
               별도로 정한 strict 옵션과 정확한 파일 목록을 쓰는 검사기는 오류 두
               개를 찾아 종료 코드 <strong>2</strong>를 반환했고, 승인은
               거부됐습니다. 런타임 동작을 확인하는 다섯 개 검증 항목은 모두
@@ -174,14 +177,17 @@
           </div>
           <div class="prose" data-lang="en" lang="en" hidden>
             <p>
-              A real TypeScript process returned zero diagnostics for code with
-              two implicit-any parameters. Its configuration still said
-              <code>strict: true</code>.
+              Verified Change is a local experiment that checks and approves
+              a code change before selecting its Git commit. A “candidate”
+              contains the code and configuration under review. Candidates are
+              scripted; no LLM is called. The questions are who defines the
+              checks and whether approval selects the code they actually checked.
             </p>
             <p>
-              I checked the same scripted candidate in two separate compiler
-              processes. No LLM is called. The comparison checker read the
-              candidate’s configuration and exited <strong>0</strong>. The
+              Two TypeScript processes checked the same candidate with two
+              implicit-any parameters. The comparison checker read the
+              candidate’s configuration, which still said <code>strict: true</code>,
+              returned no diagnostics and exited <strong>0</strong>. The
               trusted checker supplied its own strict options and exact
               source-file list. It found both errors, exited <strong>2</strong>,
               and approval was refused. All five runtime assertions still

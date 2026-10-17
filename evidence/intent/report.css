@@ -312,3 +312,8 @@ footer {
 }
 
 .recorded-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px max(20px,calc((100% - 1100px)/2));background:#eaf1fc;border-bottom:1px solid #cddcf2;color:#294b7a;font:12px/1.6 system-ui,sans-serif}.recorded-banner a{color:inherit;font-weight:600;white-space:nowrap}.recorded-banner p{margin:0}html[lang=ko] .recorded-en,html:not([lang=ko]) .recorded-ko{display:none}@media(max-width:680px){.recorded-banner{flex-wrap:wrap;gap:8px 16px}.recorded-banner p{order:3;flex-basis:100%}}
+
+.reader-context{margin:0 0 32px;padding:22px 26px;background:#f0f5fc;border:1px solid #cfdaea;border-radius:14px;color:#263b54;font:15px/1.8 system-ui,sans-serif}
+.reader-context p{max-width:80ch;margin:0 0 10px;line-height:1.8}.reader-context strong{font-weight:600}.reader-context .reader-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#435a78}.reader-context a{color:#244c91;font-size:13px;font-weight:650;text-underline-offset:4px}.reader-context a:focus-visible{outline:2px solid #2456ad;outline-offset:5px}
+html[lang=ko] .reader-en,html:not([lang=ko]) .reader-ko{display:none}
+@media(max-width:600px){.reader-context{padding:18px;font-size:14px}}

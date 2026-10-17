@@ -12,16 +12,17 @@
     "relative asset URLs",
     "shared persisted language preference",
     "Back/Forward preference restoration with report state preserved",
-    "recorded-run banner with cool-toned presentation"
+    "recorded-run banner with cool-toned presentation",
+    "standalone bilingual scenario, term definitions and reading guide; original evidence unchanged"
   ],
   "files": [
     {
       "path": "index.html",
-      "sha256": "806b17decf978dd3be3a1a5529aef590dd698692c4a687e2e54e9446da54a638"
+      "sha256": "9282e85822290fefb3422ee387f9ed8022974033d76d37c4e6ec53d89a8aa1a6"
     },
     {
       "path": "report.css",
-      "sha256": "b1b76f0f89c7a6ae1367426f3782ed4f436ba9cd55979d97f3ad0b2b8b09ca47"
+      "sha256": "40b45173b7df8adab7abdb514d3781a9564329e043e3334f261705691c0e06ba"
     },
     {
       "path": "report.js",

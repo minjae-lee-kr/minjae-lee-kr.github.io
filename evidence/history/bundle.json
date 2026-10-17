@@ -6,7 +6,8 @@
   "upstreamManifestSha256": "1ceb381fc04ad82bc95c5a54ca52aaa8855fdd4da8325f649e836a45a00928e7",
   "evidenceSha256": "abe23117465e57ec65c7b2d7954480c4ff7dc4da70ee255ba9df2a84d600d32d",
   "displayAdaptations": [
-    "Portfolio return navigation and display-file provenance link in index.html; navigation styling in report.css"
+    "Portfolio return navigation and display-file provenance link in index.html; navigation styling in report.css",
+    "Standalone bilingual scenario, ledger definition and control-method explanation; original observations unchanged"
   ],
   "note": "The upstream manifest identifies original export bytes. This manifest identifies the portfolio files. Both are unsigned provenance, not attestation.",
   "files": [
@@ -40,11 +41,11 @@
     },
     {
       "path": "index.html",
-      "sha256": "24ee32c45d5968ff475168066bbc19dc904e80365f156003bf7974123c105c04"
+      "sha256": "c51ac4c282adef1ff892753c08294815d01ff11fd4b867908ed31172213ffaef"
     },
     {
       "path": "report.css",
-      "sha256": "f8bde6b9d2fffe8a047783ef71004af6832ac5b7f27fb5da71e4aa04f47f0e77"
+      "sha256": "9d6a9e23098ee57c73d384fd14edf7300116fec6fd824d1d0b43e85be7742e60"
     },
     {
       "path": "report.js",

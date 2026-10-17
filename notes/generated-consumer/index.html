@@ -14,7 +14,14 @@
   <meta property="og:title" content="검사는 통과했지만, 생성 타입은 예전 것이었다 — Minjae Lee" />
   <meta property="og:description" content="후보 스키마로 쿼리를 검증하고, 이전 생성 타입으로 코드를 컴파일하면 둘 다 통과할 수 있습니다. 두 결과가 같은 변경을 검사했는지 대조합니다." />
   <meta property="og:url" content="https://minjae-lee-kr.github.io/notes/generated-consumer/" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://minjae-lee-kr.github.io/assets/social/consumer.png?v=a084371782fb" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Both passed. Same contract? Query validation uses a new schema while type compilation uses old generated types. Concept diagram of two passing checks with different inputs." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://minjae-lee-kr.github.io/assets/social/consumer.png?v=a084371782fb" />
+  <meta name="twitter:image:alt" content="Both passed. Same contract? Query validation uses a new schema while type compilation uses old generated types. Concept diagram of two passing checks with different inputs." />
   <meta name="twitter:title" content="검사는 통과했지만, 생성 타입은 예전 것이었다 — Minjae Lee" />
   <meta name="twitter:description" content="후보 스키마로 쿼리를 검증하고, 이전 생성 타입으로 코드를 컴파일하면 둘 다 통과할 수 있습니다. 두 결과가 같은 변경을 검사했는지 대조합니다." />
   <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
@@ -36,7 +43,7 @@
     <header id="opening" data-reading-section>
       <p class="eyebrow">GRAPHQL / GENERATED CONSUMERS</p>
       <h1><span data-lang="ko" lang="ko">검사는 통과했지만, 생성 타입은 예전 것이었다</span><span data-lang="en" lang="en" hidden>The checks passed. The generated types were stale.</span></h1>
-      <p data-lang="ko" lang="ko" class="lead">쿼리는 후보 스키마로 검증했습니다. 생성 타입을 사용하는 코드(consumer)는 이전 스키마의 타입으로 컴파일했습니다. 둘 다 통과했지만, 같은 계약을 검사한 것은 아니었습니다.</p><p data-lang="en" lang="en" hidden class="lead">Query validation used the candidate schema. Consumer compilation used baseline generated types. Both passed, but they did not check the same contract.</p>
+      <p data-lang="ko" lang="ko" class="lead">GraphQL API에서 상품명이 null일 수 있도록 타입 정의를 바꿨습니다. 쿼리 검증과 기존 함수 컴파일은 모두 통과했지만, 컴파일에는 예전 정의로 만든 TypeScript 타입이 쓰였습니다.</p><p data-lang="en" lang="en" hidden class="lead">The GraphQL API definition changed to allow a null product name. Query validation and compilation of the existing function both passed—but compilation still used TypeScript types generated from the old definition.</p>
       <div class="byline"><span>Minjae Lee</span><span data-lang="ko" lang="ko">개인 엔지니어링 실험</span><span data-lang="en" lang="en" hidden>Independent engineering experiment</span><span data-lang="ko" lang="ko">2026년 10월 17일 실행 기록</span><span data-lang="en" lang="en" hidden>Recorded 17 October 2026</span></div>
     </header>
     <nav class="contents" aria-label="이 글의 내용" data-label-ko="이 글의 내용" data-label-en="In this note">
@@ -48,6 +55,10 @@
 
     <section id="inputs" class="reading-section" data-reading-section tabindex="-1">
       <h2><span class="section-number">01</span><span data-lang="ko" lang="ko">두 검사에 들어간 입력</span><span data-lang="en" lang="en" hidden>The inputs behind two passing checks</span></h2>
+      <div class="prose">
+        <p data-lang="ko" lang="ko">스키마는 API가 반환할 값의 타입을 정합니다. 이 개인 실험은 가상 스키마와 쿼리에서 공식 GraphQL Code Generator(Codegen)로 만든 TypeScript 타입을 같은 예제 함수에 적용해 컴파일합니다. 쿼리에는 새 스키마를 쓰고, 컴파일에는 이전 타입을 남긴 대조군을 두었습니다.</p><p data-lang="en" lang="en" hidden>A schema defines the API’s response types. This independent lab compiles fixed functions against TypeScript types produced from synthetic schemas and queries by official GraphQL Code Generator (Codegen). One control validates queries against the new schema but compiles the functions against old types.</p>
+        <p data-lang="ko" lang="ko">두 쿼리는 여전히 유효했습니다. 그러나 스키마 비교에서는 <code>name</code>에 null을 허용한 변경을 기존 타입 보장을 약화하는 <strong>breaking</strong> 변경으로 분류했습니다. 이전 생성 타입의 <code>name</code>은 여전히 <code>string</code>이었습니다. 컴파일 성공은 새 계약을 처리한다는 근거가 아니었습니다.</p><p data-lang="en" lang="en" hidden>Both queries remained valid, while schema comparison classified the weakened non-null guarantee for <code>name</code> as <strong>breaking</strong>. The old generated type still declared <code>name</code> as <code>string</code>. Passing compilation did not establish compatibility with the new contract.</p>
+      </div>
       <figure class="hash-figure">
         <div class="hash-pair">
           <div><p><span data-lang="ko" lang="ko">쿼리 검증: 통과</span><span data-lang="en" lang="en" hidden>Query validation: pass</span></p><code data-hash="candidateSchemaSha256" data-full-hash="040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c">040ea438a171…</code><span><span data-lang="ko" lang="ko">후보 스키마 / name: String</span><span data-lang="en" lang="en" hidden>Candidate schema / name: String</span></span></div>
@@ -56,10 +67,6 @@
         </div>
         <figcaption><span data-lang="ko" lang="ko">이전 타입 대조군에서 기록한 각 스키마의 SHA-256 앞 12자리입니다. 전체 값은 아래 근거에서 확인할 수 있습니다.</span><span data-lang="en" lang="en" hidden>First 12 characters of the schema SHA-256 values recorded in the stale-type control. Full values appear below.</span></figcaption>
       </figure>
-      <div class="prose">
-        <p data-lang="ko" lang="ko">개인 Apollo Federation 실험에서 <code>name</code>을 nullable로 바꿨습니다. 두 쿼리는 여전히 유효했지만, 스키마 비교에서는 non-null 보장 약화를 <strong>breaking</strong>으로 분류했습니다. 여기서 통과한 것은 쿼리 검증과 이전 타입에 대한 컴파일입니다.</p><p data-lang="en" lang="en" hidden>In a personal Apollo Federation lab, I made <code>name</code> nullable. Both queries remained valid, while schema comparison classified the weakened non-null guarantee as <strong>breaking</strong>. The two passing checks were query validation and compilation against stale types.</p>
-        <p data-lang="ko" lang="ko">이전 생성 타입의 <code>name</code>은 여전히 <code>string</code>이었습니다. 따라서 컴파일 성공은 새 계약을 처리한다는 근거가 아니었습니다. 새 계약이 컴파일 입력에 반영되지 않은 상태였습니다.</p><p data-lang="en" lang="en" hidden>The old generated type still declared <code>name</code> as <code>string</code>. A passing compile did not establish that the code handled the new contract: that contract had not reached the compiler input.</p>
-      </div>
       <p class="takeaway"><span data-lang="ko" lang="ko">두 통과 결과를 묶기 전에, 같은 변경을 검사했는지 확인해야 합니다.</span><span data-lang="en" lang="en" hidden>Before combining two passing results, check that they cover the same change.</span></p>
     </section>
 

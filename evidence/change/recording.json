@@ -13,16 +13,17 @@
     "shared persisted language preference",
     "Back/Forward preference restoration with report state preserved",
     "recorded-run banner with cool-toned presentation",
+    "standalone bilingual scenario, term definitions and reading guide; original evidence unchanged",
     "saved-report load failure copy"
   ],
   "files": [
     {
       "path": "index.html",
-      "sha256": "cdd3131fd298ceae3a6a2a3389ab75f2d1d0c4e0dd81f0355098547c4571f9bc"
+      "sha256": "03733f68c792e4a68b53ce389ccfdce4452d574893104ce6b8397bb8a3234da8"
     },
     {
       "path": "style.css",
-      "sha256": "26e3ac94c7ff95eeb71796826bd0095d9648abdd4a001ad2fa8f1c77671f9a93"
+      "sha256": "0a6f5366480bbfda6e969fd6f6c0e423d39cdd2ad82a91454dcadd91f55c4ec6"
     },
     {
       "path": "app.js",

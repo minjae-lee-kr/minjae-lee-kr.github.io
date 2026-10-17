@@ -16,6 +16,7 @@
     "shared persisted language preference",
     "Back/Forward preference restoration with report state preserved",
     "recorded-run banner with cool-toned presentation",
+    "standalone bilingual scenario, term definitions and reading guide; original evidence unchanged",
     "readable timeline width with keyboard scrolling",
     "Korean execution-slot terminology",
     "higher-contrast focus and chart series with unchanged data"
@@ -23,11 +24,11 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "825ec9905ef26c6a07c7269df39d1457c06c9ba7dc37a1e1677116253ae63b61"
+      "sha256": "9db84fb101493ebaf72db1d823fd2fb577a9587f0d208f9f5753d060d6822e44"
     },
     {
       "path": "debt.css",
-      "sha256": "a338f37ab4fc72ad779ccf2c326a7ab0e4f4de189529a18e7da89b2ad43b02ba"
+      "sha256": "8f07d9ac30b72aec592381fdf82ea28d2c252c9b4913f60f749ceed2735913f1"
     },
     {
       "path": "debt.js",

@@ -29,6 +29,8 @@
           <p class="lead" id="lead"></p>
           <div class="boundary" id="boundary"></div>
         </section>
+<section class="reader-context" aria-label="Context / 실험 안내"><div class="reader-ko" lang="ko"><p class="reader-label">이 기록을 읽기 전에</p><p><strong>자동화가 수정한 코드는 검사를 통과했습니다. 그런데 그 수정에 검사 설정까지 들어 있다면, 무엇을 믿고 적용해야 할까요?</strong></p><p>Git과 TypeScript로 만든 개인 실험입니다. 고정된 검사 기준과 정확히 그 검사를 받은 커밋을 연결합니다. 아래에서 변경 후 재검증 누락, 빈 검사, 오래된 승인, 동시 갱신, 응답 유실을 차례로 볼 수 있습니다. 후보와 승인은 스크립트로 만들며 LLM은 호출하지 않습니다.</p><a href="../../notes/verified-change/">문제와 설계 선택부터 읽기 →</a></div><div class="reader-en" lang="en"><p class="reader-label">Before reading the capture</p><p><strong>An automated patch passes its checks. But the patch also edits the checking rules. What evidence should authorize the change?</strong></p><p>This independent Git/TypeScript experiment binds a fixed verification policy to the exact checked commit. Explore workspace drift, empty checks, stale approval, competing updates and lost acknowledgements below. Candidates and approvals are scripted; no LLM is called.</p><a href="../../notes/verified-change/">Read the problem and design choices →</a></div></section>
+
         <ol class="protocol" id="protocol"></ol>
         <div class="workspace">
           <nav id="cases" aria-label="Experiment cases"></nav>
