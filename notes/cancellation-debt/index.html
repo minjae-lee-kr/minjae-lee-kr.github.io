@@ -6,16 +6,16 @@
     <meta name="color-scheme" content="light" />
     <meta
       name="description"
-      content="사용 중인 허가는 한 개, 실제 작업은 네 개. 실행 한도는 무엇의 수명을 제한하고 있었을까요?"
+      content="동시 실행 한도는 두 개인데, 작업은 네 개가 겹쳤습니다. 슬롯 수가 정상으로 보여도 실제 작업은 한도를 넘을 수 있습니다."
     />
-    <title>허가는 반환됐지만, 작업은 남아 있었다. — Minjae Lee</title>
+    <title>타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까? — Minjae Lee</title>
     <link rel="canonical" href="https://minjae-lee-kr.github.io/notes/cancellation-debt/" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Minjae Lee — Engineering Notes" />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:title" content="허가는 반환됐지만, 작업은 남아 있었다. — Minjae Lee" />
-    <meta property="og:description" content="사용 중인 허가는 한 개, 실제 작업은 네 개. 실행 한도는 무엇의 수명을 제한하고 있었을까요?" />
+    <meta property="og:title" content="타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까? — Minjae Lee" />
+    <meta property="og:description" content="동시 실행 한도는 두 개인데, 작업은 네 개가 겹쳤습니다. 슬롯 수가 정상으로 보여도 실제 작업은 한도를 넘을 수 있습니다." />
     <meta property="og:url" content="https://minjae-lee-kr.github.io/notes/cancellation-debt/" />
     <meta property="og:image" content="https://minjae-lee-kr.github.io/assets/social/cancellation.png" />
     <meta property="og:image:type" content="image/png" />
@@ -23,8 +23,8 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="The permit returned. The work remained. Two schematic lifetimes show permit ownership ending before work completion. No measured duration or production result is shown." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="허가는 반환됐지만, 작업은 남아 있었다. — Minjae Lee" />
-    <meta name="twitter:description" content="사용 중인 허가는 한 개, 실제 작업은 네 개. 실행 한도는 무엇의 수명을 제한하고 있었을까요?" />
+    <meta name="twitter:title" content="타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까? — Minjae Lee" />
+    <meta name="twitter:description" content="동시 실행 한도는 두 개인데, 작업은 네 개가 겹쳤습니다. 슬롯 수가 정상으로 보여도 실제 작업은 한도를 넘을 수 있습니다." />
     <meta name="twitter:image" content="https://minjae-lee-kr.github.io/assets/social/cancellation.png" />
     <meta name="twitter:image:alt" content="The permit returned. The work remained. Two schematic lifetimes show permit ownership ending before work completion. No measured duration or production result is shown." />
     <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
@@ -33,9 +33,9 @@
     <script src="../notes.js" defer></script>
   </head>
   <body
-    data-title-ko="허가는 반환됐지만, 작업은 남아 있었다."
+    data-title-ko="타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까?"
     data-title-en="The permit returned. The work remained."
-    data-description-ko="사용 중인 허가는 한 개, 실제 작업은 네 개. 실행 한도는 무엇의 수명을 제한하고 있었을까요?"
+    data-description-ko="동시 실행 한도는 두 개인데, 작업은 네 개가 겹쳤습니다. 슬롯 수가 정상으로 보여도 실제 작업은 한도를 넘을 수 있습니다."
     data-description-en="One held permit. Four unfinished jobs. Which lifetime was the concurrency limit actually bounding?"
   >
     <a class="skip" href="#note"
@@ -86,14 +86,14 @@
           <p class="eyebrow">CANCELLATION DEBT / GRAPHQL SYSTEMS</p>
           <h1>
             <span data-lang="ko" lang="ko"
-              >허가는 반환됐지만, 작업은 남아 있었다.</span
+              >타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까?</span
             ><span data-lang="en" lang="en" hidden
               >The permit returned. The work remained.</span
             >
           </h1>
           <p class="lead" data-lang="ko" lang="ko">
-            사용 중인 허가는 한 개, 실제 작업은 네 개. 실행 한도는 무엇의 수명을
-            제한하고 있었을까요?
+            동시 실행 한도는 두 개인데, 작업은 네 개가 겹쳤습니다.
+            슬롯 수가 정상으로 보여도 실제 작업은 한도를 넘을 수 있습니다.
           </p>
           <p class="lead" data-lang="en" lang="en" hidden>
             One held permit. Four unfinished jobs. Which lifetime was the
@@ -151,16 +151,18 @@
           <h2>
             <span class="section-number">01</span
             ><span data-lang="ko" lang="ko"
-              >정상 카운터 뒤에 남아 있는 작업</span
+              >카운터는 정상인데, 작업은 한도를 넘었다</span
             ><span data-lang="en" lang="en" hidden
               >Work left behind a healthy counter</span
             >
           </h2>
           <div class="prose" data-lang="ko" lang="ko">
             <p>
-              사용 중인 실행 허가는 최대 <strong>1개</strong>였습니다. 하지만
-              아직 끝나지 않은 작업은 <strong>4개</strong>였고, 설정한 한도는
-              <strong>2개</strong>였습니다.
+              동시 실행 수를 제한하려고, 작업을 받을 때 슬롯 하나를 점유하도록
+              했습니다. 이 슬롯을 코드와 아래 기록에서는 실행 허가(permit)라고
+              부릅니다. 슬롯은 <strong>2개</strong>로 설정했습니다.
+              점유한 슬롯은 최대 <strong>1개</strong>였지만,
+              아직 끝나지 않은 작업은 <strong>4개</strong>였습니다.
             </p>
             <p>
               개인 Apollo Federation 실험에서 게이트웨이와 HTTP 서브그래프 세
@@ -172,10 +174,10 @@
             </p>
             <p>
               비교용으로 만든 잘못된 구현은 응답을 기다리던 HTTP 연결이 끊기면
-              실행 허가를 반환했습니다. 하위 작업은 취소를 무시하고 계속
+              슬롯을 반환했습니다. 하위 작업은 취소를 무시하고 계속
               실행됐습니다. 첫 작업을 받은 뒤 <strong>559.24ms</strong> 시점에
-              네 번째 작업을 받았습니다. 미완료 작업은 네 개, 보유한 허가는 한
-              개였습니다. 허가 수 검사만으로는 실제 작업의 한도를 검증할 수
+              네 번째 작업을 받았습니다. 미완료 작업은 네 개, 점유한 슬롯은 한
+              개였습니다. 슬롯 수 검사만으로는 실제 작업의 한도를 검증할 수
               없었습니다.
             </p>
           </div>
@@ -217,7 +219,7 @@
                   src="../assets/cancellation-trace.ko.svg"
                   width="1280"
                   height="1020"
-                  alt="한도 두 개에서 조기 허가 반환은 미완료 작업 네 개와 최대 허가 한 개를 기록합니다. 작업 종료까지 유지하면 실제 작업은 두 개이고 이후 두 시도는 거절됩니다."
+                  alt="실행 슬롯 두 개를 설정한 비교입니다. 슬롯을 먼저 반환하면 작업 네 개가 겹치지만 점유한 슬롯은 최대 한 개로 보입니다. 작업이 끝날 때까지 점유하면 실제 작업은 두 개로 제한되고 이후 두 시도는 거절됩니다."
                   loading="lazy"
                 />
               </div>
@@ -243,7 +245,7 @@
             <figcaption>
               <div data-lang="ko" lang="ko">
                 저장된 이벤트의 시간축입니다. 파란 실선은 미완료 작업, 황색
-                점선은 보유 허가, 수평 점선은 한도 두 개입니다. 각 조건의 첫
+                점선은 점유한 슬롯(보유 허가), 수평 점선은 한도 두 개입니다. 각 조건의 첫
                 진입을 0ms로 맞췄으며, 선을 마지막 기록 이후로 연장하지
                 않았습니다. 가로로 이동하면 전체 종료 구간을 볼 수 있습니다.
               </div>
@@ -282,14 +284,14 @@
           <h2>
             <span class="section-number">02</span
             ><span data-lang="ko" lang="ko"
-              >허가는 실제 작업의 수명을 따른다</span
+              >슬롯은 작업이 끝난 뒤에 반환한다</span
             ><span data-lang="en" lang="en" hidden
               >The permit follows the operation’s lifetime</span
             >
           </h2>
           <div class="prose" data-lang="ko" lang="ko">
             <p>
-              실제 작업이 종료될 때까지 허가를 유지하자, 취소를 무시하는 같은
+              실제 작업이 종료될 때까지 슬롯을 점유하자, 취소를 무시하는 같은
               조건에서도 최대 동시 작업은 두 개였습니다. 대신 남아 있는 작업이
               자리를 차지하는 동안 뒤의 두 시도를 거절했습니다. 하위 작업을
               중단할 수 없으므로, 실행 한도를 지키려면 뒤의 요청을 거절해야
@@ -299,7 +301,7 @@
               취소 신호가 하위 HTTP 요청까지 전달되도록 Apollo의 서브그래프
               fetcher를 구성했습니다. 응답 완료 전에 연결이 끊기거나, 별도로
               전달한 재고 조회 기한이 지나면 취소를 요청합니다. 타이머가 신호를
-              받아 실제로 종료된 뒤에야 허가를 반환합니다.
+              받아 실제로 종료된 뒤에야 슬롯을 반환합니다.
             </p>
             <p>
               이 저장 기록에서는 협력적 취소의 네 작업 모두
@@ -308,11 +310,11 @@
               아닙니다.
             </p>
             <p>
-              작업 기록에는 요청 수락, 취소 요청, 작업 종료, 실행 허가 반환,
+              작업 기록에는 요청 수락, 취소 요청, 작업 종료, 슬롯 반환,
               호출자 완료를 별도 이벤트로 남깁니다. 검사기는 이벤트에서 두
               카운터를 재구성하고 요청 식별자를 대조합니다. 취소를 요청했다는
               기록만으로 작업이 종료됐다고 판단하지 않습니다. 잘못된 대조군은
-              허가 수 검사에는 통과하지만 실제 실행 한도와 허가 수명 검사에는
+              슬롯 수 검사에는 통과하지만 실제 실행 한도와 슬롯 반환 시점 검사에는
               실패합니다.
             </p>
           </div>
@@ -393,8 +395,8 @@
           </div>
         </section>
         <blockquote class="takeaway" data-lang="ko" lang="ko">
-          실행 허가를 반환할 시점은 호출자의 응답 대기가 끝났을 때가 아니라,
-          하위 작업이 끝났을 때입니다.
+          기다림이 끝나도 작업은 계속될 수 있습니다.
+          실행 슬롯은 그 작업이 끝난 뒤에 반환해야 합니다.
         </blockquote>
         <blockquote class="takeaway" data-lang="en" lang="en" hidden>
           An admission permit belongs to the operation that consumes

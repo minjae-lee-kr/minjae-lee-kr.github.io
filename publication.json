@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "d194e1ff2d70ac6c49baf64d4410e8e090767795",
+  "sourceCommit": "6989711da231fb9b24d4b7e6734422bda6c563f9",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 63,
   "copiedRootFiles": [
@@ -407,10 +407,10 @@
     {
       "path": "notes/cancellation-debt/index.html",
       "sourcePath": "docs/notes/cancellation-debt/index.html",
-      "gitBlob": "d2cb66284c8f6d18fd3f15766ab251199943212d",
+      "gitBlob": "fa8201ae94aeef89c0f436d559c99386550d0559",
       "gitMode": "100644",
-      "size": 28610,
-      "sha256": "d9318c17964d00174cac3e18d95caafba6aac1b88f3c0755a298dab2aac8c5e0"
+      "size": 29139,
+      "sha256": "e8071fccba8d9206af4d881524f99ed22e756365cc9861362562c28862cf34da"
     },
     {
       "path": "notes/notes.css",
@@ -543,7 +543,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "88352ff47e450a5e4ce3a82461ed5bb156c7e292af8c3899d4aa7fc8c9f91b55"
+      "sha256": "8552ac1d5c1bb1ba879f8f42b15d8e2a5c912921c66ba7ca3fd791e45f14649d"
     }
   ]
 }

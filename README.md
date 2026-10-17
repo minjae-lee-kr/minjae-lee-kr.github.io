@@ -2,13 +2,13 @@
 
 This repository serves [Minjae Lee’s portfolio](https://minjae-lee-kr.github.io/) on GitHub Pages.
 
-The canonical source is [minjae-lee-kr/minjae-lee-kr](https://github.com/minjae-lee-kr/minjae-lee-kr). The site files come from [`docs/` at commit `d194e1ff2d70ac6c49baf64d4410e8e090767795`](https://github.com/minjae-lee-kr/minjae-lee-kr/tree/d194e1ff2d70ac6c49baf64d4410e8e090767795/docs), with the source LICENSE preserved. Make content changes in the canonical repository, then publish a new snapshot.
+The canonical source is [minjae-lee-kr/minjae-lee-kr](https://github.com/minjae-lee-kr/minjae-lee-kr). The site files come from [`docs/` at commit `6989711da231fb9b24d4b7e6734422bda6c563f9`](https://github.com/minjae-lee-kr/minjae-lee-kr/tree/6989711da231fb9b24d4b7e6734422bda6c563f9/docs), with the source LICENSE preserved. Make content changes in the canonical repository, then publish a new snapshot.
 
 ## 한국어
 
 이 저장소는 [이민재의 포트폴리오](https://minjae-lee-kr.github.io/)를 GitHub Pages에 게시합니다.
 
-원본은 [minjae-lee-kr/minjae-lee-kr](https://github.com/minjae-lee-kr/minjae-lee-kr)에서 관리합니다. 사이트 파일은 [커밋 `d194e1ff2d70ac6c49baf64d4410e8e090767795`의 `docs/`](https://github.com/minjae-lee-kr/minjae-lee-kr/tree/d194e1ff2d70ac6c49baf64d4410e8e090767795/docs)에서 가져왔으며 원본 LICENSE를 함께 보관합니다. 내용은 원본 저장소에서 수정한 뒤 새 사본으로 게시합니다.
+원본은 [minjae-lee-kr/minjae-lee-kr](https://github.com/minjae-lee-kr/minjae-lee-kr)에서 관리합니다. 사이트 파일은 [커밋 `6989711da231fb9b24d4b7e6734422bda6c563f9`의 `docs/`](https://github.com/minjae-lee-kr/minjae-lee-kr/tree/6989711da231fb9b24d4b7e6734422bda6c563f9/docs)에서 가져왔으며 원본 LICENSE를 함께 보관합니다. 내용은 원본 저장소에서 수정한 뒤 새 사본으로 게시합니다.
 
 `publication.json` records the exact source commit and SHA-256 hashes. The site files and LICENSE retain their original bytes. This README, the empty `.nojekyll` marker, `.gitattributes`, and the manifest are publication metadata. `.gitattributes` disables Git line-ending conversion for every file.
 
