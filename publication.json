@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "d5a0eb144f488bda7330e89895d2960843408e6f",
+  "sourceCommit": "dfbc10719beb26fc4bad7c54f69ff182202012bd",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 67,
   "copiedRootFiles": [
@@ -527,10 +527,10 @@
     {
       "path": "portfolio.js",
       "sourcePath": "docs/portfolio.js",
-      "gitBlob": "731c37f327718f2e487e5ced1204179b7a1129f3",
+      "gitBlob": "c280b10e5287690d618b03e5ee43e1bfbe4d3b8b",
       "gitMode": "100644",
-      "size": 14588,
-      "sha256": "c374b6ecf2382e37af52e7c86d56b4ec97f64fcccf18fc14a106a1efa5e78176"
+      "size": 15579,
+      "sha256": "ec4e7698c2da93d643d513c7d530d83ce79f2e4ecffcfe9451a1178160dbe86e"
     },
     {
       "path": "styles.css",
@@ -575,7 +575,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "8ee87816fe98107f3e574d4b112ba76bfce27c8b79317d710dbfb89f68fdef30"
+      "sha256": "73862bf6753e47640be8d26be6ccd02cbc620203c26bb20d7b9dae7f3ce23518"
     }
   ]
 }

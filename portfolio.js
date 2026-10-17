@@ -1,5 +1,3 @@
-import { mountWorkbench } from "./workbench.js";
-
 const copy = {
   en: {
     title: "Minjae Lee — It says done. What does that prove?",
@@ -22,6 +20,8 @@ const copy = {
     explore: "Explore the examples",
     playTitle: "Three cases worth a closer look.",
     playAside: "Follow each example through its states.",
+    workbenchUnavailable:
+      "The examples could not load. The notes below include the code and recorded results.",
     workEyebrow: "ENGINEERING NOTES",
     workTitle: "The code behind the questions.",
     workLead:
@@ -95,6 +95,8 @@ const copy = {
     explore: "세 가지 사례 살펴보기",
     playTitle: "결과를 다시 확인해야 하는 세 가지 순간",
     playAside: "예제에서 상태가 달라지는 과정을 확인해 보세요.",
+    workbenchUnavailable:
+      "예제를 불러오지 못했습니다. 아래 실험 노트에서 코드와 실행 기록을 확인할 수 있습니다.",
     workEyebrow: "실험과 설계 기록",
     workTitle: "코드로 재현하고, 기록으로 확인했습니다.",
     workLead:
@@ -278,6 +280,18 @@ function renderProjects(t) {
   }
 }
 let workbench;
+let workbenchFallback;
+function renderWorkbenchFallback(t) {
+  if (!workbenchFallback) {
+    const message = element("p");
+    const link = element("a", "text-link");
+    link.href = "#work";
+    document.querySelector("#workbench").replaceChildren(message, link);
+    workbenchFallback = { message, link };
+  }
+  workbenchFallback.message.textContent = t.workbenchUnavailable;
+  workbenchFallback.link.textContent = t.navWork;
+}
 function render() {
   const t = copy[language];
   document.documentElement.lang = language;
@@ -301,6 +315,7 @@ function render() {
     );
   renderProjects(t);
   workbench?.setLanguage(language);
+  if (workbenchFallback) renderWorkbenchFallback(t);
 }
 document.querySelectorAll("[data-language]").forEach((button) =>
   button.addEventListener("click", () => {
@@ -314,7 +329,13 @@ document.querySelectorAll("[data-language]").forEach((button) =>
   }),
 );
 render();
-workbench = mountWorkbench(document.querySelector("#workbench"), { language });
+// Apply the reading language and render the notes without waiting for the
+// interactive examples. Use the current preference if it changes while loading.
+import("./workbench.js")
+  .then(({ mountWorkbench }) => {
+    workbench = mountWorkbench(document.querySelector("#workbench"), { language });
+  })
+  .catch(() => renderWorkbenchFallback(copy[language]));
 window.addEventListener("pageshow", () => {
   try {
     const saved = localStorage.getItem(key);
@@ -327,5 +348,5 @@ window.addEventListener("pageshow", () => {
   }
   // A history traversal may restore native input values after pageshow. Keep
   // the slider, its accessible text and the illustration on the same state.
-  requestAnimationFrame(() => workbench.setLanguage(language));
+  requestAnimationFrame(() => workbench?.setLanguage(language));
 });
