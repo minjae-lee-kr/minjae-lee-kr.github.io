@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive engineering notes on commerce recovery, automation approval and GraphQL cancellation. Independent experiments by Minjae Lee."
+    />
+    <meta name="color-scheme" content="light" />
+    <title>Minjae Lee — It says done. What does that prove?</title>
+    <link
+      rel="canonical"
+      href="https://minjae-lee-kr.github.io/"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Minjae Lee — It says done. What does that prove?"
+    />
+    <meta
+      property="og:description"
+      content="Interactive engineering notes on commerce recovery, automation approval and GraphQL cancellation. Independent experiments by Minjae Lee."
+    />
+    <meta
+      property="og:url"
+      content="https://minjae-lee-kr.github.io/"
+    />
+    <meta
+      property="og:image"
+      content="https://minjae-lee-kr.github.io/assets/social/home.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Minjae Lee. It says done. What does that prove? Independent engineering experiments on recovery, verification and cancellation."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image:alt"
+      content="Minjae Lee. It says done. What does that prove? Independent engineering experiments on recovery, verification and cancellation."
+    />
+    <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/fonts/SUIT-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="workbench.css" />
+    <script src="portfolio.js" type="module"></script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#work" data-i18n="skip">Skip to selected work</a>
+    <header class="site-header wrap">
+      <a
+        class="wordmark"
+        href="#top"
+        data-i18n-aria="home"
+        aria-label="Minjae Lee portfolio home"
+        ><span class="monogram" aria-hidden="true">m<span>·</span>l</span
+        ><span
+          >Minjae Lee<span class="wordmark-role" data-i18n="role"
+            >Software engineer</span
+          ></span
+        ></a
+      >
+      <nav data-i18n-aria="mainNav" aria-label="Main navigation">
+        <a href="#work" data-i18n="navWork">Field notes</a
+        ><a href="#about" data-i18n="navApproach">About</a
+        ><a href="https://github.com/minjae-lee-kr" rel="noreferrer"
+          >GitHub <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+      <div
+        class="languages"
+        role="group"
+        data-i18n-aria="language"
+        aria-label="Language"
+      >
+        <button type="button" data-language="ko" lang="ko" aria-pressed="false">
+          KO</button
+        ><span aria-hidden="true">/</span
+        ><button type="button" data-language="en" lang="en" aria-pressed="true">
+          EN
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-heading">
+          <p class="eyebrow" data-i18n="eyebrow">
+            FRONTEND · COMMERCE · DEVELOPER TOOLS
+          </p>
+          <h1 id="hero-title">
+            <span data-i18n="heroFirst">It says done.</span><br /><span
+              class="hero-accent"
+              data-i18n="heroSecond"
+              >What does that prove?</span
+            >
+          </h1>
+        </div>
+        <div class="hero-intro">
+          <p data-i18n="heroLead">
+            I’m Minjae, a software engineer. I build commerce experiences and
+            investigate what happens when the expected response never arrives.
+          </p>
+          <p class="specialties" data-i18n="specialties">
+            7+ years in booking, ordering &amp; payments. Now building
+            AI-assisted developer tools.
+          </p>
+          <a class="text-link" href="#play"
+            ><span data-i18n="explore">Explore the examples</span
+            ><span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </section>
+      <section id="play" class="play-section wrap" aria-labelledby="play-title">
+        <div class="play-heading">
+          <h2 id="play-title" data-i18n="playTitle">
+            Three cases worth a closer look.
+          </h2>
+          <span class="margin-note" data-i18n="playAside"
+            >Follow each example through its states.</span
+          >
+        </div>
+        <div id="workbench"></div>
+        <noscript
+          ><p>
+            These interactive illustrations use JavaScript. The
+            <a href="#work">engineering notes below</a> also include the source
+            and recorded evidence.
+          </p></noscript
+        >
+      </section>
+      <section id="work" class="work-section wrap" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow" data-i18n="workEyebrow"
+              >ENGINEERING NOTES</span
+            >
+            <h2 id="work-title" data-i18n="workTitle">
+              The code behind the questions.
+            </h2>
+          </div>
+          <p data-i18n="workLead">
+            Three independent experiments, with design decisions, failure cases
+            and recorded results.
+          </p>
+        </div>
+        <div class="projects" id="projects"></div>
+        <noscript
+          ><ul>
+            <li><a href="notes/retention-boundary/">Intent / Recovery</a></li>
+            <li><a href="notes/verified-change/">Verified Change</a></li>
+            <li><a href="notes/cancellation-debt/">Cancellation Debt</a></li>
+          </ul></noscript
+        >
+        <aside class="small-project" aria-labelledby="guards-title">
+          <div class="tool-symbol" aria-hidden="true">∅<span>≠</span>✓</div>
+          <div>
+            <span class="eyebrow" data-i18n="smallTool"
+              >A SMALL VERIFICATION TOOL</span
+            >
+            <h3 id="guards-title">Empty Check Guards</h3>
+            <p data-i18n="guardsDescription">
+              Distinguish no findings from having nothing to check.
+            </p>
+          </div>
+          <a
+            class="text-link"
+            href="https://github.com/minjae-lee-kr/empty-check-guards"
+            rel="noreferrer"
+            ><span data-i18n="guardsLink">View on GitHub</span
+            ><span aria-hidden="true">↗</span></a
+          >
+        </aside>
+      </section>
+      <section id="about" class="about wrap" aria-labelledby="about-title">
+        <div class="about-aside">
+          <span class="eyebrow" data-i18n="approachEyebrow">ABOUT</span>
+        </div>
+        <div class="about-body">
+          <h2 id="about-title" data-i18n="approachTitle">
+            Building the product and the tools behind it.
+          </h2>
+          <p data-i18n="bio">
+            I have spent 7+ years building booking, ordering, payments and
+            merchant tools. I work with React, TypeScript and GraphQL API
+            servers built with Apollo Federation.
+          </p>
+          <p data-i18n="bioTwo">
+            Lately, I’ve been building AI-assisted tools and QA/release
+            automation. I’m interested in how a small team can attempt bigger
+            things without losing its grip on the details.
+          </p>
+          <div class="about-links">
+            <a
+              class="text-link"
+              href="https://www.linkedin.com/in/minjae-lee-kr/"
+              rel="noreferrer"
+              ><span data-i18n="contact">Continue the conversation</span
+              ><span aria-hidden="true">↗</span></a
+            ><a
+              href="https://www.linkedin.com/pulse/when-findings-isnt-enough-coverage-heartbeats-lee-minjae-vre0c/"
+              rel="noreferrer"
+              data-i18n="article"
+              >More on verification →</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <div>
+        <a class="footer-name" href="#top"
+          >Minjae Lee<span aria-hidden="true">↗</span></a
+        >
+        <p data-i18n="footer">Engineering notes by Minjae Lee.</p>
+      </div>
+      <p class="disclosure" data-i18n="disclosure">
+        Independent personal experiments with synthetic data. No employer code,
+        internal architecture or production results.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,2618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Intent / Recovery — Experiment evidence</title>
+<link rel="stylesheet" href="report.css">
+<script src="report.js" defer>
+</script>
+</head>
+<body>
+<aside class="recorded-banner"><a href="../../"><span class="recorded-ko">← 포트폴리오</span><span class="recorded-en">← Portfolio</span></a><p><span class="recorded-ko">기록된 로컬 실행 · 읽기 전용 · 현재 시스템을 조회하지 않습니다.</span><span class="recorded-en">Recorded local run · read-only · no live system connection.</span></p><a href="recording.json"><span class="recorded-ko">기록 출처</span><span class="recorded-en">Recording source</span></a></aside>
+<a class="skip" href="#results"><span data-lang="ko">결과로 바로가기</span>
+<span data-lang="en">Skip to results</span></a>
+<header>
+<a href="#top" class="brand">Intent / Recovery</a>
+<div class="languages">
+<button type="button" data-set-lang="ko" lang="ko" aria-pressed="false">한국어</button>
+<button type="button" data-set-lang="en" lang="en" aria-pressed="true">EN</button>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<p class="eyebrow"><span data-lang="ko">실제 실행으로 확인한 결과</span>
+<span data-lang="en">Evidence from an actual execution</span></p>
+<h1><span data-lang="ko">응답의 실패와
+예약의 실패는 다릅니다.</span>
+<span data-lang="en">A lost response.
+Not necessarily a lost reservation.</span></h1>
+<p><span data-lang="ko">같은 통신 실패 뒤, 어떤 요청을 다시 보내느냐가 결과를 바꿉니다. 실제 HTTP와 SQLite로 차이를 재현했습니다.</span>
+<span data-lang="en">After the same transport failure, the identity of the retry changes the result. Real HTTP requests and SQLite records make the distinction observable.</span></p>
+</section>
+<section id="results" class="comparison"><article class="compare ">
+<p class="eyebrow"><span data-lang="ko">의도적으로 불완전한 재시도</span>
+<span data-lang="en">Deliberately incomplete retry</span></p>
+<h2><span data-lang="ko">새 키로 재시도한 경우</span>
+<span data-lang="en">Retry with a fresh key</span></h2>
+
+<div class="count">2<span><span data-lang="ko">건의 예약</span>
+<span data-lang="en">reservation effects</span></span>
+</div>
+<p><span data-lang="ko">응답이 사라진 뒤 새 요청 키로 다시 보내면, 서버는 별도 예약으로 받아들입니다. 예약은 두 건 남습니다.</span>
+<span data-lang="en">After the acknowledgement disappears, a fresh key describes another intent. The server correctly creates a second reservation.</span></p>
+<a href="#fresh-key"><span data-lang="ko">실행 근거 보기</span>
+<span data-lang="en">See the evidence</span> ↗</a>
+</article><article class="compare corrected">
+<p class="eyebrow"><span data-lang="ko">같은 요청을 유지한 복구</span>
+<span data-lang="en">Recovery with the same intent</span></p>
+<h2><span data-lang="ko">같은 예약 요청을 복구한 경우</span>
+<span data-lang="en">Recover the same intent</span></h2>
+
+<div class="count">1<span><span data-lang="ko">건의 예약</span>
+<span data-lang="en">reservation effect</span></span>
+</div>
+<p><span data-lang="ko">키와 요청 내용을 유지하면 이미 저장한 결과를 돌려받습니다. 예약은 한 건만 남습니다.</span>
+<span data-lang="en">Keeping the key and command recovers the recorded outcome. The original reservation remains the only effect.</span></p>
+<a href="#same-intent"><span data-lang="ko">실행 근거 보기</span>
+<span data-lang="en">See the evidence</span> ↗</a>
+</article></section>
+<p class="verdict "><span data-lang="ko">이번 실행은 모든 시나리오의 예상 결과를 재현했습니다.</span>
+<span data-lang="en">This execution reproduced every scenario’s expected result.</span></p>
+<section class="scenarios">
+<h2><span data-lang="ko">결과가 달라지는 경계</span>
+<span data-lang="en">The boundaries that change the outcome</span></h2><article class="scenario" id="fresh-key">
+<div class="row">
+<h3><span data-lang="ko">새 키로 재시도한 경우</span>
+<span data-lang="en">Retry with a fresh key</span></h3>
+<span class="result "><span data-lang="ko">예상 결과 재현</span>
+<span data-lang="en">Expected result observed</span></span>
+</div>
+<p><span data-lang="ko">응답이 사라진 뒤 새 요청 키로 다시 보내면, 서버는 별도 예약으로 받아들입니다. 예약은 두 건 남습니다.</span>
+<span data-lang="en">After the acknowledgement disappears, a fresh key describes another intent. The server correctly creates a second reservation.</span></p>
+<details>
+<summary><span data-lang="ko">요청·응답과 검증 근거 보기</span>
+<span data-lang="en">Inspect requests, responses and checks</span></summary>
+<p class="note"><span data-lang="ko">아래는 실제 실행에서 수집한 원본 관측과 검증 결과입니다. 필드명은 코드와 동일하게 유지했습니다.</span>
+<span data-lang="en">These observations and assertions were collected from this execution. Field names match the code.</span></p>
+<pre tabindex="0">{
+  &quot;observations&quot;: [
+    {
+      &quot;sequence&quot;: 1,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.739Z&quot;,
+      &quot;elapsedMs&quot;: 32,
+      &quot;kind&quot;: &quot;transport-error&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-original&quot;,
+        &quot;fault&quot;: &quot;drop-after-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;error&quot;: {
+        &quot;name&quot;: &quot;TypeError&quot;,
+        &quot;code&quot;: &quot;UND_ERR_SOCKET&quot;
+      }
+    },
+    {
+      &quot;sequence&quot;: 2,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.747Z&quot;,
+      &quot;elapsedMs&quot;: 40,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04&quot;,
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    },
+    {
+      &quot;sequence&quot;: 3,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.755Z&quot;,
+      &quot;elapsedMs&quot;: 47,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-fresh-key&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-fresh-key&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_e3dfec56-3110-4a59-8341-13a84fb93b93&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 2
+      }
+    },
+    {
+      &quot;sequence&quot;: 4,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.757Z&quot;,
+      &quot;elapsedMs&quot;: 50,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 10,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04&quot;,
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          },
+          {
+            &quot;receiptId&quot;: &quot;receipt_e3dfec56-3110-4a59-8341-13a84fb93b93&quot;,
+            &quot;intentId&quot;: &quot;purchase-fresh-key&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          },
+          {
+            &quot;intentId&quot;: &quot;purchase-fresh-key&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_e3dfec56-3110-4a59-8341-13a84fb93b93&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 2
+          }
+        ]
+      }
+    }
+  ],
+  &quot;checks&quot;: [
+    {
+      &quot;id&quot;: &quot;acknowledgement-lost&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;transport-error&quot;,
+      &quot;expected&quot;: &quot;transport-error&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;first-effect-exists-despite-no-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-fresh-key&quot;,
+      &quot;expected&quot;: &quot;purchase-fresh-key&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;observed-effect-count&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 2,
+      &quot;expected&quot;: 2
+    },
+    {
+      &quot;id&quot;: &quot;observed-capacity&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 10,
+      &quot;expected&quot;: 10
+    },
+    {
+      &quot;id&quot;: &quot;committed-history-retained&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;different-intents-are-distinct-purchases&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    }
+  ]
+}</pre>
+</details>
+</article><article class="scenario" id="same-intent">
+<div class="row">
+<h3><span data-lang="ko">같은 예약 요청을 복구한 경우</span>
+<span data-lang="en">Recover the same intent</span></h3>
+<span class="result "><span data-lang="ko">예상 결과 재현</span>
+<span data-lang="en">Expected result observed</span></span>
+</div>
+<p><span data-lang="ko">키와 요청 내용을 유지하면 이미 저장한 결과를 돌려받습니다. 예약은 한 건만 남습니다.</span>
+<span data-lang="en">Keeping the key and command recovers the recorded outcome. The original reservation remains the only effect.</span></p>
+<details>
+<summary><span data-lang="ko">요청·응답과 검증 근거 보기</span>
+<span data-lang="en">Inspect requests, responses and checks</span></summary>
+<p class="note"><span data-lang="ko">아래는 실제 실행에서 수집한 원본 관측과 검증 결과입니다. 필드명은 코드와 동일하게 유지했습니다.</span>
+<span data-lang="en">These observations and assertions were collected from this execution. Field names match the code.</span></p>
+<pre tabindex="0">{
+  &quot;observations&quot;: [
+    {
+      &quot;sequence&quot;: 1,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.895Z&quot;,
+      &quot;elapsedMs&quot;: 10,
+      &quot;kind&quot;: &quot;transport-error&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-original&quot;,
+        &quot;fault&quot;: &quot;drop-after-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;error&quot;: {
+        &quot;name&quot;: &quot;TypeError&quot;,
+        &quot;code&quot;: &quot;UND_ERR_SOCKET&quot;
+      }
+    },
+    {
+      &quot;sequence&quot;: 2,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.900Z&quot;,
+      &quot;elapsedMs&quot;: 14,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_8d334387-32fc-4f29-b19e-90bf3326db55&quot;,
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_8d334387-32fc-4f29-b19e-90bf3326db55&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    },
+    {
+      &quot;sequence&quot;: 3,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.902Z&quot;,
+      &quot;elapsedMs&quot;: 17,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-original&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-original&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_8d334387-32fc-4f29-b19e-90bf3326db55&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 4,
+      &quot;at&quot;: &quot;2026-10-16T17:57:36.904Z&quot;,
+      &quot;elapsedMs&quot;: 19,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_8d334387-32fc-4f29-b19e-90bf3326db55&quot;,
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-original&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_8d334387-32fc-4f29-b19e-90bf3326db55&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ],
+  &quot;checks&quot;: [
+    {
+      &quot;id&quot;: &quot;acknowledgement-lost&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;transport-error&quot;,
+      &quot;expected&quot;: &quot;transport-error&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;first-effect-exists-despite-no-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-original&quot;,
+      &quot;expected&quot;: &quot;purchase-original&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;observed-effect-count&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;observed-capacity&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 11,
+      &quot;expected&quot;: 11
+    },
+    {
+      &quot;id&quot;: &quot;committed-history-retained&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;exact-outcome-recovered&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-original&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_8d334387-32fc-4f29-b19e-90bf3326db55&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-original&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_8d334387-32fc-4f29-b19e-90bf3326db55&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    }
+  ]
+}</pre>
+</details>
+</article><article class="scenario" id="late-commit">
+<div class="row">
+<h3><span data-lang="ko">조회 시점에는 없었지만, 나중에 저장된다면</span>
+<span data-lang="en">Unseen now. Committed later.</span></h3>
+<span class="result "><span data-lang="ko">예상 결과 재현</span>
+<span data-lang="en">Expected result observed</span></span>
+</div>
+<p><span data-lang="ko">클라이언트의 대기 종료와 404 조회 뒤에도 먼저 보낸 요청은 저장될 수 있습니다. 조회 결과는 그 시점의 관측입니다.</span>
+<span data-lang="en">The original request can commit after the client times out and observes a 404. An unseen observation is not a cancellation guarantee.</span></p>
+<details>
+<summary><span data-lang="ko">요청·응답과 검증 근거 보기</span>
+<span data-lang="en">Inspect requests, responses and checks</span></summary>
+<p class="note"><span data-lang="ko">아래는 실제 실행에서 수집한 원본 관측과 검증 결과입니다. 필드명은 코드와 동일하게 유지했습니다.</span>
+<span data-lang="en">These observations and assertions were collected from this execution. Field names match the code.</span></p>
+<pre tabindex="0">{
+  &quot;observations&quot;: [
+    {
+      &quot;sequence&quot;: 1,
+      &quot;at&quot;: &quot;2026-10-16T17:57:37.499Z&quot;,
+      &quot;elapsedMs&quot;: 466,
+      &quot;kind&quot;: &quot;transport-error&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+        &quot;fault&quot;: &quot;delay-before-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;error&quot;: {
+        &quot;name&quot;: &quot;TimeoutError&quot;
+      }
+    },
+    {
+      &quot;sequence&quot;: 2,
+      &quot;at&quot;: &quot;2026-10-16T17:57:37.502Z&quot;,
+      &quot;elapsedMs&quot;: 470,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/intents/purchase-late-commit&quot;
+      },
+      &quot;status&quot;: 404,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+        &quot;status&quot;: &quot;unseen&quot;
+      }
+    },
+    {
+      &quot;sequence&quot;: 3,
+      &quot;at&quot;: &quot;2026-10-16T17:57:37.504Z&quot;,
+      &quot;elapsedMs&quot;: 471,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 12,
+        &quot;effects&quot;: [],
+        &quot;intents&quot;: []
+      }
+    },
+    {
+      &quot;sequence&quot;: 4,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.119Z&quot;,
+      &quot;elapsedMs&quot;: 2086,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/intents/purchase-late-commit&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 5,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.121Z&quot;,
+      &quot;elapsedMs&quot;: 2088,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+            &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    },
+    {
+      &quot;sequence&quot;: 6,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.122Z&quot;,
+      &quot;elapsedMs&quot;: 2090,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 7,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.124Z&quot;,
+      &quot;elapsedMs&quot;: 2091,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+            &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ],
+  &quot;checks&quot;: [
+    {
+      &quot;id&quot;: &quot;caller-stopped-waiting&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;transport-error&quot;,
+      &quot;expected&quot;: &quot;transport-error&quot;
+    },
+    {
+      &quot;id&quot;: &quot;unseen-is-observed-before-commit&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;status&quot;: 404,
+        &quot;body&quot;: {
+          &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+          &quot;status&quot;: &quot;unseen&quot;
+        }
+      },
+      &quot;expected&quot;: {
+        &quot;status&quot;: 404,
+        &quot;body&quot;: {
+          &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+          &quot;status&quot;: &quot;unseen&quot;
+        }
+      }
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;no-effect-at-earlier-observation&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 0,
+      &quot;expected&quot;: 0
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-late-commit&quot;,
+      &quot;expected&quot;: &quot;purchase-late-commit&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;earlier-404-did-not-prevent-late-commit&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;late-outcome-is-confirmed&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;confirmed&quot;,
+      &quot;expected&quot;: &quot;confirmed&quot;
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-late-commit&quot;,
+      &quot;expected&quot;: &quot;purchase-late-commit&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;same-intent-after-late-commit&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-late-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;retry-does-not-create-another-effect&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    }
+  ]
+}</pre>
+</details>
+</article><article class="scenario" id="conflicting-command">
+<div class="row">
+<h3><span data-lang="ko">같은 키에 다른 요청 내용을 보낸다면</span>
+<span data-lang="en">One key, a changed command</span></h3>
+<span class="result "><span data-lang="ko">예상 결과 재현</span>
+<span data-lang="en">Expected result observed</span></span>
+</div>
+<p><span data-lang="ko">요청 내용을 바꿔 재사용한 키는 충돌로 처리합니다. 원래 예약 결과와 정원은 바뀌지 않습니다.</span>
+<span data-lang="en">Reusing a key with a different command produces a conflict. The original outcome and capacity stay unchanged.</span></p>
+<details>
+<summary><span data-lang="ko">요청·응답과 검증 근거 보기</span>
+<span data-lang="en">Inspect requests, responses and checks</span></summary>
+<p class="note"><span data-lang="ko">아래는 실제 실행에서 수집한 원본 관측과 검증 결과입니다. 필드명은 코드와 동일하게 유지했습니다.</span>
+<span data-lang="en">These observations and assertions were collected from this execution. Field names match the code.</span></p>
+<pre tabindex="0">{
+  &quot;observations&quot;: [
+    {
+      &quot;sequence&quot;: 1,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.259Z&quot;,
+      &quot;elapsedMs&quot;: 11,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 2,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.261Z&quot;,
+      &quot;elapsedMs&quot;: 13,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    },
+    {
+      &quot;sequence&quot;: 3,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.263Z&quot;,
+      &quot;elapsedMs&quot;: 14,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 2
+        }
+      },
+      &quot;status&quot;: 409,
+      &quot;body&quot;: {
+        &quot;error&quot;: {
+          &quot;code&quot;: &quot;INTENT_CONFLICT&quot;,
+          &quot;message&quot;: &quot;This intent already belongs to a different command.&quot;,
+          &quot;retryable&quot;: false
+        }
+      }
+    },
+    {
+      &quot;sequence&quot;: 4,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.264Z&quot;,
+      &quot;elapsedMs&quot;: 16,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/intents/purchase-conflict&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 5,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.265Z&quot;,
+      &quot;elapsedMs&quot;: 17,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ],
+  &quot;checks&quot;: [
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-conflict&quot;,
+      &quot;expected&quot;: &quot;purchase-conflict&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;changed-command-rejected&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 409,
+      &quot;expected&quot;: 409
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-conflict&quot;,
+      &quot;expected&quot;: &quot;purchase-conflict&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;original-outcome-retained&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;ledger-unchanged&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      },
+      &quot;expected&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-conflict&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_b4c30400-b93f-4069-8392-38f2e194e5e4&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ]
+}</pre>
+</details>
+</article><article class="scenario" id="crash-before">
+<div class="row">
+<h3><span data-lang="ko">커밋 직전에 서버를 종료한다면</span>
+<span data-lang="en">Kill the process before commit</span></h3>
+<span class="result "><span data-lang="ko">예상 결과 재현</span>
+<span data-lang="en">Expected result observed</span></span>
+</div>
+<p><span data-lang="ko">별도 프로세스를 실제로 종료하고 같은 데이터베이스를 다시 엽니다. 완료되지 않은 변경은 남지 않고, 재시도 한 번으로 예약을 복구합니다.</span>
+<span data-lang="en">The parent abruptly terminates a separate server process, then reopens its database. Tentative changes do not survive; retry creates one reservation.</span></p>
+<details>
+<summary><span data-lang="ko">요청·응답과 검증 근거 보기</span>
+<span data-lang="en">Inspect requests, responses and checks</span></summary>
+<p class="note"><span data-lang="ko">아래는 실제 실행에서 수집한 원본 관측과 검증 결과입니다. 필드명은 코드와 동일하게 유지했습니다.</span>
+<span data-lang="en">These observations and assertions were collected from this execution. Field names match the code.</span></p>
+<pre tabindex="0">{
+  &quot;observations&quot;: [
+    {
+      &quot;sequence&quot;: 1,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.417Z&quot;,
+      &quot;elapsedMs&quot;: 26,
+      &quot;kind&quot;: &quot;process-checkpoint&quot;,
+      &quot;body&quot;: {
+        &quot;phase&quot;: &quot;before-commit&quot;,
+        &quot;intentId&quot;: &quot;purchase-crash-before-commit&quot;,
+        &quot;outcome&quot;: {
+          &quot;intentId&quot;: &quot;purchase-crash-before-commit&quot;,
+          &quot;command&quot;: {
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          },
+          &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+          &quot;status&quot;: &quot;confirmed&quot;,
+          &quot;receiptId&quot;: &quot;receipt_58bd34ef-65db-4ecc-888c-5ba7cf400d2c&quot;,
+          &quot;reason&quot;: null,
+          &quot;journalSequence&quot;: 1
+        },
+        &quot;runToken&quot;: &quot;845d9d20-c736-4220-b67c-3b27cda868f5&quot;,
+        &quot;pid&quot;: 18652
+      }
+    },
+    {
+      &quot;sequence&quot;: 2,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.419Z&quot;,
+      &quot;elapsedMs&quot;: 28,
+      &quot;kind&quot;: &quot;transport-error&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-crash-before-commit&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;error&quot;: {
+        &quot;name&quot;: &quot;TypeError&quot;,
+        &quot;code&quot;: &quot;ECONNRESET&quot;
+      }
+    },
+    {
+      &quot;sequence&quot;: 3,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.423Z&quot;,
+      &quot;elapsedMs&quot;: 32,
+      &quot;kind&quot;: &quot;process-killed&quot;,
+      &quot;body&quot;: {
+        &quot;mechanism&quot;: &quot;parent child.kill(SIGKILL)&quot;,
+        &quot;beforeHttpAcknowledgement&quot;: true
+      }
+    },
+    {
+      &quot;sequence&quot;: 4,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.542Z&quot;,
+      &quot;elapsedMs&quot;: 151,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 12,
+        &quot;effects&quot;: [],
+        &quot;intents&quot;: []
+      }
+    },
+    {
+      &quot;sequence&quot;: 5,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.550Z&quot;,
+      &quot;elapsedMs&quot;: 158,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-crash-before-commit&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-crash-before-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_9c83f66f-5434-4a43-a7b9-be4483789b48&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 6,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.551Z&quot;,
+      &quot;elapsedMs&quot;: 160,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_9c83f66f-5434-4a43-a7b9-be4483789b48&quot;,
+            &quot;intentId&quot;: &quot;purchase-crash-before-commit&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-crash-before-commit&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_9c83f66f-5434-4a43-a7b9-be4483789b48&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ],
+  &quot;checks&quot;: [
+    {
+      &quot;id&quot;: &quot;requested-checkpoint-reached&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;before-commit&quot;,
+      &quot;expected&quot;: &quot;before-commit&quot;
+    },
+    {
+      &quot;id&quot;: &quot;acknowledgement-not-observed&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;transport-error&quot;,
+      &quot;expected&quot;: &quot;transport-error&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;restart-recovered-expected-effect-count&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 0,
+      &quot;expected&quot;: 0
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-crash-before-commit&quot;,
+      &quot;expected&quot;: &quot;purchase-crash-before-commit&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;retry-confirmed&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;confirmed&quot;,
+      &quot;expected&quot;: &quot;confirmed&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;one-effect-after-recovery&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;capacity-conserved-after-recovery&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 11,
+      &quot;expected&quot;: 11
+    },
+    {
+      &quot;id&quot;: &quot;recovered-history-retained&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    }
+  ]
+}</pre>
+</details>
+</article><article class="scenario" id="crash-after">
+<div class="row">
+<h3><span data-lang="ko">커밋 직후, 응답 전에 서버를 종료한다면</span>
+<span data-lang="en">Kill after commit, before acknowledgement</span></h3>
+<span class="result "><span data-lang="ko">예상 결과 재현</span>
+<span data-lang="en">Expected result observed</span></span>
+</div>
+<p><span data-lang="ko">완료된 예약은 프로세스 종료 후에도 남습니다. 재시도는 같은 예약 확인 번호와 결과를 돌려줍니다.</span>
+<span data-lang="en">The committed reservation survives process death. Retry returns the same receipt and durable outcome.</span></p>
+<details>
+<summary><span data-lang="ko">요청·응답과 검증 근거 보기</span>
+<span data-lang="en">Inspect requests, responses and checks</span></summary>
+<p class="note"><span data-lang="ko">아래는 실제 실행에서 수집한 원본 관측과 검증 결과입니다. 필드명은 코드와 동일하게 유지했습니다.</span>
+<span data-lang="en">These observations and assertions were collected from this execution. Field names match the code.</span></p>
+<pre tabindex="0">{
+  &quot;observations&quot;: [
+    {
+      &quot;sequence&quot;: 1,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.701Z&quot;,
+      &quot;elapsedMs&quot;: 26,
+      &quot;kind&quot;: &quot;process-checkpoint&quot;,
+      &quot;body&quot;: {
+        &quot;phase&quot;: &quot;after-commit&quot;,
+        &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+        &quot;outcome&quot;: {
+          &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+          &quot;command&quot;: {
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          },
+          &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+          &quot;status&quot;: &quot;confirmed&quot;,
+          &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+          &quot;reason&quot;: null,
+          &quot;journalSequence&quot;: 1
+        },
+        &quot;runToken&quot;: &quot;d3c2d18e-1eb3-4ac9-8b24-92c7c05c7741&quot;,
+        &quot;pid&quot;: 22436
+      }
+    },
+    {
+      &quot;sequence&quot;: 2,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.703Z&quot;,
+      &quot;elapsedMs&quot;: 28,
+      &quot;kind&quot;: &quot;transport-error&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;error&quot;: {
+        &quot;name&quot;: &quot;TypeError&quot;,
+        &quot;code&quot;: &quot;ECONNRESET&quot;
+      }
+    },
+    {
+      &quot;sequence&quot;: 3,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.707Z&quot;,
+      &quot;elapsedMs&quot;: 32,
+      &quot;kind&quot;: &quot;process-killed&quot;,
+      &quot;body&quot;: {
+        &quot;mechanism&quot;: &quot;parent child.kill(SIGKILL)&quot;,
+        &quot;beforeHttpAcknowledgement&quot;: true
+      }
+    },
+    {
+      &quot;sequence&quot;: 4,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.832Z&quot;,
+      &quot;elapsedMs&quot;: 157,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+            &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    },
+    {
+      &quot;sequence&quot;: 5,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.835Z&quot;,
+      &quot;elapsedMs&quot;: 160,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 6,
+      &quot;at&quot;: &quot;2026-10-16T17:57:39.837Z&quot;,
+      &quot;elapsedMs&quot;: 162,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+            &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ],
+  &quot;checks&quot;: [
+    {
+      &quot;id&quot;: &quot;requested-checkpoint-reached&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;after-commit&quot;,
+      &quot;expected&quot;: &quot;after-commit&quot;
+    },
+    {
+      &quot;id&quot;: &quot;acknowledgement-not-observed&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;transport-error&quot;,
+      &quot;expected&quot;: &quot;transport-error&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;restart-recovered-expected-effect-count&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-crash-after-commit&quot;,
+      &quot;expected&quot;: &quot;purchase-crash-after-commit&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;retry-confirmed&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;confirmed&quot;,
+      &quot;expected&quot;: &quot;confirmed&quot;
+    },
+    {
+      &quot;id&quot;: &quot;same-durable-receipt-after-restart&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-crash-after-commit&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;one-effect-after-recovery&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;capacity-conserved-after-recovery&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 11,
+      &quot;expected&quot;: 11
+    },
+    {
+      &quot;id&quot;: &quot;recovered-history-retained&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    }
+  ]
+}</pre>
+</details>
+</article><article class="scenario" id="two-processes">
+<div class="row">
+<h3><span data-lang="ko">서버 두 개가 같은 요청을 함께 받는다면</span>
+<span data-lang="en">Two processes, one intent</span></h3>
+<span class="result "><span data-lang="ko">예상 결과 재현</span>
+<span data-lang="en">Expected result observed</span></span>
+</div>
+<p><span data-lang="ko">독립된 서버 프로세스 두 개가 같은 SQLite 파일을 사용합니다. 네 개의 동시 요청은 같은 결과로 수렴하고 예약은 한 건만 남습니다.</span>
+<span data-lang="en">Two independent server processes share one SQLite file. Four concurrent requests return the same outcome and leave one effect.</span></p>
+<details>
+<summary><span data-lang="ko">요청·응답과 검증 근거 보기</span>
+<span data-lang="en">Inspect requests, responses and checks</span></summary>
+<p class="note"><span data-lang="ko">아래는 실제 실행에서 수집한 원본 관측과 검증 결과입니다. 필드명은 코드와 동일하게 유지했습니다.</span>
+<span data-lang="en">These observations and assertions were collected from this execution. Field names match the code.</span></p>
+<pre tabindex="0">{
+  &quot;observations&quot;: [
+    {
+      &quot;sequence&quot;: 1,
+      &quot;at&quot;: &quot;2026-10-16T17:57:40.091Z&quot;,
+      &quot;elapsedMs&quot;: 12,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 2,
+      &quot;at&quot;: &quot;2026-10-16T17:57:40.093Z&quot;,
+      &quot;elapsedMs&quot;: 14,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 3,
+      &quot;at&quot;: &quot;2026-10-16T17:57:40.103Z&quot;,
+      &quot;elapsedMs&quot;: 24,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 4,
+      &quot;at&quot;: &quot;2026-10-16T17:57:40.104Z&quot;,
+      &quot;elapsedMs&quot;: 25,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/reservations&quot;,
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;fault&quot;: &quot;none&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        }
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;sequence&quot;: 5,
+      &quot;at&quot;: &quot;2026-10-16T17:57:40.106Z&quot;,
+      &quot;elapsedMs&quot;: 27,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    },
+    {
+      &quot;sequence&quot;: 6,
+      &quot;at&quot;: &quot;2026-10-16T17:57:40.108Z&quot;,
+      &quot;elapsedMs&quot;: 28,
+      &quot;kind&quot;: &quot;http&quot;,
+      &quot;request&quot;: {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/ledger&quot;
+      },
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ],
+  &quot;checks&quot;: [
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-shared-intent&quot;,
+      &quot;expected&quot;: &quot;purchase-shared-intent&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-shared-intent&quot;,
+      &quot;expected&quot;: &quot;purchase-shared-intent&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-shared-intent&quot;,
+      &quot;expected&quot;: &quot;purchase-shared-intent&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;terminal-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: true,
+      &quot;expected&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-intent&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;purchase-shared-intent&quot;,
+      &quot;expected&quot;: &quot;purchase-shared-intent&quot;
+    },
+    {
+      &quot;id&quot;: &quot;outcome-belongs-to-requested-command&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;offerId&quot;: &quot;workshop&quot;,
+        &quot;quantity&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;outcome-command-digest&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+      &quot;expected&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;
+    },
+    {
+      &quot;id&quot;: &quot;concurrent-outcomes-match&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;concurrent-outcomes-match&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;concurrent-outcomes-match&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;concurrent-outcomes-match&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;one-effect-across-two-processes&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 1,
+      &quot;expected&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;response-matches-authoritative-outcome&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;response-matches-authoritative-outcome&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;response-matches-authoritative-outcome&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;response-matches-authoritative-outcome&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      },
+      &quot;expected&quot;: {
+        &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+        &quot;command&quot;: {
+          &quot;offerId&quot;: &quot;workshop&quot;,
+          &quot;quantity&quot;: 1
+        },
+        &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+        &quot;status&quot;: &quot;confirmed&quot;,
+        &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+        &quot;reason&quot;: null,
+        &quot;journalSequence&quot;: 1
+      }
+    },
+    {
+      &quot;id&quot;: &quot;ledger-response&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: 200,
+      &quot;expected&quot;: 200
+    },
+    {
+      &quot;id&quot;: &quot;ledger-invariants&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      },
+      &quot;expected&quot;: {
+        &quot;ok&quot;: true,
+        &quot;violations&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;both-processes-see-same-ledger&quot;,
+      &quot;passed&quot;: true,
+      &quot;actual&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      },
+      &quot;expected&quot;: {
+        &quot;initialCapacity&quot;: 12,
+        &quot;remainingCapacity&quot;: 11,
+        &quot;effects&quot;: [
+          {
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;offerId&quot;: &quot;workshop&quot;,
+            &quot;quantity&quot;: 1
+          }
+        ],
+        &quot;intents&quot;: [
+          {
+            &quot;intentId&quot;: &quot;purchase-shared-intent&quot;,
+            &quot;command&quot;: {
+              &quot;offerId&quot;: &quot;workshop&quot;,
+              &quot;quantity&quot;: 1
+            },
+            &quot;commandHash&quot;: &quot;b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee&quot;,
+            &quot;status&quot;: &quot;confirmed&quot;,
+            &quot;receiptId&quot;: &quot;receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100&quot;,
+            &quot;reason&quot;: null,
+            &quot;journalSequence&quot;: 1
+          }
+        ]
+      }
+    }
+  ]
+}</pre>
+</details>
+</article></section>
+<section class="scope">
+<h2><span data-lang="ko">검증하려는 설계 범위</span>
+<span data-lang="en">The design claim under test</span></h2>
+
+<p><span data-lang="ko">기록을 보존하는 단일 SQLite 트랜잭션 안에서, 하나의 예약 요청 키는 최대 한 건의 예약만 만듭니다. 서로 다른 키의 의미상 중복 구매, 외부 결제의 원자성, 네트워크의 정확히 한 번 전달을 해결하지는 않습니다.</span>
+<span data-lang="en">Within one SQLite transaction boundary and retained intent history, one intent creates at most one reservation effect. Different-key semantic duplicates, atomic external payments, and exactly-once network delivery are outside this claim.</span></p>
+<p><span data-lang="ko">프로세스 종료를 재현했으며, 임의의 디스크 장애나 정전은 주입하지 않았습니다. 시간 값은 실행 순서를 이해하기 위한 관측값이며 성능 벤치마크가 아닙니다.</span>
+<span data-lang="en">The harness injects process termination, not arbitrary disk failure or power loss. Timings describe this execution and are not performance benchmarks.</span></p>
+<p><span data-lang="ko">재시도와 원자적 기록은 잘 알려진 패턴입니다. 이 작업의 초점은 클라이언트의 불확실성과 서버의 결과를 연결하고, 그 차이를 직접 재현하는 데 있습니다.</span>
+<span data-lang="en">Idempotent retries and atomic records are established patterns. This lab focuses on connecting client uncertainty to durable outcomes and making that difference reproducible.</span></p>
+</section>
+<section class="provenance">
+<h2><span data-lang="ko">다시 확인할 수 있는 근거</span>
+<span data-lang="en">Traceable evidence</span></h2>
+<dl>
+<dt><span data-lang="ko">생성 시각</span>
+<span data-lang="en">Generated</span></dt>
+<dd>
+<time>2026-10-16T17:57:40.242Z</time>
+</dd>
+<dt><span data-lang="ko">실행 환경</span>
+<span data-lang="en">Runtime</span></dt>
+<dd>Node 24.19.0 · SQLite 3.53.3 · win32 x64</dd>
+<dt><span data-lang="ko">소스 SHA-256</span>
+<span data-lang="en">Source SHA-256</span></dt>
+<dd class="hash">ee085e5381cee18ca25d18b81c6ebd8e24751893958770c4b07b264cb6feac0b</dd>
+<dt><span data-lang="ko">실행 전후 소스</span>
+<span data-lang="en">Source before / after</span></dt>
+<dd><span data-lang="ko">동일한 파일 내용</span>
+<span data-lang="en">Identical observed file contents</span></dd>
+<dt>Git</dt>
+<dd class="hash">e081192189297311b1ebc9e8b40d2ef1993b578a · clean</dd>
+</dl>
+<p class="note"><span data-lang="ko">파일 해시는 실행 전후의 소스 관측입니다. 실행 증명이나 서명이 아니며, 중간에 바뀌었다가 원복된 파일까지 탐지하지 않습니다. 이 명령은 전체 테스트 모음을 실행하지 않습니다.</span>
+<span data-lang="en">The file digest records source observations before and after the run. It is not execution attestation or a signature; edits reverted between snapshots are not detected. This command does not run the full test suite.</span></p>
+<a href="evidence.json" download><span data-lang="ko">전체 JSON 근거 다운로드</span>
+<span data-lang="en">Download complete JSON evidence</span> ↓</a>
+</section>
+</main>
+<footer><span data-lang="ko">독립적으로 설계한 합성 데이터 기반 개인 실험. 회사 내부 구현이나 실제 고객 데이터는 포함하지 않습니다.</span>
+<span data-lang="en">An independently designed personal experiment with synthetic data. No employer implementation or real customer data.</span></footer>
+</body>
+</html>

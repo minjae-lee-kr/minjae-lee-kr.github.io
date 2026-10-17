@@ -1,0 +1,571 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "reservation-history-v1",
+  "runId": "73dba04d-33d3-4fd3-919c-675011d0047c",
+  "seed": 130363,
+  "plannedAttemptIds": [
+    "anchor",
+    "anchor-read",
+    "late",
+    "early-read",
+    "lost",
+    "retry",
+    "changed",
+    "fill-0",
+    "fill-1",
+    "fill-2",
+    "fill-3",
+    "fill-4",
+    "final"
+  ],
+  "writers": [
+    {
+      "target": "a",
+      "instanceId": "dce2f662-a128-4926-bbdd-16d101504c52",
+      "pid": 3368
+    },
+    {
+      "target": "b",
+      "instanceId": "2b09efb2-3f71-434f-b7a8-8de40ca3c48d",
+      "pid": 25028
+    }
+  ],
+  "events": [
+    {
+      "kind": "invoke",
+      "attemptId": "anchor",
+      "target": "a",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-anchor",
+        "quantity": 1
+      },
+      "fault": "none",
+      "sequence": 1,
+      "elapsedMs": 234.71010000000024
+    },
+    {
+      "kind": "http",
+      "attemptId": "anchor",
+      "status": 200,
+      "body": {
+        "intentId": "history-130363-anchor",
+        "command": {
+          "offerId": "workshop",
+          "quantity": 1
+        },
+        "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
+        "status": "confirmed",
+        "receiptId": "receipt_0b5d63f3-4e49-43b1-bc0e-3712eb1e0a9c",
+        "reason": null,
+        "journalSequence": 1
+      },
+      "sequence": 2,
+      "elapsedMs": 245.82040000000006
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "anchor-read",
+      "target": "b",
+      "input": {
+        "kind": "lookup",
+        "key": "history-130363-anchor"
+      },
+      "fault": "none",
+      "sequence": 3,
+      "elapsedMs": 245.8389000000002
+    },
+    {
+      "kind": "http",
+      "attemptId": "anchor-read",
+      "status": 404,
+      "body": {
+        "intentId": "history-130363-anchor",
+        "status": "unseen"
+      },
+      "sequence": 4,
+      "elapsedMs": 250.5050000000001
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "late",
+      "target": "a",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-late",
+        "quantity": 1
+      },
+      "fault": "delay-before-commit",
+      "sequence": 5,
+      "elapsedMs": 250.52120000000014
+    },
+    {
+      "kind": "unknown",
+      "attemptId": "late",
+      "error": "TimeoutError",
+      "sequence": 6,
+      "elapsedMs": 363.5956000000001
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "early-read",
+      "target": "b",
+      "input": {
+        "kind": "lookup",
+        "key": "history-130363-late"
+      },
+      "fault": "none",
+      "sequence": 7,
+      "elapsedMs": 363.6259
+    },
+    {
+      "kind": "http",
+      "attemptId": "early-read",
+      "status": 404,
+      "body": {
+        "intentId": "history-130363-late",
+        "status": "unseen"
+      },
+      "sequence": 8,
+      "elapsedMs": 365.5256000000004
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "lost",
+      "target": "b",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-lost",
+        "quantity": 1
+      },
+      "fault": "drop-after-commit",
+      "sequence": 9,
+      "elapsedMs": 365.5404000000003
+    },
+    {
+      "kind": "unknown",
+      "attemptId": "lost",
+      "error": "TypeError",
+      "sequence": 10,
+      "elapsedMs": 372.5908000000004
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "changed",
+      "target": "b",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-anchor",
+        "quantity": 2
+      },
+      "fault": "none",
+      "sequence": 11,
+      "elapsedMs": 372.6429000000003
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "retry",
+      "target": "a",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-anchor",
+        "quantity": 1
+      },
+      "fault": "none",
+      "sequence": 12,
+      "elapsedMs": 372.90070000000014
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "fill-4",
+      "target": "b",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-fill-4",
+        "quantity": 3
+      },
+      "fault": "none",
+      "sequence": 13,
+      "elapsedMs": 373.11990000000014
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "fill-0",
+      "target": "a",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-fill-0",
+        "quantity": 3
+      },
+      "fault": "none",
+      "sequence": 14,
+      "elapsedMs": 373.2550000000001
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "fill-3",
+      "target": "b",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-fill-3",
+        "quantity": 2
+      },
+      "fault": "none",
+      "sequence": 15,
+      "elapsedMs": 373.40250000000015
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "fill-2",
+      "target": "a",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-fill-2",
+        "quantity": 3
+      },
+      "fault": "none",
+      "sequence": 16,
+      "elapsedMs": 373.52930000000015
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "fill-1",
+      "target": "b",
+      "input": {
+        "kind": "reserve",
+        "key": "history-130363-fill-1",
+        "quantity": 3
+      },
+      "fault": "none",
+      "sequence": 17,
+      "elapsedMs": 373.64580000000024
+    },
+    {
+      "kind": "http",
+      "attemptId": "changed",
+      "status": 409,
+      "body": {
+        "error": {
+          "code": "INTENT_CONFLICT",
+          "message": "This intent already belongs to a different command.",
+          "retryable": false
+        }
+      },
+      "sequence": 18,
+      "elapsedMs": 376.83860000000004
+    },
+    {
+      "kind": "http",
+      "attemptId": "retry",
+      "status": 200,
+      "body": {
+        "intentId": "history-130363-anchor",
+        "command": {
+          "offerId": "workshop",
+          "quantity": 1
+        },
+        "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
+        "status": "confirmed",
+        "receiptId": "receipt_0b5d63f3-4e49-43b1-bc0e-3712eb1e0a9c",
+        "reason": null,
+        "journalSequence": 1
+      },
+      "sequence": 19,
+      "elapsedMs": 377.11990000000014
+    },
+    {
+      "kind": "http",
+      "attemptId": "fill-4",
+      "status": 200,
+      "body": {
+        "intentId": "history-130363-fill-4",
+        "command": {
+          "offerId": "workshop",
+          "quantity": 3
+        },
+        "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+        "status": "confirmed",
+        "receiptId": "receipt_18d8fd46-5bcf-44dd-a915-686a8481dfe8",
+        "reason": null,
+        "journalSequence": 3
+      },
+      "sequence": 20,
+      "elapsedMs": 381.12440000000015
+    },
+    {
+      "kind": "http",
+      "attemptId": "fill-0",
+      "status": 200,
+      "body": {
+        "intentId": "history-130363-fill-0",
+        "command": {
+          "offerId": "workshop",
+          "quantity": 3
+        },
+        "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+        "status": "confirmed",
+        "receiptId": "receipt_f991fde3-a1a7-4c1b-9152-0eecae6c1f8f",
+        "reason": null,
+        "journalSequence": 4
+      },
+      "sequence": 21,
+      "elapsedMs": 385.6129000000001
+    },
+    {
+      "kind": "http",
+      "attemptId": "fill-2",
+      "status": 200,
+      "body": {
+        "intentId": "history-130363-fill-2",
+        "command": {
+          "offerId": "workshop",
+          "quantity": 3
+        },
+        "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+        "status": "confirmed",
+        "receiptId": "receipt_1d9edebe-c064-46d8-bc6b-6318f750effa",
+        "reason": null,
+        "journalSequence": 5
+      },
+      "sequence": 22,
+      "elapsedMs": 389.9760000000001
+    },
+    {
+      "kind": "http",
+      "attemptId": "fill-3",
+      "status": 200,
+      "body": {
+        "intentId": "history-130363-fill-3",
+        "command": {
+          "offerId": "workshop",
+          "quantity": 2
+        },
+        "commandHash": "d7f6f0f233082b4129f50e73205734a4b95201262ad819def0b015f03023ab51",
+        "status": "rejected",
+        "receiptId": null,
+        "reason": "capacity-unavailable",
+        "journalSequence": 6
+      },
+      "sequence": 23,
+      "elapsedMs": 401.18690000000015
+    },
+    {
+      "kind": "http",
+      "attemptId": "fill-1",
+      "status": 200,
+      "body": {
+        "intentId": "history-130363-fill-1",
+        "command": {
+          "offerId": "workshop",
+          "quantity": 3
+        },
+        "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+        "status": "rejected",
+        "receiptId": null,
+        "reason": "capacity-unavailable",
+        "journalSequence": 7
+      },
+      "sequence": 24,
+      "elapsedMs": 405.79410000000007
+    },
+    {
+      "kind": "drained",
+      "runId": "73dba04d-33d3-4fd3-919c-675011d0047c",
+      "instanceId": "2b09efb2-3f71-434f-b7a8-8de40ca3c48d",
+      "target": "b",
+      "pid": 25028,
+      "sequence": 25,
+      "elapsedMs": 406.80650000000014
+    },
+    {
+      "kind": "exited",
+      "runId": "73dba04d-33d3-4fd3-919c-675011d0047c",
+      "instanceId": "2b09efb2-3f71-434f-b7a8-8de40ca3c48d",
+      "target": "b",
+      "pid": 25028,
+      "sequence": 26,
+      "elapsedMs": 416.60339999999997
+    },
+    {
+      "kind": "drained",
+      "runId": "73dba04d-33d3-4fd3-919c-675011d0047c",
+      "instanceId": "dce2f662-a128-4926-bbdd-16d101504c52",
+      "target": "a",
+      "pid": 3368,
+      "sequence": 27,
+      "elapsedMs": 1780.2947000000004
+    },
+    {
+      "kind": "exited",
+      "runId": "73dba04d-33d3-4fd3-919c-675011d0047c",
+      "instanceId": "dce2f662-a128-4926-bbdd-16d101504c52",
+      "target": "a",
+      "pid": 3368,
+      "sequence": 28,
+      "elapsedMs": 1789.317
+    },
+    {
+      "kind": "fence",
+      "sequence": 29,
+      "elapsedMs": 1789.3222
+    },
+    {
+      "kind": "invoke",
+      "attemptId": "final",
+      "target": "reader",
+      "input": {
+        "kind": "snapshot"
+      },
+      "fault": "none",
+      "sequence": 30,
+      "elapsedMs": 1907.5626000000002
+    },
+    {
+      "kind": "http",
+      "attemptId": "final",
+      "status": 200,
+      "body": {
+        "initialCapacity": 12,
+        "remainingCapacity": 0,
+        "effects": [
+          {
+            "receiptId": "receipt_0b5d63f3-4e49-43b1-bc0e-3712eb1e0a9c",
+            "intentId": "history-130363-anchor",
+            "offerId": "workshop",
+            "quantity": 1
+          },
+          {
+            "receiptId": "receipt_0c1d0816-ea3e-4102-8dde-c1bd8afef7ca",
+            "intentId": "history-130363-lost",
+            "offerId": "workshop",
+            "quantity": 1
+          },
+          {
+            "receiptId": "receipt_18d8fd46-5bcf-44dd-a915-686a8481dfe8",
+            "intentId": "history-130363-fill-4",
+            "offerId": "workshop",
+            "quantity": 3
+          },
+          {
+            "receiptId": "receipt_1d9edebe-c064-46d8-bc6b-6318f750effa",
+            "intentId": "history-130363-fill-2",
+            "offerId": "workshop",
+            "quantity": 3
+          },
+          {
+            "receiptId": "receipt_f1d02abb-a04a-4685-8699-a4f60be5078f",
+            "intentId": "history-130363-late",
+            "offerId": "workshop",
+            "quantity": 1
+          },
+          {
+            "receiptId": "receipt_f991fde3-a1a7-4c1b-9152-0eecae6c1f8f",
+            "intentId": "history-130363-fill-0",
+            "offerId": "workshop",
+            "quantity": 3
+          }
+        ],
+        "intents": [
+          {
+            "intentId": "history-130363-anchor",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 1
+            },
+            "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
+            "status": "confirmed",
+            "receiptId": "receipt_0b5d63f3-4e49-43b1-bc0e-3712eb1e0a9c",
+            "reason": null,
+            "journalSequence": 1
+          },
+          {
+            "intentId": "history-130363-lost",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 1
+            },
+            "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
+            "status": "confirmed",
+            "receiptId": "receipt_0c1d0816-ea3e-4102-8dde-c1bd8afef7ca",
+            "reason": null,
+            "journalSequence": 2
+          },
+          {
+            "intentId": "history-130363-fill-4",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 3
+            },
+            "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+            "status": "confirmed",
+            "receiptId": "receipt_18d8fd46-5bcf-44dd-a915-686a8481dfe8",
+            "reason": null,
+            "journalSequence": 3
+          },
+          {
+            "intentId": "history-130363-fill-0",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 3
+            },
+            "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+            "status": "confirmed",
+            "receiptId": "receipt_f991fde3-a1a7-4c1b-9152-0eecae6c1f8f",
+            "reason": null,
+            "journalSequence": 4
+          },
+          {
+            "intentId": "history-130363-fill-2",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 3
+            },
+            "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+            "status": "confirmed",
+            "receiptId": "receipt_1d9edebe-c064-46d8-bc6b-6318f750effa",
+            "reason": null,
+            "journalSequence": 5
+          },
+          {
+            "intentId": "history-130363-fill-3",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 2
+            },
+            "commandHash": "d7f6f0f233082b4129f50e73205734a4b95201262ad819def0b015f03023ab51",
+            "status": "rejected",
+            "receiptId": null,
+            "reason": "capacity-unavailable",
+            "journalSequence": 6
+          },
+          {
+            "intentId": "history-130363-fill-1",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 3
+            },
+            "commandHash": "6c81f8fdd2954ef1bc5e32be592acd5ee21637bfa2fd6087db11eed75c8c0a6d",
+            "status": "rejected",
+            "receiptId": null,
+            "reason": "capacity-unavailable",
+            "journalSequence": 7
+          },
+          {
+            "intentId": "history-130363-late",
+            "command": {
+              "offerId": "workshop",
+              "quantity": 1
+            },
+            "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
+            "status": "confirmed",
+            "receiptId": "receipt_f1d02abb-a04a-4685-8699-a4f60be5078f",
+            "reason": null,
+            "journalSequence": 8
+          }
+        ]
+      },
+      "sequence": 31,
+      "elapsedMs": 1912.6412
+    }
+  ]
+}

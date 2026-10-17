@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Static publication of the portfolio site on GitHub Pages.",
+  "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
+  "sourceCommit": "d194e1ff2d70ac6c49baf64d4410e8e090767795",
+  "sourceDirectory": "docs/",
+  "copiedSiteFileCount": 63,
+  "copiedRootFiles": [
+    "LICENSE"
+  ],
+  "bytePreservation": "Each copied file is read from its committed Git blob without text conversion.",
+  "hashAlgorithm": "sha256",
+  "manifestSelfHash": "Excluded to avoid a recursive self-hash; all other output files are listed.",
+  "files": [
+    {
+      "path": "assets/fonts/README.txt",
+      "sourcePath": "docs/assets/fonts/README.txt",
+      "gitBlob": "6a6edb02ea2a98ce2e116b133b31630f702a9c0e",
+      "gitMode": "100644",
+      "size": 325,
+      "sha256": "9d0bd0b1c5acb38c07792ee5822a86578f25bc69f32a182fc79862a0c4154cb9"
+    },
+    {
+      "path": "assets/fonts/SUIT-LICENSE.txt",
+      "sourcePath": "docs/assets/fonts/SUIT-LICENSE.txt",
+      "gitBlob": "7ee44cf05fe09f5dc9293f40b96f3f9f66478d65",
+      "gitMode": "100644",
+      "size": 4380,
+      "sha256": "30d101ee3c35ef629d622d933d261a27b2f60223e0a3b0f36791e569c2b9daa9"
+    },
+    {
+      "path": "assets/fonts/SUIT-Variable.woff2",
+      "sourcePath": "docs/assets/fonts/SUIT-Variable.woff2",
+      "gitBlob": "89d7e4c28fe8069a8110a79dc7ca3cd446745de9",
+      "gitMode": "100644",
+      "size": 624536,
+      "sha256": "aa894a204d5a6fbae259dac6868d350cbd373a390caee0313f92946af741df23"
+    },
+    {
+      "path": "assets/mark.svg",
+      "sourcePath": "docs/assets/mark.svg",
+      "gitBlob": "0d37cb66c689b649478e1acc733893ae3f23f916",
+      "gitMode": "100644",
+      "size": 255,
+      "sha256": "06a2507ee0984d481c4fb4b5476bded353e801393fd5435fa5121fb2b01da6ab"
+    },
+    {
+      "path": "assets/social/cancellation.png",
+      "sourcePath": "docs/assets/social/cancellation.png",
+      "gitBlob": "fce3ebbf819084abf3c639d1708b1e86609c3ce6",
+      "gitMode": "100644",
+      "size": 46288,
+      "sha256": "d9ee2276f7cf72681c26bd99ee6d709cb4cf818bc59db420882176473eedaea1"
+    },
+    {
+      "path": "assets/social/cancellation.svg",
+      "sourcePath": "docs/assets/social/cancellation.svg",
+      "gitBlob": "f008b99e81d5c336f6c19246040ee4591e4cb41e",
+      "gitMode": "100644",
+      "size": 57005,
+      "sha256": "2a1f066f09fab7ec78bb3f3314beac01c8f94026c4c98cd4c1aa01575bbf0bbd"
+    },
+    {
+      "path": "assets/social/change.png",
+      "sourcePath": "docs/assets/social/change.png",
+      "gitBlob": "28a2c47fc09082093d3d4e81171b5553d919ae06",
+      "gitMode": "100644",
+      "size": 53964,
+      "sha256": "0df9c526216e7ba07df5160a3ce168d34be0e2209d62c5375274aa6cf9b24b66"
+    },
+    {
+      "path": "assets/social/change.svg",
+      "sourcePath": "docs/assets/social/change.svg",
+      "gitBlob": "134ebc7c5e5026e830bedefebb99f749a74a5ce0",
+      "gitMode": "100644",
+      "size": 59709,
+      "sha256": "32f4f199d20f8060f1814f63080f35022680a44bc066f6ee1b2f5e76e8f30db4"
+    },
+    {
+      "path": "assets/social/home.png",
+      "sourcePath": "docs/assets/social/home.png",
+      "gitBlob": "6dea1a19a10a400746e19fe99f8b5a27b0d509cd",
+      "gitMode": "100644",
+      "size": 51613,
+      "sha256": "2ecdb8410b06d2ee5faffb474709aacaa83f6086426715a96730c2c34cddae6d"
+    },
+    {
+      "path": "assets/social/home.svg",
+      "sourcePath": "docs/assets/social/home.svg",
+      "gitBlob": "9d4b935054f5b71b18b1308409639baa6f1e064f",
+      "gitMode": "100644",
+      "size": 60205,
+      "sha256": "602430c99be896ee400018ab424fb2159c81a7bbd8e04745a110080b4eb80073"
+    },
+    {
+      "path": "assets/social/intent.png",
+      "sourcePath": "docs/assets/social/intent.png",
+      "gitBlob": "e245d44c6c27f1cb5d30c846a861ebf84d8bd7e9",
+      "gitMode": "100644",
+      "size": 44658,
+      "sha256": "1fc22423ffadf07141f1fe7e87e59f7d2904d29db4e97ca96e0de14c2f93ac7a"
+    },
+    {
+      "path": "assets/social/intent.svg",
+      "sourcePath": "docs/assets/social/intent.svg",
+      "gitBlob": "dadc8a74fe1eeec78d0ed9ac6a177d115f58f8aa",
+      "gitMode": "100644",
+      "size": 51630,
+      "sha256": "ca743dcfcf5fe10f98a1ea75db1d58736517ab9004384ca46190e3db68546601"
+    },
+    {
+      "path": "evidence/cancellation/debt.css",
+      "sourcePath": "docs/evidence/cancellation/debt.css",
+      "gitBlob": "6d0bc85e50188c44ccc5f95dfff858bff5fba811",
+      "gitMode": "100644",
+      "size": 6264,
+      "sha256": "263102153bf7078b0436a2707d9af3b29a3b1c85b20fefbdcdd39bb03ee7af94"
+    },
+    {
+      "path": "evidence/cancellation/debt.js",
+      "sourcePath": "docs/evidence/cancellation/debt.js",
+      "gitBlob": "b26489a06f8cff634cc080b716787ed7361749d1",
+      "gitMode": "100644",
+      "size": 16896,
+      "sha256": "6ba24767f9d90ea2746e2c24a367ab7a4db9c9e9068041e84dddaa11ca27b3f1"
+    },
+    {
+      "path": "evidence/cancellation/export.json",
+      "sourcePath": "docs/evidence/cancellation/export.json",
+      "gitBlob": "748bb00273ca71d0ad1ae8926f8fd02579797c48",
+      "gitMode": "100644",
+      "size": 2141,
+      "sha256": "ce238a9b001384b55ad976ffce3eac3336d280e70b09c1db1952e5ff9dab7022"
+    },
+    {
+      "path": "evidence/cancellation/index.html",
+      "sourcePath": "docs/evidence/cancellation/index.html",
+      "gitBlob": "d906ed96d0ab8673f2a7d9ccb9f36a1834395315",
+      "gitMode": "100644",
+      "size": 3889,
+      "sha256": "3e14ad0797468c0e5a02acdcbc332283ea0509886509c89e29b93230c7d55aaf"
+    },
+    {
+      "path": "evidence/cancellation/recording.json",
+      "sourcePath": "docs/evidence/cancellation/recording.json",
+      "gitBlob": "4d4389a9de6a1c2882b54b75c5226720536b24de",
+      "gitMode": "100644",
+      "size": 1587,
+      "sha256": "6c6beed59ce2fe31c9357a75700537b238fb464484e7974c5e0ea5bcaa1e88d1"
+    },
+    {
+      "path": "evidence/cancellation/report-data.js",
+      "sourcePath": "docs/evidence/cancellation/report-data.js",
+      "gitBlob": "8d8f6cef9f087d596cc3218b9d7874550af82e19",
+      "gitMode": "100644",
+      "size": 52450,
+      "sha256": "8f5d78b5879b422d946c20542323e0d3c06a8d529f24defc23f2a84ad5f7bc1f"
+    },
+    {
+      "path": "evidence/cancellation/report.json",
+      "sourcePath": "docs/evidence/cancellation/report.json",
+      "gitBlob": "e1d783939e67051af66b592dac20bf67c4f757ed",
+      "gitMode": "100644",
+      "size": 108228,
+      "sha256": "421617b5c8e27bb1446a864e909dfc3f0a3de6e223f914d323aa07502893aa50"
+    },
+    {
+      "path": "evidence/change/app.js",
+      "sourcePath": "docs/evidence/change/app.js",
+      "gitBlob": "01062f7ba5f8b3f38f7feb5a90cff73a6da8c9c7",
+      "gitMode": "100644",
+      "size": 20631,
+      "sha256": "80ec88a6d12b85e5e9750db2d1503a467a8478cdfb61e8f0e880e1fc9e346a8b"
+    },
+    {
+      "path": "evidence/change/index.html",
+      "sourcePath": "docs/evidence/change/index.html",
+      "gitBlob": "065a2c96c76aeaf28edacd8080559b8249b22d1b",
+      "gitMode": "100644",
+      "size": 2530,
+      "sha256": "cdd3131fd298ceae3a6a2a3389ab75f2d1d0c4e0dd81f0355098547c4571f9bc"
+    },
+    {
+      "path": "evidence/change/recording.json",
+      "sourcePath": "docs/evidence/change/recording.json",
+      "gitBlob": "110f5e7327d8c992cd1dde91bbf8b1320ab15f8e",
+      "gitMode": "100644",
+      "size": 1193,
+      "sha256": "60950771e6510a4e500ad50fe3ba047b989ccb09d21e26f6162e4e30fc7a07a4"
+    },
+    {
+      "path": "evidence/change/report.json",
+      "sourcePath": "docs/evidence/change/report.json",
+      "gitBlob": "f725e3a24cd8e34085b9a0f4e67ce2270bff6c9a",
+      "gitMode": "100644",
+      "size": 291124,
+      "sha256": "a135f8ed283e8b64eb0341a5a85bc23d39ae9cfd4f64a5a584e43e9ed32ffa0f"
+    },
+    {
+      "path": "evidence/change/style.css",
+      "sourcePath": "docs/evidence/change/style.css",
+      "gitBlob": "f90d2eac738fd2b0a1fca7370ac400cfc444ac46",
+      "gitMode": "100644",
+      "size": 8809,
+      "sha256": "fb9d1a122535debe55604a4675dee584f26ec71b647169d5569081d837f614e5"
+    },
+    {
+      "path": "evidence/history/bundle.json",
+      "sourcePath": "docs/evidence/history/bundle.json",
+      "gitBlob": "a495cbcb0929070fe25bab6c58f6f355ed9870c0",
+      "gitMode": "100644",
+      "size": 2409,
+      "sha256": "64b74920072f9853e265b6c3b1f7f96de55b5c69887f0609108c7ca84f2433eb"
+    },
+    {
+      "path": "evidence/history/evidence.json",
+      "sourcePath": "docs/evidence/history/evidence.json",
+      "gitBlob": "47669c163d3730dc85651d75178a4be3280d9973",
+      "gitMode": "100644",
+      "size": 145778,
+      "sha256": "abe23117465e57ec65c7b2d7954480c4ff7dc4da70ee255ba9df2a84d600d32d"
+    },
+    {
+      "path": "evidence/history/index.html",
+      "sourcePath": "docs/evidence/history/index.html",
+      "gitBlob": "a527bb471db44b708fe374f6b6b6b5dd2829504c",
+      "gitMode": "100644",
+      "size": 3397,
+      "sha256": "24ee32c45d5968ff475168066bbc19dc904e80365f156003bf7974123c105c04"
+    },
+    {
+      "path": "evidence/history/recording.json",
+      "sourcePath": "docs/evidence/history/recording.json",
+      "gitBlob": "6b9420f12ba90677da5fcca0c7aaefc4b9df90c2",
+      "gitMode": "100644",
+      "size": 2114,
+      "sha256": "6ac494d90303ced628fe98bdf308d33c27af1c29df33db115440f94b081e1e47"
+    },
+    {
+      "path": "evidence/history/report-data.js",
+      "sourcePath": "docs/evidence/history/report-data.js",
+      "gitBlob": "bb3880cf018a4d8aed3b0acb7fb5c86e80207059",
+      "gitMode": "100644",
+      "size": 84285,
+      "sha256": "8fe9be2555c12dd0bb7326039b907452ee5867fd3165d949403883409ad3260e"
+    },
+    {
+      "path": "evidence/history/report.css",
+      "sourcePath": "docs/evidence/history/report.css",
+      "gitBlob": "42d2274ed90101f11e86366ad4d0f9f0b46fe87c",
+      "gitMode": "100644",
+      "size": 11890,
+      "sha256": "48fae4cd0522305b2dad55c56eb6603dae3224cb47bc47ff2416a5960e1bf69e"
+    },
+    {
+      "path": "evidence/history/report.js",
+      "sourcePath": "docs/evidence/history/report.js",
+      "gitBlob": "a29ef08b12b0f0634f8598a0d5367c0a2f9c98cb",
+      "gitMode": "100644",
+      "size": 35475,
+      "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+    },
+    {
+      "path": "evidence/history/seed-104729-stale-control.json",
+      "sourcePath": "docs/evidence/history/seed-104729-stale-control.json",
+      "gitBlob": "1a4f083c107fc403327c0e5cf157aa2293204b8c",
+      "gitMode": "100644",
+      "size": 15149,
+      "sha256": "51d501d8242813a54a89425fb1122119ad4dd00d090222184ce0768050debf9d"
+    },
+    {
+      "path": "evidence/history/seed-104729.json",
+      "sourcePath": "docs/evidence/history/seed-104729.json",
+      "gitBlob": "c5ad784940d6a669a3cc9e82f7221854899675d3",
+      "gitMode": "100644",
+      "size": 15455,
+      "sha256": "c176b2503ce97f9adaac75b22c58df66a4164a166b12d012d80671dbbd796152"
+    },
+    {
+      "path": "evidence/history/seed-130363-stale-control.json",
+      "sourcePath": "docs/evidence/history/seed-130363-stale-control.json",
+      "gitBlob": "ad4d137b9a0d0d62bd94b8345b4d1b9f28e897d0",
+      "gitMode": "100644",
+      "size": 15246,
+      "sha256": "a68d01aac4df3115e761bf465dfbd4cf44b42dafb79a7de14b4d056a684e26c5"
+    },
+    {
+      "path": "evidence/history/seed-130363.json",
+      "sourcePath": "docs/evidence/history/seed-130363.json",
+      "gitBlob": "def7dfd951a0d43e1cc9fc4950069898e91249e3",
+      "gitMode": "100644",
+      "size": 15552,
+      "sha256": "21864c9df0d6aeaf7424973038983d985d47d66d55259ab02d21f55b16cd3758"
+    },
+    {
+      "path": "evidence/history/seed-155921-stale-control.json",
+      "sourcePath": "docs/evidence/history/seed-155921-stale-control.json",
+      "gitBlob": "3dc495c99be295f99c30fd26a36350e6ba2698a1",
+      "gitMode": "100644",
+      "size": 15241,
+      "sha256": "61f22857a161a57f688225a020226000dee7008b1fc78b03ab1d04b9cebf50e2"
+    },
+    {
+      "path": "evidence/history/seed-155921.json",
+      "sourcePath": "docs/evidence/history/seed-155921.json",
+      "gitBlob": "0a9408cd14158f525bb2557240ec8f39d1722648",
+      "gitMode": "100644",
+      "size": 15547,
+      "sha256": "221c385f6e87a3a8ddeb7f960a24161384ee950c5e70dd794c4cb8e9920dd8a6"
+    },
+    {
+      "path": "evidence/history/upstream-assets.json",
+      "sourcePath": "docs/evidence/history/upstream-assets.json",
+      "gitBlob": "0e8005f1c1d7b6530d231525bd113e700dcbf0b8",
+      "gitMode": "100644",
+      "size": 1483,
+      "sha256": "1ceb381fc04ad82bc95c5a54ca52aaa8855fdd4da8325f649e836a45a00928e7"
+    },
+    {
+      "path": "evidence/intent/evidence.json",
+      "sourcePath": "docs/evidence/intent/evidence.json",
+      "gitBlob": "a9c16f77683b6c18f02c9776c4aa86ee8aa580fb",
+      "gitMode": "100644",
+      "size": 94403,
+      "sha256": "a6174c07e38d4befeb39cb76d10705a3153ed3d636637e27bb03a5146f19fb14"
+    },
+    {
+      "path": "evidence/intent/index.html",
+      "sourcePath": "docs/evidence/intent/index.html",
+      "gitBlob": "eb3ea36ba9d67f421c9a2c26ee6b2c978db663b6",
+      "gitMode": "100644",
+      "size": 102893,
+      "sha256": "806b17decf978dd3be3a1a5529aef590dd698692c4a687e2e54e9446da54a638"
+    },
+    {
+      "path": "evidence/intent/recording.json",
+      "sourcePath": "docs/evidence/intent/recording.json",
+      "gitBlob": "cb3c12dbfdffea5052e1f6ed3da97c95604324a2",
+      "gitMode": "100644",
+      "size": 1163,
+      "sha256": "cc8fd9aad2ea05a0be61379162a587d79048837e7e9761d9ca9fe165dd8b0800"
+    },
+    {
+      "path": "evidence/intent/report.css",
+      "sourcePath": "docs/evidence/intent/report.css",
+      "gitBlob": "b449b85cd35e58994262551774a415d0f87b5413",
+      "gitMode": "100644",
+      "size": 5335,
+      "sha256": "95a8fd7c2e3a52ff46a60e26318b974754551c5baba69df213506eaa7a90773a"
+    },
+    {
+      "path": "evidence/intent/report.js",
+      "sourcePath": "docs/evidence/intent/report.js",
+      "gitBlob": "aab3cdad34725d4a9e4559bda3b3c773a627c481",
+      "gitMode": "100644",
+      "size": 1282,
+      "sha256": "289e5d5d34557615fc96f29536d4326bca0b22415549ecac62d734cb9bcaa19b"
+    },
+    {
+      "path": "index.html",
+      "sourcePath": "docs/index.html",
+      "gitBlob": "08130f04d410c519892c4a29add2afb65f5d2967",
+      "gitMode": "100644",
+      "size": 8730,
+      "sha256": "47cfebf4a79a91d6295ed4bc78fecb14ad67e68e26c299457ee0b00a1ca6249d"
+    },
+    {
+      "path": "LICENSE",
+      "sourcePath": "LICENSE",
+      "gitBlob": "07e2c2ff9df2f7a3dae4664b52499a4c9cffbd3c",
+      "gitMode": "100644",
+      "size": 1067,
+      "sha256": "d8091b6f95977d822c0ef836c70be1e99500d6fe8cdb2d3f66bc7b5cb25da7a6"
+    },
+    {
+      "path": "notes/assets/cancellation-trace.en.svg",
+      "sourcePath": "docs/notes/assets/cancellation-trace.en.svg",
+      "gitBlob": "183cc579822074be5f0d06782cb99917195d8c26",
+      "gitMode": "100644",
+      "size": 128626,
+      "sha256": "a8f0a9dbbc340f88983f80cb607bed8bd3045d552f3126a0fa17ce0297eef379"
+    },
+    {
+      "path": "notes/assets/cancellation-trace.ko.svg",
+      "sourcePath": "docs/notes/assets/cancellation-trace.ko.svg",
+      "gitBlob": "9af8da5476ef78e9cab018e3c9fbe4a493672bce",
+      "gitMode": "100644",
+      "size": 159319,
+      "sha256": "5d8edddac0e1c763045222e8b7ba42200a963b901c7e4d5e132bfc4ee5e8268f"
+    },
+    {
+      "path": "notes/assets/verified-change.en.svg",
+      "sourcePath": "docs/notes/assets/verified-change.en.svg",
+      "gitBlob": "96c4631a06715ba715b47b6b57fff828c5080123",
+      "gitMode": "100644",
+      "size": 6608,
+      "sha256": "935c33f977b441635be60b15f86bf1ad90a95d61fd3ea3f4a023ef0c641c32ae"
+    },
+    {
+      "path": "notes/assets/verified-change.ko.svg",
+      "sourcePath": "docs/notes/assets/verified-change.ko.svg",
+      "gitBlob": "65cab7c4acfc3db6e74b799656b6f79e350fa842",
+      "gitMode": "100644",
+      "size": 6859,
+      "sha256": "1a8ce2d19ed892f7042184ffac4ca7ed2be1e437bacc811a1b9d945c1c0cc54e"
+    },
+    {
+      "path": "notes/cancellation-debt/index.html",
+      "sourcePath": "docs/notes/cancellation-debt/index.html",
+      "gitBlob": "d2cb66284c8f6d18fd3f15766ab251199943212d",
+      "gitMode": "100644",
+      "size": 28610,
+      "sha256": "d9318c17964d00174cac3e18d95caafba6aac1b88f3c0755a298dab2aac8c5e0"
+    },
+    {
+      "path": "notes/notes.css",
+      "sourcePath": "docs/notes/notes.css",
+      "gitBlob": "07ccee3d56a812ff6dfc0e37b5ab2228758d390f",
+      "gitMode": "100644",
+      "size": 8308,
+      "sha256": "365f013bf488cb9d4d4ccfa46b5e6bf3ea5992ac5bacab4866ad519c07fcecd1"
+    },
+    {
+      "path": "notes/notes.js",
+      "sourcePath": "docs/notes/notes.js",
+      "gitBlob": "1fbb6a24df9fe8df133aaa4b8ba66b46c1f4c1af",
+      "gitMode": "100644",
+      "size": 3893,
+      "sha256": "6b9c52337b0c6fdba66d07e5b460947a1ddaf52b2e8f0752a256013d8d5f9242"
+    },
+    {
+      "path": "notes/retention-boundary/contract.js",
+      "sourcePath": "docs/notes/retention-boundary/contract.js",
+      "gitBlob": "418b94ae535797109ad6b25d3c09894ae33716ac",
+      "gitMode": "100644",
+      "size": 13809,
+      "sha256": "7bd072f3b40cb2787b1bad26c9ff7a031ec846ede15b457c65b6e2619ff4e9cf"
+    },
+    {
+      "path": "notes/retention-boundary/index.html",
+      "sourcePath": "docs/notes/retention-boundary/index.html",
+      "gitBlob": "b20399470b1ed9cf8966474db41908dfd619a6b3",
+      "gitMode": "100644",
+      "size": 44798,
+      "sha256": "79714ba4c5007a5153196e934da965019e19e6ad6f68cb149f7ddb2c8baf1291"
+    },
+    {
+      "path": "notes/retention-boundary/mapping.json",
+      "sourcePath": "docs/notes/retention-boundary/mapping.json",
+      "gitBlob": "f06e525d1fdcebe1aa87204954d779db788dff9c",
+      "gitMode": "100644",
+      "size": 21618,
+      "sha256": "e6624ccc2bb61ce48d61924bb98c02e3f326ec51f5174d0d2d08866688a35f6e"
+    },
+    {
+      "path": "notes/retention-boundary/recording.json",
+      "sourcePath": "docs/notes/retention-boundary/recording.json",
+      "gitBlob": "014a85c106b468f11578161f005837d95bcb1c70",
+      "gitMode": "100644",
+      "size": 1845,
+      "sha256": "51afebb758c81b97cd9878b34a8a66ae2256a85904a62a87163778dc974c3f41"
+    },
+    {
+      "path": "notes/retention-boundary/recording/evidence.json",
+      "sourcePath": "docs/notes/retention-boundary/recording/evidence.json",
+      "gitBlob": "fec7de3913bf9d1913540de888379b6361e86409",
+      "gitMode": "100644",
+      "size": 80971,
+      "sha256": "c700118d900858be573d6924be16ae96ffe95369a57a9aa01aed0f1c83dd8fdd"
+    },
+    {
+      "path": "notes/retention-boundary/retention.css",
+      "sourcePath": "docs/notes/retention-boundary/retention.css",
+      "gitBlob": "08bfa106186aeecada2b08fb0dc2c34162a81ac4",
+      "gitMode": "100644",
+      "size": 3620,
+      "sha256": "2824d5e5bc97a12554337878c8507dfcf50ce0738396a11c8e38c2297fea5a51"
+    },
+    {
+      "path": "notes/retention-boundary/retention.js",
+      "sourcePath": "docs/notes/retention-boundary/retention.js",
+      "gitBlob": "992aa6ac98f935f0a309dea1a7404a19ce1689f4",
+      "gitMode": "100644",
+      "size": 5659,
+      "sha256": "3077571d5ce4326577c29b962eacad403a7091eb144dfbc3ff891f20dcf5a454"
+    },
+    {
+      "path": "notes/verified-change/index.html",
+      "sourcePath": "docs/notes/verified-change/index.html",
+      "gitBlob": "c9f734378f3502d6c1192b939df0af4aef17b782",
+      "gitMode": "100644",
+      "size": 31838,
+      "sha256": "1258866fbf60218218d9b3f91a2ece51dcdf158bcd88cf859d0a69dcd56631ee"
+    },
+    {
+      "path": "portfolio.js",
+      "sourcePath": "docs/portfolio.js",
+      "gitBlob": "731c37f327718f2e487e5ced1204179b7a1129f3",
+      "gitMode": "100644",
+      "size": 14588,
+      "sha256": "c374b6ecf2382e37af52e7c86d56b4ec97f64fcccf18fc14a106a1efa5e78176"
+    },
+    {
+      "path": "styles.css",
+      "sourcePath": "docs/styles.css",
+      "gitBlob": "719e39f7eb49a44ed37fdc2303b49bd219fd8c8c",
+      "gitMode": "100644",
+      "size": 13119,
+      "sha256": "ffe303afd421930e84719f14a686dbfd88a68caf697c533ca4dccf541e907fae"
+    },
+    {
+      "path": "workbench.css",
+      "sourcePath": "docs/workbench.css",
+      "gitBlob": "bb87358a3ef528e9d721a1fead98440104d93914",
+      "gitMode": "100644",
+      "size": 12054,
+      "sha256": "4bbd4b1544d34bcb9fc509c84ed25bf2b8f07db196b3cc1813018d50c4c5b43f"
+    },
+    {
+      "path": "workbench.js",
+      "sourcePath": "docs/workbench.js",
+      "gitBlob": "a077d2e3ab529dcf469e6c395b86a6988bf37bc3",
+      "gitMode": "100644",
+      "size": 17610,
+      "sha256": "822febd43cd967fbc602ca4d5dab2fd0688330b0e13583a4d8317544544ada14"
+    },
+    {
+      "path": ".gitattributes",
+      "sourcePath": null,
+      "generated": true,
+      "size": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".nojekyll",
+      "sourcePath": null,
+      "generated": true,
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "README.md",
+      "sourcePath": null,
+      "generated": true,
+      "size": 1766,
+      "sha256": "88352ff47e450a5e4ce3a82461ed5bb156c7e292af8c3899d4aa7fc8c9f91b55"
+    }
+  ]
+}

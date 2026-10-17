@@ -1,0 +1,2721 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "retention-boundary-v1",
+  "runId": "retention-2026-10-16T18-29-07-589Z-a96f9a01",
+  "startedAt": "2026-10-16T18:29:07.589Z",
+  "completedAt": "2026-10-16T18:29:09.869Z",
+  "runtime": {
+    "node": "24.19.0",
+    "sqlite": "3.53.3",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "sourceBefore": {
+    "sha256": "85b53a5ca373354fcf3bb492dae1e03bc5236feff412d6b531f4a38919c8c803",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c"
+      },
+      {
+        "path": ".github/workflows/verify.yml",
+        "sha256": "52cb9ae056e72d75746233aa699c077c5f391746ed15b3204ad482506ff5606d"
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "92168804456a76cc24fb9d3bd4e989644b9a7eba7372fa473cd21d14d13aab5c"
+      },
+      {
+        "path": ".prettierignore",
+        "sha256": "985420bdca87ae67bf033282979bd0f6c9228ad4be623231ebe22748f4effadd"
+      },
+      {
+        "path": ".prettierrc.json",
+        "sha256": "4927fe80046372da124fd1400d74eaf7e2d8fa4a19e5c81abeed3827d3ac11ed"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "d8091b6f95977d822c0ef836c70be1e99500d6fe8cdb2d3f66bc7b5cb25da7a6"
+      },
+      {
+        "path": "README.ko.md",
+        "sha256": "637769893398d14edb73171208493b8e741f6baa92ac3c99be8d9f9e94d8e6cd"
+      },
+      {
+        "path": "README.md",
+        "sha256": "bec4f70dfd4c83e2b1bcfd359173b01e3c3cb7478ed3758a96587dc1b1721fc7"
+      },
+      {
+        "path": "SECURITY.md",
+        "sha256": "a51545b0c1a869378de10439b3fdf85ed93488715030d714a1102370af1307e8"
+      },
+      {
+        "path": "docs/design.ko.md",
+        "sha256": "8b7d69903eb5aec20edb13bfb5e5b7db694a3b2ac71f6b91f79489113a2ec25a"
+      },
+      {
+        "path": "docs/design.md",
+        "sha256": "5948cb67c4859f2527ff077ca5333cef57c72b11df27a265340517e81a694420"
+      },
+      {
+        "path": "docs/history-check.ko.md",
+        "sha256": "4727ae8d8f6f7445b4be79cbb5d684750f52bea5439be08df50b27c4c2159d10"
+      },
+      {
+        "path": "docs/history-check.md",
+        "sha256": "d3e9aed86a7807fc1847676ddadc6cc6da8601a4146508cfd19c9082453ce129"
+      },
+      {
+        "path": "docs/retention-boundary.ko.md",
+        "sha256": "6b30692b09421a3f3b9dff3e1e08f72c8cb717a7072440169dc2809c1808e5b1"
+      },
+      {
+        "path": "docs/retention-boundary.md",
+        "sha256": "75f09a98ad51f0d6e9223874028dab3bb3cd2310f2074badb1c86c0c72a40a49"
+      },
+      {
+        "path": "index.html",
+        "sha256": "ddfaef176cf605a09770842c0877df1d92c4d481f18447aec7fdd4e2d6097d6a"
+      },
+      {
+        "path": "package.json",
+        "sha256": "9d56ca760705da47400556d6ae62f70b6c40bc1e20d69ca7831bcbcdf5d844d2"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "1f17e313136db1cd3c32f5294b8eb1ba7b673e3bb973210a70ccdfbcc51d9821"
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "6e37b1113a4d64c2825f9207ac77cce090ce936d81d0ee8fe4bac185cbd73a7a"
+      },
+      {
+        "path": "scripts/check-history.ts",
+        "sha256": "8bed8694fb8e812f32ad09cbdf63e9948bcce38079a60633d0575798caa3bd62"
+      },
+      {
+        "path": "scripts/check-ledger.ts",
+        "sha256": "e00de79f4c0c76febe80fdf063af05f0723f53ec2ce5b218f3026e2b355b82d2"
+      },
+      {
+        "path": "scripts/crash-worker.ts",
+        "sha256": "d99f960563e06919c88f9c5b4d64c87f35306397868271ebdb180164126f8cca"
+      },
+      {
+        "path": "scripts/experiments.ts",
+        "sha256": "6d87c550527babb183743484ff69a1399faf8343509c4e7721414dedaaaac211"
+      },
+      {
+        "path": "scripts/history/assessment.ts",
+        "sha256": "07dde87516b6bf584ef21e8505068d853bef1ca1e008dff568ff289aec3e462a"
+      },
+      {
+        "path": "scripts/history/checker.ts",
+        "sha256": "722248fecb9f11116fc81b7e4758d25b30e5360272e5c4429dabaa31da66e26c"
+      },
+      {
+        "path": "scripts/history/harness.ts",
+        "sha256": "3a1e8fc152382638f7fa240bd772c17aaf73bc7683fec3b618e5faec94d1f65b"
+      },
+      {
+        "path": "scripts/history/prepare.ts",
+        "sha256": "cb7fdf3cf6a7efc9ec0e3d1181cee801c40f3a63a49bdd031ce6cb7d63d5244d"
+      },
+      {
+        "path": "scripts/history/presentation.ts",
+        "sha256": "effbba547ea14434e94cf1e6706ac38e2de837df6d965cb8b602ee69eea1adff"
+      },
+      {
+        "path": "scripts/history/process.ts",
+        "sha256": "b646260ff3edeba8cde657c17ba69eb00824e6fd474c660eafd09561a62f5cae"
+      },
+      {
+        "path": "scripts/history/replay.ts",
+        "sha256": "0b0714b0543df3f93ea639ad01afa7b82db41205ff391c169bd2409e56f52656"
+      },
+      {
+        "path": "scripts/history/report-assets/index.html",
+        "sha256": "33597f63623a803f6c6364566ed3c4359ae8ff1a8d4f3532e67490653b89d0ac"
+      },
+      {
+        "path": "scripts/history/report-assets/report.css",
+        "sha256": "a3212c7b81d939b44f1df9d9d0e93ca3a6f44152fe040bc7f8a0bded19a100db"
+      },
+      {
+        "path": "scripts/history/report-assets/report.js",
+        "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+      },
+      {
+        "path": "scripts/history/report-text.ts",
+        "sha256": "c9c14d4cd0830bcbd30a8631b17baac08563f58f2430e5fe761c7cbf992045ad"
+      },
+      {
+        "path": "scripts/history/spec.ts",
+        "sha256": "c595eec49b6a356319977fd1bc0137bff0131a4d986a9e615e6d9915f477dd04"
+      },
+      {
+        "path": "scripts/history/types.ts",
+        "sha256": "971b584683df33e608d943a8f7d501ed422bb34a40fbe38a8c69e1dcf5d793c7"
+      },
+      {
+        "path": "scripts/history/worker.ts",
+        "sha256": "b0eeeb340091aa9676847bd93c27c27dd5844fdeb58f11fc8f77c06f19b623dd"
+      },
+      {
+        "path": "scripts/provenance.ts",
+        "sha256": "3e2589e5a2c41177383bb8d683e3cec627e8b2eb2dda42983cb0852a0a695d3d"
+      },
+      {
+        "path": "scripts/report.ts",
+        "sha256": "30dc3a8363c9f2f645224c4b4bbafc3ddf07ba806b34dc7c9cd9fe37562e9cb3"
+      },
+      {
+        "path": "scripts/retention/check.mjs",
+        "sha256": "4d06b89a34d41db2ec2c8a239d1caf6eff85008196302df59802e6963a3153fd"
+      },
+      {
+        "path": "scripts/retention/collect.mjs",
+        "sha256": "8a8b5ec6a25b8753371541f76b9bb1bea0ec93e43552503e76f940c3d45ba864"
+      },
+      {
+        "path": "scripts/retention/report.mjs",
+        "sha256": "72b894c43ca1981a669b752d46fcd64b33ebd8d5f058de4da7354f8a9717b3de"
+      },
+      {
+        "path": "scripts/retention/sensitivity.mjs",
+        "sha256": "08ccb9e5ed9c880ed8b20649abb5c29592f1090efc1b094e635d3db1eeacc950"
+      },
+      {
+        "path": "scripts/retention/worker.mjs",
+        "sha256": "c0d26a5874d47f11f7724e463f90a6be459596c25d3befc05f4e328bcf73103e"
+      },
+      {
+        "path": "scripts/run-experiments.ts",
+        "sha256": "7c45f4e9d090f45939c34487fc02521ffcbf0053fbe5bdd89576e496b5282650"
+      },
+      {
+        "path": "scripts/run-history.ts",
+        "sha256": "a5d6b1078459f011223ac3d61a5c2bc1056f4ab9379bfa684855b4f6c3ed7f83"
+      },
+      {
+        "path": "scripts/run-retention.mjs",
+        "sha256": "6a1b392a714bcdc69292e4daa3af1b4ea9497870dbaa55bb51044367b0883590"
+      },
+      {
+        "path": "scripts/serve-history-report.ts",
+        "sha256": "184a4258f2a970d97784b2b781b4beb8769596904c0a67eb16b0e9f59d6ba7fa"
+      },
+      {
+        "path": "scripts/serve-report.ts",
+        "sha256": "5bf771611b6f994c389ee6b15be3abcc1b555b0ef76c55a633980a14d0e2b13c"
+      },
+      {
+        "path": "src/client/App.tsx",
+        "sha256": "de4c1c769491135be06dfb4e86d03456b6fc10c940c188a8ebb55aeed519e98c"
+      },
+      {
+        "path": "src/client/env.d.ts",
+        "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+      },
+      {
+        "path": "src/client/feedback.ts",
+        "sha256": "66eb8e4f5a8c345984f9c83f2b58c8752c468bc7d5a5f7b0b03c5fc7bdbfca95"
+      },
+      {
+        "path": "src/client/i18n.ts",
+        "sha256": "4c5c45bff30fb03a08409ded187c24ece6d58b92a10249a2d72d18ccc6dc4930"
+      },
+      {
+        "path": "src/client/main.tsx",
+        "sha256": "096db8f52101f541873731902af597c95a1870d83ca4d1b300985a2dc48a6a5a"
+      },
+      {
+        "path": "src/client/model.ts",
+        "sha256": "d82e6f99361c35b69c168f7f8c8187913467028703bf0810c8223ad6aab90f3b"
+      },
+      {
+        "path": "src/client/style.css",
+        "sha256": "984576c585a9bd95c807759e6ef571efc0c01ee1e80705d840a4c5021fc17a75"
+      },
+      {
+        "path": "src/protocol.ts",
+        "sha256": "085fa0ed6fdf4d0596557c2c8db1ed8df398eedd4e5731f04f1463756f8c8e35"
+      },
+      {
+        "path": "src/report/report.css",
+        "sha256": "d6ad95f6a93a9707872f1858b3a0213858d6ace44fc5afcfd91022b405539bcc"
+      },
+      {
+        "path": "src/report/report.js",
+        "sha256": "6f0dd1b1f6090cbc553c8a9250e31b9f1225496cd1ffae65bba083f8c41bb25b"
+      },
+      {
+        "path": "src/server/main.ts",
+        "sha256": "fb8c0cc98677aac8a079fb3fc27acbf97a81fcdbb19f9457dbe33ef4e7695f92"
+      },
+      {
+        "path": "src/server/server.ts",
+        "sha256": "b16d65f9a79998adaa15a60d642913c3a327b378e72ddd08ed2a9527e1c5ee7e"
+      },
+      {
+        "path": "src/server/store.ts",
+        "sha256": "95ba69e9207c78f5cbabc8b0692738392a6e865243b7248b5f8ef45893801bc1"
+      },
+      {
+        "path": "tests/checker.test.ts",
+        "sha256": "3041ae178a3cf175167c59550e994a07d9170b99274042cb17e81f20287e8980"
+      },
+      {
+        "path": "tests/client-feedback.test.ts",
+        "sha256": "b4256384e05751d91cc0bc21bde0928cbf56ce39a67021b42b1434d0840f18ef"
+      },
+      {
+        "path": "tests/client-http.test.ts",
+        "sha256": "919affe4a40e0e31e375d334fb95dd3d1f5a3c19609db048e689fd9a874da8a9"
+      },
+      {
+        "path": "tests/client-language.test.ts",
+        "sha256": "a89de51b7003f9f83cc151702b4590a1ebda86205cd1027d2ece7985d643853a"
+      },
+      {
+        "path": "tests/client-model.test.ts",
+        "sha256": "5cc7d2903305b4355c6e820a724b52945337835ed4bc85fea541b076a37302e6"
+      },
+      {
+        "path": "tests/crash-recovery.test.ts",
+        "sha256": "e19636dc4a8adc22099159bfe752b2cb37735d8cea697df8c1105cb5f9a8ad3d"
+      },
+      {
+        "path": "tests/experiment-evidence.test.ts",
+        "sha256": "024b02dd3a71b240b4711b6a614d00207298ce427c964497bb4e5208015760d7"
+      },
+      {
+        "path": "tests/helpers/fixture-process.ts",
+        "sha256": "5d90d74d7762751a629eb80ac655245b3e703ec7d75d55d6e266e8c929366572"
+      },
+      {
+        "path": "tests/helpers/history-fixtures.ts",
+        "sha256": "260d79c5eeea51713787087b76fafce3e7a4d40bb39de5db1f7d6e5678b66abd"
+      },
+      {
+        "path": "tests/history-check.test.ts",
+        "sha256": "69018679e08e737b434d6f8c09e38d87701ca13ac5d73ddb9549d5206a89cf52"
+      },
+      {
+        "path": "tests/history-io.test.ts",
+        "sha256": "d3c367aceca112d0beb70c9b7269ffc15aa7156a6cfcbde975cd8d39bf684bbc"
+      },
+      {
+        "path": "tests/history-presentation.test.ts",
+        "sha256": "b7ab162639f375913f933b323f8efedb8588fe2992404b430172d55f3f4a015c"
+      },
+      {
+        "path": "tests/history-report.test.ts",
+        "sha256": "2a493146a1e8c4e9d2dc0c8b12b214a2e2ab95af5f4b995a72173ae03a2a8293"
+      },
+      {
+        "path": "tests/provenance.test.ts",
+        "sha256": "7dc3997f3c2556eb35198bb6e507f4aa791e91ae3ce8a722c73277a2b8c66ce3"
+      },
+      {
+        "path": "tests/report-presentation.test.ts",
+        "sha256": "0509a0e82ba1c2ead7c700d7284ecc67e57bff8fdb8f0680e854cb4662e22aed"
+      },
+      {
+        "path": "tests/report-server.test.ts",
+        "sha256": "8401bf6c2f7bfbf1515d13a6ced5dfed021a5124e1d7c2e0637c30485434de82"
+      },
+      {
+        "path": "tests/retention.test.mjs",
+        "sha256": "cf2a8064a84cf9be9a9ca0dc75e8b0f79a4fa0910fd2e7199d99d112a97ad6b6"
+      },
+      {
+        "path": "tests/server-http.test.ts",
+        "sha256": "67225d481ac984a606454fb40e2813e5081b904d5ac01ce3a77626ec51375089"
+      },
+      {
+        "path": "tests/server-store.test.ts",
+        "sha256": "6027d4746a3072dfdbe80a8fa522bc0a7f3dd817d17d6f529266ad89ccd1e30b"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "664f410275ea21fd23ef6bf34a5ba95df5aaff513ee808cb2e266f686597655b"
+      },
+      {
+        "path": "vite.config.ts",
+        "sha256": "df8bc22bd33add935e20ba711dc5e1f02d56945270a36a46f0be7060fdbd6ebf"
+      }
+    ],
+    "git": {
+      "state": "available",
+      "head": "c60801f969ab0223812bb4fa609c2de3e7651c91",
+      "dirty": false
+    }
+  },
+  "sourceAfter": {
+    "sha256": "85b53a5ca373354fcf3bb492dae1e03bc5236feff412d6b531f4a38919c8c803",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c"
+      },
+      {
+        "path": ".github/workflows/verify.yml",
+        "sha256": "52cb9ae056e72d75746233aa699c077c5f391746ed15b3204ad482506ff5606d"
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "92168804456a76cc24fb9d3bd4e989644b9a7eba7372fa473cd21d14d13aab5c"
+      },
+      {
+        "path": ".prettierignore",
+        "sha256": "985420bdca87ae67bf033282979bd0f6c9228ad4be623231ebe22748f4effadd"
+      },
+      {
+        "path": ".prettierrc.json",
+        "sha256": "4927fe80046372da124fd1400d74eaf7e2d8fa4a19e5c81abeed3827d3ac11ed"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "d8091b6f95977d822c0ef836c70be1e99500d6fe8cdb2d3f66bc7b5cb25da7a6"
+      },
+      {
+        "path": "README.ko.md",
+        "sha256": "637769893398d14edb73171208493b8e741f6baa92ac3c99be8d9f9e94d8e6cd"
+      },
+      {
+        "path": "README.md",
+        "sha256": "bec4f70dfd4c83e2b1bcfd359173b01e3c3cb7478ed3758a96587dc1b1721fc7"
+      },
+      {
+        "path": "SECURITY.md",
+        "sha256": "a51545b0c1a869378de10439b3fdf85ed93488715030d714a1102370af1307e8"
+      },
+      {
+        "path": "docs/design.ko.md",
+        "sha256": "8b7d69903eb5aec20edb13bfb5e5b7db694a3b2ac71f6b91f79489113a2ec25a"
+      },
+      {
+        "path": "docs/design.md",
+        "sha256": "5948cb67c4859f2527ff077ca5333cef57c72b11df27a265340517e81a694420"
+      },
+      {
+        "path": "docs/history-check.ko.md",
+        "sha256": "4727ae8d8f6f7445b4be79cbb5d684750f52bea5439be08df50b27c4c2159d10"
+      },
+      {
+        "path": "docs/history-check.md",
+        "sha256": "d3e9aed86a7807fc1847676ddadc6cc6da8601a4146508cfd19c9082453ce129"
+      },
+      {
+        "path": "docs/retention-boundary.ko.md",
+        "sha256": "6b30692b09421a3f3b9dff3e1e08f72c8cb717a7072440169dc2809c1808e5b1"
+      },
+      {
+        "path": "docs/retention-boundary.md",
+        "sha256": "75f09a98ad51f0d6e9223874028dab3bb3cd2310f2074badb1c86c0c72a40a49"
+      },
+      {
+        "path": "index.html",
+        "sha256": "ddfaef176cf605a09770842c0877df1d92c4d481f18447aec7fdd4e2d6097d6a"
+      },
+      {
+        "path": "package.json",
+        "sha256": "9d56ca760705da47400556d6ae62f70b6c40bc1e20d69ca7831bcbcdf5d844d2"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "1f17e313136db1cd3c32f5294b8eb1ba7b673e3bb973210a70ccdfbcc51d9821"
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "6e37b1113a4d64c2825f9207ac77cce090ce936d81d0ee8fe4bac185cbd73a7a"
+      },
+      {
+        "path": "scripts/check-history.ts",
+        "sha256": "8bed8694fb8e812f32ad09cbdf63e9948bcce38079a60633d0575798caa3bd62"
+      },
+      {
+        "path": "scripts/check-ledger.ts",
+        "sha256": "e00de79f4c0c76febe80fdf063af05f0723f53ec2ce5b218f3026e2b355b82d2"
+      },
+      {
+        "path": "scripts/crash-worker.ts",
+        "sha256": "d99f960563e06919c88f9c5b4d64c87f35306397868271ebdb180164126f8cca"
+      },
+      {
+        "path": "scripts/experiments.ts",
+        "sha256": "6d87c550527babb183743484ff69a1399faf8343509c4e7721414dedaaaac211"
+      },
+      {
+        "path": "scripts/history/assessment.ts",
+        "sha256": "07dde87516b6bf584ef21e8505068d853bef1ca1e008dff568ff289aec3e462a"
+      },
+      {
+        "path": "scripts/history/checker.ts",
+        "sha256": "722248fecb9f11116fc81b7e4758d25b30e5360272e5c4429dabaa31da66e26c"
+      },
+      {
+        "path": "scripts/history/harness.ts",
+        "sha256": "3a1e8fc152382638f7fa240bd772c17aaf73bc7683fec3b618e5faec94d1f65b"
+      },
+      {
+        "path": "scripts/history/prepare.ts",
+        "sha256": "cb7fdf3cf6a7efc9ec0e3d1181cee801c40f3a63a49bdd031ce6cb7d63d5244d"
+      },
+      {
+        "path": "scripts/history/presentation.ts",
+        "sha256": "effbba547ea14434e94cf1e6706ac38e2de837df6d965cb8b602ee69eea1adff"
+      },
+      {
+        "path": "scripts/history/process.ts",
+        "sha256": "b646260ff3edeba8cde657c17ba69eb00824e6fd474c660eafd09561a62f5cae"
+      },
+      {
+        "path": "scripts/history/replay.ts",
+        "sha256": "0b0714b0543df3f93ea639ad01afa7b82db41205ff391c169bd2409e56f52656"
+      },
+      {
+        "path": "scripts/history/report-assets/index.html",
+        "sha256": "33597f63623a803f6c6364566ed3c4359ae8ff1a8d4f3532e67490653b89d0ac"
+      },
+      {
+        "path": "scripts/history/report-assets/report.css",
+        "sha256": "a3212c7b81d939b44f1df9d9d0e93ca3a6f44152fe040bc7f8a0bded19a100db"
+      },
+      {
+        "path": "scripts/history/report-assets/report.js",
+        "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+      },
+      {
+        "path": "scripts/history/report-text.ts",
+        "sha256": "c9c14d4cd0830bcbd30a8631b17baac08563f58f2430e5fe761c7cbf992045ad"
+      },
+      {
+        "path": "scripts/history/spec.ts",
+        "sha256": "c595eec49b6a356319977fd1bc0137bff0131a4d986a9e615e6d9915f477dd04"
+      },
+      {
+        "path": "scripts/history/types.ts",
+        "sha256": "971b584683df33e608d943a8f7d501ed422bb34a40fbe38a8c69e1dcf5d793c7"
+      },
+      {
+        "path": "scripts/history/worker.ts",
+        "sha256": "b0eeeb340091aa9676847bd93c27c27dd5844fdeb58f11fc8f77c06f19b623dd"
+      },
+      {
+        "path": "scripts/provenance.ts",
+        "sha256": "3e2589e5a2c41177383bb8d683e3cec627e8b2eb2dda42983cb0852a0a695d3d"
+      },
+      {
+        "path": "scripts/report.ts",
+        "sha256": "30dc3a8363c9f2f645224c4b4bbafc3ddf07ba806b34dc7c9cd9fe37562e9cb3"
+      },
+      {
+        "path": "scripts/retention/check.mjs",
+        "sha256": "4d06b89a34d41db2ec2c8a239d1caf6eff85008196302df59802e6963a3153fd"
+      },
+      {
+        "path": "scripts/retention/collect.mjs",
+        "sha256": "8a8b5ec6a25b8753371541f76b9bb1bea0ec93e43552503e76f940c3d45ba864"
+      },
+      {
+        "path": "scripts/retention/report.mjs",
+        "sha256": "72b894c43ca1981a669b752d46fcd64b33ebd8d5f058de4da7354f8a9717b3de"
+      },
+      {
+        "path": "scripts/retention/sensitivity.mjs",
+        "sha256": "08ccb9e5ed9c880ed8b20649abb5c29592f1090efc1b094e635d3db1eeacc950"
+      },
+      {
+        "path": "scripts/retention/worker.mjs",
+        "sha256": "c0d26a5874d47f11f7724e463f90a6be459596c25d3befc05f4e328bcf73103e"
+      },
+      {
+        "path": "scripts/run-experiments.ts",
+        "sha256": "7c45f4e9d090f45939c34487fc02521ffcbf0053fbe5bdd89576e496b5282650"
+      },
+      {
+        "path": "scripts/run-history.ts",
+        "sha256": "a5d6b1078459f011223ac3d61a5c2bc1056f4ab9379bfa684855b4f6c3ed7f83"
+      },
+      {
+        "path": "scripts/run-retention.mjs",
+        "sha256": "6a1b392a714bcdc69292e4daa3af1b4ea9497870dbaa55bb51044367b0883590"
+      },
+      {
+        "path": "scripts/serve-history-report.ts",
+        "sha256": "184a4258f2a970d97784b2b781b4beb8769596904c0a67eb16b0e9f59d6ba7fa"
+      },
+      {
+        "path": "scripts/serve-report.ts",
+        "sha256": "5bf771611b6f994c389ee6b15be3abcc1b555b0ef76c55a633980a14d0e2b13c"
+      },
+      {
+        "path": "src/client/App.tsx",
+        "sha256": "de4c1c769491135be06dfb4e86d03456b6fc10c940c188a8ebb55aeed519e98c"
+      },
+      {
+        "path": "src/client/env.d.ts",
+        "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+      },
+      {
+        "path": "src/client/feedback.ts",
+        "sha256": "66eb8e4f5a8c345984f9c83f2b58c8752c468bc7d5a5f7b0b03c5fc7bdbfca95"
+      },
+      {
+        "path": "src/client/i18n.ts",
+        "sha256": "4c5c45bff30fb03a08409ded187c24ece6d58b92a10249a2d72d18ccc6dc4930"
+      },
+      {
+        "path": "src/client/main.tsx",
+        "sha256": "096db8f52101f541873731902af597c95a1870d83ca4d1b300985a2dc48a6a5a"
+      },
+      {
+        "path": "src/client/model.ts",
+        "sha256": "d82e6f99361c35b69c168f7f8c8187913467028703bf0810c8223ad6aab90f3b"
+      },
+      {
+        "path": "src/client/style.css",
+        "sha256": "984576c585a9bd95c807759e6ef571efc0c01ee1e80705d840a4c5021fc17a75"
+      },
+      {
+        "path": "src/protocol.ts",
+        "sha256": "085fa0ed6fdf4d0596557c2c8db1ed8df398eedd4e5731f04f1463756f8c8e35"
+      },
+      {
+        "path": "src/report/report.css",
+        "sha256": "d6ad95f6a93a9707872f1858b3a0213858d6ace44fc5afcfd91022b405539bcc"
+      },
+      {
+        "path": "src/report/report.js",
+        "sha256": "6f0dd1b1f6090cbc553c8a9250e31b9f1225496cd1ffae65bba083f8c41bb25b"
+      },
+      {
+        "path": "src/server/main.ts",
+        "sha256": "fb8c0cc98677aac8a079fb3fc27acbf97a81fcdbb19f9457dbe33ef4e7695f92"
+      },
+      {
+        "path": "src/server/server.ts",
+        "sha256": "b16d65f9a79998adaa15a60d642913c3a327b378e72ddd08ed2a9527e1c5ee7e"
+      },
+      {
+        "path": "src/server/store.ts",
+        "sha256": "95ba69e9207c78f5cbabc8b0692738392a6e865243b7248b5f8ef45893801bc1"
+      },
+      {
+        "path": "tests/checker.test.ts",
+        "sha256": "3041ae178a3cf175167c59550e994a07d9170b99274042cb17e81f20287e8980"
+      },
+      {
+        "path": "tests/client-feedback.test.ts",
+        "sha256": "b4256384e05751d91cc0bc21bde0928cbf56ce39a67021b42b1434d0840f18ef"
+      },
+      {
+        "path": "tests/client-http.test.ts",
+        "sha256": "919affe4a40e0e31e375d334fb95dd3d1f5a3c19609db048e689fd9a874da8a9"
+      },
+      {
+        "path": "tests/client-language.test.ts",
+        "sha256": "a89de51b7003f9f83cc151702b4590a1ebda86205cd1027d2ece7985d643853a"
+      },
+      {
+        "path": "tests/client-model.test.ts",
+        "sha256": "5cc7d2903305b4355c6e820a724b52945337835ed4bc85fea541b076a37302e6"
+      },
+      {
+        "path": "tests/crash-recovery.test.ts",
+        "sha256": "e19636dc4a8adc22099159bfe752b2cb37735d8cea697df8c1105cb5f9a8ad3d"
+      },
+      {
+        "path": "tests/experiment-evidence.test.ts",
+        "sha256": "024b02dd3a71b240b4711b6a614d00207298ce427c964497bb4e5208015760d7"
+      },
+      {
+        "path": "tests/helpers/fixture-process.ts",
+        "sha256": "5d90d74d7762751a629eb80ac655245b3e703ec7d75d55d6e266e8c929366572"
+      },
+      {
+        "path": "tests/helpers/history-fixtures.ts",
+        "sha256": "260d79c5eeea51713787087b76fafce3e7a4d40bb39de5db1f7d6e5678b66abd"
+      },
+      {
+        "path": "tests/history-check.test.ts",
+        "sha256": "69018679e08e737b434d6f8c09e38d87701ca13ac5d73ddb9549d5206a89cf52"
+      },
+      {
+        "path": "tests/history-io.test.ts",
+        "sha256": "d3c367aceca112d0beb70c9b7269ffc15aa7156a6cfcbde975cd8d39bf684bbc"
+      },
+      {
+        "path": "tests/history-presentation.test.ts",
+        "sha256": "b7ab162639f375913f933b323f8efedb8588fe2992404b430172d55f3f4a015c"
+      },
+      {
+        "path": "tests/history-report.test.ts",
+        "sha256": "2a493146a1e8c4e9d2dc0c8b12b214a2e2ab95af5f4b995a72173ae03a2a8293"
+      },
+      {
+        "path": "tests/provenance.test.ts",
+        "sha256": "7dc3997f3c2556eb35198bb6e507f4aa791e91ae3ce8a722c73277a2b8c66ce3"
+      },
+      {
+        "path": "tests/report-presentation.test.ts",
+        "sha256": "0509a0e82ba1c2ead7c700d7284ecc67e57bff8fdb8f0680e854cb4662e22aed"
+      },
+      {
+        "path": "tests/report-server.test.ts",
+        "sha256": "8401bf6c2f7bfbf1515d13a6ced5dfed021a5124e1d7c2e0637c30485434de82"
+      },
+      {
+        "path": "tests/retention.test.mjs",
+        "sha256": "cf2a8064a84cf9be9a9ca0dc75e8b0f79a4fa0910fd2e7199d99d112a97ad6b6"
+      },
+      {
+        "path": "tests/server-http.test.ts",
+        "sha256": "67225d481ac984a606454fb40e2813e5081b904d5ac01ce3a77626ec51375089"
+      },
+      {
+        "path": "tests/server-store.test.ts",
+        "sha256": "6027d4746a3072dfdbe80a8fa522bc0a7f3dd817d17d6f529266ad89ccd1e30b"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "664f410275ea21fd23ef6bf34a5ba95df5aaff513ee808cb2e266f686597655b"
+      },
+      {
+        "path": "vite.config.ts",
+        "sha256": "df8bc22bd33add935e20ba711dc5e1f02d56945270a36a46f0be7060fdbd6ebf"
+      }
+    ],
+    "git": {
+      "state": "available",
+      "head": "c60801f969ab0223812bb4fa609c2de3e7651c91",
+      "dirty": false
+    }
+  },
+  "sourceStable": true,
+  "passed": true,
+  "fixture": {
+    "ttl": 1000,
+    "conservativeMargin": 100,
+    "clockUnits": "explicit logical fixture units; no elapsed-time benchmark",
+    "clockTrust": "parent-controlled equal-rate zero-offset fixture"
+  },
+  "limits": [
+    "Not an exactly-once proof, provider integration, power-loss test, or performance measurement.",
+    "Cache absence cannot certify no historical effect. Auditor access is unavailable to the retry policy.",
+    "The guard refuses dispatch at/after its cutoff, not remote arrival after pruning or an in-transit request.",
+    "Synchronized injected clocks and the configured margin do not establish real clock or transit bounds."
+  ],
+  "cases": [
+    {
+      "scenario": "retained-positive",
+      "observations": [
+        {
+          "sequence": 1,
+          "type": "process-ready",
+          "role": "downstream",
+          "pid": 9480
+        },
+        {
+          "sequence": 2,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 18480
+        },
+        {
+          "sequence": 3,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 18480,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 4,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 9480,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 5,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 9480,
+          "control": "fault",
+          "value": "after"
+        },
+        {
+          "sequence": 6,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 7,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "unknown",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 8,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 18480,
+          "control": "clock",
+          "value": 10020
+        },
+        {
+          "sequence": 9,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 9480,
+          "control": "clock",
+          "value": 10020
+        },
+        {
+          "sequence": 10,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 9480,
+          "control": "fault",
+          "value": "after"
+        },
+        {
+          "sequence": 11,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 12,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "unknown",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 13,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 18480,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 14,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 9480,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 15,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "reconcile"
+        },
+        {
+          "sequence": 16,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "reconcile",
+          "status": 200,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "confirmed",
+            "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 17,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 18480,
+          "control": "stop"
+        },
+        {
+          "sequence": 18,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 18480,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 19,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 11836
+        },
+        {
+          "sequence": 20,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 21,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 200,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "confirmed",
+            "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 22,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 11836,
+          "control": "stop"
+        },
+        {
+          "sequence": 23,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 11836,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 24,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 9480,
+          "control": "stop"
+        },
+        {
+          "sequence": 25,
+          "type": "process-exit",
+          "role": "downstream",
+          "pid": 9480,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "audit": {
+        "scenario": "retained-positive",
+        "expectedResultEstablished": true,
+        "checks": {
+          "localJournalValid": true,
+          "firstDispatchMetadataPersisted": true,
+          "frozenHorizonRetained": true,
+          "grantBoundToCorrelatedOutcome": true,
+          "retentionChronologyValid": true,
+          "remoteEffectAtMostOnce": true,
+          "remoteEffects": 1,
+          "localGrants": 1,
+          "downstreamPosts": 2,
+          "retainedKeys": 1,
+          "positiveLookupBeyondMinimumRecovered": true
+        },
+        "intents": [
+          {
+            "id": "intent-same-business",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "policy": "guarded",
+            "first_at": 10000,
+            "retry_before": 10900,
+            "contract": "synthetic-retention-v1",
+            "status": "confirmed",
+            "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1"
+          }
+        ],
+        "grants": [
+          {
+            "intent_id": "intent-same-business",
+            "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+            "units": 1
+          }
+        ],
+        "effects": [
+          {
+            "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "created_at": 10000
+          }
+        ],
+        "retained": [
+          {
+            "intent_key": "key-intent-same-business",
+            "command": "{\"units\":1}",
+            "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+            "expires_at": 11000
+          }
+        ],
+        "localJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "intent-persisted",
+            "clock": 10000,
+            "detail": {
+              "retention": 1000,
+              "margin": 100
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 10000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "transport-unknown",
+            "clock": 10000,
+            "detail": {
+              "attemptId": "attempt-1",
+              "name": "TypeError"
+            }
+          },
+          {
+            "seq": 4,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 10020,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-2"
+            }
+          },
+          {
+            "seq": 5,
+            "intent_key": "key-intent-same-business",
+            "event": "transport-unknown",
+            "clock": 10020,
+            "detail": {
+              "attemptId": "attempt-2",
+              "name": "TypeError"
+            }
+          },
+          {
+            "seq": 6,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-lookup",
+            "clock": 12000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-3"
+            }
+          },
+          {
+            "seq": 7,
+            "intent_key": "key-intent-same-business",
+            "event": "local-grant",
+            "clock": 12000,
+            "detail": {
+              "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+              "attemptId": "attempt-3"
+            }
+          }
+        ],
+        "remoteJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "post-new-effect",
+            "clock": 10000,
+            "detail": {
+              "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "post-replayed",
+            "clock": 10020,
+            "detail": {
+              "receipt": "effect_32791521-b937-46e6-b0fb-78a80ebc24f1",
+              "attemptId": "attempt-2"
+            }
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "lookup-retained",
+            "clock": 12000,
+            "detail": {
+              "attemptId": "attempt-3"
+            }
+          }
+        ],
+        "localClockFloor": [
+          {
+            "id": 1,
+            "value": 12000
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "naive-expired",
+      "observations": [
+        {
+          "sequence": 1,
+          "type": "process-ready",
+          "role": "downstream",
+          "pid": 10136
+        },
+        {
+          "sequence": 2,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 4784
+        },
+        {
+          "sequence": 3,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 4784,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 4,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 10136,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 5,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 10136,
+          "control": "fault",
+          "value": "after"
+        },
+        {
+          "sequence": 6,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 7,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "unknown",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 8,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 4784,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 9,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 10136,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 10,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 10136,
+          "control": "prune"
+        },
+        {
+          "sequence": 11,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "reconcile"
+        },
+        {
+          "sequence": 12,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "reconcile",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 13,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 14,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 200,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "confirmed",
+            "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f",
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 15,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 4784,
+          "control": "stop"
+        },
+        {
+          "sequence": 16,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 4784,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 17,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 13284
+        },
+        {
+          "sequence": 18,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 19,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 200,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "confirmed",
+            "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f",
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 20,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 13284,
+          "control": "stop"
+        },
+        {
+          "sequence": 21,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 13284,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 22,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 10136,
+          "control": "stop"
+        },
+        {
+          "sequence": 23,
+          "type": "process-exit",
+          "role": "downstream",
+          "pid": 10136,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "audit": {
+        "scenario": "naive-expired",
+        "expectedResultEstablished": true,
+        "checks": {
+          "localJournalValid": true,
+          "firstDispatchMetadataPersisted": true,
+          "frozenHorizonRetained": true,
+          "grantBoundToCorrelatedOutcome": true,
+          "retentionChronologyValid": true,
+          "remoteEffectAtMostOnce": false,
+          "remoteEffects": 2,
+          "localGrants": 1,
+          "downstreamPosts": 2,
+          "retainedKeys": 1,
+          "expectedCounterexample": true
+        },
+        "intents": [
+          {
+            "id": "intent-same-business",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "policy": "naive",
+            "first_at": 10000,
+            "retry_before": 10900,
+            "contract": "synthetic-retention-v1",
+            "status": "confirmed",
+            "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f"
+          }
+        ],
+        "grants": [
+          {
+            "intent_id": "intent-same-business",
+            "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f",
+            "units": 1
+          }
+        ],
+        "effects": [
+          {
+            "receipt": "effect_a46ff385-105b-4845-92dc-db4b3226bae9",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "created_at": 10000
+          },
+          {
+            "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "created_at": 12000
+          }
+        ],
+        "retained": [
+          {
+            "intent_key": "key-intent-same-business",
+            "command": "{\"units\":1}",
+            "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f",
+            "expires_at": 13000
+          }
+        ],
+        "localJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "intent-persisted",
+            "clock": 10000,
+            "detail": {
+              "retention": 1000,
+              "margin": 100
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 10000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "transport-unknown",
+            "clock": 10000,
+            "detail": {
+              "attemptId": "attempt-1",
+              "name": "TypeError"
+            }
+          },
+          {
+            "seq": 4,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-lookup",
+            "clock": 12000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-2"
+            }
+          },
+          {
+            "seq": 5,
+            "intent_key": "key-intent-same-business",
+            "event": "observed-absence",
+            "clock": 12000,
+            "detail": {
+              "attemptId": "attempt-2",
+              "meaning": "retained-key absence does not prove historical non-execution"
+            }
+          },
+          {
+            "seq": 6,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 12000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-3"
+            }
+          },
+          {
+            "seq": 7,
+            "intent_key": "key-intent-same-business",
+            "event": "local-grant",
+            "clock": 12000,
+            "detail": {
+              "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f",
+              "attemptId": "attempt-3"
+            }
+          }
+        ],
+        "remoteJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "post-new-effect",
+            "clock": 10000,
+            "detail": {
+              "receipt": "effect_a46ff385-105b-4845-92dc-db4b3226bae9",
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dedup-pruned",
+            "clock": 12000,
+            "detail": {}
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "lookup-absent",
+            "clock": 12000,
+            "detail": {
+              "attemptId": "attempt-2"
+            }
+          },
+          {
+            "seq": 4,
+            "intent_key": "key-intent-same-business",
+            "event": "post-new-effect",
+            "clock": 12000,
+            "detail": {
+              "receipt": "effect_da836c28-5731-47da-ac15-1f73cb74060f",
+              "attemptId": "attempt-3"
+            }
+          }
+        ],
+        "localClockFloor": [
+          {
+            "id": 1,
+            "value": 12000
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "guarded-postcommit",
+      "observations": [
+        {
+          "sequence": 1,
+          "type": "process-ready",
+          "role": "downstream",
+          "pid": 22476
+        },
+        {
+          "sequence": 2,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 14752
+        },
+        {
+          "sequence": 3,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 14752,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 4,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 22476,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 5,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 22476,
+          "control": "fault",
+          "value": "after"
+        },
+        {
+          "sequence": 6,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 7,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "unknown",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 8,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 14752,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 9,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 22476,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 10,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 22476,
+          "control": "prune"
+        },
+        {
+          "sequence": 11,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "reconcile"
+        },
+        {
+          "sequence": 12,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "reconcile",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 13,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 14,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 15,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 14752,
+          "control": "stop"
+        },
+        {
+          "sequence": 16,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 14752,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 17,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 24600
+        },
+        {
+          "sequence": 18,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 19,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 20,
+          "type": "clock-rollback-rejected",
+          "role": "local",
+          "attemptedClock": 10000
+        },
+        {
+          "sequence": 21,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 24600,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 22,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 23,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 24,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 24600,
+          "control": "stop"
+        },
+        {
+          "sequence": 25,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 24600,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 26,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 22476,
+          "control": "stop"
+        },
+        {
+          "sequence": 27,
+          "type": "process-exit",
+          "role": "downstream",
+          "pid": 22476,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "audit": {
+        "scenario": "guarded-postcommit",
+        "expectedResultEstablished": true,
+        "checks": {
+          "localJournalValid": true,
+          "firstDispatchMetadataPersisted": true,
+          "frozenHorizonRetained": true,
+          "grantBoundToCorrelatedOutcome": true,
+          "retentionChronologyValid": true,
+          "remoteEffectAtMostOnce": true,
+          "remoteEffects": 1,
+          "localGrants": 0,
+          "downstreamPosts": 1,
+          "retainedKeys": 0,
+          "expiredAutomaticReplayRefused": true,
+          "uncertaintySurvivedRestart": true
+        },
+        "intents": [
+          {
+            "id": "intent-same-business",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "policy": "guarded",
+            "first_at": 10000,
+            "retry_before": 10900,
+            "contract": "synthetic-retention-v1",
+            "status": "needs-reconciliation",
+            "receipt": null
+          }
+        ],
+        "grants": [],
+        "effects": [
+          {
+            "receipt": "effect_f1a91aa5-2814-4603-b238-13af4b3df5f9",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "created_at": 10000
+          }
+        ],
+        "retained": [],
+        "localJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "intent-persisted",
+            "clock": 10000,
+            "detail": {
+              "retention": 1000,
+              "margin": 100
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 10000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "transport-unknown",
+            "clock": 10000,
+            "detail": {
+              "attemptId": "attempt-1",
+              "name": "TypeError"
+            }
+          },
+          {
+            "seq": 4,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-lookup",
+            "clock": 12000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-2"
+            }
+          },
+          {
+            "seq": 5,
+            "intent_key": "key-intent-same-business",
+            "event": "observed-absence",
+            "clock": 12000,
+            "detail": {
+              "attemptId": "attempt-2",
+              "meaning": "retained-key absence does not prove historical non-execution"
+            }
+          },
+          {
+            "seq": 6,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-refused",
+            "clock": 12000,
+            "detail": {
+              "reason": "RETENTION_HORIZON_REACHED",
+              "retryBefore": 10900
+            }
+          },
+          {
+            "seq": 7,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-refused",
+            "clock": null,
+            "detail": {
+              "reason": "CLOCK_UNKNOWN",
+              "retryBefore": 10900
+            }
+          },
+          {
+            "seq": 8,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-refused",
+            "clock": 12000,
+            "detail": {
+              "reason": "RETENTION_HORIZON_REACHED",
+              "retryBefore": 10900
+            }
+          }
+        ],
+        "remoteJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "post-new-effect",
+            "clock": 10000,
+            "detail": {
+              "receipt": "effect_f1a91aa5-2814-4603-b238-13af4b3df5f9",
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dedup-pruned",
+            "clock": 12000,
+            "detail": {}
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "lookup-absent",
+            "clock": 12000,
+            "detail": {
+              "attemptId": "attempt-2"
+            }
+          }
+        ],
+        "localClockFloor": [
+          {
+            "id": 1,
+            "value": 12000
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "guarded-precommit",
+      "observations": [
+        {
+          "sequence": 1,
+          "type": "process-ready",
+          "role": "downstream",
+          "pid": 7160
+        },
+        {
+          "sequence": 2,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 25140
+        },
+        {
+          "sequence": 3,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 25140,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 4,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 7160,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 5,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 7160,
+          "control": "fault",
+          "value": "before"
+        },
+        {
+          "sequence": 6,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 7,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "unknown",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 8,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 25140,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 9,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 7160,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 10,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 7160,
+          "control": "prune"
+        },
+        {
+          "sequence": 11,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "reconcile"
+        },
+        {
+          "sequence": 12,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "reconcile",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 13,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 14,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 15,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 25140,
+          "control": "stop"
+        },
+        {
+          "sequence": 16,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 25140,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 17,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 9660
+        },
+        {
+          "sequence": 18,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 19,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 20,
+          "type": "clock-rollback-rejected",
+          "role": "local",
+          "attemptedClock": 10000
+        },
+        {
+          "sequence": 21,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 9660,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 22,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 23,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "needs-reconciliation",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 24,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 9660,
+          "control": "stop"
+        },
+        {
+          "sequence": 25,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 9660,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 26,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 7160,
+          "control": "stop"
+        },
+        {
+          "sequence": 27,
+          "type": "process-exit",
+          "role": "downstream",
+          "pid": 7160,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "audit": {
+        "scenario": "guarded-precommit",
+        "expectedResultEstablished": true,
+        "checks": {
+          "localJournalValid": true,
+          "firstDispatchMetadataPersisted": true,
+          "frozenHorizonRetained": true,
+          "grantBoundToCorrelatedOutcome": true,
+          "retentionChronologyValid": true,
+          "remoteEffectAtMostOnce": true,
+          "remoteEffects": 0,
+          "localGrants": 0,
+          "downstreamPosts": 1,
+          "retainedKeys": 0,
+          "expiredAutomaticReplayRefused": true,
+          "uncertaintySurvivedRestart": true
+        },
+        "intents": [
+          {
+            "id": "intent-same-business",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "policy": "guarded",
+            "first_at": 10000,
+            "retry_before": 10900,
+            "contract": "synthetic-retention-v1",
+            "status": "needs-reconciliation",
+            "receipt": null
+          }
+        ],
+        "grants": [],
+        "effects": [],
+        "retained": [],
+        "localJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "intent-persisted",
+            "clock": 10000,
+            "detail": {
+              "retention": 1000,
+              "margin": 100
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 10000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "transport-unknown",
+            "clock": 10000,
+            "detail": {
+              "attemptId": "attempt-1",
+              "name": "TypeError"
+            }
+          },
+          {
+            "seq": 4,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-lookup",
+            "clock": 12000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-2"
+            }
+          },
+          {
+            "seq": 5,
+            "intent_key": "key-intent-same-business",
+            "event": "observed-absence",
+            "clock": 12000,
+            "detail": {
+              "attemptId": "attempt-2",
+              "meaning": "retained-key absence does not prove historical non-execution"
+            }
+          },
+          {
+            "seq": 6,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-refused",
+            "clock": 12000,
+            "detail": {
+              "reason": "RETENTION_HORIZON_REACHED",
+              "retryBefore": 10900
+            }
+          },
+          {
+            "seq": 7,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-refused",
+            "clock": null,
+            "detail": {
+              "reason": "CLOCK_UNKNOWN",
+              "retryBefore": 10900
+            }
+          },
+          {
+            "seq": 8,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-refused",
+            "clock": 12000,
+            "detail": {
+              "reason": "RETENTION_HORIZON_REACHED",
+              "retryBefore": 10900
+            }
+          }
+        ],
+        "remoteJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "post-drop-before-commit",
+            "clock": 10000,
+            "detail": {
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "lookup-absent",
+            "clock": 12000,
+            "detail": {
+              "attemptId": "attempt-2"
+            }
+          }
+        ],
+        "localClockFloor": [
+          {
+            "id": 1,
+            "value": 12000
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "guarded-delayed-arrival",
+      "observations": [
+        {
+          "sequence": 1,
+          "type": "process-ready",
+          "role": "downstream",
+          "pid": 23852
+        },
+        {
+          "sequence": 2,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 17124
+        },
+        {
+          "sequence": 3,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 17124,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 4,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 23852,
+          "control": "clock",
+          "value": 10000
+        },
+        {
+          "sequence": 5,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 23852,
+          "control": "fault",
+          "value": "after"
+        },
+        {
+          "sequence": 6,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 7,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 202,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "unknown",
+            "receipt": null,
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 8,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 17124,
+          "control": "clock",
+          "value": 10020
+        },
+        {
+          "sequence": 9,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 23852,
+          "control": "clock",
+          "value": 10020
+        },
+        {
+          "sequence": 10,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 11,
+          "type": "relay-held",
+          "attemptId": "attempt-2"
+        },
+        {
+          "sequence": 12,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 17124,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 13,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 23852,
+          "control": "clock",
+          "value": 12000
+        },
+        {
+          "sequence": 14,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 23852,
+          "control": "prune"
+        },
+        {
+          "sequence": 15,
+          "type": "relay-forwarded",
+          "attemptId": "attempt-2"
+        },
+        {
+          "sequence": 16,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 200,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "confirmed",
+            "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 17,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 17124,
+          "control": "stop"
+        },
+        {
+          "sequence": 18,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 17124,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 19,
+          "type": "process-ready",
+          "role": "local",
+          "pid": 7992
+        },
+        {
+          "sequence": 20,
+          "type": "local-http-invoke",
+          "intentId": "intent-same-business",
+          "action": "execute"
+        },
+        {
+          "sequence": 21,
+          "type": "local-http-response",
+          "intentId": "intent-same-business",
+          "action": "execute",
+          "status": 200,
+          "body": {
+            "intentId": "intent-same-business",
+            "key": "key-intent-same-business",
+            "command": {
+              "units": 1
+            },
+            "status": "confirmed",
+            "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+            "firstDispatchAt": 10000,
+            "retryBefore": 10900,
+            "contract": "synthetic-retention-v1"
+          }
+        },
+        {
+          "sequence": 22,
+          "type": "fixture-control",
+          "role": "local",
+          "pid": 7992,
+          "control": "stop"
+        },
+        {
+          "sequence": 23,
+          "type": "process-exit",
+          "role": "local",
+          "pid": 7992,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "sequence": 24,
+          "type": "fixture-control",
+          "role": "downstream",
+          "pid": 23852,
+          "control": "stop"
+        },
+        {
+          "sequence": 25,
+          "type": "process-exit",
+          "role": "downstream",
+          "pid": 23852,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "audit": {
+        "scenario": "guarded-delayed-arrival",
+        "expectedResultEstablished": true,
+        "checks": {
+          "localJournalValid": true,
+          "firstDispatchMetadataPersisted": true,
+          "frozenHorizonRetained": true,
+          "grantBoundToCorrelatedOutcome": true,
+          "retentionChronologyValid": true,
+          "remoteEffectAtMostOnce": false,
+          "remoteEffects": 2,
+          "localGrants": 1,
+          "downstreamPosts": 2,
+          "retainedKeys": 1,
+          "expectedLimitation": true,
+          "locallyEligibleRetryArrivedAfterPruning": true
+        },
+        "intents": [
+          {
+            "id": "intent-same-business",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "policy": "guarded",
+            "first_at": 10000,
+            "retry_before": 10900,
+            "contract": "synthetic-retention-v1",
+            "status": "confirmed",
+            "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da"
+          }
+        ],
+        "grants": [
+          {
+            "intent_id": "intent-same-business",
+            "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+            "units": 1
+          }
+        ],
+        "effects": [
+          {
+            "receipt": "effect_c54fd1b0-ad89-48db-900e-58fefa2e3948",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "created_at": 10000
+          },
+          {
+            "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+            "intent_key": "key-intent-same-business",
+            "units": 1,
+            "created_at": 12000
+          }
+        ],
+        "retained": [
+          {
+            "intent_key": "key-intent-same-business",
+            "command": "{\"units\":1}",
+            "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+            "expires_at": 13000
+          }
+        ],
+        "localJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "intent-persisted",
+            "clock": 10000,
+            "detail": {
+              "retention": 1000,
+              "margin": 100
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 10000,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "transport-unknown",
+            "clock": 10000,
+            "detail": {
+              "attemptId": "attempt-1",
+              "name": "TypeError"
+            }
+          },
+          {
+            "seq": 4,
+            "intent_key": "key-intent-same-business",
+            "event": "dispatch-post",
+            "clock": 10020,
+            "detail": {
+              "retryBefore": 10900,
+              "attemptId": "attempt-2"
+            }
+          },
+          {
+            "seq": 5,
+            "intent_key": "key-intent-same-business",
+            "event": "local-grant",
+            "clock": 12000,
+            "detail": {
+              "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+              "attemptId": "attempt-2"
+            }
+          }
+        ],
+        "remoteJournal": [
+          {
+            "seq": 1,
+            "intent_key": "key-intent-same-business",
+            "event": "post-new-effect",
+            "clock": 10000,
+            "detail": {
+              "receipt": "effect_c54fd1b0-ad89-48db-900e-58fefa2e3948",
+              "attemptId": "attempt-1"
+            }
+          },
+          {
+            "seq": 2,
+            "intent_key": "key-intent-same-business",
+            "event": "dedup-pruned",
+            "clock": 12000,
+            "detail": {}
+          },
+          {
+            "seq": 3,
+            "intent_key": "key-intent-same-business",
+            "event": "post-new-effect",
+            "clock": 12000,
+            "detail": {
+              "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+              "attemptId": "attempt-2"
+            }
+          }
+        ],
+        "localClockFloor": [
+          {
+            "id": 1,
+            "value": 12000
+          }
+        ]
+      }
+    }
+  ],
+  "mutationControls": [
+    {
+      "kind": "baseline",
+      "accepted": true,
+      "rejected": false,
+      "message": ""
+    },
+    {
+      "kind": "missing-attempt-correlation",
+      "accepted": false,
+      "rejected": true,
+      "message": "Each dispatch needs exactly one correlated arrival"
+    },
+    {
+      "kind": "invented-local-receipt",
+      "accepted": false,
+      "rejected": true,
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'invented-receipt'\n- 'effect_da836c28-5731-47da-ac15-1f73cb74060f'\n"
+    },
+    {
+      "kind": "unacknowledged-existing-receipt",
+      "accepted": false,
+      "rejected": true,
+      "message": "Grant must use the receipt returned by this exact correlated attempt\n+ actual - expected\n\n+ 'effect_a46ff385-105b-4845-92dc-db4b3226bae9'\n- 'effect_da836c28-5731-47da-ac15-1f73cb74060f'\n"
+    },
+    {
+      "kind": "grant-journal-mismatch",
+      "accepted": false,
+      "rejected": true,
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'effect_a46ff385-105b-4845-92dc-db4b3226bae9'\n- 'effect_da836c28-5731-47da-ac15-1f73cb74060f'\n"
+    },
+    {
+      "kind": "premature-pruning",
+      "accepted": false,
+      "rejected": true,
+      "message": "Pruning before minimum retention is not a valid expiry counterexample"
+    }
+  ],
+  "localObservationsIndistinguishable": {
+    "between": [
+      "guarded-precommit",
+      "guarded-postcommit"
+    ],
+    "normalization": "none; same intent and key in independent fresh databases",
+    "httpResponsesEqual": true,
+    "durableLocalJournalsEqual": true,
+    "allLocalTablesEqual": true,
+    "equal": true,
+    "remoteEffectCounts": [
+      0,
+      1
+    ]
+  },
+  "expectedResultsEstablished": true
+}

@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="검사 결과에는 무엇을 검사했는지와 어떤 통과 기준을 적용했는지가 함께 남아야 합니다."
+    />
+    <title>‘통과’의 의미까지 검증하기 — Minjae Lee</title>
+    <link rel="canonical" href="https://minjae-lee-kr.github.io/notes/verified-change/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Minjae Lee — Engineering Notes" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="‘통과’의 의미까지 검증하기 — Minjae Lee" />
+    <meta property="og:description" content="검사 결과에는 무엇을 검사했는지와 어떤 통과 기준을 적용했는지가 함께 남아야 합니다." />
+    <meta property="og:url" content="https://minjae-lee-kr.github.io/notes/verified-change/" />
+    <meta property="og:image" content="https://minjae-lee-kr.github.io/assets/social/change.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The code passed. Who set the rules? Code and check policy connect to an approval question. A conceptual illustration for an independent scripted experiment." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="‘통과’의 의미까지 검증하기 — Minjae Lee" />
+    <meta name="twitter:description" content="검사 결과에는 무엇을 검사했는지와 어떤 통과 기준을 적용했는지가 함께 남아야 합니다." />
+    <meta name="twitter:image" content="https://minjae-lee-kr.github.io/assets/social/change.png" />
+    <meta name="twitter:image:alt" content="The code passed. Who set the rules? Code and check policy connect to an approval question. A conceptual illustration for an independent scripted experiment." />
+    <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+    <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../notes.css" />
+    <script src="../notes.js" defer></script>
+  </head>
+  <body
+    data-title-ko="‘통과’의 의미까지 검증하기"
+    data-title-en="Verify what “passed” means."
+    data-description-ko="검사 결과에는 무엇을 검사했는지와 어떤 통과 기준을 적용했는지가 함께 남아야 합니다."
+    data-description-en="A passing check needs two identities: the code it examined and the policy that defined success."
+  >
+    <a class="skip" href="#note"
+      ><span data-lang="ko" lang="ko">본문으로 이동</span
+      ><span data-lang="en" lang="en" hidden>Skip to the note</span></a
+    >
+    <header class="site-header">
+      <div class="header-inner">
+        <a
+          class="wordmark"
+          href="../../"
+          aria-label="Minjae Lee 포트폴리오 홈"
+          data-label-ko="Minjae Lee 포트폴리오 홈"
+          data-label-en="Minjae Lee portfolio home"
+          >M<span>·</span>L</a
+        ><a class="back-link" href="../../"
+          ><span data-lang="ko" lang="ko">작업 모음으로</span
+          ><span data-lang="en" lang="en" hidden>Back to selected work</span></a
+        >
+        <div
+          class="languages"
+          role="group"
+          aria-label="언어 선택"
+          data-label-ko="언어 선택"
+          data-label-en="Language"
+        >
+          <button
+            type="button"
+            data-language="ko"
+            lang="ko"
+            aria-pressed="true"
+          >
+            한국어</button
+          ><button
+            type="button"
+            data-language="en"
+            lang="en"
+            aria-pressed="false"
+          >
+            English
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="note" class="reading" tabindex="-1">
+      <article>
+        <header data-reading-section id="opening">
+          <p class="eyebrow">VERIFIED CHANGE / DEVELOPER AUTOMATION</p>
+          <h1>
+            <span data-lang="ko" lang="ko">‘통과’의 의미까지 검증하기</span
+            ><span data-lang="en" lang="en" hidden
+              >Verify what “passed” means.</span
+            >
+          </h1>
+          <p class="lead" data-lang="ko" lang="ko">
+            자동화가 만든 패치는 코드와 검사 설정을 함께 바꿀 수 있습니다.
+            승인하기 전에, 통과 결과가 어떤 코드와 어떤 기준에 해당하는지
+            확인해야 합니다.
+          </p>
+          <p class="lead" data-lang="en" lang="en" hidden>
+            An automated patch can change both the code and its checking
+            configuration. Before approval, a green result needs to identify the
+            code examined and the rules applied.
+          </p>
+          <div class="byline">
+            <span>Minjae Lee</span
+            ><span
+              ><span data-lang="ko" lang="ko">개인 엔지니어링 실험</span
+              ><span data-lang="en" lang="en" hidden
+                >Independent engineering experiment</span
+              ></span
+            ><span
+              ><span data-lang="ko" lang="ko">2026년 10월 16일 실행 기록</span
+              ><span data-lang="en" lang="en" hidden
+                >Recorded 16 October 2026</span
+              ></span
+            >
+          </div>
+        </header>
+        <nav
+          class="contents"
+          aria-label="이 글의 내용"
+          data-label-ko="이 글의 내용"
+          data-label-en="In this note"
+        >
+          <a href="#experiment"
+            ><span data-lang="ko" lang="ko">실험</span
+            ><span data-lang="en" lang="en" hidden>Experiment</span></a
+          ><a href="#judgment"
+            ><span data-lang="ko" lang="ko">설계 판단</span
+            ><span data-lang="en" lang="en" hidden
+              >Engineering judgment</span
+            ></a
+          ><a href="#limits"
+            ><span data-lang="ko" lang="ko">한계</span
+            ><span data-lang="en" lang="en" hidden>Limits</span></a
+          ><a href="#evidence"
+            ><span data-lang="ko" lang="ko">근거</span
+            ><span data-lang="en" lang="en" hidden>Evidence</span></a
+          >
+        </nav>
+        <noscript
+          ><p class="publication">
+            현재 한국어 본문입니다. 언어 전환에는 JavaScript가 필요합니다. /
+            Language switching requires JavaScript.
+          </p></noscript
+        >
+        <section
+          id="experiment"
+          class="reading-section"
+          data-reading-section
+          tabindex="-1"
+        >
+          <h2>
+            <span class="section-number">01</span
+            ><span data-lang="ko" lang="ko">컴파일러는 설정대로 통과시켰다</span
+            ><span data-lang="en" lang="en" hidden
+              >The compiler passed what it was told to check</span
+            >
+          </h2>
+          <div class="prose" data-lang="ko" lang="ko">
+            <p>
+              암묵적 <code>any</code> 매개변수가 두 개 있는 코드를 검사했지만,
+              TypeScript 프로세스는 오류를 보고하지 않고 종료했습니다. 설정에는
+              여전히 <code>strict: true</code>가 있었습니다.
+            </p>
+            <p>
+              스크립트로 준비한 동일한 변경안을 두 개의 컴파일러 프로세스로
+              검사했습니다. LLM을 호출한 실험은 아닙니다. 후보의 설정을 읽은
+              비교용 검사기는 종료 코드 <strong>0</strong>을 반환했습니다.
+              별도로 정한 strict 옵션과 정확한 파일 목록을 쓰는 검사기는 오류 두
+              개를 찾아 종료 코드 <strong>2</strong>를 반환했고, 승인은
+              거부됐습니다. 런타임 동작을 확인하는 다섯 개 검증 항목은 모두
+              통과했습니다.
+            </p>
+          </div>
+          <div class="prose" data-lang="en" lang="en" hidden>
+            <p>
+              A real TypeScript process returned zero diagnostics for code with
+              two implicit-any parameters. Its configuration still said
+              <code>strict: true</code>.
+            </p>
+            <p>
+              I checked the same scripted candidate in two separate compiler
+              processes. No LLM is called. The comparison checker read the
+              candidate’s configuration and exited <strong>0</strong>. The
+              trusted checker supplied its own strict options and exact
+              source-file list. It found both errors, exited <strong>2</strong>,
+              and approval was refused. All five runtime assertions still
+              passed.
+            </p>
+          </div>
+          <p class="code-label">src/retry-policy.ts</p>
+          <pre
+            tabindex="0"
+            role="region"
+            aria-label="TypeScript 후보 코드"
+            data-label-ko="TypeScript 후보 코드"
+            data-label-en="TypeScript candidate source"
+          ><code>export function mayRetry(method, status) {
+  return (method === 'GET' || method === 'HEAD') &amp;&amp;
+    (status === 429 || (status &gt;= 500 &amp;&amp; status &lt;= 599));
+}</code></pre>
+          <p class="code-label">
+            tsconfig.json —
+            <span data-lang="ko" lang="ko">후보가 정한 옵션</span
+            ><span data-lang="en" lang="en" hidden
+              >candidate-controlled options</span
+            >
+          </p>
+          <pre
+            tabindex="0"
+            role="region"
+            aria-label="후보가 정한 TypeScript 옵션"
+            data-label-ko="후보가 정한 TypeScript 옵션"
+            data-label-en="Candidate-controlled TypeScript options"
+          ><code>{ "compilerOptions": { "strict": true, "noCheck": true } }</code></pre>
+          <div class="prose" data-lang="ko" lang="ko">
+            <p>
+              <code>noCheck</code>는 전체 타입 검사를 생략하는 옵션입니다.
+              컴파일러는 설정대로 동작했습니다. 문제는 검사 대상에 포함된
+              설정으로 필수 타입 검사의 범위까지 바꿀 수 있었다는 점입니다.
+              <a
+                data-focus-key="ts-nocheck"
+                href="https://www.typescriptlang.org/tsconfig/noCheck.html"
+                rel="noreferrer"
+                >TypeScript 공식 문서</a
+              >.
+            </p>
+            <p>
+              검사 옵션과 파일 목록을 별도로 정하면 이 예시의
+              <code>tsconfig</code> 경로는 막을 수 있습니다. 다만 TypeScript는
+              <code>// @ts-nocheck</code> 같은 소스 수준의 지시문을 계속
+              따릅니다. 현재 정책은 이를 금지하지 않습니다. 소스의 검사 생략
+              지시문까지 제한하려면, 이를 허용할 조건과 검토 절차를 별도로
+              정해야 합니다.
+              <a
+                data-focus-key="source-suppression"
+                href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html"
+                rel="noreferrer"
+                >소스 지시문에 대한 공식 문서</a
+              >.
+            </p>
+          </div>
+          <div class="prose" data-lang="en" lang="en" hidden>
+            <p>
+              <code>noCheck</code> disables full type checking. The compiler was
+              following its configuration. The required type check used a
+              configuration the patch could change.
+              <a
+                data-focus-key="ts-nocheck"
+                href="https://www.typescriptlang.org/tsconfig/noCheck.html"
+                rel="noreferrer"
+                >TypeScript documentation</a
+              >.
+            </p>
+            <p>
+              Fixed options and a fixed file list close the
+              candidate-configuration route shown here. TypeScript still honors
+              source-level directives such as <code>// @ts-nocheck</code>, which
+              this policy allows. Restricting those suppressions needs an
+              explicit additional rule and review boundary.
+              <a
+                data-focus-key="source-suppression"
+                href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html"
+                rel="noreferrer"
+                >TypeScript source-directive documentation</a
+              >.
+            </p>
+          </div>
+          <figure class="figure">
+            <div
+              class="figure-scroll"
+              tabindex="0"
+              role="region"
+              aria-label="그림: 가로로 이동해 전체 내용 보기"
+              data-label-ko="그림: 가로로 이동해 전체 내용 보기"
+              data-label-en="Figure: scroll horizontally to read all details"
+              aria-describedby="figure-hint"
+            >
+              <div data-lang="ko" lang="ko">
+                <img
+                  src="../assets/verified-change.ko.svg"
+                  width="1200"
+                  height="675"
+                  alt="같은 후보의 설정을 읽으면 타입 오류가 없다고 보고하지만, 독립적인 검사 정책은 두 오류를 찾아 승인을 거부합니다."
+                  loading="lazy"
+                />
+              </div>
+              <div data-lang="en" lang="en" hidden>
+                <img
+                  src="../assets/verified-change.en.svg"
+                  width="1200"
+                  height="675"
+                  alt="The same candidate passes its own compiler configuration, but an independent checking policy finds two errors and refuses approval."
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <p id="figure-hint" class="figure-hint">
+              <span data-lang="ko" lang="ko"
+                >좁은 화면에서는 그림을 좌우로 움직일 수 있습니다. 키보드로
+                영역을 선택한 뒤 방향키를 사용하세요.</span
+              ><span data-lang="en" lang="en" hidden
+                >On a narrow screen, scroll the figure sideways. Keyboard users
+                can focus this region and use the arrow keys.</span
+              >
+            </p>
+            <figcaption>
+              <div data-lang="ko" lang="ko">
+                같은 코드, 다른 검사 정책입니다. 비교용 검사기는 승인 근거로
+                인정하지 않습니다. 검사 이름이 같아도 무엇을 검사하는지가
+                달라지면 근거의 의미가 달라집니다.
+              </div>
+              <div data-lang="en" lang="en" hidden>
+                Same code, different checking policy. The comparison process is
+                not acceptable approval evidence. Keeping a check’s name does
+                not preserve what it proves.
+              </div>
+              <div data-lang="ko" lang="ko">
+                <a
+                  class="figure-link"
+                  data-focus-key="full-figure"
+                  href="../assets/verified-change.ko.svg"
+                  >그림 전체 크기로 보기 ↗</a
+                >
+              </div>
+              <div data-lang="en" lang="en" hidden>
+                <a
+                  class="figure-link"
+                  data-focus-key="full-figure"
+                  href="../assets/verified-change.en.svg"
+                  >Open the full-size figure ↗</a
+                >
+              </div>
+            </figcaption>
+          </figure>
+        </section>
+        <section
+          id="judgment"
+          class="reading-section"
+          data-reading-section
+          tabindex="-1"
+        >
+          <h2>
+            <span class="section-number">02</span
+            ><span data-lang="ko" lang="ko"
+              >산출물과 통과 기준을 함께 고정하기</span
+            ><span data-lang="en" lang="en" hidden
+              >Bind both the artifact and the acceptance policy</span
+            >
+          </h2>
+          <div class="prose" data-lang="ko" lang="ko">
+            <p>
+              비교용 결과는 승인 근거로 받지 않습니다. 승인 계층은 결과 보고서와
+              별개로 필수 검사 목록을 알고 있으며, 프로세스가 성공해도 결과가
+              비어 있으면 거부합니다. 필수 검사가 모두 실행됐는지와, 각 검사가
+              요구한 내용을 실제로 확인했는지를 따로 검사해야 합니다.
+            </p>
+            <p>
+              검사한 코드와 실제로 반영할 코드도 같아야 합니다. 다른 실행
+              사례에서는 커밋 A를 검사한 뒤 작업 파일을 수정하고, 현재 작업
+              공간을 새로 커밋해 선택했습니다. 사후 동작 검사가 실패했습니다.
+              보호된 경로는 이미 검증한 커밋을 선택했고, 수정된 작업 공간은
+              그대로 남겼습니다. Git ref 변경은 체크아웃 갱신과 다릅니다.
+            </p>
+            <ul>
+              <li>
+                불변 커밋의 스냅샷을 검사하고, 검사 옵션과 필수 파일·검사 목록을
+                후보의 통제 밖에 둡니다.
+              </li>
+              <li>
+                유효 기간이 남은 검사 결과를 후보, 검사 실행, 검증 정책에
+                연결하고 검사기·제어 코드의 해시와 명시된 도구 버전을
+                기록합니다.
+              </li>
+              <li>
+                승인을 기준 커밋, 후보, 근거 다이제스트에 연결하고 조건부 ref
+                변경 직전에 재확인합니다.
+              </li>
+            </ul>
+            <p>
+              Git의 <code>old-value</code> 인수는 현재 ref가 승인된 기준을
+              가리킬 때만 변경하도록 합니다. 기록된 두 프로세스의 경합에서는 한
+              번의 변경만 성공했습니다. 후보나 신뢰하는 정책이 바뀌면 다시
+              검증하고 검토해야 합니다. 필요한 정책 변경에는 별도의 검토 경계가
+              있어야 합니다.
+            </p>
+          </div>
+          <div class="prose" data-lang="en" lang="en" hidden>
+            <p>
+              The comparison result is excluded from acceptable evidence. The
+              approval layer knows the required check inventory independently
+              and rejects an empty result even when the process exits
+              successfully. Completeness and stable check meaning are both
+              required.
+            </p>
+            <p>
+              The code’s identity must survive, too. In another recorded case,
+              the workflow checked commit A, edited the workspace, then
+              committed and selected that workspace. A later runtime check
+              failed. The protected path selected the already-verified commit
+              and left the edited workspace alone. Updating a Git ref does not
+              update a checkout.
+            </p>
+            <ul>
+              <li>
+                Verify snapshots of an immutable commit. Keep checker options
+                and required source/check inventories outside the candidate’s
+                control.
+              </li>
+              <li>
+                Bind fresh results to the candidate, checker invocation and
+                verification policy. Record checker/control-source hashes and
+                declared tool versions.
+              </li>
+              <li>
+                Bind approval to the expected base, candidate and evidence
+                digest. Revalidate before the conditional ref update.
+              </li>
+            </ul>
+            <p>
+              Git’s <code>old-value</code> argument allows the update only while
+              the ref still points to the approved base. In the recorded
+              two-process race, one update succeeded. Changing the candidate or
+              trusted policy costs another verification and review. A legitimate
+              policy change needs its own review boundary.
+            </p>
+          </div>
+        </section>
+        <section
+          id="limits"
+          class="reading-section"
+          data-reading-section
+          tabindex="-1"
+        >
+          <h2>
+            <span class="section-number">03</span
+            ><span data-lang="ko" lang="ko">현재 값이 말해주지 않는 것</span
+            ><span data-lang="en" lang="en" hidden
+              >What the current value cannot tell us</span
+            >
+          </h2>
+          <div class="prose" data-lang="ko" lang="ko">
+            <p>
+              Git이 변경을 수락한 직후, 응답을 남기기 전에 실행 프로세스를
+              종료했습니다. 재조회는 현재 ref를 알려주지만 누가 바꿨는지는
+              입증하지 않습니다. 별도의 <strong>A→B→A 회귀 검사</strong>에서는
+              기준으로 되돌린 뒤 아직 유효한 승인을 재사용하자 변경이 다시
+              성공했습니다. 이 회귀 검사는 아래 다섯 사례의 저장 보고서와
+              구분됩니다. 현재 ref 값이 같아도, 그 사이 다른 값으로 바뀌었다가
+              돌아왔는지는 알 수 없습니다.
+            </p>
+            <p>
+              가상 코드, 실제 로컬 Git·컴파일러 프로세스, 스크립트로 입력한
+              승인을 사용했고 <strong>LLM은 호출하지 않았습니다.</strong> 기록은
+              서명하지 않았으며 로컬 실행 환경을 신뢰합니다. 승인자의 신원
+              인증이나 악의적 코드 격리, 배포, 외부 동작의 정확히 한 번 실행을
+              보장하지 않습니다. 변경 대상은 로컬 ref 하나입니다.
+            </p>
+          </div>
+          <div class="prose" data-lang="en" lang="en" hidden>
+            <p>
+              The executor was terminated after Git accepted an update but
+              before acknowledgement. Reconciliation observes the current ref;
+              it cannot establish who changed it. A separate
+              <strong>A→B→A regression</strong> restored the base and
+              successfully reused the same still-fresh approval. That regression
+              is distinct from the five-case saved report linked below. A
+              current-value comparison has no memory of prior transitions.
+            </p>
+            <p>
+              These runs use synthetic code, real local Git/compiler processes
+              and scripted approvals. <strong>They use no LLM.</strong> The
+              records are unsigned and the local runner is trusted. This does
+              not authenticate a reviewer, isolate hostile code, deploy software
+              or establish exactly-once external execution. The write changes
+              one local ref.
+            </p>
+          </div>
+        </section>
+        <blockquote class="takeaway" data-lang="ko" lang="ko">
+          승인하려면 어떤 커밋을 어떤 기준으로 검사했는지, 그 결과를 지금 반영할
+          변경에 써도 되는지 확인해야 합니다.
+        </blockquote>
+        <blockquote class="takeaway" data-lang="en" lang="en" hidden>
+          “Passed” should identify a precise proposition: this artifact
+          satisfied these checks, under this policy, for this permitted
+          transition.
+        </blockquote>
+        <section
+          id="evidence"
+          class="reading-section"
+          data-reading-section
+          tabindex="-1"
+        >
+          <h2>
+            <span class="section-number">04</span
+            ><span data-lang="ko" lang="ko">근거를 직접 읽기</span
+            ><span data-lang="en" lang="en" hidden>Read the evidence</span>
+          </h2>
+          <div class="prose" data-lang="ko" lang="ko">
+            <p>
+              Verified Change의 다섯 사례를 저장한 보고서입니다. 후보가 검사
+              정책을 약하게 만든 비교는 “검사 결과 누락” 사례 안의
+              policyCounterexample에 있습니다. 페이지의 그림은 이 반례를
+              설명하는 도식입니다.
+            </p>
+          </div>
+          <div class="prose" data-lang="en" lang="en" hidden>
+            <p>
+              This saved Verified Change report contains five cases. The
+              candidate-controlled policy comparison is policyCounterexample
+              inside the “missing checks” case. The illustration explains that
+              counterexample; it is not a benchmark.
+            </p>
+          </div>
+          <div class="evidence-actions">
+            <a href="../../evidence/change/"
+              ><span data-lang="ko" lang="ko">저장된 실행 보기</span
+              ><span data-lang="en" lang="en" hidden
+                >Read the recorded run</span
+              ></a
+            ><a href="../../evidence/change/report.json"
+              ><span data-lang="ko" lang="ko">원본 JSON</span
+              ><span data-lang="en" lang="en" hidden>Raw JSON</span></a
+            >
+          </div>
+          <details>
+            <summary>
+              <span data-lang="ko" lang="ko">기록 시점과 소스 식별 정보</span
+              ><span data-lang="en" lang="en" hidden
+                >Capture and source identity</span
+              >
+            </summary>
+            <dl>
+              <dt>
+                <span data-lang="ko" lang="ko">기록 시점</span
+                ><span data-lang="en" lang="en" hidden>Captured at</span>
+              </dt>
+              <dd>
+                <time datetime="2026-10-16T16:48:49.494Z"
+                  >2026-10-16T16:48:49.494Z</time
+                >
+              </dd>
+              <dt>
+                <span data-lang="ko" lang="ko">소스 리비전</span
+                ><span data-lang="en" lang="en" hidden>Source revision</span>
+              </dt>
+              <dd><code>5eb3fe8779ac018617e6a1ac4055cd497629503b</code></dd>
+              <dt>
+                <span data-lang="ko" lang="ko">소스 지문</span
+                ><span data-lang="en" lang="en" hidden>Source fingerprint</span>
+              </dt>
+              <dd>
+                <code
+                  >ce9de689ccf8b0b96db5529fa60ab82c67de6aa84648cd080ee64075892b54d7</code
+                >
+              </dd>
+              <dt>
+                <span data-lang="ko" lang="ko">기록의 범위</span
+                ><span data-lang="en" lang="en" hidden>Recording scope</span>
+              </dt>
+              <dd>
+                <span data-lang="ko" lang="ko"
+                  >당시 변경 사항이 없는 소스에서 저장한 실행입니다. 현재 HEAD의
+                  새 실행 결과가 아닙니다.</span
+                ><span data-lang="en" lang="en" hidden
+                  >Saved from clean source at that revision. This is not a fresh
+                  execution of the current HEAD.</span
+                >
+              </dd>
+            </dl>
+          </details>
+          <div class="sources" data-lang="ko" lang="ko">
+            <ol>
+              <li>
+                <a
+                  href="https://www.typescriptlang.org/tsconfig/noCheck.html"
+                  data-focus-key="source-nocheck"
+                  rel="noreferrer"
+                  >TypeScript: noCheck</a
+                >
+                ·
+                <a
+                  href="https://www.typescriptlang.org/tsconfig/strict.html"
+                  data-focus-key="source-strict"
+                  rel="noreferrer"
+                  >strict</a
+                >
+                — 타입 검사 설정의 의미
+              </li>
+              <li>
+                <a
+                  href="https://git-scm.com/docs/git-update-ref"
+                  data-focus-key="source-git"
+                  rel="noreferrer"
+                  >Git: update-ref</a
+                >
+                — 이전 값에 조건을 둔 ref 변경
+              </li>
+            </ol>
+          </div>
+          <div class="sources" data-lang="en" lang="en" hidden>
+            <ol>
+              <li>
+                <a
+                  href="https://www.typescriptlang.org/tsconfig/noCheck.html"
+                  data-focus-key="source-nocheck"
+                  rel="noreferrer"
+                  >TypeScript: noCheck</a
+                >
+                ·
+                <a
+                  href="https://www.typescriptlang.org/tsconfig/strict.html"
+                  data-focus-key="source-strict"
+                  rel="noreferrer"
+                  >strict</a
+                >
+                — compiler option semantics
+              </li>
+              <li>
+                <a
+                  href="https://git-scm.com/docs/git-update-ref"
+                  data-focus-key="source-git"
+                  rel="noreferrer"
+                  >Git: update-ref</a
+                >
+                — conditional updates using the prior value
+              </li>
+            </ol>
+          </div>
+          <p class="publication">
+            <span data-lang="ko" lang="ko"
+              >연결한 실행 기록은 읽기 전용이며, 이 페이지는 실험을 실행하지
+              않습니다.</span
+            ><span data-lang="en" lang="en" hidden
+              >The linked recording is read-only; this page does not run the
+              experiment.</span
+            >
+          </p>
+          <p>
+            <a
+              href="https://github.com/minjae-lee-kr/verified-change-lab"
+              rel="noreferrer"
+              ><span data-lang="ko" lang="ko">소스 코드와 재현 방법</span
+              ><span data-lang="en" lang="en" hidden
+                >Source code and reproduction guide</span
+              >
+              ↗</a
+            >
+          </p>
+        </section>
+        <nav
+          class="next-note"
+          aria-label="다음 읽을거리"
+          data-label-ko="다음 읽을거리"
+          data-label-en="Read another note"
+        >
+          <span
+            ><span data-lang="ko" lang="ko">함께 읽기</span
+            ><span data-lang="en" lang="en" hidden>Continue reading</span></span
+          ><a href="../cancellation-debt/"
+            ><span data-lang="ko" lang="ko"
+              >허가는 반환됐지만, 작업은 남아 있었다.</span
+            ><span data-lang="en" lang="en" hidden
+              >The permit returned. The work remained.</span
+            >
+            →</a
+          >
+        </nav>
+      </article>
+    </main>
+    <footer class="note-footer">
+      <span>MINJAE LEE / ENGINEERING NOTES</span
+      ><span
+        ><span data-lang="ko" lang="ko"
+          >가상 데이터로 만든 독립적인 개인 실험</span
+        ><span data-lang="en" lang="en" hidden
+          >Independent personal experiments with synthetic data</span
+        ></span
+      >
+    </footer>
+    <p
+      id="language-status"
+      class="sr-only"
+      aria-live="polite"
+      aria-atomic="true"
+    ></p>
+  </body>
+</html>

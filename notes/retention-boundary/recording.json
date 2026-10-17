@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "kind": "historical-retention-note",
+  "readOnly": true,
+  "sourceRevision": "c60801f969ab0223812bb4fa609c2de3e7651c91",
+  "sourceFingerprint": "85b53a5ca373354fcf3bb492dae1e03bc5236feff412d6b531f4a38919c8c803",
+  "rawSha256": "c700118d900858be573d6924be16ae96ffe95369a57a9aa01aed0f1c83dd8fdd",
+  "rawFile": "recording/evidence.json",
+  "mappingSha256": "e6624ccc2bb61ce48d61924bb98c02e3f326ec51f5174d0d2d08866688a35f6e",
+  "runId": "retention-2026-10-16T18-29-07-589Z-a96f9a01",
+  "capturedAt": "2026-10-16T18:29:09.869Z",
+  "bundledAt": "2026-10-17T01:56:37.341Z",
+  "sourceCheckoutAtImport": {
+    "revision": "9e00c46eb463a722e274b01e13d4ee4a054b307e",
+    "dirty": false,
+    "note": "Checkout at import; the evidence remains attributed to the historical sourceRevision."
+  },
+  "historicalGitBlobsVerified": true,
+  "presentation": "Expected values are presentation assertions against one frozen capture, not measurements. Display files were authored separately from the recorded engine. No execution authentication is claimed.",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "79714ba4c5007a5153196e934da965019e19e6ad6f68cb149f7ddb2c8baf1291"
+    },
+    {
+      "path": "retention.css",
+      "sha256": "2824d5e5bc97a12554337878c8507dfcf50ce0738396a11c8e38c2297fea5a51"
+    },
+    {
+      "path": "retention.js",
+      "sha256": "3077571d5ce4326577c29b962eacad403a7091eb144dfbc3ff891f20dcf5a454"
+    },
+    {
+      "path": "contract.js",
+      "sha256": "7bd072f3b40cb2787b1bad26c9ff7a031ec846ede15b457c65b6e2619ff4e9cf"
+    },
+    {
+      "path": "mapping.json",
+      "sha256": "e6624ccc2bb61ce48d61924bb98c02e3f326ec51f5174d0d2d08866688a35f6e"
+    },
+    {
+      "path": "recording/evidence.json",
+      "sha256": "c700118d900858be573d6924be16ae96ffe95369a57a9aa01aed0f1c83dd8fdd"
+    }
+  ]
+}

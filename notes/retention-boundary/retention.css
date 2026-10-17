@@ -1,0 +1,202 @@
+.recording-status {
+  margin: 32px 0 14px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--green);
+  background: #eaeee5;
+}
+.raw-availability,
+.record-help {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.raw-availability {
+  margin: 16px 0 36px;
+}
+.evidence-figure {
+  margin: 32px 0;
+  border: 1px solid var(--line);
+}
+.evidence-figure figcaption {
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 18px 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.evidence-figure p {
+  margin: 0;
+}
+.access-label,
+.fixture-label {
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  color: #49615a;
+}
+.policy-view {
+  padding: 24px;
+  background: #e8eee4;
+}
+.policy-view > p:last-child {
+  font-size: 13px;
+  margin-top: 10px;
+}
+.state-line {
+  margin-top: 14px !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.state-line code {
+  overflow-wrap: anywhere;
+}
+.audit-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.audit-comparison > div {
+  padding: 24px;
+}
+.audit-comparison > div + div {
+  border-left: 1px solid var(--line);
+}
+.audit-comparison .metric {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 10px 0;
+}
+.metric strong {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.metric span,
+.audit-comparison p:not(.metric):not(.access-label),
+.evidence-figure a {
+  font-size: 12px;
+  line-height: 1.8;
+}
+.evidence-figure a {
+  display: inline-block;
+  margin-top: 12px;
+}
+.fixture-label {
+  padding: 20px 22px 0;
+}
+.causal-steps {
+  list-style: none;
+  padding: 0;
+  margin: 4px 22px 22px;
+}
+.causal-steps li {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.causal-steps li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.causal-steps li > p:nth-child(2) {
+  margin: 8px 0;
+  font-size: 18px;
+}
+.causal-steps li > p:nth-child(3) {
+  font-size: 13px;
+}
+.outcome-pair {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 18px 22px;
+  background: #f3e7de;
+  color: #7a3827;
+  font-size: 15px;
+}
+.outcome-pair .outcome-label {
+  flex-basis: 100%;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.8;
+}
+.outcome-pair strong {
+  font-size: 28px;
+  font-weight: 500;
+}
+.record-controls {
+  margin-top: 26px;
+}
+.record-controls label {
+  display: block;
+  margin: 16px 0 6px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--green);
+}
+.record-controls select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 13px 34px 13px 12px;
+  border: 1px solid #8d9a8b;
+  border-radius: 0;
+  background: #fafaf5;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+}
+.record-controls select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+.record-metadata {
+  margin: 22px 0 0;
+  font-size: 12px;
+}
+.record-metadata dl {
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 8px 14px;
+}
+.record-metadata dd {
+  min-width: 0;
+}
+#raw-detail {
+  margin-top: 18px;
+}
+#raw-detail pre {
+  max-height: 400px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+#verified-content > .prose {
+  margin-top: 38px;
+}
+@media (max-width: 600px) {
+  .audit-comparison {
+    grid-template-columns: 1fr;
+  }
+  .audit-comparison > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .policy-view,
+  .audit-comparison > div {
+    padding: 20px;
+  }
+  .record-metadata dl {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .record-metadata dd {
+    margin-bottom: 12px;
+  }
+  .record-controls select {
+    font-size: 13px;
+  }
+}

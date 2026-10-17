@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "recorded-local-history-experiment",
+  "recordedAt": "2026-10-16T17:57:53.338Z",
+  "preparedAt": "2026-10-16T17:58:01.773Z",
+  "sourceReport": "history-2026-10-16T17-57-47-236Z-6c275813",
+  "evidenceSha256": "abe23117465e57ec65c7b2d7954480c4ff7dc4da70ee255ba9df2a84d600d32d",
+  "sourceRevision": "e081192189297311b1ebc9e8b40d2ef1993b578a",
+  "sourceFingerprint": "ee085e5381cee18ca25d18b81c6ebd8e24751893958770c4b07b264cb6feac0b",
+  "sourceStable": true,
+  "declaredSourceStable": true,
+  "established": true,
+  "gitDirty": false,
+  "modelVersion": "reservation-history-v1",
+  "checker": "scripts/history/checker.ts",
+  "renderer": {
+    "git": {
+      "state": "available",
+      "head": "e081192189297311b1ebc9e8b40d2ef1993b578a",
+      "dirty": false
+    },
+    "sha256": "2335eb74fe4c69327bbf35f1b3dca58cf7038172f98f761eb5b02f6f6e11a0e8",
+    "files": [
+      {
+        "path": "scripts/history/presentation.ts",
+        "sha256": "effbba547ea14434e94cf1e6706ac38e2de837df6d965cb8b602ee69eea1adff"
+      },
+      {
+        "path": "scripts/history/report-assets/index.html",
+        "sha256": "33597f63623a803f6c6364566ed3c4359ae8ff1a8d4f3532e67490653b89d0ac"
+      },
+      {
+        "path": "scripts/history/report-assets/report.css",
+        "sha256": "a3212c7b81d939b44f1df9d9d0e93ca3a6f44152fe040bc7f8a0bded19a100db"
+      },
+      {
+        "path": "scripts/history/report-assets/report.js",
+        "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+      },
+      {
+        "path": "scripts/serve-history-report.ts",
+        "sha256": "184a4258f2a970d97784b2b781b4beb8769596904c0a67eb16b0e9f59d6ba7fa"
+      }
+    ]
+  },
+  "adaptations": [
+    "Later read-only rendering of an existing raw run. Renderer identity is separate from the recorded source.",
+    "Actual observer order and a possible witness order are separate. Dashed uncertainty is conceptual, not measured commit time."
+  ],
+  "validation": "Verdicts, witness, workload coverage, exact inventory and GET-only mutation rechecked locally. Unsigned provenance, not attestation."
+}

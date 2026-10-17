@@ -1,0 +1,35 @@
+{
+  "kind": "recorded-local-run",
+  "readOnly": true,
+  "repository": "intent-recovery-lab",
+  "sourceRevision": "e081192189297311b1ebc9e8b40d2ef1993b578a",
+  "sourceDirty": false,
+  "generatedAt": "2026-10-16T17:57:40.242Z",
+  "sourceFingerprint": "ee085e5381cee18ca25d18b81c6ebd8e24751893958770c4b07b264cb6feac0b",
+  "originalEvidenceSha256": "a6174c07e38d4befeb39cb76d10705a3153ed3d636637e27bb03a5146f19fb14",
+  "evidenceFile": "evidence.json",
+  "displayAdaptations": [
+    "relative asset URLs",
+    "shared persisted language preference",
+    "Back/Forward preference restoration with report state preserved",
+    "recorded-run banner"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "806b17decf978dd3be3a1a5529aef590dd698692c4a687e2e54e9446da54a638"
+    },
+    {
+      "path": "report.css",
+      "sha256": "95a8fd7c2e3a52ff46a60e26318b974754551c5baba69df213506eaa7a90773a"
+    },
+    {
+      "path": "report.js",
+      "sha256": "289e5d5d34557615fc96f29536d4326bca0b22415549ecac62d734cb9bcaa19b"
+    },
+    {
+      "path": "evidence.json",
+      "sha256": "a6174c07e38d4befeb39cb76d10705a3153ed3d636637e27bb03a5146f19fb14"
+    }
+  ]
+}

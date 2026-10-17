@@ -1,0 +1,66 @@
+{
+  "kind": "portfolio-history-bundle",
+  "repository": "intent-recovery-lab",
+  "sourceRevision": "e081192189297311b1ebc9e8b40d2ef1993b578a",
+  "upstreamManifest": "upstream-assets.json",
+  "upstreamManifestSha256": "1ceb381fc04ad82bc95c5a54ca52aaa8855fdd4da8325f649e836a45a00928e7",
+  "evidenceSha256": "abe23117465e57ec65c7b2d7954480c4ff7dc4da70ee255ba9df2a84d600d32d",
+  "displayAdaptations": [
+    "Portfolio return navigation and display-file provenance link in index.html; navigation styling in report.css"
+  ],
+  "note": "The upstream manifest identifies original export bytes. This manifest identifies the portfolio files. Both are unsigned provenance, not attestation.",
+  "files": [
+    {
+      "path": "evidence.json",
+      "sha256": "abe23117465e57ec65c7b2d7954480c4ff7dc4da70ee255ba9df2a84d600d32d"
+    },
+    {
+      "path": "seed-104729.json",
+      "sha256": "c176b2503ce97f9adaac75b22c58df66a4164a166b12d012d80671dbbd796152"
+    },
+    {
+      "path": "seed-104729-stale-control.json",
+      "sha256": "51d501d8242813a54a89425fb1122119ad4dd00d090222184ce0768050debf9d"
+    },
+    {
+      "path": "seed-130363.json",
+      "sha256": "21864c9df0d6aeaf7424973038983d985d47d66d55259ab02d21f55b16cd3758"
+    },
+    {
+      "path": "seed-130363-stale-control.json",
+      "sha256": "a68d01aac4df3115e761bf465dfbd4cf44b42dafb79a7de14b4d056a684e26c5"
+    },
+    {
+      "path": "seed-155921.json",
+      "sha256": "221c385f6e87a3a8ddeb7f960a24161384ee950c5e70dd794c4cb8e9920dd8a6"
+    },
+    {
+      "path": "seed-155921-stale-control.json",
+      "sha256": "61f22857a161a57f688225a020226000dee7008b1fc78b03ab1d04b9cebf50e2"
+    },
+    {
+      "path": "index.html",
+      "sha256": "24ee32c45d5968ff475168066bbc19dc904e80365f156003bf7974123c105c04"
+    },
+    {
+      "path": "report.css",
+      "sha256": "48fae4cd0522305b2dad55c56eb6603dae3224cb47bc47ff2416a5960e1bf69e"
+    },
+    {
+      "path": "report.js",
+      "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+    },
+    {
+      "path": "recording.json",
+      "sha256": "6ac494d90303ced628fe98bdf308d33c27af1c29df33db115440f94b081e1e47"
+    },
+    {
+      "path": "report-data.js",
+      "sha256": "8fe9be2555c12dd0bb7326039b907452ee5867fd3165d949403883409ad3260e"
+    },
+    {
+      "path": "upstream-assets.json",
+      "sha256": "1ceb381fc04ad82bc95c5a54ca52aaa8855fdd4da8325f649e836a45a00928e7"
+    }
+  ]
+}

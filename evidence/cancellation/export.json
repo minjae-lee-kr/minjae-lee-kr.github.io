@@ -1,0 +1,48 @@
+{
+  "kind": "prerecorded-read-only-cancellation-debt",
+  "version": 1,
+  "generatedAt": "2026-10-16T16:48:24.068Z",
+  "revision": {
+    "head": "ff47d27ac38071cf7d1c611492b55f657d8d0a27",
+    "branch": "experiment/cancellation-debt",
+    "dirty": false
+  },
+  "sourceSha256": "d9fc503697e95ce98a342a1152d87cd529fdcb3283b50e0c2f817ccf118333f8",
+  "sourceUnchanged": true,
+  "report": {
+    "path": "report.json",
+    "sha256": "421617b5c8e27bb1446a864e909dfc3f0a3de6e223f914d323aa07502893aa50"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "4647d4112d05d4bd5f736927e03a22de173da104c7085a697b83db1eb8ee6b3f"
+    },
+    {
+      "path": "debt.css",
+      "sha256": "b43d0f2495c16bc525f074fc46fb5df31664f90b55869b6f569c650599891f8e"
+    },
+    {
+      "path": "debt.js",
+      "sha256": "00d57638ae1353e9b37fdd6393551527802d6099ea0ef70d28bdda55b14ae323"
+    },
+    {
+      "path": "report-data.js",
+      "sha256": "8f5d78b5879b422d946c20542323e0d3c06a8d529f24defc23f2a84ad5f7bc1f"
+    },
+    {
+      "path": "report.json",
+      "sha256": "421617b5c8e27bb1446a864e909dfc3f0a3de6e223f914d323aa07502893aa50"
+    }
+  ],
+  "limits": [
+    "Opening this export does not execute the experiment.",
+    "Source and asset hashes are reproduction aids, not execution attestations.",
+    "Real HTTP/socket cancellation surrounds synthetic timer-held work. This does not demonstrate cancellation of a database query, CPU task or external side effect.",
+    "Response deadlines and work durations are configured fixtures, not observed speed improvements or representative traffic.",
+    "Admission limits belong to this one inventory process. No global or cross-replica capacity bound is claimed.",
+    "Absolute deadlines use this shared host clock. Clock skew and authenticated cross-service deadline policy are outside this lab.",
+    "Cancellation is explicit and cooperative. The admission-only control deliberately ignores it and retains permits until real settlement.",
+    "The raw-event checker verifies recorded transitions, not uninstrumented work. Source hashes aid reproduction; they are not execution attestations."
+  ]
+}

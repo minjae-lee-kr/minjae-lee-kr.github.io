@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="중복 방지 기록이 사라진 뒤에는 같은 키로도 중복 처리될 수 있습니다. HTTP·SQLite로 확인한 재시도의 한계."
+    />
+    <title>키보다 먼저 사라지는 기록 — Minjae Lee</title>
+    <link rel="canonical" href="https://minjae-lee-kr.github.io/notes/retention-boundary/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Minjae Lee — Engineering Notes" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="키보다 먼저 사라지는 기록 — Minjae Lee" />
+    <meta property="og:description" content="중복 방지 기록이 사라진 뒤에는 같은 키로도 중복 처리될 수 있습니다. HTTP·SQLite로 확인한 재시도의 한계." />
+    <meta property="og:url" content="https://minjae-lee-kr.github.io/notes/retention-boundary/" />
+    <meta property="og:image" content="https://minjae-lee-kr.github.io/assets/social/intent.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="When the key outlives the record. A conceptual timeline shows a retry key remaining after the receiver record ends. Independent synthetic experiment; no measured time scale." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="키보다 먼저 사라지는 기록 — Minjae Lee" />
+    <meta name="twitter:description" content="중복 방지 기록이 사라진 뒤에는 같은 키로도 중복 처리될 수 있습니다. HTTP·SQLite로 확인한 재시도의 한계." />
+    <meta name="twitter:image" content="https://minjae-lee-kr.github.io/assets/social/intent.png" />
+    <meta name="twitter:image:alt" content="When the key outlives the record. A conceptual timeline shows a retry key remaining after the receiver record ends. Independent synthetic experiment; no measured time scale." />
+    <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+    <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../notes.css" />
+    <link rel="stylesheet" href="retention.css" />
+    <script src="../notes.js" defer></script>
+    <script type="module" src="retention.js"></script>
+  </head>
+  <body
+    data-title-ko="키보다 먼저 사라지는 기록"
+    data-title-en="When the key outlives the record"
+    data-description-ko="중복 방지 기록이 사라진 뒤에는 같은 키로도 중복 처리될 수 있습니다. HTTP·SQLite로 확인한 재시도의 한계."
+    data-description-en="A retry can duplicate work after the receiver deletes its deduplication record—even with the same key. An HTTP and SQLite experiment."
+  >
+    <a class="skip" href="#note"
+      ><span data-lang="ko" lang="ko">본문으로</span
+      ><span data-lang="en" lang="en" hidden>Skip to article</span></a
+    >
+    <header class="site-header">
+      <div class="header-inner">
+        <a
+          class="wordmark"
+          href="../../"
+          aria-label="민재의 포트폴리오"
+          data-label-ko="민재의 포트폴리오"
+          data-label-en="Minjae’s portfolio"
+          >M<span>·</span>L</a
+        ><a class="back-link" href="../../"
+          ><span data-lang="ko" lang="ko">포트폴리오로</span
+          ><span data-lang="en" lang="en" hidden>Back to portfolio</span></a
+        >
+        <div
+          class="languages"
+          role="group"
+          aria-label="언어"
+          data-label-ko="언어"
+          data-label-en="Language"
+        >
+          <button
+            type="button"
+            data-language="ko"
+            lang="ko"
+            aria-pressed="true"
+          >
+            한국어</button
+          ><button
+            type="button"
+            data-language="en"
+            lang="en"
+            aria-pressed="false"
+          >
+            English
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="note" class="reading" tabindex="-1">
+      <article>
+        <header id="opening" data-reading-section>
+          <p class="eyebrow">INTENT / RECOVERY · RETENTION BOUNDARY</p>
+          <h1>
+            <span data-lang="ko" lang="ko">키보다 먼저 사라지는 기록</span
+            ><span data-lang="en" lang="en" hidden
+              >When the key outlives the record</span
+            >
+          </h1>
+          <p class="lead">
+            <span data-lang="ko" lang="ko"
+              >같은 키는 같은 요청을 가리킵니다. 상대 시스템이 그 요청을
+              언제까지 기억하는지까지 알려 주지는 않습니다.</span
+            ><span data-lang="en" lang="en" hidden
+              >A stable retry key identifies a request. It does not say how long
+              another system remembers that request.</span
+            >
+          </p>
+          <p class="byline">
+            Minjae Lee <span aria-hidden="true">/</span>
+            <span data-lang="ko" lang="ko"
+              >독립적인 개인 실험 · 기록: 2026.10.16</span
+            ><span data-lang="en" lang="en" hidden
+              >Independent personal experiment · Recorded 2026-10-16</span
+            >
+          </p>
+        </header>
+        <div id="load-status" class="recording-status" role="status">
+          <p>
+            <span data-lang="ko" lang="ko"
+              >기록의 무결성과 근거 관계를 확인하고 있습니다.</span
+            ><span data-lang="en" lang="en" hidden
+              >Verifying the recording and its evidence relationships.</span
+            >
+          </p>
+        </div>
+        <div id="mismatch" class="recording-status" role="alert" hidden>
+          <p>
+            <span data-lang="ko" lang="ko"
+              >기록과 표시 조건이 일치하지 않거나 파일을 읽지 못했습니다. 이
+              상태에서는 실험의 결론과 수치 그림을 표시하지 않습니다.</span
+            ><span data-lang="en" lang="en" hidden
+              >The recording does not match this presentation, or a required
+              file could not be read. Experimental conclusions and numerical
+              figures are hidden.</span
+            >
+          </p>
+        </div>
+        <p class="raw-availability">
+          <a href="recording/evidence.json"
+            ><span data-lang="ko" lang="ko">원본 JSON 열기</span
+            ><span data-lang="en" lang="en" hidden>Open raw JSON</span></a
+          >
+          ·
+          <a href="recording.json"
+            ><span data-lang="ko" lang="ko">기록 출처</span
+            ><span data-lang="en" lang="en" hidden
+              >Recording provenance</span
+            ></a
+          >
+        </p>
+        <noscript
+          ><p>
+            <span data-lang="ko" lang="ko"
+              >JavaScript가 꺼져 있어 근거를 검증하지 못했습니다. 원본 JSON을
+              직접 확인할 수 있습니다.</span
+            ><span data-lang="en" lang="en" hidden
+              >JavaScript is disabled, so the evidence could not be verified.
+              The raw JSON remains available.</span
+            >
+          </p></noscript
+        >
+        <div id="verified-content" hidden>
+          <nav
+            class="contents"
+            aria-label="이 글의 순서"
+            data-label-ko="이 글의 순서"
+            data-label-en="In this note"
+          >
+            <a href="#same"
+              ><span data-lang="ko" lang="ko">같은 관측</span
+              ><span data-lang="en" lang="en" hidden
+                >The same observations</span
+              ></a
+            ><a href="#arrival"
+              ><span data-lang="ko" lang="ko">전송과 도착</span
+              ><span data-lang="en" lang="en" hidden
+                >Send versus arrival</span
+              ></a
+            ><a href="#records"
+              ><span data-lang="ko" lang="ko">실제 기록</span
+              ><span data-lang="en" lang="en" hidden>Recorded evidence</span></a
+            ><a href="#limits"
+              ><span data-lang="ko" lang="ko">판단과 한계</span
+              ><span data-lang="en" lang="en" hidden
+                >Judgment and limits</span
+              ></a
+            >
+          </nav>
+          <div class="prose" data-lang="ko" lang="ko">
+            <p>
+              기본 복구 실험은 요청과 결과를 하나의 SQLite DB에 보관했습니다.
+              이번에는 요청과 확정 결과를 기록하는 로컬 프로세스, 처리 내역과
+              중복 방지 기록을 저장하는 수신 프로세스를 분리했습니다. 각자
+              SQLite DB를 갖고 HTTP로 통신하며, 두 DB를 묶는 트랜잭션은
+              없습니다. 아래에서 ‘효과’는 수신 측에 저장된 처리 한 건을 뜻합니다.
+            </p>
+          </div>
+          <div class="prose" data-lang="en" lang="en" hidden>
+            <p>
+              The base recovery experiment kept requests and outcomes in one
+              SQLite database. Here, a local process records requests and their
+              confirmed outcomes; a receiving process records completed
+              operations and deduplication state. Each has its own SQLite
+              database. They communicate over HTTP without a shared transaction.
+              An “effect” is one operation recorded by the receiver.
+            </p>
+          </div>
+          <section
+            class="reading-section"
+            id="same"
+            data-reading-section
+            tabindex="-1"
+          >
+            <h2>
+              <span class="section-number">01</span
+              ><span data-lang="ko" lang="ko">같은 관측, 다른 이력</span
+              ><span data-lang="en" lang="en" hidden
+                >The same observations. Different histories.</span
+              >
+            </h2>
+            <div class="prose" data-lang="ko" lang="ko">
+              <p>
+                기록된 두 실행을 비교해 보겠습니다. 첫 실행에서는 상대 시스템이
+                아무 효과도 저장하기 전에 연결을 끊습니다. 두 번째에서는 효과를
+                저장한 뒤 응답을 잃고, 나중에 키에 연결된 응답 기록을
+                삭제합니다. 이후 조회 결과는 둘 다 absent입니다.
+              </p>
+              <p>
+                오류 메시지만 비슷한 것이 아닙니다. 같은 요청과 같은 키를 사용한
+                두 실행의 로컬 HTTP 응답 본문과 전체 DB 테이블이 그대로
+                같습니다. 비교를 위해 식별자를 바꾸지도 않았습니다. 하지만 상대
+                기록의 효과는 한쪽이 0건, 다른 쪽이 1건입니다. 두 실행 모두
+                로컬에는 확인 번호가 남아 있지 않습니다.
+              </p>
+            </div>
+            <div class="prose" data-lang="en" lang="en" hidden>
+              <p>
+                Consider two recorded executions. In the first, the downstream
+                owner closes the connection before committing anything. In the
+                second, it commits an effect, loses the acknowledgement, and
+                later prunes the retained response. A subsequent lookup returns
+                absent in both executions.
+              </p>
+              <p>
+                This is stronger than two similar error messages. The same
+                intent and key produce identical local HTTP response bodies and
+                identical local database tables, without renaming identifiers.
+                Yet the downstream journals contain zero effects in one
+                execution and one in the other. The local owner has no receipt
+                in either case.
+              </p>
+            </div>
+            <figure class="evidence-figure">
+              <div class="policy-view">
+                <p class="access-label">
+                  <span data-lang="ko" lang="ko">재시도 정책이 가진 정보</span
+                  ><span data-lang="en" lang="en" hidden
+                    >AVAILABLE TO THE RETRY POLICY</span
+                  >
+                </p>
+                <p class="state-line">
+                  <code>unknown</code><span aria-hidden="true"> → </span
+                  ><code>absent</code><span aria-hidden="true"> → </span
+                  ><code>needs-reconciliation</code>
+                </p>
+                <p>
+                  <span data-lang="ko" lang="ko"
+                    >로컬 응답과 모든 로컬 테이블이 동일합니다. 식별자 치환은
+                    없습니다.</span
+                  ><span data-lang="en" lang="en" hidden
+                    >Local responses and all local tables match exactly. No
+                    identifier normalization.</span
+                  >
+                </p>
+              </div>
+              <div class="audit-comparison">
+                <div>
+                  <p class="access-label">
+                    <span data-lang="ko" lang="ko">감사기만 보는 이력 A</span
+                    ><span data-lang="en" lang="en" hidden
+                      >AUDITOR-ONLY HISTORY A</span
+                    >
+                  </p>
+                  <p class="metric">
+                    <strong data-metric="zero"></strong
+                    ><span
+                      ><span data-lang="ko" lang="ko">상대 효과</span
+                      ><span data-lang="en" lang="en" hidden
+                        >remote effects</span
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <span data-lang="ko" lang="ko"
+                      >효과 저장 전에 연결 종료</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Connection lost before commit</span
+                    >
+                  </p>
+                  <a href="#records" data-record="zero-remote-effects"
+                    ><span data-lang="ko" lang="ko">원본 효과 목록</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Original effect rows</span
+                    >
+                    →</a
+                  >
+                </div>
+                <div>
+                  <p class="access-label">
+                    <span data-lang="ko" lang="ko">감사기만 보는 이력 B</span
+                    ><span data-lang="en" lang="en" hidden
+                      >AUDITOR-ONLY HISTORY B</span
+                    >
+                  </p>
+                  <p class="metric">
+                    <strong data-metric="one"></strong
+                    ><span
+                      ><span data-lang="ko" lang="ko">상대 효과</span
+                      ><span data-lang="en" lang="en" hidden
+                        >remote effect</span
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <span data-lang="ko" lang="ko"
+                      >효과 저장 후 응답 유실, 이후 키 삭제</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Effect committed; acknowledgement lost; key later
+                      pruned</span
+                    >
+                  </p>
+                  <a href="#records" data-record="one-remote-history"
+                    ><span data-lang="ko" lang="ko">원본 상대 기록</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Original downstream journal</span
+                    >
+                    →</a
+                  >
+                </div>
+              </div>
+              <figcaption>
+                <span data-lang="ko" lang="ko"
+                  >서로 다른 두 실행입니다. 정책의 조회 결과는 같지만, 종료 후
+                  양쪽 DB를 읽는 감사기는 차이를 봅니다.</span
+                ><span data-lang="en" lang="en" hidden
+                  >Two separate recorded executions. The policy sees the same
+                  lookup result; a post-stop auditor reading both databases sees
+                  the difference.</span
+                >
+              </figcaption>
+            </figure>
+            <div class="prose" data-lang="ko" lang="ko">
+              <p>
+                감사기는 실행이 끝난 뒤 양쪽 기록을 읽어 차이를 구분할 수
+                있습니다. 재시도 정책은 같은 정보를 읽을 수 없습니다. 조회 API가
+                보여 주는 것은 보존된 중복 방지 상태이지, 과거의 모든 효과가
+                아닙니다. 감사기가 아는 사실을 정책도 조회할 수 있는 것처럼
+                그리면, 실제로는 없는 복구 수단을 만들어 낸 셈이 됩니다.
+              </p>
+              <p>
+                그래서 보호 정책은 재전송 기한 이후 요청을 미확정 상태로
+                남깁니다. absent를 실패로 바꾸거나, 키를 교체하거나, 조용히 다시
+                보내지 않습니다. 이 정책에서는 실제로 처리되지 않은 요청도
+                자동으로 해결할 수 없습니다. 효과가 0건이었던 실행에서도 요청이
+                미확정 상태로 남았습니다. 상태 이름은
+                needs-reconciliation입니다. 이 실험이 실제 운영자의 판단
+                절차까지 구현한 것은 아닙니다.
+              </p>
+            </div>
+            <div class="prose" data-lang="en" lang="en" hidden>
+              <p>
+                An auditor can distinguish them because it reads both journals
+                after the processes stop. The retry policy cannot: its lookup
+                exposes retained deduplication state, not an eternal history of
+                effects. Showing the auditor’s knowledge as though it were
+                available to the policy would make reconciliation look easier
+                than it is.
+              </p>
+              <p>
+                The guarded policy therefore leaves the intent unresolved after
+                its retry cutoff. It does not turn absent into failed, replace
+                the key, or silently send again. That refusal has a cost. In the
+                zero-effect execution, a legitimate request remains unresolved
+                too. The state is called needs-reconciliation; this experiment
+                does not implement an operator workflow that can resolve it.
+              </p>
+            </div>
+          </section>
+          <section
+            class="reading-section"
+            id="arrival"
+            data-reading-section
+            tabindex="-1"
+          >
+            <h2>
+              <span class="section-number">02</span
+              ><span data-lang="ko" lang="ko"
+                >보낼 수 있는 시점과 도착하는 시점</span
+              ><span data-lang="en" lang="en" hidden
+                >Permission to send is not an arrival guarantee.</span
+              >
+            </h2>
+            <div class="prose" data-lang="ko" lang="ko">
+              <p>
+                로컬 시스템은 최초 전송 전에 첫 전송 시각, 알려진 최소 보존
+                기간, 가정한 시간 여유로 계산한 기한을 저장합니다. 논리 시각
+                10,020의 재시도는 기한 10,900 이전이므로 허용됩니다. 로컬에서
+                전송 기한을 지켜도, 상대 시스템에 도착하는 시점까지 제한할 수는
+                없습니다.
+              </p>
+              <p>
+                두 번째 비교에서는 HTTP 중계가 재시도 요청의 전달을 보류합니다.
+                부모 프로세스가 양쪽 실험 시계를 12,000으로 진행하고, 상대
+                시스템에서 만료된 키를 삭제합니다. 그 뒤에야 중계가 동일한
+                요청을 전달합니다. 수신자는 중복 방지 기록을 더 이상 갖고 있지
+                않으므로 효과를 새로 만들고 새 확인 번호를 돌려줍니다. 로컬
+                결과는 1건입니다. 상대 시스템의 효과는 2건입니다.
+              </p>
+            </div>
+            <div class="prose" data-lang="en" lang="en" hidden>
+              <p>
+                Before the first send, the local owner durably records a cutoff
+                derived from its first-dispatch time, the known minimum
+                retention, and an assumed timing margin. A retry at logical time
+                10,020 is permitted because the cutoff is 10,900. But permission
+                to send is not a guarantee about when the receiver will accept
+                it.
+              </p>
+              <p>
+                In the second decisive contrast, an actual HTTP relay holds that
+                retry. The parent advances both fixture clocks to 12,000 and
+                instructs the downstream owner to prune the expired key. Only
+                then does the relay forward the same request. The receiver no
+                longer has the deduplication record, so it creates another
+                effect and returns a new receipt. The local owner records one
+                grant. The downstream journal contains two effects.
+              </p>
+            </div>
+            <figure class="evidence-figure">
+              <p class="fixture-label">
+                <span data-lang="ko" lang="ko"
+                  >주입한 논리 시각 · 시간 간격을 그린 그래프가 아닙니다</span
+                ><span data-lang="en" lang="en" hidden
+                  >INJECTED LOGICAL CLOCKS · NOT A MEASURED-TIME AXIS</span
+                >
+              </p>
+              <ol class="causal-steps">
+                <li>
+                  <p class="access-label">
+                    <span data-lang="ko" lang="ko">정책 · 전송 판단</span
+                    ><span data-lang="en" lang="en" hidden
+                      >POLICY · DISPATCH DECISION</span
+                    >
+                  </p>
+                  <p>
+                    <strong data-clock="dispatch"></strong> &lt;
+                    <strong data-clock="cutoff"></strong>
+                  </p>
+                  <p>
+                    <span data-lang="ko" lang="ko"
+                      >저장된 로컬 기한 안에서 재시도 전송</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Retry sent before the stored local cutoff</span
+                    >
+                  </p>
+                  <a href="#records" data-record="late-retry"
+                    ><span data-lang="ko" lang="ko">전송 기록</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Dispatch record</span
+                    >
+                    →</a
+                  >
+                </li>
+                <li>
+                  <p class="access-label">
+                    <span data-lang="ko" lang="ko">제어기 · 순서 관측</span
+                    ><span data-lang="en" lang="en" hidden
+                      >CONTROLLER · OBSERVED ORDER</span
+                    >
+                  </p>
+                  <p>
+                    <span data-lang="ko" lang="ko"
+                      >보류 → 시계 진행 → 삭제 완료 → 전달</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Hold → advance clocks → acknowledge prune → forward</span
+                    >
+                  </p>
+                  <p>
+                    <span data-lang="ko" lang="ko"
+                      >중계가 같은 attempt-2를 붙잡았다가 전달</span
+                    ><span data-lang="en" lang="en" hidden
+                      >The relay holds and then forwards the same
+                      attempt-2</span
+                    >
+                  </p>
+                  <a href="#records" data-record="late-held"
+                    ><span data-lang="ko" lang="ko">중계 관측</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Relay observation</span
+                    >
+                    →</a
+                  >
+                </li>
+                <li>
+                  <p class="access-label">
+                    <span data-lang="ko" lang="ko">감사기 · 상대 이력</span
+                    ><span data-lang="en" lang="en" hidden
+                      >AUDITOR · DOWNSTREAM HISTORY</span
+                    >
+                  </p>
+                  <p>
+                    <strong data-clock="arrival"></strong> &gt;
+                    <strong data-clock="minimum"></strong>
+                  </p>
+                  <p>
+                    <span data-lang="ko" lang="ko"
+                      >기록 삭제 뒤 새로운 효과와 확인 번호 생성</span
+                    ><span data-lang="en" lang="en" hidden
+                      >After pruning, a new effect and receipt are created</span
+                    >
+                  </p>
+                  <a href="#records" data-record="late-second-effect"
+                    ><span data-lang="ko" lang="ko">두 번째 효과 기록</span
+                    ><span data-lang="en" lang="en" hidden
+                      >Second-effect record</span
+                    >
+                    →</a
+                  >
+                </li>
+              </ol>
+              <div class="outcome-pair">
+                <p class="outcome-label">
+                  <span data-lang="ko" lang="ko"
+                    >같은 키로 상대 효과가 중복 실행됐습니다.</span
+                  ><span data-lang="en" lang="en" hidden
+                    >The same key produced a second remote effect.</span
+                  >
+                </p>
+                <p>
+                  <strong data-metric="remote"></strong>
+                  <span data-lang="ko" lang="ko">상대 효과</span
+                  ><span data-lang="en" lang="en" hidden>remote effects</span>
+                </p>
+                <span aria-hidden="true">/</span>
+                <p>
+                  <strong data-metric="local"></strong>
+                  <span data-lang="ko" lang="ko">로컬 결과</span
+                  ><span data-lang="en" lang="en" hidden>local grant</span>
+                </p>
+              </div>
+              <figcaption>
+                <span data-lang="ko" lang="ko"
+                  >10,900은 저장된 전송 기한, 11,000은 최초 효과 시각 + 최소
+                  보존 기간으로 계산한 경계입니다. 두 숫자는 사건 발생 시각이
+                  아닙니다. 간격과 화살표 길이는 지연을 표현하지 않습니다.</span
+                ><span data-lang="en" lang="en" hidden
+                  >10,900 is the stored dispatch cutoff; 11,000 is first commit
+                  plus minimum retention. Neither threshold is a recorded event.
+                  Spacing and arrow lengths do not represent delay.</span
+                >
+              </figcaption>
+            </figure>
+            <div class="prose" data-lang="ko" lang="ko">
+              <p>
+                재시도는 로컬 전송 기한 안에 보냈지만, 상대 시스템에서는 같은
+                키로 두 번째 처리가 일어났습니다. 여기의 숫자는 주입한 논리
+                시각이며 네트워크 지연 측정값이나 벤치마크가 아닙니다. 중계의
+                보류와 해제로 순서를 만들었고, 계산에 넣은 시간 여유가 실제 통신
+                지연을 감당한다고 검증한 것은 아닙니다. 이미 전송한 요청은
+                송신자의 기한이 지났다고 회수되지 않습니다.
+              </p>
+            </div>
+            <div class="prose" data-lang="en" lang="en" hidden>
+              <p>
+                The local cutoff was obeyed. The remote uniqueness property
+                still failed. These numbers are injected logical clock values,
+                not measured network delay or a benchmark. The relay controls
+                the schedule; the configured margin establishes no real transit
+                bound. A request already in flight is not revoked when its
+                sender’s cutoff passes.
+              </p>
+            </div>
+          </section>
+          <section
+            class="reading-section"
+            id="records"
+            data-reading-section
+            tabindex="-1"
+          >
+            <h2>
+              <span class="section-number">03</span
+              ><span data-lang="ko" lang="ko"
+                >주장을 실제 기록까지 따라가기</span
+              ><span data-lang="en" lang="en" hidden
+                >Follow the claim into the recording.</span
+              >
+            </h2>
+            <p>
+              <span data-lang="ko" lang="ko"
+                >기록 선택은 읽기 전용입니다. 재생·시뮬레이션 없이 원본 JSON의
+                실제 위치를 보여 줍니다.</span
+              ><span data-lang="en" lang="en" hidden
+                >This selector is read-only. It shows actual locations in the
+                raw JSON, with no replay or simulation.</span
+              >
+            </p>
+            <div class="record-controls">
+              <div data-lang="ko" lang="ko">
+                <label for="case-ko">실행 선택</label
+                ><select
+                  id="case-ko"
+                  data-case-select
+                  data-focus-key="case-select"
+                >
+                  <option value="zero">A · 효과 저장 전 연결 종료</option>
+                  <option value="one">B · 저장 후 응답 유실</option>
+                  <option value="late">
+                    C · 허용된 재전송의 늦은 도착
+                  </option></select
+                ><label for="record-ko">원본 기록 선택</label
+                ><select
+                  id="record-ko"
+                  data-record-select
+                  data-select-language="ko"
+                  data-focus-key="record-select"
+                ></select>
+              </div>
+              <div data-lang="en" lang="en" hidden>
+                <label for="case-en">Recorded execution</label
+                ><select
+                  id="case-en"
+                  data-case-select
+                  data-focus-key="case-select"
+                >
+                  <option value="zero">
+                    A · Connection lost before commit
+                  </option>
+                  <option value="one">
+                    B · Commit followed by lost acknowledgement
+                  </option>
+                  <option value="late">
+                    C · Eligible retry, late arrival
+                  </option></select
+                ><label for="record-en">Original record</label
+                ><select
+                  id="record-en"
+                  data-record-select
+                  data-select-language="en"
+                  data-focus-key="record-select"
+                ></select>
+              </div>
+            </div>
+            <div class="record-metadata">
+              <dl>
+                <dt>JSON pointer</dt>
+                <dd><code id="record-pointer"></code></dd>
+                <dt>
+                  <span data-lang="ko" lang="ko">관측 스트림</span
+                  ><span data-lang="en" lang="en" hidden
+                    >Observation stream</span
+                  >
+                </dt>
+                <dd id="record-stream"></dd>
+                <dt>
+                  <span data-lang="ko" lang="ko">스트림 내 순서</span
+                  ><span data-lang="en" lang="en" hidden
+                    >Order within stream</span
+                  >
+                </dt>
+                <dd id="record-sequence"></dd>
+                <dt>
+                  <span data-lang="ko" lang="ko">정보 접근 범위</span
+                  ><span data-lang="en" lang="en" hidden
+                    >Information access</span
+                  >
+                </dt>
+                <dd id="record-access"></dd>
+              </dl>
+            </div>
+            <details id="raw-detail">
+              <summary>
+                <span data-lang="ko" lang="ko">선택한 원본 JSON 펼치기</span
+                ><span data-lang="en" lang="en" hidden
+                  >Expand the selected raw JSON</span
+                >
+              </summary>
+              <pre
+                tabindex="0"
+                role="region"
+                aria-label="선택한 원본 기록; 가로 스크롤 가능"
+                data-label-ko="선택한 원본 기록; 가로 스크롤 가능"
+                data-label-en="Selected raw record; horizontally scrollable"
+              ><code id="record-json"></code></pre>
+            </details>
+            <p class="record-help">
+              <span data-lang="ko" lang="ko"
+                >각 스트림의 순번은 해당 스트림 안에서만 비교합니다. 로컬·상대
+                기록과 부모 관측의 번호를 하나의 전역 순서로 합치지 않습니다.
+                상대 DB와 전체 이력은 종료 후 감사기만 읽으며, 정책의 조회
+                권한이 아닙니다.</span
+              ><span data-lang="en" lang="en" hidden
+                >Sequence numbers are ordered only within their own stream.
+                Local journals, downstream journals and parent observations do
+                not form one global numbered order. The downstream database and
+                complete history are post-stop audit evidence, not policy lookup
+                access.</span
+              >
+            </p>
+          </section>
+          <section
+            class="reading-section"
+            id="limits"
+            data-reading-section
+            tabindex="-1"
+          >
+            <h2>
+              <span class="section-number">04</span
+              ><span data-lang="ko" lang="ko"
+                >기억의 경계를 설계에 드러내기</span
+              ><span data-lang="en" lang="en" hidden
+                >Make the memory boundary explicit.</span
+              >
+            </h2>
+            <div class="prose" data-lang="ko" lang="ko">
+              <p>
+                검사기는 이 경계를 따라 근거를 확인합니다. 상대 기록을 순서대로
+                재구성해 최소 보존 기간 이전의 삭제를 거절하고, 로컬 결과를 바로
+                그 시도에서 받은 확인 번호와 연결합니다. 같은 키로 발급된 과거
+                확인 번호가 있어도, 이번 시도의 결과라는 근거로 사용할 수는
+                없습니다. 로컬 1건의 기록이 내부적으로 일관돼도, 늦게 도착한
+                조건의 상대 효과는 2건이라고 명시합니다.
+              </p>
+              <p>
+                범위를 정한 가상 실행이며 실제 제공사 연동이나 exactly-once
+                증명이 아닙니다. 최소 보존 기간이 지났더라도 기록이 남아 있으면,
+                조회해서 기존 확인 번호를 복구할 수 있습니다. 기한이 지났다는
+                사실만으로 기록이 사라지지는 않습니다. 그러나 조회에서 기록을
+                찾지 못한 순간에는 키를 유지했는지만 물어서는 부족합니다. 효과를
+                만드는 시스템이 그 키를 구별할 기억을 아직 갖고 있는지까지
+                확인해야 합니다.
+              </p>
+            </div>
+            <div class="prose" data-lang="en" lang="en" hidden>
+              <p>
+                The checker follows the evidence across that boundary. It
+                reconstructs retained records in journal order, refuses pruning
+                before minimum retention, and binds the local grant to the
+                positive receipt from that exact attempt. Merely finding some
+                earlier receipt under the same key is insufficient. The recorded
+                comparison explicitly marks the late-arrival case as two remote
+                effects, even though one local grant is internally consistent.
+              </p>
+              <p>
+                These are bounded synthetic executions, not a provider
+                integration or an exactly-once proof. A retained positive lookup
+                can still recover a receipt after the minimum retention period;
+                expiry alone does not erase a record. But once the record is
+                absent, the right question is not just whether the key stayed
+                the same. It is whether the effect owner still has the memory
+                needed to make that key meaningful.
+              </p>
+            </div>
+            <p class="takeaway">
+              <span data-lang="ko" lang="ko"
+                >같은 키만으로는 부족합니다. 효과를 만드는 시스템이 그 키를
+                구별할 기록을 아직 갖고 있어야 합니다.</span
+              ><span data-lang="en" lang="en" hidden
+                >The key is not enough. The effect owner must still retain the
+                memory that makes it meaningful.</span
+              >
+            </p>
+            <p>
+              <span data-lang="ko" lang="ko"
+                >시계는 같은 속도와 기준점을 가정합니다. 응답 유실·보존
+                기한·중계 순서는 실험에서 주입했으며, 실제 서비스의 전송
+                상한이나 시계 신뢰를 입증하지 않습니다. 기록은 신뢰한 관측이며
+                해시는 실행 진위를 인증하지 않습니다.</span
+              ><span data-lang="en" lang="en" hidden
+                >The clocks assume equal rate and zero offset. Lost
+                acknowledgements, retention and relay scheduling are injected
+                fixtures; they establish neither a real transit bound nor clock
+                trust. Journals are trusted observations, and hashes do not
+                authenticate execution.</span
+              >
+            </p>
+            <details>
+              <summary>
+                <span data-lang="ko" lang="ko"
+                  >고정된 기록의 출처와 검증 범위</span
+                ><span data-lang="en" lang="en" hidden
+                  >Capture provenance and validation scope</span
+                >
+              </summary>
+              <dl>
+                <dt>
+                  <span data-lang="ko" lang="ko">엔진 소스</span
+                  ><span data-lang="en" lang="en" hidden>Engine source</span>
+                </dt>
+                <dd><code>c60801f969ab0223812bb4fa609c2de3e7651c91</code></dd>
+                <dt>
+                  <span data-lang="ko" lang="ko">완료 시각</span
+                  ><span data-lang="en" lang="en" hidden>Completed</span>
+                </dt>
+                <dd>2026-10-16T18:29:09.869Z</dd>
+                <dt>Runtime</dt>
+                <dd>Node 24.19.0 · SQLite 3.53.3 · Windows x64</dd>
+                <dt>Raw SHA-256</dt>
+                <dd>
+                  <code
+                    >c700118d900858be573d6924be16ae96ffe95369a57a9aa01aed0f1c83dd8fdd</code
+                  >
+                </dd>
+              </dl>
+              <p>
+                <span data-lang="ko" lang="ko"
+                  >이 페이지는 과거 실행을 설명합니다. 현재 소스의 재실행 결과가
+                  아닙니다. 페이지에 저장된 예상값은 선택한 원본 기록과 기록
+                  간의 관계를 확인하는 데 사용합니다. 새로 측정한 값은 아닙니다.
+                  전체 감사기는 소스 저장소에 있고, 이 페이지는 두 대비에 필요한
+                  관계만 다시 확인합니다.</span
+                ><span data-lang="en" lang="en" hidden
+                  >This page describes a historical run, not a rerun of the
+                  current source. Fixed expected values are presentation
+                  assertions, not additional measurements. The full auditor
+                  lives in the source repository; this page rechecks only the
+                  relationships needed for these two contrasts.</span
+                >
+              </p>
+              <p>
+                <a href="mapping.json"
+                  ><span data-lang="ko" lang="ko">23개 원본 선택 위치</span
+                  ><span data-lang="en" lang="en" hidden
+                    >All 23 record selectors</span
+                  ></a
+                >
+                ·
+                <a href="recording.json"
+                  ><span data-lang="ko" lang="ko">출처 및 파일 해시</span
+                  ><span data-lang="en" lang="en" hidden
+                    >Provenance and file hashes</span
+                  ></a
+                >
+              </p>
+            </details>
+            <ol class="sources">
+              <li>
+                <a
+                  href="https://docs.stripe.com/api/idempotent_requests"
+                  rel="noreferrer"
+                  >Stripe API v1 · Idempotent requests</a
+                ><br /><span data-lang="ko" lang="ko"
+                  >키가 삭제된 뒤 재사용하면 새 요청이 될 수 있습니다.</span
+                ><span data-lang="en" lang="en" hidden
+                  >Reusing a key after pruning can create a new request.</span
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.paypal.com/api/rest/reference/idempotency/"
+                  rel="noreferrer"
+                  >PayPal · Idempotency</a
+                ><br /><span data-lang="ko" lang="ko"
+                  >재시도 안내는 각 API가 ID를 보존하는 기간에 연결됩니다.</span
+                ><span data-lang="en" lang="en" hidden
+                  >Retry guidance depends on how long each API retains the
+                  ID.</span
+                >
+              </li>
+            </ol>
+            <p class="publication">
+              <span data-lang="ko" lang="ko"
+                >이 실험은 독자적인 가상 계약을 사용하며 제공사의 구현을
+                재현하지 않습니다.</span
+              ><span data-lang="en" lang="en" hidden
+                >This experiment uses its own synthetic contract, not a
+                reproduction of either provider.</span
+              >
+            </p>
+            <p>
+              <a
+                href="https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/retention-boundary.md"
+                rel="noreferrer"
+                ><span data-lang="ko" lang="ko">소스 코드와 재현 방법</span
+                ><span data-lang="en" lang="en" hidden
+                  >Source code and reproduction guide</span
+                >
+                ↗</a
+              >
+            </p>
+          </section>
+          <nav
+            class="next-note"
+            aria-label="함께 읽기"
+            data-label-ko="함께 읽기"
+            data-label-en="Continue reading"
+          >
+            <span
+              ><span data-lang="ko" lang="ko">기초 실험</span
+              ><span data-lang="en" lang="en" hidden
+                >Related experiment</span
+              ></span
+            ><a href="../../evidence/intent/">Intent / Recovery →</a>
+          </nav>
+        </div>
+      </article>
+    </main>
+    <footer class="note-footer">
+      <span>MINJAE LEE / ENGINEERING NOTES</span
+      ><span
+        ><span data-lang="ko" lang="ko"
+          >가상 데이터로 만든 독립적인 개인 실험</span
+        ><span data-lang="en" lang="en" hidden
+          >Independent personal experiments with synthetic data</span
+        ></span
+      >
+    </footer>
+    <p
+      id="language-status"
+      class="sr-only"
+      aria-live="polite"
+      aria-atomic="true"
+    ></p>
+  </body>
+</html>

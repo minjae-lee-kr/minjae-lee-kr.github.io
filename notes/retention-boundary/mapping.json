@@ -1,0 +1,767 @@
+{
+  "schemaVersion": 1,
+  "status": "Presentation mapping for one historical capture; expected values are assertions, not new measurements.",
+  "capture": {
+    "file": "recording/evidence.json",
+    "sha256": "c700118d900858be573d6924be16ae96ffe95369a57a9aa01aed0f1c83dd8fdd",
+    "runId": "retention-2026-10-16T18-29-07-589Z-a96f9a01",
+    "completedAt": "2026-10-16T18:29:09.869Z",
+    "sourceRevision": "c60801f969ab0223812bb4fa609c2de3e7651c91",
+    "sourceFingerprint": "85b53a5ca373354fcf3bb492dae1e03bc5236feff412d6b531f4a38919c8c803",
+    "gitDirty": false,
+    "sourceStable": true,
+    "runtime": {
+      "node": "24.19.0",
+      "sqlite": "3.53.3",
+      "platform": "win32",
+      "architecture": "x64"
+    }
+  },
+  "semantics": {
+    "clock": "Injected logical fixture units, never measured elapsed milliseconds",
+    "retention": "Minimum from remote acceptance/commit; a still-retained record may be read after expiry",
+    "limits": [
+      "Source hashes and these selector assertions do not authenticate execution.",
+      "Per-owner journal sequence and parent observation sequence are separate streams, not one universal sequence.",
+      "Remote history is audit-only; policy cannot query it.",
+      "This is a selection of actual captured events, not a simulation or invented benchmark."
+    ]
+  },
+  "informationLayers": [
+    {
+      "id": "policy",
+      "label": {
+        "en": "Available to the retry policy",
+        "ko": "재시도 정책이 가진 정보"
+      }
+    },
+    {
+      "id": "harness",
+      "label": {
+        "en": "Fixture controller observation",
+        "ko": "실험 제어기의 관측"
+      }
+    },
+    {
+      "id": "auditor",
+      "label": {
+        "en": "Privileged post-stop audit",
+        "ko": "종료 후 감사기만 볼 수 있는 정보"
+      }
+    },
+    {
+      "id": "client",
+      "label": {
+        "en": "Local API caller response",
+        "ko": "로컬 API 호출자 응답"
+      }
+    }
+  ],
+  "panels": [
+    {
+      "id": "indistinguishable",
+      "title": {
+        "en": "The same local evidence. Zero or one remote effect.",
+        "ko": "같은 로컬 근거, 상대 효과는 0건 또는 1건."
+      },
+      "defaultLayer": "policy",
+      "casePointers": {
+        "zero": "/cases/3",
+        "one": "/cases/2"
+      },
+      "localSelections": [
+        "zero-unknown",
+        "zero-absent",
+        "zero-refused",
+        "one-unknown",
+        "one-absent",
+        "one-refused"
+      ],
+      "auditSelections": [
+        "zero-remote-history",
+        "zero-remote-effects",
+        "one-remote-history",
+        "one-remote-effects"
+      ],
+      "equality": {
+        "result": true,
+        "normalization": "none",
+        "tableKeys": ["intents", "grants", "localJournal", "localClockFloor"],
+        "responses": "Compare local-http-response status and body only; parent process IDs and fault controls are NOT policy observations.",
+        "sourcePointer": "/localObservationsIndistinguishable"
+      },
+      "metrics": [
+        {
+          "case": "zero",
+          "remoteEffects": 0,
+          "localGrants": 0
+        },
+        {
+          "case": "one",
+          "remoteEffects": 1,
+          "localGrants": 0
+        }
+      ],
+      "caption": {
+        "en": "These are two separate recorded executions. Their local tables and response bodies match exactly. Only the auditor can distinguish their remote history.",
+        "ko": "서로 다른 두 실행의 기록입니다. 로컬 테이블과 응답 본문은 완전히 같습니다. 상대 이력의 차이는 감사기만 볼 수 있습니다."
+      }
+    },
+    {
+      "id": "late-arrival",
+      "title": {
+        "en": "The dispatch was eligible. The arrival was too late.",
+        "ko": "전송은 허용됐지만, 도착은 늦었습니다."
+      },
+      "casePointer": "/cases/4",
+      "layout": "Three evidence lanes; parent gate order is ordinal, not a measured-time axis.",
+      "selections": {
+        "initialEffect": "late-initial-effect",
+        "retry": "late-retry",
+        "held": "late-held",
+        "localClock": "late-local-clock",
+        "remoteClock": "late-remote-clock",
+        "pruneAck": "late-prune-ack",
+        "pruneRecord": "late-prune-record",
+        "forwarded": "late-forwarded",
+        "repeated": "late-second-effect",
+        "localGrant": "late-local-grant",
+        "final": "late-final-response"
+      },
+      "parentOrderedSelections": [
+        "late-held",
+        "late-local-clock",
+        "late-remote-clock",
+        "late-prune-ack",
+        "late-forwarded",
+        "late-final-response"
+      ],
+      "correlation": {
+        "attemptId": "attempt-2",
+        "selectionIds": [
+          "late-retry",
+          "late-held",
+          "late-forwarded",
+          "late-second-effect",
+          "late-local-grant"
+        ]
+      },
+      "thresholds": [
+        {
+          "id": "local-cutoff",
+          "value": 10900,
+          "kind": "stored policy threshold, not a recorded event",
+          "pointer": "/cases/4/audit/intents/0/retry_before"
+        },
+        {
+          "id": "first-record-minimum",
+          "value": 11000,
+          "kind": "derived contract threshold, not a recorded prune event",
+          "derive": {
+            "operation": "sum",
+            "pointers": ["/cases/4/audit/effects/0/created_at", "/fixture/ttl"]
+          }
+        }
+      ],
+      "metrics": {
+        "remoteEffects": 2,
+        "localGrants": 1,
+        "remoteEffectAtMostOnce": false,
+        "expectedLimitationEstablished": true
+      },
+      "caption": {
+        "en": "Dispatch: logical 10,020. Cutoff: 10,900. Pruning and remote effect: 12,000. The gap is injected fixture time, not observed network delay.",
+        "ko": "전송은 논리 시각 10,020, 기한은 10,900, 삭제와 상대 효과는 12,000입니다. 차이는 주입한 실험 시각이며 관측된 네트워크 지연이 아닙니다."
+      }
+    }
+  ],
+  "selections": [
+    {
+      "id": "zero-local-tables",
+      "pointer": "/cases/3/audit/localJournal",
+      "label": {
+        "en": "Local journal",
+        "ko": "로컬 기록"
+      },
+      "visibility": "policy",
+      "expected": [
+        {
+          "seq": 1,
+          "intent_key": "key-intent-same-business",
+          "event": "intent-persisted",
+          "clock": 10000,
+          "detail": {
+            "retention": 1000,
+            "margin": 100
+          }
+        },
+        {
+          "seq": 2,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-post",
+          "clock": 10000,
+          "detail": {
+            "retryBefore": 10900,
+            "attemptId": "attempt-1"
+          }
+        },
+        {
+          "seq": 3,
+          "intent_key": "key-intent-same-business",
+          "event": "transport-unknown",
+          "clock": 10000,
+          "detail": {
+            "attemptId": "attempt-1",
+            "name": "TypeError"
+          }
+        },
+        {
+          "seq": 4,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-lookup",
+          "clock": 12000,
+          "detail": {
+            "retryBefore": 10900,
+            "attemptId": "attempt-2"
+          }
+        },
+        {
+          "seq": 5,
+          "intent_key": "key-intent-same-business",
+          "event": "observed-absence",
+          "clock": 12000,
+          "detail": {
+            "attemptId": "attempt-2",
+            "meaning": "retained-key absence does not prove historical non-execution"
+          }
+        },
+        {
+          "seq": 6,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-refused",
+          "clock": 12000,
+          "detail": {
+            "reason": "RETENTION_HORIZON_REACHED",
+            "retryBefore": 10900
+          }
+        },
+        {
+          "seq": 7,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-refused",
+          "clock": null,
+          "detail": {
+            "reason": "CLOCK_UNKNOWN",
+            "retryBefore": 10900
+          }
+        },
+        {
+          "seq": 8,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-refused",
+          "clock": 12000,
+          "detail": {
+            "reason": "RETENTION_HORIZON_REACHED",
+            "retryBefore": 10900
+          }
+        }
+      ]
+    },
+    {
+      "id": "zero-unknown",
+      "pointer": "/cases/3/audit/localJournal/2",
+      "label": {
+        "en": "Transport result unknown",
+        "ko": "통신 결과 미확정"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 3,
+        "intent_key": "key-intent-same-business",
+        "event": "transport-unknown",
+        "clock": 10000,
+        "detail": {
+          "attemptId": "attempt-1",
+          "name": "TypeError"
+        }
+      }
+    },
+    {
+      "id": "zero-absent",
+      "pointer": "/cases/3/audit/localJournal/4",
+      "label": {
+        "en": "No retained key found",
+        "ko": "보존된 키를 찾지 못함"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 5,
+        "intent_key": "key-intent-same-business",
+        "event": "observed-absence",
+        "clock": 12000,
+        "detail": {
+          "attemptId": "attempt-2",
+          "meaning": "retained-key absence does not prove historical non-execution"
+        }
+      }
+    },
+    {
+      "id": "zero-refused",
+      "pointer": "/cases/3/audit/localJournal/5",
+      "label": {
+        "en": "Automatic dispatch refused",
+        "ko": "자동 전송 거절"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 6,
+        "intent_key": "key-intent-same-business",
+        "event": "dispatch-refused",
+        "clock": 12000,
+        "detail": {
+          "reason": "RETENTION_HORIZON_REACHED",
+          "retryBefore": 10900
+        }
+      }
+    },
+    {
+      "id": "zero-remote-history",
+      "pointer": "/cases/3/audit/remoteJournal",
+      "label": {
+        "en": "Downstream journal: auditor access only",
+        "ko": "상대 기록: 감사기만 열람"
+      },
+      "visibility": "auditor",
+      "expected": [
+        {
+          "seq": 1,
+          "intent_key": "key-intent-same-business",
+          "event": "post-drop-before-commit",
+          "clock": 10000,
+          "detail": {
+            "attemptId": "attempt-1"
+          }
+        },
+        {
+          "seq": 2,
+          "intent_key": "key-intent-same-business",
+          "event": "lookup-absent",
+          "clock": 12000,
+          "detail": {
+            "attemptId": "attempt-2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zero-remote-effects",
+      "pointer": "/cases/3/audit/effects",
+      "label": {
+        "en": "Durable downstream effects",
+        "ko": "상대 시스템에 저장된 효과"
+      },
+      "visibility": "auditor",
+      "expected": []
+    },
+    {
+      "id": "one-local-tables",
+      "pointer": "/cases/2/audit/localJournal",
+      "label": {
+        "en": "Local journal",
+        "ko": "로컬 기록"
+      },
+      "visibility": "policy",
+      "expected": [
+        {
+          "seq": 1,
+          "intent_key": "key-intent-same-business",
+          "event": "intent-persisted",
+          "clock": 10000,
+          "detail": {
+            "retention": 1000,
+            "margin": 100
+          }
+        },
+        {
+          "seq": 2,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-post",
+          "clock": 10000,
+          "detail": {
+            "retryBefore": 10900,
+            "attemptId": "attempt-1"
+          }
+        },
+        {
+          "seq": 3,
+          "intent_key": "key-intent-same-business",
+          "event": "transport-unknown",
+          "clock": 10000,
+          "detail": {
+            "attemptId": "attempt-1",
+            "name": "TypeError"
+          }
+        },
+        {
+          "seq": 4,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-lookup",
+          "clock": 12000,
+          "detail": {
+            "retryBefore": 10900,
+            "attemptId": "attempt-2"
+          }
+        },
+        {
+          "seq": 5,
+          "intent_key": "key-intent-same-business",
+          "event": "observed-absence",
+          "clock": 12000,
+          "detail": {
+            "attemptId": "attempt-2",
+            "meaning": "retained-key absence does not prove historical non-execution"
+          }
+        },
+        {
+          "seq": 6,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-refused",
+          "clock": 12000,
+          "detail": {
+            "reason": "RETENTION_HORIZON_REACHED",
+            "retryBefore": 10900
+          }
+        },
+        {
+          "seq": 7,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-refused",
+          "clock": null,
+          "detail": {
+            "reason": "CLOCK_UNKNOWN",
+            "retryBefore": 10900
+          }
+        },
+        {
+          "seq": 8,
+          "intent_key": "key-intent-same-business",
+          "event": "dispatch-refused",
+          "clock": 12000,
+          "detail": {
+            "reason": "RETENTION_HORIZON_REACHED",
+            "retryBefore": 10900
+          }
+        }
+      ]
+    },
+    {
+      "id": "one-unknown",
+      "pointer": "/cases/2/audit/localJournal/2",
+      "label": {
+        "en": "Transport result unknown",
+        "ko": "통신 결과 미확정"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 3,
+        "intent_key": "key-intent-same-business",
+        "event": "transport-unknown",
+        "clock": 10000,
+        "detail": {
+          "attemptId": "attempt-1",
+          "name": "TypeError"
+        }
+      }
+    },
+    {
+      "id": "one-absent",
+      "pointer": "/cases/2/audit/localJournal/4",
+      "label": {
+        "en": "No retained key found",
+        "ko": "보존된 키를 찾지 못함"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 5,
+        "intent_key": "key-intent-same-business",
+        "event": "observed-absence",
+        "clock": 12000,
+        "detail": {
+          "attemptId": "attempt-2",
+          "meaning": "retained-key absence does not prove historical non-execution"
+        }
+      }
+    },
+    {
+      "id": "one-refused",
+      "pointer": "/cases/2/audit/localJournal/5",
+      "label": {
+        "en": "Automatic dispatch refused",
+        "ko": "자동 전송 거절"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 6,
+        "intent_key": "key-intent-same-business",
+        "event": "dispatch-refused",
+        "clock": 12000,
+        "detail": {
+          "reason": "RETENTION_HORIZON_REACHED",
+          "retryBefore": 10900
+        }
+      }
+    },
+    {
+      "id": "one-remote-history",
+      "pointer": "/cases/2/audit/remoteJournal",
+      "label": {
+        "en": "Downstream journal: auditor access only",
+        "ko": "상대 기록: 감사기만 열람"
+      },
+      "visibility": "auditor",
+      "expected": [
+        {
+          "seq": 1,
+          "intent_key": "key-intent-same-business",
+          "event": "post-new-effect",
+          "clock": 10000,
+          "detail": {
+            "receipt": "effect_f1a91aa5-2814-4603-b238-13af4b3df5f9",
+            "attemptId": "attempt-1"
+          }
+        },
+        {
+          "seq": 2,
+          "intent_key": "key-intent-same-business",
+          "event": "dedup-pruned",
+          "clock": 12000,
+          "detail": {}
+        },
+        {
+          "seq": 3,
+          "intent_key": "key-intent-same-business",
+          "event": "lookup-absent",
+          "clock": 12000,
+          "detail": {
+            "attemptId": "attempt-2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "one-remote-effects",
+      "pointer": "/cases/2/audit/effects",
+      "label": {
+        "en": "Durable downstream effects",
+        "ko": "상대 시스템에 저장된 효과"
+      },
+      "visibility": "auditor",
+      "expected": [
+        {
+          "receipt": "effect_f1a91aa5-2814-4603-b238-13af4b3df5f9",
+          "intent_key": "key-intent-same-business",
+          "units": 1,
+          "created_at": 10000
+        }
+      ]
+    },
+    {
+      "id": "late-initial-effect",
+      "pointer": "/cases/4/audit/remoteJournal/0",
+      "label": {
+        "en": "First effect committed",
+        "ko": "첫 효과 저장"
+      },
+      "visibility": "auditor",
+      "expected": {
+        "seq": 1,
+        "intent_key": "key-intent-same-business",
+        "event": "post-new-effect",
+        "clock": 10000,
+        "detail": {
+          "receipt": "effect_c54fd1b0-ad89-48db-900e-58fefa2e3948",
+          "attemptId": "attempt-1"
+        }
+      }
+    },
+    {
+      "id": "late-retry",
+      "pointer": "/cases/4/audit/localJournal/3",
+      "label": {
+        "en": "Retry dispatched before local cutoff",
+        "ko": "로컬 기한 내 재전송"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 4,
+        "intent_key": "key-intent-same-business",
+        "event": "dispatch-post",
+        "clock": 10020,
+        "detail": {
+          "retryBefore": 10900,
+          "attemptId": "attempt-2"
+        }
+      }
+    },
+    {
+      "id": "late-held",
+      "pointer": "/cases/4/observations/10",
+      "label": {
+        "en": "Actual retry held by relay",
+        "ko": "중계가 실제 재시도 요청 보류"
+      },
+      "visibility": "harness",
+      "expected": {
+        "sequence": 11,
+        "type": "relay-held",
+        "attemptId": "attempt-2"
+      }
+    },
+    {
+      "id": "late-local-clock",
+      "pointer": "/cases/4/observations/11",
+      "label": {
+        "en": "Parent sets local clock",
+        "ko": "부모가 로컬 시각 설정"
+      },
+      "visibility": "harness",
+      "expected": {
+        "sequence": 12,
+        "type": "fixture-control",
+        "role": "local",
+        "pid": 17124,
+        "control": "clock",
+        "value": 12000
+      }
+    },
+    {
+      "id": "late-remote-clock",
+      "pointer": "/cases/4/observations/12",
+      "label": {
+        "en": "Parent sets downstream clock",
+        "ko": "부모가 상대 시각 설정"
+      },
+      "visibility": "harness",
+      "expected": {
+        "sequence": 13,
+        "type": "fixture-control",
+        "role": "downstream",
+        "pid": 23852,
+        "control": "clock",
+        "value": 12000
+      }
+    },
+    {
+      "id": "late-prune-ack",
+      "pointer": "/cases/4/observations/13",
+      "label": {
+        "en": "Prune control acknowledged",
+        "ko": "삭제 제어 완료 응답"
+      },
+      "visibility": "harness",
+      "expected": {
+        "sequence": 14,
+        "type": "fixture-control",
+        "role": "downstream",
+        "pid": 23852,
+        "control": "prune"
+      }
+    },
+    {
+      "id": "late-prune-record",
+      "pointer": "/cases/4/audit/remoteJournal/1",
+      "label": {
+        "en": "Expired dedup record pruned",
+        "ko": "만료된 중복 방지 기록 삭제"
+      },
+      "visibility": "auditor",
+      "expected": {
+        "seq": 2,
+        "intent_key": "key-intent-same-business",
+        "event": "dedup-pruned",
+        "clock": 12000,
+        "detail": {}
+      }
+    },
+    {
+      "id": "late-forwarded",
+      "pointer": "/cases/4/observations/14",
+      "label": {
+        "en": "Same attempt forwarded",
+        "ko": "동일한 시도 전달"
+      },
+      "visibility": "harness",
+      "expected": {
+        "sequence": 15,
+        "type": "relay-forwarded",
+        "attemptId": "attempt-2"
+      }
+    },
+    {
+      "id": "late-second-effect",
+      "pointer": "/cases/4/audit/remoteJournal/2",
+      "label": {
+        "en": "Second effect under the same key",
+        "ko": "같은 키의 두 번째 효과"
+      },
+      "visibility": "auditor",
+      "expected": {
+        "seq": 3,
+        "intent_key": "key-intent-same-business",
+        "event": "post-new-effect",
+        "clock": 12000,
+        "detail": {
+          "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+          "attemptId": "attempt-2"
+        }
+      }
+    },
+    {
+      "id": "late-local-grant",
+      "pointer": "/cases/4/audit/localJournal/4",
+      "label": {
+        "en": "One local grant records the new receipt",
+        "ko": "새 확인 번호로 로컬 결과 한 건 저장"
+      },
+      "visibility": "policy",
+      "expected": {
+        "seq": 5,
+        "intent_key": "key-intent-same-business",
+        "event": "local-grant",
+        "clock": 12000,
+        "detail": {
+          "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+          "attemptId": "attempt-2"
+        }
+      }
+    },
+    {
+      "id": "late-final-response",
+      "pointer": "/cases/4/observations/15",
+      "label": {
+        "en": "Local HTTP confirmation",
+        "ko": "로컬 HTTP 확정 응답"
+      },
+      "visibility": "client",
+      "expected": {
+        "sequence": 16,
+        "type": "local-http-response",
+        "intentId": "intent-same-business",
+        "action": "execute",
+        "status": 200,
+        "body": {
+          "intentId": "intent-same-business",
+          "key": "key-intent-same-business",
+          "command": {
+            "units": 1
+          },
+          "status": "confirmed",
+          "receipt": "effect_49f301ec-a5d9-4bee-b635-1982b2dc71da",
+          "firstDispatchAt": 10000,
+          "retryBefore": 10900,
+          "contract": "synthetic-retention-v1"
+        }
+      }
+    }
+  ]
+}

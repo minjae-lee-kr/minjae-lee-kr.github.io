@@ -1,0 +1,46 @@
+{
+  "kind": "recorded-local-run",
+  "readOnly": true,
+  "repository": "federated-catalog-lab",
+  "sourceRevision": "ff47d27ac38071cf7d1c611492b55f657d8d0a27",
+  "sourceDirty": false,
+  "generatedAt": "2026-10-16T16:48:24.068Z",
+  "sourceFingerprint": "d9fc503697e95ce98a342a1152d87cd529fdcb3283b50e0c2f817ccf118333f8",
+  "originalEvidenceSha256": "421617b5c8e27bb1446a864e909dfc3f0a3de6e223f914d323aa07502893aa50",
+  "evidenceFile": "report.json",
+  "upstreamManifest": "export.json",
+  "recordedDataFile": "report-data.js",
+  "originalRecordedDataSha256": "8f5d78b5879b422d946c20542323e0d3c06a8d529f24defc23f2a84ad5f7bc1f",
+  "displayAdaptations": [
+    "relative asset URLs",
+    "shared persisted language preference",
+    "Back/Forward preference restoration with report state preserved",
+    "recorded-run banner"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "3e14ad0797468c0e5a02acdcbc332283ea0509886509c89e29b93230c7d55aaf"
+    },
+    {
+      "path": "debt.css",
+      "sha256": "263102153bf7078b0436a2707d9af3b29a3b1c85b20fefbdcdd39bb03ee7af94"
+    },
+    {
+      "path": "debt.js",
+      "sha256": "6ba24767f9d90ea2746e2c24a367ab7a4db9c9e9068041e84dddaa11ca27b3f1"
+    },
+    {
+      "path": "report-data.js",
+      "sha256": "8f5d78b5879b422d946c20542323e0d3c06a8d529f24defc23f2a84ad5f7bc1f"
+    },
+    {
+      "path": "report.json",
+      "sha256": "421617b5c8e27bb1446a864e909dfc3f0a3de6e223f914d323aa07502893aa50"
+    },
+    {
+      "path": "export.json",
+      "sha256": "ce238a9b001384b55ad976ffce3eac3336d280e70b09c1db1952e5ff9dab7022"
+    }
+  ]
+}
