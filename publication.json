@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "purpose": "Static GitHub Pages publication from committed Git blobs.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "4f66ea71eee7cce6674ac22fb825b4f3a19d9f55",
+  "sourceCommit": "30a8b244513730e76bbe05f86c47206184123bc2",
   "sourceDirectory": "docs/",
-  "copiedSiteFileCount": 110,
+  "copiedSiteFileCount": 119,
   "copiedRootFiles": [
     "LICENSE"
   ],
@@ -39,7 +39,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 769,
-      "sha256": "759366ffb83bb737e88ca26f5b6980adfcd21727d6403b45a5332dcb0c6c4adb"
+      "sha256": "7514245f41b4036016b7067498658f47d5919d6b5153f81fa1f54b8a68e20060"
     },
     {
       "path": "assets/fonts/README.txt",
@@ -248,6 +248,22 @@
       "gitMode": "100644",
       "size": 2456,
       "sha256": "6989cfab412be404c3b41d378a64b3fcaab91f7e686433f6e12ff852dde8423f"
+    },
+    {
+      "path": "assets/social/react-recheck.png",
+      "sourcePath": "docs/assets/social/react-recheck.png",
+      "gitBlob": "103d439283cb3630355a06e2e0cfea8e8b2cc5cf",
+      "gitMode": "100644",
+      "size": 51869,
+      "sha256": "5558801c6220ad4c415cf305ca2ebcd98c4ee1b136d9ccfa0309d962f718dafd"
+    },
+    {
+      "path": "assets/social/react-recheck.svg",
+      "sourcePath": "docs/assets/social/react-recheck.svg",
+      "gitBlob": "55bff8d120912bcc7dc50a79ef35e242f9f720a7",
+      "gitMode": "100644",
+      "size": 66055,
+      "sha256": "42c3f3007a71e9db0c7ad6eb7f7735a0775af3ff07c63db1f3571ee742f3eeb0"
     },
     {
       "path": "evidence/cancellation/debt.css",
@@ -500,10 +516,10 @@
     {
       "path": "index.html",
       "sourcePath": "docs/index.html",
-      "gitBlob": "97b9837f03836e012905649c5e069cf79914cc7c",
+      "gitBlob": "d1d25daa744b889d5ad6f7fdc436c54d6fe3d231",
       "gitMode": "100644",
-      "size": 10877,
-      "sha256": "9042abbb6d16a36a829ab6d8c5cb493b9a8dddfef88e103e95968d40a7692d6e"
+      "size": 11622,
+      "sha256": "701ed0bae3314a4a022c25a3ae68b27f18c2aa261b8a8aa3da57f33c45fdf712"
     },
     {
       "path": "notes/assets/cancellation-trace.en.svg",
@@ -660,10 +676,10 @@
     {
       "path": "portfolio.js",
       "sourcePath": "docs/portfolio.js",
-      "gitBlob": "124b8cbeac3561376e287a72002d68cade5ede7b",
+      "gitBlob": "51e9353f01553139bc6b8e9f9086a01b476c75a5",
       "gitMode": "100644",
-      "size": 18269,
-      "sha256": "8a9c056d9dd67ac73975df2c295b9b8c596ce42f335ddff99f0ac4c8016b7a0f"
+      "size": 19066,
+      "sha256": "497edca12b8a69090d537fe17f81aadc2db98f423bcd8e8cec42a1d1146c9819"
     },
     {
       "path": "research/approval-memory/copy.js",
@@ -748,18 +764,18 @@
     {
       "path": "research/client-cache/copy.js",
       "sourcePath": "docs/research/client-cache/copy.js",
-      "gitBlob": "27b62f7add306c7e0b3d3ecc75ee4028bd5e9034",
+      "gitBlob": "d33d042468f64781d687d0adc6645eff1aa13f0f",
       "gitMode": "100644",
-      "size": 12159,
-      "sha256": "6ecab3b53c50f8cbf5bb89493a7caf69c34ab65f33455b20f39b59be3c8bf08c"
+      "size": 12354,
+      "sha256": "20f511fa57045329d5605a9333c7572d27202b4ae2a924720df7420775c53945"
     },
     {
       "path": "research/client-cache/index.html",
       "sourcePath": "docs/research/client-cache/index.html",
-      "gitBlob": "dc90db0015041e58dcc0aabd979ff1e1c78ea27d",
+      "gitBlob": "0e1ff9350e222c8bf7ec8da85e15f84e1ec9cdba",
       "gitMode": "100644",
-      "size": 10700,
-      "sha256": "3eaf7383423c580212b15a95ba1ae4fb1316dea8744333014f288adc0c56f15e"
+      "size": 10841,
+      "sha256": "c179c115864f893fcd55ff8cbd3cc2dc7e53e2b6d0a98a71dfdfacdafb9141a2"
     },
     {
       "path": "research/client-cache/model.js",
@@ -866,6 +882,62 @@
       "sha256": "dc373b2aeb1d600f571e555304f54533541593d0eb3c03ada907614cc24944b3"
     },
     {
+      "path": "research/react-recheck/copy.js",
+      "sourcePath": "docs/research/react-recheck/copy.js",
+      "gitBlob": "af7be5a7bd8717aa1e8641987295363469d0e8f9",
+      "gitMode": "100644",
+      "size": 11368,
+      "sha256": "6a8ed213e4b6a4293421382f32b2c99a9ef0eee8764987676c9b237a69030a32"
+    },
+    {
+      "path": "research/react-recheck/index.html",
+      "sourcePath": "docs/research/react-recheck/index.html",
+      "gitBlob": "7bfd90b066461a99b604e749d64fda73dbc44f07",
+      "gitMode": "100644",
+      "size": 8261,
+      "sha256": "fb37bdcd835959db158d005b3898d2bb08c0520917a089e6c1027a71eef6adb4"
+    },
+    {
+      "path": "research/react-recheck/model.js",
+      "sourcePath": "docs/research/react-recheck/model.js",
+      "gitBlob": "b49c88afe808cbc027a9c984ad652344495eb31e",
+      "gitMode": "100644",
+      "size": 11098,
+      "sha256": "c30f7d1577b4b31e3bab27579be860f26a99ad417f7c7b4e6c8dc2c00d868e39"
+    },
+    {
+      "path": "research/react-recheck/pin.js",
+      "sourcePath": "docs/research/react-recheck/pin.js",
+      "gitBlob": "3bba85d56a66f804239d12f247849543eedc967f",
+      "gitMode": "100644",
+      "size": 339,
+      "sha256": "a91dc9a00fc7c998af85d43f2feaba045900a822ae933ea37fca15903c2ebe0b"
+    },
+    {
+      "path": "research/react-recheck/reader.css",
+      "sourcePath": "docs/research/react-recheck/reader.css",
+      "gitBlob": "b52f0de4a69a4411efc664367c196e1540d52b64",
+      "gitMode": "100644",
+      "size": 4677,
+      "sha256": "1c9626800b7185d463df37a2d74f5704289cb41b721ad2c2f5db5d9dabfb80d0"
+    },
+    {
+      "path": "research/react-recheck/reader.js",
+      "sourcePath": "docs/research/react-recheck/reader.js",
+      "gitBlob": "bf7e70c9d770ecf6dd950d1ebf25117661c5920a",
+      "gitMode": "100644",
+      "size": 6212,
+      "sha256": "db850ad8a82c9ad84f53578c40ae9af72c5502ef32aaab1262ea72516a3cf919"
+    },
+    {
+      "path": "research/react-recheck/recording.json",
+      "sourcePath": "docs/research/react-recheck/recording.json",
+      "gitBlob": "2cc97d6a945e06fdbfcfb50559fe4f04bcab5ea5",
+      "gitMode": "100644",
+      "size": 312589,
+      "sha256": "a39a4881cd04a400795aae3ad4f5291146813ef6902d3c58e55bd82e7fc0863e"
+    },
+    {
       "path": "research/what-the-client-knows/comparison.css",
       "sourcePath": "docs/research/what-the-client-knows/comparison.css",
       "gitBlob": "e48359718855180e8cf47be9a0da3507c0fa3d34",
@@ -900,10 +972,10 @@
     {
       "path": "styles.css",
       "sourcePath": "docs/styles.css",
-      "gitBlob": "3ecdb68713b386c15009bcd99c5b28e105ec37b0",
+      "gitBlob": "60f9c3a343a0314a125347074de787bc57ffa138",
       "gitMode": "100644",
-      "size": 15626,
-      "sha256": "77125e31149ce89d5f7273c281f319c1281a873cce9ee0803ea4b3b58eb54b5a"
+      "size": 16215,
+      "sha256": "ed9d9573d3f3426622a9df9d9199db93fdca47a4b76e653455e90197c7e3821b"
     },
     {
       "path": "workbench.css",

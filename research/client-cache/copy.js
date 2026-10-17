@@ -1,5 +1,6 @@
 export const copy = {
   ko: {
+    reactFollowup: "React 후속 실험: 재확인 실패 뒤 화면에는 무엇이 남을까요? →",
     skip: "조회 결과 비교로 건너뛰기",
     back: "/ 엔지니어링 노트",
     language: "언어",
@@ -85,6 +86,7 @@ export const copy = {
     },
   },
   en: {
+    reactFollowup: "React follow-up: what remains on screen after a failed recheck? →",
     skip: "Skip to the query comparison",
     back: "/ Engineering notes",
     language: "Language",

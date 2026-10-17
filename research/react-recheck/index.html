@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Stock: 3. The recheck failed. — Minjae Lee</title>
+    <meta
+      name="description"
+      content="A React inventory screen kept its old value after a failed recheck. Compare actual hook values, DOM observations and HTTP requests."
+    />
+    <link
+      rel="canonical"
+      href="https://minjae-lee-kr.github.io/research/react-recheck/"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Stock: 3. The recheck failed." />
+    <meta
+      property="og:description"
+      content="A visible value and a cleared error do not prove that inventory was checked again."
+    />
+    <meta
+      property="og:url"
+      content="https://minjae-lee-kr.github.io/research/react-recheck/"
+    />
+    <meta
+      property="og:image"
+      content="https://minjae-lee-kr.github.io/assets/social/react-recheck.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="reader.css" />
+    <script type="module" src="reader.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#comparison" data-copy="skip"
+      >Skip to the recording</a
+    >
+    <header class="site-header wrap">
+      <a class="wordmark" href="../../"
+        >Minjae Lee
+        <span class="wordmark-role" data-copy="back"
+          >/ Engineering notes</span
+        ></a
+      >
+      <div
+        class="languages"
+        role="group"
+        data-label="language"
+        aria-label="Language"
+      >
+        <button type="button" data-language="ko" lang="ko" aria-pressed="false">
+          KO</button
+        ><span aria-hidden="true">/</span
+        ><button type="button" data-language="en" lang="en" aria-pressed="true">
+          EN
+        </button>
+      </div>
+    </header>
+    <main class="wrap reader">
+      <section class="intro" data-reading-section>
+        <p class="eyebrow" data-copy="eyebrow">REACT / A FAILED RECHECK</p>
+        <h1 data-copy="title">Stock: 3. The recheck failed.</h1>
+        <p class="standfirst" data-copy="lead">
+          The inventory recheck failed. The screen still showed 3. Reading the
+          same cache then cleared the error—without sending another request.
+        </p>
+        <p data-copy="context">
+          A React useQuery component displays synthetic products. It receives a
+          healthy response, encounters an inventory failure, then reads its
+          cache again. Compare two error policies below.
+        </p>
+        <p class="record-label" data-copy="recorded">
+          Personal experiment · Actual HTTP and React DOM observations ·
+          Recorded results
+        </p>
+      </section>
+      <section
+        id="comparison"
+        tabindex="-1"
+        data-reading-section
+        aria-labelledby="comparison-title"
+      >
+        <div class="heading">
+          <h2 id="comparison-title" data-copy="compare">
+            Same failure, different screen
+          </h2>
+          <span id="integrity" role="status">Checking recording</span>
+        </div>
+        <fieldset>
+          <legend data-copy="policy">Error policy</legend>
+          <div class="policies">
+            <button
+              type="button"
+              data-policy="none"
+              aria-pressed="true"
+              disabled
+              data-copy="policyNone"
+            >
+              none · Exclude partial data from the failed response</button
+            ><button
+              type="button"
+              data-policy="all"
+              aria-pressed="false"
+              disabled
+              data-copy="policyAll"
+            >
+              all · Accept partial data alongside errors
+            </button>
+          </div>
+        </fieldset>
+        <div
+          class="steps"
+          role="group"
+          data-label="steps"
+          aria-label="Reading order"
+        >
+          <button
+            type="button"
+            data-step="warm"
+            aria-pressed="false"
+            disabled
+            data-copy="warm"
+          >
+            1. Healthy lookup</button
+          ><button
+            type="button"
+            data-step="failed"
+            aria-pressed="true"
+            disabled
+            data-copy="failed"
+          >
+            2. Failed recheck</button
+          ><button
+            type="button"
+            data-step="cache-first"
+            aria-pressed="false"
+            disabled
+            data-copy="cache-first"
+          >
+            3. Read cache again
+          </button>
+        </div>
+        <p id="load-message" role="status">
+          Checking the original bytes and source provenance.
+        </p>
+        <div id="results" hidden>
+          <div class="observation">
+            <div class="inventory">
+              <p data-copy="display">Inventory shown on screen</p>
+              <p id="inventory-value"></p>
+              <span class="mono">hook.data · demo-lamp</span>
+            </div>
+            <dl id="values"></dl>
+          </div>
+          <p id="explanation" class="explanation"></p>
+          <p class="legend" data-copy="legend"></p>
+          <details id="step-detail">
+            <summary data-copy="detail">
+              Raw values and DOM observation for this step
+            </summary>
+            <pre
+              id="step-json"
+              tabindex="0"
+              aria-label="Selected step JSON"
+            ></pre>
+          </details>
+        </div>
+      </section>
+      <section data-reading-section aria-labelledby="design-title">
+        <h2 id="design-title" data-copy="designTitle">
+          Keep the value, or keep the failure?
+        </h2>
+        <p data-copy="designIntro"></p>
+        <div class="choices">
+          <article>
+            <span class="choice-number">01</span>
+            <h3 data-copy="choice1"></h3>
+            <p data-copy="cost1"></p>
+          </article>
+          <article>
+            <span class="choice-number">02</span>
+            <h3 data-copy="choice2"></h3>
+            <p data-copy="cost2"></p>
+          </article>
+          <article>
+            <span class="choice-number">03</span>
+            <h3 data-copy="choice3"></h3>
+            <p data-copy="cost3"></p>
+          </article>
+        </div>
+      </section>
+      <section
+        class="method"
+        data-reading-section
+        aria-labelledby="method-title"
+      >
+        <h2 id="method-title" data-copy="methodTitle">
+          What this experiment establishes
+        </h2>
+        <p data-copy="method"></p>
+        <p data-copy="dom"></p>
+        <p data-copy="limits"></p>
+        <details id="provenance-detail">
+          <summary data-copy="provenance">
+            Execution environment and source
+          </summary>
+          <pre
+            id="provenance-json"
+            tabindex="0"
+            aria-label="Recording provenance JSON"
+          ></pre>
+        </details>
+      </section>
+      <section class="reading" data-reading-section>
+        <h2 data-copy="readMore">Read the decisions and reproduction steps</h2>
+        <ul>
+          <li>
+            <a id="notes-link" data-copy="notes">Design notes · English</a>
+          </li>
+          <li>
+            <a id="source-link" data-copy="source"
+              >Experiment source · pinned revision</a
+            >
+          </li>
+          <li id="raw-item" hidden>
+            <a href="./recording.json" data-copy="rawLink"
+              >Full raw recording · JSON</a
+            >
+          </li>
+          <li>
+            <a href="../client-cache/" data-copy="prior"
+              >Earlier experiment · query and cache</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+    <noscript
+      ><p class="wrap">
+        JavaScript is required to verify and compare the recording.
+        <a href="https://github.com/minjae-lee-kr/federated-catalog-lab"
+          >Read the repository notes.</a
+        >
+      </p></noscript
+    >
+  </body>
+</html>

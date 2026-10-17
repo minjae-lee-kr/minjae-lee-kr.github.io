@@ -32,6 +32,10 @@ const copy = {
     memoryTitle: "Code rolled back. Approval unused?",
     memoryLead: "Compare a code rollback with rewinding the record that remembers an approval was used.",
     memoryLink: "Inspect the recorded Git states",
+    reactLabel: "REACT / AFTER A FAILED RECHECK",
+    reactTitle: "The error disappeared. The recheck still failed.",
+    reactLead: "The screen kept an earlier quantity. A cache read cleared the error without another request. Compare the Promise, hook values and recorded DOM—and what each can tell the user.",
+    reactLink: "Follow the React observations",
     workbenchUnavailable:
       "The examples could not load. The notes below include the code and recorded results.",
     workEyebrow: "ENGINEERING NOTES",
@@ -117,6 +121,10 @@ const copy = {
     memoryTitle: "코드를 되돌리면, 승인도 다시 쓸 수 있을까?",
     memoryLead: "코드만 되돌리는 것과 승인 사용 기록까지 되감는 것은 다릅니다. 실제 Git 상태를 비교합니다.",
     memoryLink: "승인 사용 기록 비교하기",
+    reactLabel: "REACT · 재확인 실패 후의 화면",
+    reactTitle: "오류는 사라졌는데, 재확인은 실패했습니다.",
+    reactLead: "화면에는 이전 수량이 남았습니다. 캐시에서 다시 읽자 새 요청 없이 오류도 사라졌습니다. Promise, hook 값, 실제 DOM을 비교하며 사용자에게 무엇을 안내할 수 있는지 살펴봅니다.",
+    reactLink: "React 관측 따라가기",
     workbenchUnavailable:
       "예제를 불러오지 못했습니다. 아래 실험 노트에서 코드와 실행 기록을 확인할 수 있습니다.",
     workEyebrow: "실험과 설계 기록",

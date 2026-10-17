@@ -880,3 +880,9 @@ html:lang(ko) .record-feature {
     font-size: 14px;
   }
 }
+
+/* A follow-up reading path, not an additional flagship project. */
+.react-followup { display:grid; grid-template-columns: 1fr 1fr; gap:56px; padding-block:38px; border-top:1px solid #ccd8e9; }
+.react-followup h2 { font-size:clamp(23px,2.5vw,34px); line-height:1.35; letter-spacing:-.035em; margin:12px 0 0; max-width:24ch; text-wrap:balance; }
+.react-followup p:not(.eyebrow) { margin:0 0 20px; color:#4c617d; line-height:1.85; }
+@media(max-width:650px) { .react-followup { grid-template-columns:1fr; gap:20px; padding-block:28px; } .react-followup p:not(.eyebrow) { font-size:14px; } }
