@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "dfbc10719beb26fc4bad7c54f69ff182202012bd",
+  "sourceCommit": "b9a822f4fcf55008113cb2da0264d2c44db547a5",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 67,
   "copiedRootFiles": [
@@ -383,10 +383,10 @@
     {
       "path": "notes/assets/cancellation-trace.ko.svg",
       "sourcePath": "docs/notes/assets/cancellation-trace.ko.svg",
-      "gitBlob": "9af8da5476ef78e9cab018e3c9fbe4a493672bce",
+      "gitBlob": "c3e0b23fa50ea0883d0af58a2a223ce7a017d43e",
       "gitMode": "100644",
-      "size": 159319,
-      "sha256": "5d8edddac0e1c763045222e8b7ba42200a963b901c7e4d5e132bfc4ee5e8268f"
+      "size": 159135,
+      "sha256": "ba66f548b2c8628b0dc1a482985afe51c2225b63380157912a243fa8915355b1"
     },
     {
       "path": "notes/assets/verified-change.en.svg",
@@ -407,10 +407,10 @@
     {
       "path": "notes/cancellation-debt/index.html",
       "sourcePath": "docs/notes/cancellation-debt/index.html",
-      "gitBlob": "5ae10b643177851dc48102c1f4d5f20969436f88",
+      "gitBlob": "47ab395041b8d719f024f0658322f54c19c91e74",
       "gitMode": "100644",
-      "size": 29756,
-      "sha256": "1fae9b490549b39687cf0d2ba70589c9b5befbdd4dfb8b0347e090cc7f6ffeab"
+      "size": 30453,
+      "sha256": "24f55d4fb2ec6a3b430f8618a51905df2e07d88078ea135b26c7eab03467252a"
     },
     {
       "path": "notes/generated-consumer/consumer.css",
@@ -519,10 +519,10 @@
     {
       "path": "notes/verified-change/index.html",
       "sourcePath": "docs/notes/verified-change/index.html",
-      "gitBlob": "c9f734378f3502d6c1192b939df0af4aef17b782",
+      "gitBlob": "3c9cfcc2e82c562d51697350f2d31e0fa815caff",
       "gitMode": "100644",
       "size": 31838,
-      "sha256": "1258866fbf60218218d9b3f91a2ece51dcdf158bcd88cf859d0a69dcd56631ee"
+      "sha256": "d59e25657c7b48c927fa527d43e629e3083e275ef9686db1e3aedead0dd22368"
     },
     {
       "path": "portfolio.js",
@@ -575,7 +575,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "73862bf6753e47640be8d26be6ccd02cbc620203c26bb20d7b9dae7f3ce23518"
+      "sha256": "8f685baf3c13ae280d03584a9be522b474ee5dcfd638b805f08358a18156d5cf"
     }
   ]
 }

@@ -158,9 +158,8 @@
           </h2>
           <div class="prose" data-lang="ko" lang="ko">
             <p>
-              동시 실행 수를 제한하려고, 작업을 받을 때 슬롯 하나를 점유하도록
-              했습니다. 이 슬롯을 코드와 아래 기록에서는 실행 허가(permit)라고
-              부릅니다. 슬롯은 <strong>2개</strong>로 설정했습니다.
+              동시 실행 수를 제한하려고, 작업을 받을 때 실행 슬롯(permit) 하나를
+              점유하도록 했습니다. 슬롯은 <strong>2개</strong>로 설정했습니다.
               점유한 슬롯은 최대 <strong>1개</strong>였지만,
               아직 끝나지 않은 작업은 <strong>4개</strong>였습니다.
             </p>
@@ -245,7 +244,7 @@
             <figcaption>
               <div data-lang="ko" lang="ko">
                 저장된 이벤트의 시간축입니다. 파란 실선은 미완료 작업, 황색
-                점선은 점유한 슬롯(보유 허가), 수평 점선은 한도 두 개입니다. 각 조건의 첫
+                점선은 점유한 실행 슬롯, 수평 점선은 한도 두 개입니다. 각 조건의 첫
                 진입을 0ms로 맞췄으며, 선을 마지막 기록 이후로 연장하지
                 않았습니다. 가로로 이동하면 전체 종료 구간을 볼 수 있습니다.
               </div>
@@ -569,6 +568,12 @@
             >
           </p>
         </section>
+        <p class="publication">
+          <span data-lang="ko" lang="ko">여러 요청이 하나의 작업을 함께 기다리면, 취소와 정리의 기준도 달라집니다.</span>
+          <span data-lang="en" lang="en" hidden>When callers share one execution, cancellation and cleanup need separate owners.</span>
+          <a data-lang="ko" lang="ko" data-focus-key="shared-work" href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/main/docs/shared-work.ko.md" rel="noreferrer">응답은 정상인데, 조회가 중복됐다 →</a>
+          <a data-lang="en" lang="en" data-focus-key="shared-work" hidden href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/main/docs/shared-work.md" rel="noreferrer">Correct responses, duplicate work →</a>
+        </p>
         <p class="publication">
           <span data-lang="ko" lang="ko">같은 Federation 실험에서 생성 타입과 컴파일 입력도 비교했습니다.</span>
           <span data-lang="en" lang="en" hidden>The same Federation lab also compares generated types with the inputs used for compilation.</span>
