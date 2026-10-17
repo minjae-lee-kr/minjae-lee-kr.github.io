@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "db62e444c5c0e868bacc7a96e677800f5f889030",
+  "sourceCommit": "a08737c5878f0d3bd3efaff41c44eafcfd6d7152",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 63,
   "copiedRootFiles": [
@@ -111,10 +111,10 @@
     {
       "path": "evidence/cancellation/debt.css",
       "sourcePath": "docs/evidence/cancellation/debt.css",
-      "gitBlob": "797f4fa301b09b1c7d70101b2c5ce38020ec7220",
+      "gitBlob": "fda212361ca689636d4281c48a22f13d5d6caec3",
       "gitMode": "100644",
       "size": 6444,
-      "sha256": "1639741374cb23f05041e5f27799ed8c065ebae6bd4d998550bc7a21c25148ad"
+      "sha256": "a338f37ab4fc72ad779ccf2c326a7ab0e4f4de189529a18e7da89b2ad43b02ba"
     },
     {
       "path": "evidence/cancellation/debt.js",
@@ -143,10 +143,10 @@
     {
       "path": "evidence/cancellation/recording.json",
       "sourcePath": "docs/evidence/cancellation/recording.json",
-      "gitBlob": "5e88b911390d73460d8ad843924c82b611491bbb",
+      "gitBlob": "fdf2e851f4cbdb573fc1fb20a5dbf648bf9dd9b8",
       "gitMode": "100644",
-      "size": 1712,
-      "sha256": "918a2f09db4bd195bfa2a887467b1ea506c89922a7370908a7d294451d515510"
+      "size": 1778,
+      "sha256": "7c603cecf7da17c1816629073031ce96b69d152b9f1aa579b971933d0675d9d8"
     },
     {
       "path": "evidence/cancellation/report-data.js",
@@ -543,7 +543,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "5c62a237bc4da64aeba947059846663d4e593acab2e2a3d415aef0b0cbe7c048"
+      "sha256": "f668d983f59bf3baa764aad4e3b7488043094bc2ff6cc0ac7fa560198eb69423"
     }
   ]
 }

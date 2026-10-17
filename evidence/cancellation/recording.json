@@ -17,7 +17,8 @@
     "Back/Forward preference restoration with report state preserved",
     "recorded-run banner with cool-toned presentation",
     "readable timeline width with keyboard scrolling",
-    "Korean execution-slot terminology"
+    "Korean execution-slot terminology",
+    "higher-contrast focus and chart series with unchanged data"
   ],
   "files": [
     {
@@ -26,7 +27,7 @@
     },
     {
       "path": "debt.css",
-      "sha256": "1639741374cb23f05041e5f27799ed8c065ebae6bd4d998550bc7a21c25148ad"
+      "sha256": "a338f37ab4fc72ad779ccf2c326a7ab0e4f4de189529a18e7da89b2ad43b02ba"
     },
     {
       "path": "debt.js",
