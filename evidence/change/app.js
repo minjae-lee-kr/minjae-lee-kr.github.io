@@ -263,6 +263,7 @@ for (const lang of ['ko', 'en'])
       /* The toggle still works without storage. */
     }
     render();
+    portfolioEvidenceSelect();
   });
 
 function render() {
@@ -270,7 +271,7 @@ function render() {
   document.documentElement.lang = language;
   document.querySelector('.skip').textContent = t.skip;
   document.querySelector('.languages').setAttribute('aria-label', t.languageLabel);
-  document.querySelector('.brand').setAttribute('aria-label', t.home);
+
   if ($('loading')) $('loading').textContent = loadFailed ? t.loadError : t.loading;
   for (const lang of ['ko', 'en']) $(lang).setAttribute('aria-pressed', String(language === lang));
   for (const id of ['eyebrow', 'headline', 'lead', 'boundary']) $(id).textContent = t[id];
@@ -358,7 +359,45 @@ function render() {
   $('fingerprint').textContent = `${t.fingerprint} ${p.sourceFingerprint}`;
   $('source-files').textContent = JSON.stringify(p, null, 2);
 }
+// Portfolio display language: explicit URL, then shared preference, then browser default.
+function portfolioEvidenceLanguage() {
+  const linked = new URLSearchParams(location.search).get('lang');
+  if (linked === 'ko' || linked === 'en') return linked;
+  try {
+    const saved = localStorage.getItem('minjae.portfolio.language');
+    if (saved === 'ko' || saved === 'en') return saved;
+  } catch { /* Storage is optional. */ }
+  return language;
+}
+function portfolioEvidenceLinks() {
+  for (const link of document.querySelectorAll('a[href]:not([download])')) {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#')) continue;
+    const url = new URL(href, location.href);
+    if (url.origin !== location.origin || !(url.pathname.endsWith('/') || url.pathname.endsWith('.html'))) continue;
+    url.searchParams.set('lang', language);
+    link.setAttribute('href', url.pathname + url.search + url.hash);
+  }
+}
+function portfolioEvidenceSelect() {
+  const url = new URL(location.href);
+  url.searchParams.set('lang', language);
+  history.replaceState(history.state, '', url);
+  portfolioEvidenceLinks();
+}
+function portfolioEvidenceRestore() {
+  const next = portfolioEvidenceLanguage();
+  if (next === language) return;
+  language = next;
+  render();
+  portfolioEvidenceLinks();
+}
+window.addEventListener('pageshow', portfolioEvidenceRestore);
+window.addEventListener('popstate', portfolioEvidenceRestore);
+language = portfolioEvidenceLanguage();
+// End portfolio display language integration.
 render();
+portfolioEvidenceLinks();
 try {
   const response = await fetch('report.json');
   if (!response.ok) throw new Error('The saved report could not be loaded. Reload this page or return to the portfolio.');
@@ -368,14 +407,3 @@ try {
   loadFailed = true;
   render();
 }
-
-// Integration only: restore the shared preference without resetting evidence state.
-window.addEventListener('pageshow', () => {
-  try {
-    const saved = localStorage.getItem('minjae.portfolio.language');
-    if ((saved === 'ko' || saved === 'en') && saved !== language) {
-      language = saved;
-      render();
-    }
-  } catch { /* Keep the current language if storage is unavailable. */ }
-});

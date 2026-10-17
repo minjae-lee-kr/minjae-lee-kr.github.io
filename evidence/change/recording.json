@@ -10,24 +10,25 @@
   "evidenceFile": "report.json",
   "displayAdaptations": [
     "relative asset URLs",
-    "shared persisted language preference",
-    "Back/Forward preference restoration with report state preserved",
+    "explicit URL language before shared preference; language controls update the URL and reading links",
+    "Back/Forward language restoration; no render when the language is unchanged",
     "recorded-run banner with cool-toned presentation",
     "standalone bilingual scenario, term definitions and reading guide; original evidence unchanged",
-    "saved-report load failure copy"
+    "saved-report load failure copy",
+    "visible brand name and higher-contrast case numbers"
   ],
   "files": [
     {
       "path": "index.html",
-      "sha256": "03733f68c792e4a68b53ce389ccfdce4452d574893104ce6b8397bb8a3234da8"
+      "sha256": "c4f862b69f5b4447612845a6df2bae1c1456a9ea52c88cd892eb9c86b643683b"
     },
     {
       "path": "style.css",
-      "sha256": "0a6f5366480bbfda6e969fd6f6c0e423d39cdd2ad82a91454dcadd91f55c4ec6"
+      "sha256": "d8f07667a7993a094fb31bce2ceb6387ecd6945980cc637953de2e81980cea70"
     },
     {
       "path": "app.js",
-      "sha256": "80ec88a6d12b85e5e9750db2d1503a467a8478cdfb61e8f0e880e1fc9e346a8b"
+      "sha256": "5a147746fda6f512e3d0e8309d141abbd71be63d8d6f4db9ca4d2b8fb27948da"
     },
     {
       "path": "report.json",

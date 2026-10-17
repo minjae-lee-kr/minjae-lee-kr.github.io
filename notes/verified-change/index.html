@@ -30,7 +30,7 @@
     <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
     <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../notes.css" />
-    <script src="../notes.js" defer></script>
+    <script src="../notes.js" type="module"></script>
   </head>
   <body
     data-title-ko="‘통과’의 의미까지 검증하기"
@@ -47,9 +47,9 @@
         <a
           class="wordmark"
           href="../../"
-          aria-label="Minjae Lee 포트폴리오 홈"
-          data-label-ko="Minjae Lee 포트폴리오 홈"
-          data-label-en="Minjae Lee portfolio home"
+          aria-label="M·L — Minjae Lee 포트폴리오 홈"
+          data-label-ko="M·L — Minjae Lee 포트폴리오 홈"
+          data-label-en="M·L — Minjae Lee portfolio home"
           >M<span>·</span>L</a
         ><a class="back-link" href="../../"
           ><span data-lang="ko" lang="ko">작업 모음으로</span
@@ -151,9 +151,9 @@
         >
           <h2>
             <span class="section-number">01</span
-            ><span data-lang="ko" lang="ko">컴파일러는 설정대로 통과시켰다</span
+            ><span data-lang="ko" lang="ko">오류 없이 끝났지만, 타입 검사는 생략됐다</span
             ><span data-lang="en" lang="en" hidden
-              >The compiler passed what it was told to check</span
+              >No diagnostics, with full type checking disabled</span
             >
           </h2>
           <div class="prose" data-lang="ko" lang="ko">
@@ -232,8 +232,8 @@
               >.
             </p>
             <p>
-              검사 옵션과 파일 목록을 별도로 정하면 이 예시의
-              <code>tsconfig</code> 경로는 막을 수 있습니다. 다만 TypeScript는
+              검사기가 옵션과 파일 목록을 직접 정하면, 후보의
+              <code>tsconfig</code>가 이 검사를 생략시킬 수 없습니다. 다만 TypeScript는
               <code>// @ts-nocheck</code> 같은 소스 수준의 지시문을 계속
               따릅니다. 현재 정책은 이를 금지하지 않습니다. 소스의 검사 생략
               지시문까지 제한하려면, 이를 허용할 조건과 검토 절차를 별도로
@@ -259,11 +259,11 @@
               >.
             </p>
             <p>
-              Fixed options and a fixed file list close the
-              candidate-configuration route shown here. TypeScript still honors
+              With checker-owned options and a fixed file list, the candidate’s
+              configuration cannot disable this check. TypeScript still honors
               source-level directives such as <code>// @ts-nocheck</code>, which
-              this policy allows. Restricting those suppressions needs an
-              explicit additional rule and review boundary.
+              this policy allows. Restricting those suppressions requires a
+              separate policy on when they are allowed and who reviews them.
               <a
                 data-focus-key="source-suppression"
                 href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html"
@@ -457,6 +457,11 @@
               돌아왔는지는 알 수 없습니다.
             </p>
             <p>
+              <a data-focus-key="approval-memory" href="../../research/approval-memory/">후속 실험</a>에서는
+              선택한 코드와 승인 사용 기록을 한 상태에 묶었습니다. 코드를
+              되돌리면서 사용 기록을 남긴 경우와, 기록까지 되감은 경우를 비교합니다.
+            </p>
+            <p>
               가상 코드, 실제 로컬 Git·컴파일러 프로세스, 스크립트로 입력한
               승인을 사용했고 <strong>LLM은 호출하지 않았습니다.</strong> 기록은
               서명하지 않았으며 로컬 실행 환경을 신뢰합니다. 승인자의 신원
@@ -473,6 +478,11 @@
               successfully reused the same still-fresh approval. That regression
               is distinct from the five-case saved report linked below. A
               current-value comparison has no memory of prior transitions.
+            </p>
+            <p>
+              A <a data-focus-key="approval-memory" href="../../research/approval-memory/">follow-up experiment</a>
+              puts code selection and approval receipts in one state. It compares
+              restoring the code while keeping its receipt with rewinding the record itself.
             </p>
             <p>
               These runs use synthetic code, real local Git/compiler processes

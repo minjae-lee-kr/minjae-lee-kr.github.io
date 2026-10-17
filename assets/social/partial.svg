@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f9fc"/>
+  <g font-family="Arial, sans-serif" fill="#18263d">
+    <text x="64" y="58" font-size="16" font-weight="700">MINJAE LEE</text>
+    <text x="1136" y="58" font-size="14" text-anchor="end" fill="#53657d">GRAPHQL / RECORDED EXPERIMENT</text>
+    <line x1="64" y1="82" x2="1136" y2="82" stroke="#d2ddec"/>
+    <text x="64" y="163" font-size="58" font-weight="700" letter-spacing="-2">One failed lookup.</text>
+    <text x="64" y="229" font-size="58" font-weight="700" letter-spacing="-2" fill="#245dd6">How much disappears?</text>
+    <text x="64" y="275" font-size="21" fill="#53657d">Shown: one per-key error, non-null availability.</text>
+    <g transform="translate(64 320)">
+      <rect width="340" height="218" rx="14" fill="#fff" stroke="#cbd8e9"/>
+      <text x="24" y="38" font-family="monospace" font-size="14" fill="#53657d">products[0]</text>
+      <path d="M130 65h70v78h-70zM143 65v78M155 87h31M155 99h31" fill="#edf3fc" stroke="#3a5f91" stroke-width="2"/>
+      <text x="24" y="185" font-size="22" font-weight="700">Name, price, inventory</text>
+    </g>
+    <g transform="translate(430 320)">
+      <rect width="340" height="218" rx="14" fill="#edf3fb" stroke="#9cb8df" stroke-dasharray="6 5"/>
+      <text x="24" y="38" font-family="monospace" font-size="14" fill="#53657d">products[1]</text>
+      <text x="170" y="126" text-anchor="middle" font-family="monospace" font-size="54" fill="#7287a4">null</text>
+      <text x="24" y="185" font-size="22" font-weight="700">More than inventory.</text>
+    </g>
+    <g transform="translate(796 320)">
+      <rect width="340" height="218" rx="14" fill="#fff" stroke="#cbd8e9"/>
+      <text x="24" y="38" font-family="monospace" font-size="14" fill="#53657d">products[2]</text>
+      <path d="M134 78h68v40c0 23-68 23-68 0V78Zm68 6h8c27 0 27 34 0 34h-8" fill="#edf3fc" stroke="#3a5f91" stroke-width="2"/>
+      <ellipse cx="168" cy="78" rx="34" ry="8" fill="#d9e7fa" stroke="#3a5f91" stroke-width="2"/>
+      <text x="24" y="185" font-size="22" font-weight="700">Name, price, inventory</text>
+    </g>
+    <text x="64" y="592" font-size="15" fill="#53657d">Independent synthetic experiment · Actual Apollo Gateway and HTTP subgraphs</text>
+    <text x="1136" y="592" font-size="15" text-anchor="end" fill="#245dd6">minjae-lee-kr.github.io</text>
+  </g>
+</svg>

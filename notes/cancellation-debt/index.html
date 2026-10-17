@@ -30,7 +30,7 @@
     <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
     <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../notes.css" />
-    <script src="../notes.js" defer></script>
+    <script src="../notes.js" type="module"></script>
   </head>
   <body
     data-title-ko="타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까?"
@@ -47,9 +47,9 @@
         <a
           class="wordmark"
           href="../../"
-          aria-label="Minjae Lee 포트폴리오 홈"
-          data-label-ko="Minjae Lee 포트폴리오 홈"
-          data-label-en="Minjae Lee portfolio home"
+          aria-label="M·L — Minjae Lee 포트폴리오 홈"
+          data-label-ko="M·L — Minjae Lee 포트폴리오 홈"
+          data-label-en="M·L — Minjae Lee portfolio home"
           >M<span>·</span>L</a
         ><a class="back-link" href="../../"
           ><span data-lang="ko" lang="ko">작업 모음으로</span
@@ -293,7 +293,7 @@
             ><span data-lang="ko" lang="ko"
               >슬롯은 작업이 끝난 뒤에 반환한다</span
             ><span data-lang="en" lang="en" hidden
-              >The permit follows the operation’s lifetime</span
+              >Hold the permit until the work ends</span
             >
           </h2>
           <div class="prose" data-lang="ko" lang="ko">
@@ -309,7 +309,7 @@
               받아 실제로 종료된 뒤에야 슬롯을 반환합니다.
             </p>
             <p>
-              이 저장 기록에서는 협력적 취소의 네 작업 모두
+              이 저장 기록에서 취소 신호를 처리한 네 작업은 모두
               <strong>전달된 기한</strong>을 통해 취소됐고 최대 동시 작업은 한
               개였습니다. 모든 연결 종료 경로가 이번 기록에서 실행됐다는 뜻은
               아닙니다.
@@ -328,8 +328,7 @@
               Holding the permit until the underlying operation settled kept
               peak activity at two, even with the same cancellation-ignoring
               dependency. Two later attempts were rejected while abandoned work
-              occupied the slots. That is the visible cost of maintaining the
-              bound when the dependency will not stop.
+              occupied the slots.
             </p>
             <p>
               Cancellation is explicitly wired across the HTTP boundary.

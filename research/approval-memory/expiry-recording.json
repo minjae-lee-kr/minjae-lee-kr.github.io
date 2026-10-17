@@ -1,0 +1,4614 @@
+{
+  "version": 1,
+  "command": "pnpm expiry:experiment",
+  "startedAt": "2026-10-17T17:12:17.394Z",
+  "completedAt": "2026-10-17T17:12:26.498Z",
+  "sourceBefore": {
+    "sourceFingerprint": "0b44c02e4520e78b2fc190e161f7e65522604ef93b200975f133534d8adb3285",
+    "files": [
+      {
+        "path": "docs/approval-expiry.ko.md",
+        "sha256": "2f39778f605351d7d3744bac086d1873c6c718149c001503525f7e6e765c87aa"
+      },
+      {
+        "path": "docs/approval-expiry.md",
+        "sha256": "62e45268783d1d306e4420d588e933b873c040c631194865c705f7b642531269"
+      },
+      {
+        "path": "experiments/approval-expiry/barrier.ts",
+        "sha256": "1b9c49136009e729e9de8339d2fc355de0815668cad12ca633f01ab0af0770c5"
+      },
+      {
+        "path": "experiments/approval-expiry/check.ts",
+        "sha256": "b3602b0c76b605673ce43696807209a65f58e7673d356db8b1f0beb5a4ecc6ae"
+      },
+      {
+        "path": "experiments/approval-expiry/clock.cjs",
+        "sha256": "2ccf85d215617418cadc343148d666f6e07bd1e0eadc4725cb1fe9c0e3ac0339"
+      },
+      {
+        "path": "experiments/approval-expiry/hook.ts",
+        "sha256": "091c2e54602a8f83771c8aa5a03a885708d9610e85ea3c4e13cda8c6213eab21"
+      },
+      {
+        "path": "experiments/approval-expiry/run.ts",
+        "sha256": "213980fd9c4df61378b9e2770cf3c5eaac604d6a4258d5377208fcca23ceaae8"
+      },
+      {
+        "path": "experiments/approval-expiry/types.ts",
+        "sha256": "46a4ac0277c920f1079ffdc074963964ee7d0e70b1d40f8f93826e92e689e257"
+      },
+      {
+        "path": "package.json",
+        "sha256": "b0d8f65d67adb3bd449d93460162ad4e3da910a77512bb1061b98fd08fc8790f"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "ca7e50de04979cc8bbacb4bdfe55f08b578957f558410c09b4706926209d2eb7"
+      },
+      {
+        "path": "src/checker.ts",
+        "sha256": "dccf2d168a45dac07a02582c2672bf98054b6f0fd5c08c05ec2c5616188218f6"
+      },
+      {
+        "path": "src/cli.ts",
+        "sha256": "59e44c42f0e842fbbb5ba41c0762e2b9d83293e5819f94aa6830d7778446fe9c"
+      },
+      {
+        "path": "src/execution.ts",
+        "sha256": "60c634fa6e5830c4d2a19c8177f12467c04eedb10d25943dc542870e186f41f9"
+      },
+      {
+        "path": "src/executor.ts",
+        "sha256": "674ca8f0141d25d3216d7ff5314c60b3f689cfcbebb4baf83410d44ae04ea1f4"
+      },
+      {
+        "path": "src/experiment.ts",
+        "sha256": "2c61edae4424d4e9c8ebec974bca79c3473652ec2c408639c510659c5982c0a7"
+      },
+      {
+        "path": "src/git.ts",
+        "sha256": "b5d173a5dc831f14e49465eb2a80fb81b8e3633852f5c501cf819fbde544f5c4"
+      },
+      {
+        "path": "src/naive-typecheck.ts",
+        "sha256": "3549a33b66ddb4fcdd20333297b37d63fd7543afd4687313efb0a1fd6664ea59"
+      },
+      {
+        "path": "src/policy.ts",
+        "sha256": "2ed2db7eb3855d9dc9af83f4cbb85c06358c091ee0e283b2b46b6051fdc558a7"
+      },
+      {
+        "path": "src/process.ts",
+        "sha256": "85f90f89869953e3b06631df72bdeec94b597279230b0917a5b9a406b6b28863"
+      },
+      {
+        "path": "src/protocol.ts",
+        "sha256": "492a823bcb9d03310998743066e756b2edf6b960ea4f86391d01fcabc6377fea"
+      },
+      {
+        "path": "src/runner.ts",
+        "sha256": "1049e29655d53397f803fe4f6a0fb60af1dcb06eb0432f0cff6bfcf0581bfc02"
+      },
+      {
+        "path": "src/server.ts",
+        "sha256": "390cb6a424ed4e70571f2801c674bc18ce17e355ef2d5f418fda8baf2aa07483"
+      },
+      {
+        "path": "src/state-envelope-check.ts",
+        "sha256": "87463620edb92e7f9a6b2464a7fb16b28948f24f4f703b1e85830c179b9e0ac9"
+      },
+      {
+        "path": "src/state-envelope-experiment.ts",
+        "sha256": "d8883f308102a4fe4fb484ec0e448beb090b2e27bd749f1b62c85f514b2752ce"
+      },
+      {
+        "path": "src/state-envelope-worker.ts",
+        "sha256": "d51be6fb2cd14755d023cbb905c693961754ba871b9a317e23a913b1455cd208"
+      },
+      {
+        "path": "src/state-envelope.ts",
+        "sha256": "42f54355f03f02aa8c1b3806bcfe721ad3f504a2aaffb8581689dbc103916fb5"
+      },
+      {
+        "path": "src/support.ts",
+        "sha256": "66f17b297f263324113168fd3b4a63a483c1bbc41b1ac2d953651ec7103c81f5"
+      },
+      {
+        "path": "src/types.ts",
+        "sha256": "edd7581683f3dcc08e9468a1e33406b9c29ab8d3ecdb233ab8da3d28dc9095db"
+      },
+      {
+        "path": "test/approval-expiry.test.ts",
+        "sha256": "e1dd51fdafd16a78d187e18dc0c5763b6371baa70973fdbc33f3ee66b6ece701"
+      },
+      {
+        "path": "test/cli.test.ts",
+        "sha256": "40969c40839bb8fba9acf29b961a478f675250ab7bcb5766b1a57ec51d1b31b8"
+      },
+      {
+        "path": "test/git-environment-worker.ts",
+        "sha256": "e9d12d8bb4e2985f1c2e60fa13da96016569e5579f198dc43651ce21762c64c5"
+      },
+      {
+        "path": "test/git-environment.test.ts",
+        "sha256": "e256c1292c2f670c71c3c2c7ad8f0b52e6fa757e56934bade7b8c45da4828dbe"
+      },
+      {
+        "path": "test/git-long-path-worker.ts",
+        "sha256": "ecc3be0a167a63a6855cd272f4c2e76f23066afa48ac0faf45d9b8fb05028e8b"
+      },
+      {
+        "path": "test/git-long-path.test.ts",
+        "sha256": "407b82e9727f78996b27071d75d4fa991bfa6482ca93f29297d6674f63bd721e"
+      },
+      {
+        "path": "test/process-errors-worker.ts",
+        "sha256": "9ab46e62c63f48e74afb9993156ca19e182a67784cea8ca09a665782c45ac678"
+      },
+      {
+        "path": "test/process-errors.test.ts",
+        "sha256": "15fe3f4981652dfd6986e4795d4f7ffa7213ed7e9afd4b9e6bc8ee081d5e68e9"
+      },
+      {
+        "path": "test/protocol.test.ts",
+        "sha256": "d36239d11e0c3f373cdb340a9a196bd81160dc7060d70988974d71ff7715557d"
+      },
+      {
+        "path": "test/source-suppression.test.ts",
+        "sha256": "d291212d227c5837787f53f9559c5e11a8d5ba914cfc5fef6e7454739350d572"
+      },
+      {
+        "path": "test/state-envelope.test.ts",
+        "sha256": "96c1d35d74adf106d856505e511c9d82f0ebd107cd0a359a2f2e9ed111cf7ae9"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "1ccde82d6e99ed84b606f7c786bb3fe31c274f4b99e422870652e01cad004b9b"
+      },
+      {
+        "path": "web/app.js",
+        "sha256": "3d6701e1078917ca11d00292326e6ffed964570b535ceaf6c77d7a0727feb3cf"
+      },
+      {
+        "path": "web/index.html",
+        "sha256": "fb91c55525c3279e86463d0040e9d12deb14bb6c264c7a5f3b203bebadff1b5b"
+      },
+      {
+        "path": "web/style.css",
+        "sha256": "111e653005ca23da7371477c79acbf1683945c1a8eb0842fd4d92aa5a2279c1d"
+      }
+    ],
+    "gitRevision": "01987956fbbcb485fb6a0178feb8c53c7494fa34",
+    "gitDirty": false,
+    "nodeVersion": "v24.19.0",
+    "gitVersion": "git version 2.56.0.windows.2",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "sourceAfter": {
+    "sourceFingerprint": "0b44c02e4520e78b2fc190e161f7e65522604ef93b200975f133534d8adb3285",
+    "files": [
+      {
+        "path": "docs/approval-expiry.ko.md",
+        "sha256": "2f39778f605351d7d3744bac086d1873c6c718149c001503525f7e6e765c87aa"
+      },
+      {
+        "path": "docs/approval-expiry.md",
+        "sha256": "62e45268783d1d306e4420d588e933b873c040c631194865c705f7b642531269"
+      },
+      {
+        "path": "experiments/approval-expiry/barrier.ts",
+        "sha256": "1b9c49136009e729e9de8339d2fc355de0815668cad12ca633f01ab0af0770c5"
+      },
+      {
+        "path": "experiments/approval-expiry/check.ts",
+        "sha256": "b3602b0c76b605673ce43696807209a65f58e7673d356db8b1f0beb5a4ecc6ae"
+      },
+      {
+        "path": "experiments/approval-expiry/clock.cjs",
+        "sha256": "2ccf85d215617418cadc343148d666f6e07bd1e0eadc4725cb1fe9c0e3ac0339"
+      },
+      {
+        "path": "experiments/approval-expiry/hook.ts",
+        "sha256": "091c2e54602a8f83771c8aa5a03a885708d9610e85ea3c4e13cda8c6213eab21"
+      },
+      {
+        "path": "experiments/approval-expiry/run.ts",
+        "sha256": "213980fd9c4df61378b9e2770cf3c5eaac604d6a4258d5377208fcca23ceaae8"
+      },
+      {
+        "path": "experiments/approval-expiry/types.ts",
+        "sha256": "46a4ac0277c920f1079ffdc074963964ee7d0e70b1d40f8f93826e92e689e257"
+      },
+      {
+        "path": "package.json",
+        "sha256": "b0d8f65d67adb3bd449d93460162ad4e3da910a77512bb1061b98fd08fc8790f"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "ca7e50de04979cc8bbacb4bdfe55f08b578957f558410c09b4706926209d2eb7"
+      },
+      {
+        "path": "src/checker.ts",
+        "sha256": "dccf2d168a45dac07a02582c2672bf98054b6f0fd5c08c05ec2c5616188218f6"
+      },
+      {
+        "path": "src/cli.ts",
+        "sha256": "59e44c42f0e842fbbb5ba41c0762e2b9d83293e5819f94aa6830d7778446fe9c"
+      },
+      {
+        "path": "src/execution.ts",
+        "sha256": "60c634fa6e5830c4d2a19c8177f12467c04eedb10d25943dc542870e186f41f9"
+      },
+      {
+        "path": "src/executor.ts",
+        "sha256": "674ca8f0141d25d3216d7ff5314c60b3f689cfcbebb4baf83410d44ae04ea1f4"
+      },
+      {
+        "path": "src/experiment.ts",
+        "sha256": "2c61edae4424d4e9c8ebec974bca79c3473652ec2c408639c510659c5982c0a7"
+      },
+      {
+        "path": "src/git.ts",
+        "sha256": "b5d173a5dc831f14e49465eb2a80fb81b8e3633852f5c501cf819fbde544f5c4"
+      },
+      {
+        "path": "src/naive-typecheck.ts",
+        "sha256": "3549a33b66ddb4fcdd20333297b37d63fd7543afd4687313efb0a1fd6664ea59"
+      },
+      {
+        "path": "src/policy.ts",
+        "sha256": "2ed2db7eb3855d9dc9af83f4cbb85c06358c091ee0e283b2b46b6051fdc558a7"
+      },
+      {
+        "path": "src/process.ts",
+        "sha256": "85f90f89869953e3b06631df72bdeec94b597279230b0917a5b9a406b6b28863"
+      },
+      {
+        "path": "src/protocol.ts",
+        "sha256": "492a823bcb9d03310998743066e756b2edf6b960ea4f86391d01fcabc6377fea"
+      },
+      {
+        "path": "src/runner.ts",
+        "sha256": "1049e29655d53397f803fe4f6a0fb60af1dcb06eb0432f0cff6bfcf0581bfc02"
+      },
+      {
+        "path": "src/server.ts",
+        "sha256": "390cb6a424ed4e70571f2801c674bc18ce17e355ef2d5f418fda8baf2aa07483"
+      },
+      {
+        "path": "src/state-envelope-check.ts",
+        "sha256": "87463620edb92e7f9a6b2464a7fb16b28948f24f4f703b1e85830c179b9e0ac9"
+      },
+      {
+        "path": "src/state-envelope-experiment.ts",
+        "sha256": "d8883f308102a4fe4fb484ec0e448beb090b2e27bd749f1b62c85f514b2752ce"
+      },
+      {
+        "path": "src/state-envelope-worker.ts",
+        "sha256": "d51be6fb2cd14755d023cbb905c693961754ba871b9a317e23a913b1455cd208"
+      },
+      {
+        "path": "src/state-envelope.ts",
+        "sha256": "42f54355f03f02aa8c1b3806bcfe721ad3f504a2aaffb8581689dbc103916fb5"
+      },
+      {
+        "path": "src/support.ts",
+        "sha256": "66f17b297f263324113168fd3b4a63a483c1bbc41b1ac2d953651ec7103c81f5"
+      },
+      {
+        "path": "src/types.ts",
+        "sha256": "edd7581683f3dcc08e9468a1e33406b9c29ab8d3ecdb233ab8da3d28dc9095db"
+      },
+      {
+        "path": "test/approval-expiry.test.ts",
+        "sha256": "e1dd51fdafd16a78d187e18dc0c5763b6371baa70973fdbc33f3ee66b6ece701"
+      },
+      {
+        "path": "test/cli.test.ts",
+        "sha256": "40969c40839bb8fba9acf29b961a478f675250ab7bcb5766b1a57ec51d1b31b8"
+      },
+      {
+        "path": "test/git-environment-worker.ts",
+        "sha256": "e9d12d8bb4e2985f1c2e60fa13da96016569e5579f198dc43651ce21762c64c5"
+      },
+      {
+        "path": "test/git-environment.test.ts",
+        "sha256": "e256c1292c2f670c71c3c2c7ad8f0b52e6fa757e56934bade7b8c45da4828dbe"
+      },
+      {
+        "path": "test/git-long-path-worker.ts",
+        "sha256": "ecc3be0a167a63a6855cd272f4c2e76f23066afa48ac0faf45d9b8fb05028e8b"
+      },
+      {
+        "path": "test/git-long-path.test.ts",
+        "sha256": "407b82e9727f78996b27071d75d4fa991bfa6482ca93f29297d6674f63bd721e"
+      },
+      {
+        "path": "test/process-errors-worker.ts",
+        "sha256": "9ab46e62c63f48e74afb9993156ca19e182a67784cea8ca09a665782c45ac678"
+      },
+      {
+        "path": "test/process-errors.test.ts",
+        "sha256": "15fe3f4981652dfd6986e4795d4f7ffa7213ed7e9afd4b9e6bc8ee081d5e68e9"
+      },
+      {
+        "path": "test/protocol.test.ts",
+        "sha256": "d36239d11e0c3f373cdb340a9a196bd81160dc7060d70988974d71ff7715557d"
+      },
+      {
+        "path": "test/source-suppression.test.ts",
+        "sha256": "d291212d227c5837787f53f9559c5e11a8d5ba914cfc5fef6e7454739350d572"
+      },
+      {
+        "path": "test/state-envelope.test.ts",
+        "sha256": "96c1d35d74adf106d856505e511c9d82f0ebd107cd0a359a2f2e9ed111cf7ae9"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "1ccde82d6e99ed84b606f7c786bb3fe31c274f4b99e422870652e01cad004b9b"
+      },
+      {
+        "path": "web/app.js",
+        "sha256": "3d6701e1078917ca11d00292326e6ffed964570b535ceaf6c77d7a0727feb3cf"
+      },
+      {
+        "path": "web/index.html",
+        "sha256": "fb91c55525c3279e86463d0040e9d12deb14bb6c264c7a5f3b203bebadff1b5b"
+      },
+      {
+        "path": "web/style.css",
+        "sha256": "111e653005ca23da7371477c79acbf1683945c1a8eb0842fd4d92aa5a2279c1d"
+      }
+    ],
+    "gitRevision": "01987956fbbcb485fb6a0178feb8c53c7494fa34",
+    "gitDirty": false,
+    "nodeVersion": "v24.19.0",
+    "gitVersion": "git version 2.56.0.windows.2",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "sourceStable": true,
+  "sourceAvailable": true,
+  "clock": {
+    "parent": "real wall clock",
+    "worker": "controlled Date.now, explicitly preloaded only in the state worker",
+    "git": "real clock; no expiry predicate",
+    "advance": "approval.expiresAt + 1; no five-minute wall-clock wait"
+  },
+  "passed": true,
+  "executionError": null,
+  "checked": {
+    "passed": true,
+    "outcomes": [
+      {
+        "id": "expiry-before-final-check",
+        "conclusion": "REFUSED_BEFORE_CAS",
+        "selectionChanged": false,
+        "receiptPresent": false
+      },
+      {
+        "id": "expiry-after-final-check",
+        "conclusion": "SELECTED_AFTER_LOGICAL_EXPIRY",
+        "selectionChanged": true,
+        "receiptPresent": true
+      }
+    ],
+    "errors": []
+  },
+  "cases": [
+    {
+      "id": "expiry-before-final-check",
+      "candidate": {
+        "id": "329a23b9-cd50-4f2e-ab6e-b74d4ef6c08f",
+        "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+        "commit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+        "tree": "9068645422495b022aedfbeb1817cb057799be84"
+      },
+      "evidence": {
+        "version": 1,
+        "runId": "2011faaa-c347-42ab-8d8e-76bbf8c61fa9",
+        "candidate": {
+          "id": "329a23b9-cd50-4f2e-ab6e-b74d4ef6c08f",
+          "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+          "commit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+          "tree": "9068645422495b022aedfbeb1817cb057799be84"
+        },
+        "policy": {
+          "version": 1,
+          "required": [
+            {
+              "checker": "runtime-contract",
+              "checks": [
+                "get-server-error",
+                "head-rate-limit",
+                "post-not-retried",
+                "client-error-not-retried",
+                "out-of-range-not-retried"
+              ]
+            },
+            {
+              "checker": "strict-types",
+              "checks": [
+                "strict-types"
+              ]
+            }
+          ],
+          "verifierTimeoutMs": 5000,
+          "maxOutputBytes": 32000,
+          "evidenceTtlMs": 300000,
+          "nodeVersion": "v24.19.0",
+          "typescriptVersion": "5.9.3",
+          "sourceHashes": [
+            {
+              "path": "src/checker.ts",
+              "sha256": "dccf2d168a45dac07a02582c2672bf98054b6f0fd5c08c05ec2c5616188218f6"
+            },
+            {
+              "path": "src/policy.ts",
+              "sha256": "2ed2db7eb3855d9dc9af83f4cbb85c06358c091ee0e283b2b46b6051fdc558a7"
+            },
+            {
+              "path": "src/process.ts",
+              "sha256": "85f90f89869953e3b06631df72bdeec94b597279230b0917a5b9a406b6b28863"
+            },
+            {
+              "path": "src/support.ts",
+              "sha256": "66f17b297f263324113168fd3b4a63a483c1bbc41b1ac2d953651ec7103c81f5"
+            },
+            {
+              "path": "src/git.ts",
+              "sha256": "b5d173a5dc831f14e49465eb2a80fb81b8e3633852f5c501cf819fbde544f5c4"
+            },
+            {
+              "path": "src/runner.ts",
+              "sha256": "1049e29655d53397f803fe4f6a0fb60af1dcb06eb0432f0cff6bfcf0581bfc02"
+            },
+            {
+              "path": "src/protocol.ts",
+              "sha256": "492a823bcb9d03310998743066e756b2edf6b960ea4f86391d01fcabc6377fea"
+            },
+            {
+              "path": "src/executor.ts",
+              "sha256": "674ca8f0141d25d3216d7ff5314c60b3f689cfcbebb4baf83410d44ae04ea1f4"
+            },
+            {
+              "path": "src/execution.ts",
+              "sha256": "60c634fa6e5830c4d2a19c8177f12467c04eedb10d25943dc542870e186f41f9"
+            },
+            {
+              "path": "src/state-envelope.ts",
+              "sha256": "42f54355f03f02aa8c1b3806bcfe721ad3f504a2aaffb8581689dbc103916fb5"
+            },
+            {
+              "path": "src/state-envelope-worker.ts",
+              "sha256": "d51be6fb2cd14755d023cbb905c693961754ba871b9a317e23a913b1455cd208"
+            },
+            {
+              "path": "src/cli.ts",
+              "sha256": "59e44c42f0e842fbbb5ba41c0762e2b9d83293e5819f94aa6830d7778446fe9c"
+            },
+            {
+              "path": "package.json",
+              "sha256": "b0d8f65d67adb3bd449d93460162ad4e3da910a77512bb1061b98fd08fc8790f"
+            },
+            {
+              "path": "pnpm-lock.yaml",
+              "sha256": "ca7e50de04979cc8bbacb4bdfe55f08b578957f558410c09b4706926209d2eb7"
+            }
+          ]
+        },
+        "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+        "createdAt": 1792257137960,
+        "expiresAt": 1792257437960,
+        "results": [
+          {
+            "request": {
+              "version": 1,
+              "runId": "2011faaa-c347-42ab-8d8e-76bbf8c61fa9",
+              "nonce": "02ce63fa-4fee-41f6-b1bb-5f151dfd73c6",
+              "checker": "runtime-contract",
+              "candidate": {
+                "id": "329a23b9-cd50-4f2e-ab6e-b74d4ef6c08f",
+                "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+                "commit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+                "tree": "9068645422495b022aedfbeb1817cb057799be84"
+              },
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "requestedAt": 1792257138136,
+              "fault": "normal",
+              "files": [
+                {
+                  "path": "src/retry-policy.ts",
+                  "sha256": "c5fb6cb01c5c0837931e05c85cf7e673a986f653f59c484e43ecac1fb7489504"
+                },
+                {
+                  "path": "tsconfig.json",
+                  "sha256": "7d702a65bfe6cf654134049d80c9a49635d15a2ede9732717274678a2dc86f41"
+                }
+              ]
+            },
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\runtime-contract\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\runtime-contract\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"2011faaa-c347-42ab-8d8e-76bbf8c61fa9\",\"nonce\":\"02ce63fa-4fee-41f6-b1bb-5f151dfd73c6\",\"checker\":\"runtime-contract\",\"candidateCommit\":\"f3fc600a06dcfcb6ab570ed39e21ac987e54ec95\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257138386,\"completedAt\":1792257138392,\"sourceConsistent\":true,\"checks\":[{\"id\":\"get-server-error\",\"passed\":true,\"detail\":\"GET 503: expected true, observed true\"},{\"id\":\"head-rate-limit\",\"passed\":true,\"detail\":\"HEAD 429: expected true, observed true\"},{\"id\":\"post-not-retried\",\"passed\":true,\"detail\":\"POST 503: expected false, observed false\"},{\"id\":\"client-error-not-retried\",\"passed\":true,\"detail\":\"GET 400: expected false, observed false\"},{\"id\":\"out-of-range-not-retried\",\"passed\":true,\"detail\":\"GET 700: expected false, observed false\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "2011faaa-c347-42ab-8d8e-76bbf8c61fa9",
+              "nonce": "02ce63fa-4fee-41f6-b1bb-5f151dfd73c6",
+              "checker": "runtime-contract",
+              "candidateCommit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257138386,
+              "completedAt": 1792257138392,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "get-server-error",
+                  "passed": true,
+                  "detail": "GET 503: expected true, observed true"
+                },
+                {
+                  "id": "head-rate-limit",
+                  "passed": true,
+                  "detail": "HEAD 429: expected true, observed true"
+                },
+                {
+                  "id": "post-not-retried",
+                  "passed": true,
+                  "detail": "POST 503: expected false, observed false"
+                },
+                {
+                  "id": "client-error-not-retried",
+                  "passed": true,
+                  "detail": "GET 400: expected false, observed false"
+                },
+                {
+                  "id": "out-of-range-not-retried",
+                  "passed": true,
+                  "detail": "GET 700: expected false, observed false"
+                }
+              ]
+            }
+          },
+          {
+            "request": {
+              "version": 1,
+              "runId": "2011faaa-c347-42ab-8d8e-76bbf8c61fa9",
+              "nonce": "4677e28a-91d4-4802-a82b-bd863c3e7700",
+              "checker": "strict-types",
+              "candidate": {
+                "id": "329a23b9-cd50-4f2e-ab6e-b74d4ef6c08f",
+                "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+                "commit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+                "tree": "9068645422495b022aedfbeb1817cb057799be84"
+              },
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "requestedAt": 1792257138586,
+              "fault": "normal",
+              "files": [
+                {
+                  "path": "src/retry-policy.ts",
+                  "sha256": "c5fb6cb01c5c0837931e05c85cf7e673a986f653f59c484e43ecac1fb7489504"
+                },
+                {
+                  "path": "tsconfig.json",
+                  "sha256": "7d702a65bfe6cf654134049d80c9a49635d15a2ede9732717274678a2dc86f41"
+                }
+              ]
+            },
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\strict-types\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\strict-types\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"2011faaa-c347-42ab-8d8e-76bbf8c61fa9\",\"nonce\":\"4677e28a-91d4-4802-a82b-bd863c3e7700\",\"checker\":\"strict-types\",\"candidateCommit\":\"f3fc600a06dcfcb6ab570ed39e21ac987e54ec95\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257138859,\"completedAt\":1792257139657,\"sourceConsistent\":true,\"checks\":[{\"id\":\"strict-types\",\"passed\":true,\"detail\":\"TypeScript strict check completed with zero diagnostics for the declared fixture source.\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "2011faaa-c347-42ab-8d8e-76bbf8c61fa9",
+              "nonce": "4677e28a-91d4-4802-a82b-bd863c3e7700",
+              "checker": "strict-types",
+              "candidateCommit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257138859,
+              "completedAt": 1792257139657,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "strict-types",
+                  "passed": true,
+                  "detail": "TypeScript strict check completed with zero diagnostics for the declared fixture source."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "approval": {
+        "version": 1,
+        "reviewerLabel": "Scripted expiry experiment",
+        "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+        "candidateCommit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+        "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+        "evidenceDigest": "281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114",
+        "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+        "issuedAt": 1792257139688,
+        "expiresAt": 1792257437960
+      },
+      "receipt": {
+        "operationId": "648453ccf75b2849b3bec5b7805f83bae20bbe5d3e0f0aa7deebe0be1d456168",
+        "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+        "candidate": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+        "evidenceDigest": "281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114",
+        "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+      },
+      "logicalFresh": 1792257139689,
+      "logicalExpired": 1792257437961,
+      "initial": {
+        "oid": "6f25fccea847ea62f00468394ceacd05e08dee22",
+        "parents": [],
+        "state": {
+          "version": 1,
+          "selectedCandidate": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+          "receipts": []
+        }
+      },
+      "prepared": {
+        "code": "PREPARED",
+        "expected": {
+          "oid": "6f25fccea847ea62f00468394ceacd05e08dee22",
+          "parents": [],
+          "state": {
+            "version": 1,
+            "selectedCandidate": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+            "receipts": []
+          }
+        },
+        "next": {
+          "oid": "b68979fad4fa3b3eb65bab028f6757cdf4a8b421",
+          "parents": [
+            "6f25fccea847ea62f00468394ceacd05e08dee22"
+          ],
+          "state": {
+            "version": 1,
+            "selectedCandidate": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+            "receipts": [
+              {
+                "operationId": "648453ccf75b2849b3bec5b7805f83bae20bbe5d3e0f0aa7deebe0be1d456168",
+                "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+                "candidate": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+                "evidenceDigest": "281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114",
+                "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+              }
+            ]
+          }
+        },
+        "receipt": {
+          "operationId": "648453ccf75b2849b3bec5b7805f83bae20bbe5d3e0f0aa7deebe0be1d456168",
+          "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+          "candidate": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+          "evidenceDigest": "281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114",
+          "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+        }
+      },
+      "whilePrepared": null,
+      "final": {
+        "oid": "6f25fccea847ea62f00468394ceacd05e08dee22",
+        "parents": [],
+        "state": {
+          "version": 1,
+          "selectedCandidate": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+          "receipts": []
+        }
+      },
+      "process": {
+        "executable": "node",
+        "arguments": [
+          "--require",
+          "<project>\\experiments\\approval-expiry\\clock.cjs",
+          "<project>\\src\\state-envelope-worker.ts",
+          "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\expiry-control\\request.json"
+        ],
+        "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+        "exitCode": 1,
+        "signal": null,
+        "stdout": "",
+        "stderr": "State transition refused: EVIDENCE_STALE\n",
+        "timedOut": false,
+        "outputLimited": false,
+        "directChildExitConfirmed": true,
+        "ownedTreeTerminationAcknowledged": null
+      },
+      "acknowledgement": null,
+      "events": [
+        {
+          "event": "worker-phase",
+          "detail": {
+            "phase": "ready",
+            "detail": {
+              "mode": "envelope"
+            }
+          }
+        },
+        {
+          "event": "worker-clock-read",
+          "detail": {
+            "caller": "prepareStateChange",
+            "now": 1792257139689
+          }
+        },
+        {
+          "event": "worker-phase",
+          "detail": {
+            "phase": "state-prepared",
+            "detail": {
+              "code": "PREPARED",
+              "expected": {
+                "oid": "6f25fccea847ea62f00468394ceacd05e08dee22",
+                "parents": [],
+                "state": {
+                  "version": 1,
+                  "selectedCandidate": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+                  "receipts": []
+                }
+              },
+              "next": {
+                "oid": "b68979fad4fa3b3eb65bab028f6757cdf4a8b421",
+                "parents": [
+                  "6f25fccea847ea62f00468394ceacd05e08dee22"
+                ],
+                "state": {
+                  "version": 1,
+                  "selectedCandidate": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+                  "receipts": [
+                    {
+                      "operationId": "648453ccf75b2849b3bec5b7805f83bae20bbe5d3e0f0aa7deebe0be1d456168",
+                      "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+                      "candidate": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+                      "evidenceDigest": "281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114",
+                      "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+                    }
+                  ]
+                }
+              },
+              "receipt": {
+                "operationId": "648453ccf75b2849b3bec5b7805f83bae20bbe5d3e0f0aa7deebe0be1d456168",
+                "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+                "candidate": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+                "evidenceDigest": "281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114",
+                "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+              }
+            }
+          }
+        },
+        {
+          "event": "parent-advanced-clock",
+          "detail": {
+            "now": 1792257437961
+          }
+        },
+        {
+          "event": "worker-clock-read",
+          "detail": {
+            "caller": "selectPreparedState",
+            "now": 1792257437961
+          }
+        },
+        {
+          "event": "parent-observed-worker-exit",
+          "detail": {
+            "exitCode": 1,
+            "directChildExitConfirmed": true
+          }
+        }
+      ],
+      "transcript": [
+        {
+          "sequence": 1,
+          "event": "git-init-synthetic-fixture",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "init",
+              "--bare",
+              "--quiet",
+              "--object-format=sha1",
+              "--template=<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\empty-template",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 2,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 3,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "add",
+              "--",
+              "src/retry-policy.ts",
+              "tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 4,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "eadafe735ebd4475cf3e16c602eaece2f2c9ae13\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 5,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "commit-tree",
+              "eadafe735ebd4475cf3e16c602eaece2f2c9ae13",
+              "-m",
+              "Synthetic baseline"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 6,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "update-ref",
+              "refs/heads/release",
+              "3c74b3e86f58aff16ffde49e19a8385980a0bcfc"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 7,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "symbolic-ref",
+              "HEAD",
+              "refs/heads/release"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 8,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 9,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "add",
+              "--",
+              "src/retry-policy.ts",
+              "tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 10,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9068645422495b022aedfbeb1817cb057799be84\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 11,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "commit-tree",
+              "9068645422495b022aedfbeb1817cb057799be84",
+              "-p",
+              "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+              "-m",
+              "Synthetic candidate A"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 12,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "update-ref",
+              "refs/lab/candidates/329a23b9-cd50-4f2e-ab6e-b74d4ef6c08f",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 13,
+          "event": "candidate-prepared",
+          "detail": {
+            "id": "329a23b9-cd50-4f2e-ab6e-b74d4ef6c08f",
+            "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+            "commit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+            "tree": "9068645422495b022aedfbeb1817cb057799be84"
+          }
+        },
+        {
+          "sequence": 14,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "rev-parse",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95^{tree}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9068645422495b022aedfbeb1817cb057799be84\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 15,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "src/retry-policy.ts\ntsconfig.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 16,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95:src/retry-policy.ts"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "const safeMethods = new Set(['GET', 'HEAD']);\nexport function mayRetry(method: string, status: number): boolean {\n  return safeMethods.has(method) && (status === 429 || (status >= 500 && status <= 599));\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 17,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95:tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"target\": \"ES2023\",\n    \"module\": \"NodeNext\",\n    \"moduleResolution\": \"NodeNext\",\n    \"noEmit\": true,\n    \"types\": []\n  },\n  \"files\": [\n    \"src/retry-policy.ts\"\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 18,
+          "event": "verifier-process",
+          "detail": {
+            "checker": "runtime-contract",
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\runtime-contract\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\runtime-contract\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"2011faaa-c347-42ab-8d8e-76bbf8c61fa9\",\"nonce\":\"02ce63fa-4fee-41f6-b1bb-5f151dfd73c6\",\"checker\":\"runtime-contract\",\"candidateCommit\":\"f3fc600a06dcfcb6ab570ed39e21ac987e54ec95\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257138386,\"completedAt\":1792257138392,\"sourceConsistent\":true,\"checks\":[{\"id\":\"get-server-error\",\"passed\":true,\"detail\":\"GET 503: expected true, observed true\"},{\"id\":\"head-rate-limit\",\"passed\":true,\"detail\":\"HEAD 429: expected true, observed true\"},{\"id\":\"post-not-retried\",\"passed\":true,\"detail\":\"POST 503: expected false, observed false\"},{\"id\":\"client-error-not-retried\",\"passed\":true,\"detail\":\"GET 400: expected false, observed false\"},{\"id\":\"out-of-range-not-retried\",\"passed\":true,\"detail\":\"GET 700: expected false, observed false\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "2011faaa-c347-42ab-8d8e-76bbf8c61fa9",
+              "nonce": "02ce63fa-4fee-41f6-b1bb-5f151dfd73c6",
+              "checker": "runtime-contract",
+              "candidateCommit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257138386,
+              "completedAt": 1792257138392,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "get-server-error",
+                  "passed": true,
+                  "detail": "GET 503: expected true, observed true"
+                },
+                {
+                  "id": "head-rate-limit",
+                  "passed": true,
+                  "detail": "HEAD 429: expected true, observed true"
+                },
+                {
+                  "id": "post-not-retried",
+                  "passed": true,
+                  "detail": "POST 503: expected false, observed false"
+                },
+                {
+                  "id": "client-error-not-retried",
+                  "passed": true,
+                  "detail": "GET 400: expected false, observed false"
+                },
+                {
+                  "id": "out-of-range-not-retried",
+                  "passed": true,
+                  "detail": "GET 700: expected false, observed false"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 19,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "rev-parse",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95^{tree}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9068645422495b022aedfbeb1817cb057799be84\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 20,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "src/retry-policy.ts\ntsconfig.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 21,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95:src/retry-policy.ts"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "const safeMethods = new Set(['GET', 'HEAD']);\nexport function mayRetry(method: string, status: number): boolean {\n  return safeMethods.has(method) && (status === 429 || (status >= 500 && status <= 599));\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 22,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95:tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"target\": \"ES2023\",\n    \"module\": \"NodeNext\",\n    \"moduleResolution\": \"NodeNext\",\n    \"noEmit\": true,\n    \"types\": []\n  },\n  \"files\": [\n    \"src/retry-policy.ts\"\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 23,
+          "event": "verifier-process",
+          "detail": {
+            "checker": "strict-types",
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\strict-types\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\verification\\2011faaa-c347-42ab-8d8e-76bbf8c61fa9\\strict-types\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"2011faaa-c347-42ab-8d8e-76bbf8c61fa9\",\"nonce\":\"4677e28a-91d4-4802-a82b-bd863c3e7700\",\"checker\":\"strict-types\",\"candidateCommit\":\"f3fc600a06dcfcb6ab570ed39e21ac987e54ec95\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257138859,\"completedAt\":1792257139657,\"sourceConsistent\":true,\"checks\":[{\"id\":\"strict-types\",\"passed\":true,\"detail\":\"TypeScript strict check completed with zero diagnostics for the declared fixture source.\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "2011faaa-c347-42ab-8d8e-76bbf8c61fa9",
+              "nonce": "4677e28a-91d4-4802-a82b-bd863c3e7700",
+              "checker": "strict-types",
+              "candidateCommit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257138859,
+              "completedAt": 1792257139657,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "strict-types",
+                  "passed": true,
+                  "detail": "TypeScript strict check completed with zero diagnostics for the declared fixture source."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 24,
+          "event": "local-approval-recorded",
+          "detail": {
+            "version": 1,
+            "reviewerLabel": "Scripted expiry experiment",
+            "base": "3c74b3e86f58aff16ffde49e19a8385980a0bcfc",
+            "candidateCommit": "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95",
+            "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+            "evidenceDigest": "281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114",
+            "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+            "issuedAt": 1792257139688,
+            "expiresAt": 1792257437960
+          }
+        },
+        {
+          "sequence": 25,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 26,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "add",
+              "--",
+              "state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 27,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9c8f76af5b1e50e78d5ca8447ac2901ddea7fef6\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 28,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "commit-tree",
+              "9c8f76af5b1e50e78d5ca8447ac2901ddea7fef6",
+              "-m",
+              "Synthetic state envelope"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "6f25fccea847ea62f00468394ceacd05e08dee22\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 29,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 30,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "6f25fccea847ea62f00468394ceacd05e08dee22:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"3c74b3e86f58aff16ffde49e19a8385980a0bcfc\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 31,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 32,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "cat-file",
+              "-e",
+              "3c74b3e86f58aff16ffde49e19a8385980a0bcfc^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 33,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "update-ref",
+              "refs/heads/lab-state",
+              "6f25fccea847ea62f00468394ceacd05e08dee22",
+              "0000000000000000000000000000000000000000"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 34,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "rev-parse",
+              "refs/heads/lab-state"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "6f25fccea847ea62f00468394ceacd05e08dee22\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 35,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 36,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "6f25fccea847ea62f00468394ceacd05e08dee22:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"3c74b3e86f58aff16ffde49e19a8385980a0bcfc\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 37,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 38,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "cat-file",
+              "-e",
+              "3c74b3e86f58aff16ffde49e19a8385980a0bcfc^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 39,
+          "event": "expiry-state-read",
+          "detail": {
+            "label": "initial",
+            "oid": "6f25fccea847ea62f00468394ceacd05e08dee22"
+          }
+        },
+        {
+          "sequence": 40,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "rev-parse",
+              "refs/heads/lab-state"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "6f25fccea847ea62f00468394ceacd05e08dee22\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 41,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 42,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "6f25fccea847ea62f00468394ceacd05e08dee22:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"3c74b3e86f58aff16ffde49e19a8385980a0bcfc\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 43,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 44,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "cat-file",
+              "-e",
+              "3c74b3e86f58aff16ffde49e19a8385980a0bcfc^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 45,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 46,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "add",
+              "--",
+              "state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 47,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9c698672554a3bcf69947835088f0483e25ef133\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 48,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "commit-tree",
+              "9c698672554a3bcf69947835088f0483e25ef133",
+              "-p",
+              "6f25fccea847ea62f00468394ceacd05e08dee22",
+              "-m",
+              "Synthetic state envelope"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b68979fad4fa3b3eb65bab028f6757cdf4a8b421\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 49,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "b68979fad4fa3b3eb65bab028f6757cdf4a8b421"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 50,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "b68979fad4fa3b3eb65bab028f6757cdf4a8b421:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"f3fc600a06dcfcb6ab570ed39e21ac987e54ec95\",\n  \"receipts\": [\n    {\n      \"operationId\": \"648453ccf75b2849b3bec5b7805f83bae20bbe5d3e0f0aa7deebe0be1d456168\",\n      \"base\": \"3c74b3e86f58aff16ffde49e19a8385980a0bcfc\",\n      \"candidate\": \"f3fc600a06dcfcb6ab570ed39e21ac987e54ec95\",\n      \"evidenceDigest\": \"281c31e103e2f15382095dc25fd81c3c00b7792a4e688e6cd0524faee9658114\",\n      \"policyDigest\": \"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\"\n    }\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 51,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "b68979fad4fa3b3eb65bab028f6757cdf4a8b421"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "6f25fccea847ea62f00468394ceacd05e08dee22\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 52,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "cat-file",
+              "-e",
+              "f3fc600a06dcfcb6ab570ed39e21ac987e54ec95^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 53,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "rev-parse",
+              "refs/heads/lab-state"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "6f25fccea847ea62f00468394ceacd05e08dee22\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 54,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 55,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "6f25fccea847ea62f00468394ceacd05e08dee22:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"3c74b3e86f58aff16ffde49e19a8385980a0bcfc\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 56,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "6f25fccea847ea62f00468394ceacd05e08dee22"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 57,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f\\repository.git",
+              "cat-file",
+              "-e",
+              "3c74b3e86f58aff16ffde49e19a8385980a0bcfc^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-before-68f4d70b-1b92-4e4d-b184-c78620dbaf7f",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 58,
+          "event": "expiry-state-read",
+          "detail": {
+            "label": "final",
+            "oid": "6f25fccea847ea62f00468394ceacd05e08dee22"
+          }
+        }
+      ],
+      "executionError": null
+    },
+    {
+      "id": "expiry-after-final-check",
+      "candidate": {
+        "id": "673070da-ddd3-4d5f-9567-994796525a1a",
+        "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+        "commit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+        "tree": "9068645422495b022aedfbeb1817cb057799be84"
+      },
+      "evidence": {
+        "version": 1,
+        "runId": "ae326767-eeb4-4179-9359-f11706d545b3",
+        "candidate": {
+          "id": "673070da-ddd3-4d5f-9567-994796525a1a",
+          "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+          "commit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+          "tree": "9068645422495b022aedfbeb1817cb057799be84"
+        },
+        "policy": {
+          "version": 1,
+          "required": [
+            {
+              "checker": "runtime-contract",
+              "checks": [
+                "get-server-error",
+                "head-rate-limit",
+                "post-not-retried",
+                "client-error-not-retried",
+                "out-of-range-not-retried"
+              ]
+            },
+            {
+              "checker": "strict-types",
+              "checks": [
+                "strict-types"
+              ]
+            }
+          ],
+          "verifierTimeoutMs": 5000,
+          "maxOutputBytes": 32000,
+          "evidenceTtlMs": 300000,
+          "nodeVersion": "v24.19.0",
+          "typescriptVersion": "5.9.3",
+          "sourceHashes": [
+            {
+              "path": "src/checker.ts",
+              "sha256": "dccf2d168a45dac07a02582c2672bf98054b6f0fd5c08c05ec2c5616188218f6"
+            },
+            {
+              "path": "src/policy.ts",
+              "sha256": "2ed2db7eb3855d9dc9af83f4cbb85c06358c091ee0e283b2b46b6051fdc558a7"
+            },
+            {
+              "path": "src/process.ts",
+              "sha256": "85f90f89869953e3b06631df72bdeec94b597279230b0917a5b9a406b6b28863"
+            },
+            {
+              "path": "src/support.ts",
+              "sha256": "66f17b297f263324113168fd3b4a63a483c1bbc41b1ac2d953651ec7103c81f5"
+            },
+            {
+              "path": "src/git.ts",
+              "sha256": "b5d173a5dc831f14e49465eb2a80fb81b8e3633852f5c501cf819fbde544f5c4"
+            },
+            {
+              "path": "src/runner.ts",
+              "sha256": "1049e29655d53397f803fe4f6a0fb60af1dcb06eb0432f0cff6bfcf0581bfc02"
+            },
+            {
+              "path": "src/protocol.ts",
+              "sha256": "492a823bcb9d03310998743066e756b2edf6b960ea4f86391d01fcabc6377fea"
+            },
+            {
+              "path": "src/executor.ts",
+              "sha256": "674ca8f0141d25d3216d7ff5314c60b3f689cfcbebb4baf83410d44ae04ea1f4"
+            },
+            {
+              "path": "src/execution.ts",
+              "sha256": "60c634fa6e5830c4d2a19c8177f12467c04eedb10d25943dc542870e186f41f9"
+            },
+            {
+              "path": "src/state-envelope.ts",
+              "sha256": "42f54355f03f02aa8c1b3806bcfe721ad3f504a2aaffb8581689dbc103916fb5"
+            },
+            {
+              "path": "src/state-envelope-worker.ts",
+              "sha256": "d51be6fb2cd14755d023cbb905c693961754ba871b9a317e23a913b1455cd208"
+            },
+            {
+              "path": "src/cli.ts",
+              "sha256": "59e44c42f0e842fbbb5ba41c0762e2b9d83293e5819f94aa6830d7778446fe9c"
+            },
+            {
+              "path": "package.json",
+              "sha256": "b0d8f65d67adb3bd449d93460162ad4e3da910a77512bb1061b98fd08fc8790f"
+            },
+            {
+              "path": "pnpm-lock.yaml",
+              "sha256": "ca7e50de04979cc8bbacb4bdfe55f08b578957f558410c09b4706926209d2eb7"
+            }
+          ]
+        },
+        "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+        "createdAt": 1792257142038,
+        "expiresAt": 1792257442038,
+        "results": [
+          {
+            "request": {
+              "version": 1,
+              "runId": "ae326767-eeb4-4179-9359-f11706d545b3",
+              "nonce": "ec3eacc6-4391-4980-b1f5-55933a6fd558",
+              "checker": "runtime-contract",
+              "candidate": {
+                "id": "673070da-ddd3-4d5f-9567-994796525a1a",
+                "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+                "commit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+                "tree": "9068645422495b022aedfbeb1817cb057799be84"
+              },
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "requestedAt": 1792257142230,
+              "fault": "normal",
+              "files": [
+                {
+                  "path": "src/retry-policy.ts",
+                  "sha256": "c5fb6cb01c5c0837931e05c85cf7e673a986f653f59c484e43ecac1fb7489504"
+                },
+                {
+                  "path": "tsconfig.json",
+                  "sha256": "7d702a65bfe6cf654134049d80c9a49635d15a2ede9732717274678a2dc86f41"
+                }
+              ]
+            },
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\runtime-contract\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\runtime-contract\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"ae326767-eeb4-4179-9359-f11706d545b3\",\"nonce\":\"ec3eacc6-4391-4980-b1f5-55933a6fd558\",\"checker\":\"runtime-contract\",\"candidateCommit\":\"67d73ba7c352b76067eceb5bb6149870306a6249\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257142478,\"completedAt\":1792257142486,\"sourceConsistent\":true,\"checks\":[{\"id\":\"get-server-error\",\"passed\":true,\"detail\":\"GET 503: expected true, observed true\"},{\"id\":\"head-rate-limit\",\"passed\":true,\"detail\":\"HEAD 429: expected true, observed true\"},{\"id\":\"post-not-retried\",\"passed\":true,\"detail\":\"POST 503: expected false, observed false\"},{\"id\":\"client-error-not-retried\",\"passed\":true,\"detail\":\"GET 400: expected false, observed false\"},{\"id\":\"out-of-range-not-retried\",\"passed\":true,\"detail\":\"GET 700: expected false, observed false\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "ae326767-eeb4-4179-9359-f11706d545b3",
+              "nonce": "ec3eacc6-4391-4980-b1f5-55933a6fd558",
+              "checker": "runtime-contract",
+              "candidateCommit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257142478,
+              "completedAt": 1792257142486,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "get-server-error",
+                  "passed": true,
+                  "detail": "GET 503: expected true, observed true"
+                },
+                {
+                  "id": "head-rate-limit",
+                  "passed": true,
+                  "detail": "HEAD 429: expected true, observed true"
+                },
+                {
+                  "id": "post-not-retried",
+                  "passed": true,
+                  "detail": "POST 503: expected false, observed false"
+                },
+                {
+                  "id": "client-error-not-retried",
+                  "passed": true,
+                  "detail": "GET 400: expected false, observed false"
+                },
+                {
+                  "id": "out-of-range-not-retried",
+                  "passed": true,
+                  "detail": "GET 700: expected false, observed false"
+                }
+              ]
+            }
+          },
+          {
+            "request": {
+              "version": 1,
+              "runId": "ae326767-eeb4-4179-9359-f11706d545b3",
+              "nonce": "78143236-f784-479d-a024-6704de37fedb",
+              "checker": "strict-types",
+              "candidate": {
+                "id": "673070da-ddd3-4d5f-9567-994796525a1a",
+                "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+                "commit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+                "tree": "9068645422495b022aedfbeb1817cb057799be84"
+              },
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "requestedAt": 1792257142665,
+              "fault": "normal",
+              "files": [
+                {
+                  "path": "src/retry-policy.ts",
+                  "sha256": "c5fb6cb01c5c0837931e05c85cf7e673a986f653f59c484e43ecac1fb7489504"
+                },
+                {
+                  "path": "tsconfig.json",
+                  "sha256": "7d702a65bfe6cf654134049d80c9a49635d15a2ede9732717274678a2dc86f41"
+                }
+              ]
+            },
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\strict-types\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\strict-types\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"ae326767-eeb4-4179-9359-f11706d545b3\",\"nonce\":\"78143236-f784-479d-a024-6704de37fedb\",\"checker\":\"strict-types\",\"candidateCommit\":\"67d73ba7c352b76067eceb5bb6149870306a6249\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257142917,\"completedAt\":1792257143692,\"sourceConsistent\":true,\"checks\":[{\"id\":\"strict-types\",\"passed\":true,\"detail\":\"TypeScript strict check completed with zero diagnostics for the declared fixture source.\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "ae326767-eeb4-4179-9359-f11706d545b3",
+              "nonce": "78143236-f784-479d-a024-6704de37fedb",
+              "checker": "strict-types",
+              "candidateCommit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257142917,
+              "completedAt": 1792257143692,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "strict-types",
+                  "passed": true,
+                  "detail": "TypeScript strict check completed with zero diagnostics for the declared fixture source."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "approval": {
+        "version": 1,
+        "reviewerLabel": "Scripted expiry experiment",
+        "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+        "candidateCommit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+        "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+        "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+        "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+        "issuedAt": 1792257143723,
+        "expiresAt": 1792257442038
+      },
+      "receipt": {
+        "operationId": "d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4",
+        "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+        "candidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+        "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+        "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+      },
+      "logicalFresh": 1792257143724,
+      "logicalExpired": 1792257442039,
+      "initial": {
+        "oid": "b16db1d7db5ee5de8c7fac87913556edca84cbaf",
+        "parents": [],
+        "state": {
+          "version": 1,
+          "selectedCandidate": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+          "receipts": []
+        }
+      },
+      "prepared": {
+        "code": "PREPARED",
+        "expected": {
+          "oid": "b16db1d7db5ee5de8c7fac87913556edca84cbaf",
+          "parents": [],
+          "state": {
+            "version": 1,
+            "selectedCandidate": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+            "receipts": []
+          }
+        },
+        "next": {
+          "oid": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5",
+          "parents": [
+            "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+          ],
+          "state": {
+            "version": 1,
+            "selectedCandidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+            "receipts": [
+              {
+                "operationId": "d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4",
+                "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+                "candidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+                "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+                "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+              }
+            ]
+          }
+        },
+        "receipt": {
+          "operationId": "d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4",
+          "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+          "candidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+          "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+          "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+        }
+      },
+      "whilePrepared": {
+        "oid": "b16db1d7db5ee5de8c7fac87913556edca84cbaf",
+        "parents": [],
+        "state": {
+          "version": 1,
+          "selectedCandidate": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+          "receipts": []
+        }
+      },
+      "final": {
+        "oid": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5",
+        "parents": [
+          "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+        ],
+        "state": {
+          "version": 1,
+          "selectedCandidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+          "receipts": [
+            {
+              "operationId": "d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4",
+              "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+              "candidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+              "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+            }
+          ]
+        }
+      },
+      "process": {
+        "executable": "node",
+        "arguments": [
+          "--require",
+          "<project>\\experiments\\approval-expiry\\clock.cjs",
+          "<project>\\src\\state-envelope-worker.ts",
+          "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\expiry-control\\request.json"
+        ],
+        "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "",
+        "timedOut": false,
+        "outputLimited": false,
+        "directChildExitConfirmed": true,
+        "ownedTreeTerminationAcknowledged": null
+      },
+      "acknowledgement": {
+        "code": "STATE_CAS_ACKNOWLEDGED",
+        "stateOid": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+      },
+      "events": [
+        {
+          "event": "worker-phase",
+          "detail": {
+            "phase": "ready",
+            "detail": {
+              "mode": "envelope"
+            }
+          }
+        },
+        {
+          "event": "worker-clock-read",
+          "detail": {
+            "caller": "prepareStateChange",
+            "now": 1792257143724
+          }
+        },
+        {
+          "event": "worker-phase",
+          "detail": {
+            "phase": "state-prepared",
+            "detail": {
+              "code": "PREPARED",
+              "expected": {
+                "oid": "b16db1d7db5ee5de8c7fac87913556edca84cbaf",
+                "parents": [],
+                "state": {
+                  "version": 1,
+                  "selectedCandidate": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+                  "receipts": []
+                }
+              },
+              "next": {
+                "oid": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5",
+                "parents": [
+                  "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+                ],
+                "state": {
+                  "version": 1,
+                  "selectedCandidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+                  "receipts": [
+                    {
+                      "operationId": "d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4",
+                      "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+                      "candidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+                      "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+                      "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+                    }
+                  ]
+                }
+              },
+              "receipt": {
+                "operationId": "d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4",
+                "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+                "candidate": "67d73ba7c352b76067eceb5bb6149870306a6249",
+                "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+                "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd"
+              }
+            }
+          }
+        },
+        {
+          "event": "worker-clock-read",
+          "detail": {
+            "caller": "selectPreparedState",
+            "now": 1792257143724
+          }
+        },
+        {
+          "event": "git-hook",
+          "detail": {
+            "phase": "preparing",
+            "stdin": "b16db1d7db5ee5de8c7fac87913556edca84cbaf e12dde227bf9c7e2d6e47c6890949fa55fa330c5 refs/heads/lab-state\n",
+            "logicalNow": 1792257143724
+          }
+        },
+        {
+          "event": "git-hook",
+          "detail": {
+            "phase": "prepared",
+            "stdin": "b16db1d7db5ee5de8c7fac87913556edca84cbaf e12dde227bf9c7e2d6e47c6890949fa55fa330c5 refs/heads/lab-state\n",
+            "logicalNow": 1792257143724
+          }
+        },
+        {
+          "event": "parent-observed-prepared-ref",
+          "detail": {
+            "oid": "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+          }
+        },
+        {
+          "event": "parent-advanced-clock",
+          "detail": {
+            "now": 1792257442039
+          }
+        },
+        {
+          "event": "git-hook-released",
+          "detail": {
+            "logicalNow": 1792257442039
+          }
+        },
+        {
+          "event": "git-hook",
+          "detail": {
+            "phase": "committed",
+            "stdin": "b16db1d7db5ee5de8c7fac87913556edca84cbaf e12dde227bf9c7e2d6e47c6890949fa55fa330c5 refs/heads/lab-state\n",
+            "logicalNow": 1792257442039
+          }
+        },
+        {
+          "event": "worker-phase",
+          "detail": {
+            "phase": "state-selected",
+            "detail": {
+              "stateOid": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5",
+              "result": {
+                "code": "STATE_CAS_ACKNOWLEDGED",
+                "process": {
+                  "executable": "git",
+                  "arguments": [
+                    "-c",
+                    "core.longpaths=true",
+                    "--git-dir",
+                    "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+                    "update-ref",
+                    "refs/heads/lab-state",
+                    "e12dde227bf9c7e2d6e47c6890949fa55fa330c5",
+                    "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+                  ],
+                  "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+                  "exitCode": 0,
+                  "signal": null,
+                  "stdout": "",
+                  "stderr": "",
+                  "timedOut": false,
+                  "outputLimited": false,
+                  "directChildExitConfirmed": true,
+                  "ownedTreeTerminationAcknowledged": null
+                }
+              }
+            }
+          }
+        },
+        {
+          "event": "parent-observed-worker-exit",
+          "detail": {
+            "exitCode": 0,
+            "directChildExitConfirmed": true
+          }
+        }
+      ],
+      "transcript": [
+        {
+          "sequence": 1,
+          "event": "git-init-synthetic-fixture",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "init",
+              "--bare",
+              "--quiet",
+              "--object-format=sha1",
+              "--template=<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\empty-template",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 2,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 3,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "add",
+              "--",
+              "src/retry-policy.ts",
+              "tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 4,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "eadafe735ebd4475cf3e16c602eaece2f2c9ae13\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 5,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "commit-tree",
+              "eadafe735ebd4475cf3e16c602eaece2f2c9ae13",
+              "-m",
+              "Synthetic baseline"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 6,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "update-ref",
+              "refs/heads/release",
+              "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 7,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "symbolic-ref",
+              "HEAD",
+              "refs/heads/release"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 8,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 9,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "add",
+              "--",
+              "src/retry-policy.ts",
+              "tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 10,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9068645422495b022aedfbeb1817cb057799be84\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 11,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "commit-tree",
+              "9068645422495b022aedfbeb1817cb057799be84",
+              "-p",
+              "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+              "-m",
+              "Synthetic candidate A"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "67d73ba7c352b76067eceb5bb6149870306a6249\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 12,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "update-ref",
+              "refs/lab/candidates/673070da-ddd3-4d5f-9567-994796525a1a",
+              "67d73ba7c352b76067eceb5bb6149870306a6249"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 13,
+          "event": "candidate-prepared",
+          "detail": {
+            "id": "673070da-ddd3-4d5f-9567-994796525a1a",
+            "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+            "commit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+            "tree": "9068645422495b022aedfbeb1817cb057799be84"
+          }
+        },
+        {
+          "sequence": 14,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "rev-parse",
+              "67d73ba7c352b76067eceb5bb6149870306a6249^{tree}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9068645422495b022aedfbeb1817cb057799be84\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 15,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "67d73ba7c352b76067eceb5bb6149870306a6249"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "src/retry-policy.ts\ntsconfig.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 16,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "67d73ba7c352b76067eceb5bb6149870306a6249:src/retry-policy.ts"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "const safeMethods = new Set(['GET', 'HEAD']);\nexport function mayRetry(method: string, status: number): boolean {\n  return safeMethods.has(method) && (status === 429 || (status >= 500 && status <= 599));\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 17,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "67d73ba7c352b76067eceb5bb6149870306a6249:tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"target\": \"ES2023\",\n    \"module\": \"NodeNext\",\n    \"moduleResolution\": \"NodeNext\",\n    \"noEmit\": true,\n    \"types\": []\n  },\n  \"files\": [\n    \"src/retry-policy.ts\"\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 18,
+          "event": "verifier-process",
+          "detail": {
+            "checker": "runtime-contract",
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\runtime-contract\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\runtime-contract\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"ae326767-eeb4-4179-9359-f11706d545b3\",\"nonce\":\"ec3eacc6-4391-4980-b1f5-55933a6fd558\",\"checker\":\"runtime-contract\",\"candidateCommit\":\"67d73ba7c352b76067eceb5bb6149870306a6249\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257142478,\"completedAt\":1792257142486,\"sourceConsistent\":true,\"checks\":[{\"id\":\"get-server-error\",\"passed\":true,\"detail\":\"GET 503: expected true, observed true\"},{\"id\":\"head-rate-limit\",\"passed\":true,\"detail\":\"HEAD 429: expected true, observed true\"},{\"id\":\"post-not-retried\",\"passed\":true,\"detail\":\"POST 503: expected false, observed false\"},{\"id\":\"client-error-not-retried\",\"passed\":true,\"detail\":\"GET 400: expected false, observed false\"},{\"id\":\"out-of-range-not-retried\",\"passed\":true,\"detail\":\"GET 700: expected false, observed false\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "ae326767-eeb4-4179-9359-f11706d545b3",
+              "nonce": "ec3eacc6-4391-4980-b1f5-55933a6fd558",
+              "checker": "runtime-contract",
+              "candidateCommit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257142478,
+              "completedAt": 1792257142486,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "get-server-error",
+                  "passed": true,
+                  "detail": "GET 503: expected true, observed true"
+                },
+                {
+                  "id": "head-rate-limit",
+                  "passed": true,
+                  "detail": "HEAD 429: expected true, observed true"
+                },
+                {
+                  "id": "post-not-retried",
+                  "passed": true,
+                  "detail": "POST 503: expected false, observed false"
+                },
+                {
+                  "id": "client-error-not-retried",
+                  "passed": true,
+                  "detail": "GET 400: expected false, observed false"
+                },
+                {
+                  "id": "out-of-range-not-retried",
+                  "passed": true,
+                  "detail": "GET 700: expected false, observed false"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 19,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "rev-parse",
+              "67d73ba7c352b76067eceb5bb6149870306a6249^{tree}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9068645422495b022aedfbeb1817cb057799be84\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 20,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "67d73ba7c352b76067eceb5bb6149870306a6249"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "src/retry-policy.ts\ntsconfig.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 21,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "67d73ba7c352b76067eceb5bb6149870306a6249:src/retry-policy.ts"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "const safeMethods = new Set(['GET', 'HEAD']);\nexport function mayRetry(method: string, status: number): boolean {\n  return safeMethods.has(method) && (status === 429 || (status >= 500 && status <= 599));\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 22,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "67d73ba7c352b76067eceb5bb6149870306a6249:tsconfig.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"target\": \"ES2023\",\n    \"module\": \"NodeNext\",\n    \"moduleResolution\": \"NodeNext\",\n    \"noEmit\": true,\n    \"types\": []\n  },\n  \"files\": [\n    \"src/retry-policy.ts\"\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 23,
+          "event": "verifier-process",
+          "detail": {
+            "checker": "strict-types",
+            "process": {
+              "executable": "node",
+              "arguments": [
+                "<project>\\src\\checker.ts",
+                "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\strict-types\\request.json"
+              ],
+              "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\verification\\ae326767-eeb4-4179-9359-f11706d545b3\\strict-types\\candidate",
+              "exitCode": 0,
+              "signal": null,
+              "stdout": "{\"version\":1,\"runId\":\"ae326767-eeb4-4179-9359-f11706d545b3\",\"nonce\":\"78143236-f784-479d-a024-6704de37fedb\",\"checker\":\"strict-types\",\"candidateCommit\":\"67d73ba7c352b76067eceb5bb6149870306a6249\",\"candidateTree\":\"9068645422495b022aedfbeb1817cb057799be84\",\"policyDigest\":\"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\",\"startedAt\":1792257142917,\"completedAt\":1792257143692,\"sourceConsistent\":true,\"checks\":[{\"id\":\"strict-types\",\"passed\":true,\"detail\":\"TypeScript strict check completed with zero diagnostics for the declared fixture source.\"}]}\n",
+              "stderr": "",
+              "timedOut": false,
+              "outputLimited": false,
+              "directChildExitConfirmed": true,
+              "ownedTreeTerminationAcknowledged": null
+            },
+            "report": {
+              "version": 1,
+              "runId": "ae326767-eeb4-4179-9359-f11706d545b3",
+              "nonce": "78143236-f784-479d-a024-6704de37fedb",
+              "checker": "strict-types",
+              "candidateCommit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+              "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+              "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+              "startedAt": 1792257142917,
+              "completedAt": 1792257143692,
+              "sourceConsistent": true,
+              "checks": [
+                {
+                  "id": "strict-types",
+                  "passed": true,
+                  "detail": "TypeScript strict check completed with zero diagnostics for the declared fixture source."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 24,
+          "event": "local-approval-recorded",
+          "detail": {
+            "version": 1,
+            "reviewerLabel": "Scripted expiry experiment",
+            "base": "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57",
+            "candidateCommit": "67d73ba7c352b76067eceb5bb6149870306a6249",
+            "candidateTree": "9068645422495b022aedfbeb1817cb057799be84",
+            "evidenceDigest": "a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8",
+            "policyDigest": "db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd",
+            "issuedAt": 1792257143723,
+            "expiresAt": 1792257442038
+          }
+        },
+        {
+          "sequence": 25,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 26,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "add",
+              "--",
+              "state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 27,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b2cc8f6bf7aebda6761b4b977948dcba02c2a816\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 28,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "commit-tree",
+              "b2cc8f6bf7aebda6761b4b977948dcba02c2a816",
+              "-m",
+              "Synthetic state envelope"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b16db1d7db5ee5de8c7fac87913556edca84cbaf\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 29,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 30,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 31,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 32,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 33,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "update-ref",
+              "refs/heads/lab-state",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf",
+              "0000000000000000000000000000000000000000"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 34,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "rev-parse",
+              "refs/heads/lab-state"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b16db1d7db5ee5de8c7fac87913556edca84cbaf\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 35,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 36,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 37,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 38,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 39,
+          "event": "expiry-state-read",
+          "detail": {
+            "label": "initial",
+            "oid": "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+          }
+        },
+        {
+          "sequence": 40,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "rev-parse",
+              "refs/heads/lab-state"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b16db1d7db5ee5de8c7fac87913556edca84cbaf\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 41,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 42,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 43,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 44,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 45,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "read-tree",
+              "--empty"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 46,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "add",
+              "--",
+              "state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 47,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "write-tree"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "9b21abd6784640f4ec74ee6bbd8462561367128d\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 48,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "commit-tree",
+              "9b21abd6784640f4ec74ee6bbd8462561367128d",
+              "-p",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf",
+              "-m",
+              "Synthetic state envelope"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 49,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 50,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"67d73ba7c352b76067eceb5bb6149870306a6249\",\n  \"receipts\": [\n    {\n      \"operationId\": \"d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4\",\n      \"base\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n      \"candidate\": \"67d73ba7c352b76067eceb5bb6149870306a6249\",\n      \"evidenceDigest\": \"a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8\",\n      \"policyDigest\": \"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\"\n    }\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 51,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b16db1d7db5ee5de8c7fac87913556edca84cbaf\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 52,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "67d73ba7c352b76067eceb5bb6149870306a6249^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 53,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 54,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 55,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 56,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 57,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 58,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"67d73ba7c352b76067eceb5bb6149870306a6249\",\n  \"receipts\": [\n    {\n      \"operationId\": \"d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4\",\n      \"base\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n      \"candidate\": \"67d73ba7c352b76067eceb5bb6149870306a6249\",\n      \"evidenceDigest\": \"a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8\",\n      \"policyDigest\": \"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\"\n    }\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 59,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b16db1d7db5ee5de8c7fac87913556edca84cbaf\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 60,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "67d73ba7c352b76067eceb5bb6149870306a6249^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 61,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "rev-parse",
+              "refs/heads/lab-state"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b16db1d7db5ee5de8c7fac87913556edca84cbaf\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 62,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 63,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n  \"receipts\": []\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 64,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 65,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "cb21d50bf64aad83a5cc987e90b1e11fd1b54d57^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 66,
+          "event": "expiry-state-read",
+          "detail": {
+            "label": "while-prepared",
+            "oid": "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+          }
+        },
+        {
+          "sequence": 67,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "update-ref",
+              "refs/heads/lab-state",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5",
+              "b16db1d7db5ee5de8c7fac87913556edca84cbaf"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 68,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "rev-parse",
+              "refs/heads/lab-state"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 69,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "ls-tree",
+              "-r",
+              "--name-only",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "state.json\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 70,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5:state.json"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "{\n  \"version\": 1,\n  \"selectedCandidate\": \"67d73ba7c352b76067eceb5bb6149870306a6249\",\n  \"receipts\": [\n    {\n      \"operationId\": \"d97b722b29db91eee2eee024da865da6e6151b2c125015286ec2d738a61501e4\",\n      \"base\": \"cb21d50bf64aad83a5cc987e90b1e11fd1b54d57\",\n      \"candidate\": \"67d73ba7c352b76067eceb5bb6149870306a6249\",\n      \"evidenceDigest\": \"a8eb7850f74d7ffd00a359b1b8b7aada06b6d83d69cf46b854bc778c5cd866f8\",\n      \"policyDigest\": \"db71cdf20c028d665f788986c929237b64ccc1a33cbff8ad3f78c56578040abd\"\n    }\n  ]\n}\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 71,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "show",
+              "-s",
+              "--format=%P",
+              "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "b16db1d7db5ee5de8c7fac87913556edca84cbaf\n",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 72,
+          "event": "git",
+          "detail": {
+            "executable": "git",
+            "arguments": [
+              "-c",
+              "core.longpaths=true",
+              "--git-dir",
+              "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef\\repository.git",
+              "cat-file",
+              "-e",
+              "67d73ba7c352b76067eceb5bb6149870306a6249^{commit}"
+            ],
+            "cwd": "<project>\\.lab\\expiry-after-16a6c88c-7864-4648-8e1f-4f51493cc9ef",
+            "exitCode": 0,
+            "signal": null,
+            "stdout": "",
+            "stderr": "",
+            "timedOut": false,
+            "outputLimited": false,
+            "directChildExitConfirmed": true,
+            "ownedTreeTerminationAcknowledged": null
+          }
+        },
+        {
+          "sequence": 73,
+          "event": "expiry-state-read",
+          "detail": {
+            "label": "final",
+            "oid": "e12dde227bf9c7e2d6e47c6890949fa55fa330c5"
+          }
+        }
+      ],
+      "executionError": null
+    }
+  ],
+  "limits": [
+    "Synthetic local Git ref selection only, not deployment, authenticated approval or external exactly-once execution.",
+    "Git reference-transaction instrumentation deliberately pauses the prepared phase. It is not a production hook or a cancellation remedy.",
+    "Worker clock-read sites are identified by instrumented stack names; missing or changed call sites fail the fixed checker.",
+    "Events describe one controlled local causal chain. The report is unsigned and internally checked, not independent execution attestation.",
+    "Commands and outputs are bounded process captures with project paths normalized to <project>; they are not byte-identical unsanitized terminal transcripts.",
+    "Two fixed placements distinguish the implemented pre-CAS freshness check from an atomic expiry condition. They do not model clock skew, power loss or arbitrary writers."
+  ]
+}

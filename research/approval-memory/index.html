@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Roll back the code. Reuse the approval? — Minjae Lee</title>
+    <meta
+      name="description"
+      content="Actual Git interruption and rollback traces show why retaining an approval receipt also changes the reader's contract."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Roll back the code. Reuse the approval?"
+    />
+    <meta
+      property="og:description"
+      content="Compare separate writes with one selected state commit, then inspect what rollback preserves."
+    />
+    <meta
+      property="og:url"
+      content="https://minjae-lee-kr.github.io/research/approval-memory/"
+    />
+    <meta
+      property="og:image"
+      content="https://minjae-lee-kr.github.io/assets/social/approval-memory.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Both paths restore code A. Keeping the approval receipt refuses a new transition; rewinding the whole state lets the same still-fresh approval select B again."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="canonical"
+      href="https://minjae-lee-kr.github.io/research/approval-memory/"
+    />
+    <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../what-the-client-knows/comparison.css" />
+    <link rel="stylesheet" href="memory.css" />
+    <script type="module" src="memory.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#comparison" data-copy="skip"
+      >Skip to the recorded comparison</a
+    >
+    <header class="site-header wrap">
+      <a class="wordmark" href="../../"
+        >Minjae Lee
+        <span class="wordmark-role" data-copy="back"
+          >/ Engineering notes</span
+        ></a
+      >
+      <div
+        class="languages"
+        role="group"
+        data-label="language"
+        aria-label="Language"
+      >
+        <button type="button" data-language="ko" lang="ko" aria-pressed="false">
+          KO</button
+        ><span aria-hidden="true">/</span
+        ><button type="button" data-language="en" lang="en" aria-pressed="true">
+          EN
+        </button>
+      </div>
+    </header>
+    <main class="wrap research">
+      <section class="research-intro">
+        <p class="eyebrow" data-copy="eyebrow">
+          GIT / REMEMBERING APPROVAL USE
+        </p>
+        <h1 data-copy="title">Roll back the code.<br />Reuse the approval?</h1>
+        <p class="standfirst" data-copy="lead">
+          The executor stopped just after selecting the code. If the approval
+          receipt is missing, did the change never happen?
+        </p>
+        <p data-copy="context">
+          Real Git traces compare writing the code selection and receipt
+          separately with selecting one state commit containing both. First
+          choose where execution stopped; then inspect what a rollback
+          preserves.
+        </p>
+        <p class="record-label" data-copy="recorded">
+          Independent synthetic experiment · Recorded Git and process
+          observations · No execution on this page
+        </p>
+      </section>
+      <section id="comparison" aria-labelledby="stop-title">
+        <div class="comparison-heading">
+          <h2 id="stop-title" data-copy="stopTitle">
+            What remained after interruption?
+          </h2>
+          <span class="record-badge" id="integrity" role="status"
+            >Checking the recording…</span
+          >
+        </div>
+        <p
+          class="load-message"
+          id="load-message"
+          role="status"
+          data-copy="loading"
+        >
+          Reading the recorded observations.
+        </p>
+        <div
+          class="stage-controls"
+          role="group"
+          aria-label="Recorded interruption point"
+          data-label="stopGroup"
+        >
+          <button
+            type="button"
+            data-stop="separate"
+            aria-pressed="true"
+            disabled
+          >
+            <span>01</span
+            ><b data-copy="separate">Code selected, receipt not written</b>
+          </button>
+          <button
+            type="button"
+            data-stop="prepared"
+            aria-pressed="false"
+            disabled
+          >
+            <span>02</span
+            ><b data-copy="prepared">State prepared, not selected</b>
+          </button>
+          <button
+            type="button"
+            data-stop="selected"
+            aria-pressed="false"
+            disabled
+          >
+            <span>03</span
+            ><b data-copy="selected">State selected, reply not sent</b>
+          </button>
+        </div>
+        <p class="caller-scope" data-copy="stopHelp">
+          Each button reads a separate fixture repository. A is that case's
+          baseline code; B is its verified candidate. An OID identifies a fixed
+          object; a ref is the pointer selecting an object.
+        </p>
+        <div data-observations hidden>
+          <p id="stop-explanation" class="stage-explanation"></p>
+          <div id="stop-snapshot" class="snapshot"></div>
+          <p id="stop-fence" class="fence"></p>
+          <details id="stop-raw" class="record-detail">
+            <summary data-copy="rawLabel">
+              Inspect these observations and their raw locations
+            </summary>
+            <div class="raw-records"></div>
+          </details>
+        </div>
+      </section>
+      <section
+        class="record-section"
+        aria-labelledby="rollback-title"
+        data-observations
+        hidden
+      >
+        <h2 id="rollback-title" data-copy="rollbackTitle">
+          Both return to A. The next attempt differs.
+        </h2>
+        <p class="caller-scope" data-copy="rollbackLead">
+          Both rollback paths ran in sequence in the same fixture repository.
+          Each view shows the observations immediately before and after that
+          retry.
+        </p>
+        <div
+          class="stage-controls two-choices"
+          role="group"
+          aria-label="Rollback choice"
+          data-label="rollbackGroup"
+        >
+          <button type="button" data-rollback="preserve" aria-pressed="true">
+            <span>01</span><b data-copy="preserve">Restore A, keep receipts</b>
+          </button>
+          <button type="button" data-rollback="rewind" aria-pressed="false">
+            <span>02</span><b data-copy="rewind">Rewind the whole state ref</b>
+          </button>
+        </div>
+        <p id="rollback-explanation" class="stage-explanation"></p>
+        <div class="run-grid">
+          <div>
+            <h3 class="observation-label" data-copy="beforeRetry">
+              Before retry
+            </h3>
+            <div id="rollback-before" class="snapshot"></div>
+          </div>
+          <div>
+            <h3 class="observation-label" data-copy="afterRetry">
+              After retry
+            </h3>
+            <div id="rollback-after" class="snapshot"></div>
+          </div>
+        </div>
+        <p id="rollback-result" class="equality" aria-live="polite"></p>
+        <details id="rollback-raw" class="record-detail">
+          <summary data-copy="rawLabel">
+            Inspect these observations and their raw locations
+          </summary>
+          <div class="raw-records"></div>
+        </details>
+      </section>
+      <section
+        class="record-section"
+        aria-labelledby="reader-title"
+        data-observations
+        hidden
+      >
+        <h2 id="reader-title" data-copy="readerTitle">
+          The reader must follow one captured OID.
+        </h2>
+        <p class="caller-scope" data-copy="readerLead">
+          These observations surround the first state transition, before the
+          rollback above. The captured OID and a fresh ref read point to
+          different versions.
+        </p>
+        <ol id="reader-observations" class="reader-grid"></ol>
+        <p class="reader-explanation" data-copy="readerExplain">
+          Combining A from the first observation with the second observation's
+          receipt mixes versions. Reading the captured OID again still returns
+          the original A and empty receipt list together.
+        </p>
+        <details id="reader-raw" class="record-detail">
+          <summary data-copy="rawLabel">
+            Inspect these observations and their raw locations
+          </summary>
+          <div class="raw-records"></div>
+        </details>
+      </section>
+      <section class="judgment" aria-labelledby="decision-title">
+        <p class="eyebrow" data-copy="decisionLabel">
+          THE DECISION, AND ITS COST
+        </p>
+        <h2 id="decision-title" data-copy="decisionTitle">
+          Keeping memory changes the consumer's contract.
+        </h2>
+        <p data-copy="decisionBody">
+          The ref now points to a state document, not deployable code. Consumers
+          must capture its OID once and resolve both code and receipts through
+          it. This is not a drop-in change for existing tools.
+        </p>
+        <p data-copy="retentionCost">
+          Writers must preserve receipts too. This fixture rewrites up to 16
+          retained receipts and implements no pruning policy. All writes contend
+          on one ref. A code OID in JSON is not a Git GC edge; separate
+          candidate refs retain those objects.
+        </p>
+        <p data-copy="limits">
+          A real worker is stopped between completed Git commands in a synthetic
+          local repository. This does not test power loss during a Git update,
+          deployment or external effects. Scripted approval is not human
+          authentication, and writers able to erase the record remain outside
+          the protection.
+        </p>
+        <a
+          id="design-link"
+          class="text-link"
+          href="https://github.com/minjae-lee-kr/verified-change-lab/blob/23731a14e6ee4fc1fe2ff739b839cca849cbb4cb/docs/state-envelope.md"
+          data-copy="fullNote"
+          >Read the design choices and limits →</a
+        >
+      </section>
+      <section class="provenance" aria-labelledby="provenance-title">
+        <h2 id="provenance-title" data-copy="provenance">
+          Follow the claim back to the observation.
+        </h2>
+        <p data-copy="provenanceBody">
+          A separate checker correlates states, receipts, worker phases and
+          ordered Git reads. This page verifies a fixed file hash and reads its
+          values from that JSON. Neither authenticates the recording host.
+        </p>
+        <ul>
+          <li>
+            <a href="recording.json" data-copy="rawFile"
+              >Original execution recording JSON</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/minjae-lee-kr/verified-change-lab/tree/23731a14e6ee4fc1fe2ff739b839cca849cbb4cb"
+              data-copy="sourceLink"
+              >Source for this recording</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/minjae-lee-kr/verified-change-lab/blob/23731a14e6ee4fc1fe2ff739b839cca849cbb4cb/src/state-envelope-check.ts"
+              data-copy="checkerLink"
+              >Record consistency checker</a
+            >
+          </li>
+        </ul>
+        <details id="provenance-raw">
+          <summary data-copy="hashLabel">
+            Runtime and raw recording hash
+          </summary>
+          <pre id="provenance-data"></pre>
+        </details>
+      </section>
+      <section class="judgment" aria-labelledby="expiry-title">
+        <p class="eyebrow" data-copy="expiryLabel">
+          FOLLOW-UP / APPROVAL DEADLINE
+        </p>
+        <h2 id="expiry-title" data-copy="expiryTitle">
+          Fresh at the check. Is that enough?
+        </h2>
+        <p data-copy="expiryBody">
+          Preserving a receipt does not make the freshness check and Git ref
+          update atomic. A real Git transaction was held after the last
+          successful check, then allowed to commit after expiry. The control
+          that expired before the recheck refused the change.
+        </p>
+        <figure class="expiry-comparison">
+          <figcaption data-copy="expiryDiagram">
+            Order of the two controls · widths do not represent elapsed time
+          </figcaption>
+          <div>
+            <h3 data-copy="beforeExpiry">Expires before the check</h3>
+            <ol>
+              <li data-copy="expired">Deadline passes</li>
+              <li data-copy="refused">Check refuses</li>
+              <li data-copy="unchanged">A retained · no receipt</li>
+            </ol>
+          </div>
+          <div>
+            <h3 data-copy="afterExpiry">Expires after the check</h3>
+            <ol>
+              <li data-copy="checkedFresh">Freshness check passes</li>
+              <li data-copy="expired">Deadline passes</li>
+              <li data-copy="committedLate">B selected · receipt kept</li>
+            </ol>
+          </div>
+        </figure>
+        <p data-copy="expiryCost">
+          Only the worker's logical clock is controlled: there is no five-minute
+          wait or system-clock change. Permission to start while fresh and a
+          deadline to finish are different contracts. The prepared Git hook is
+          an observation tool, not a production remedy.
+        </p>
+        <a
+          id="expiry-link"
+          class="text-link"
+          data-copy="expiryNote"
+          href="https://github.com/minjae-lee-kr/verified-change-lab/blob/01987956fbbcb485fb6a0178feb8c53c7494fa34/docs/approval-expiry.md"
+          >Read both controls and the design decision →</a
+        >
+        <p>
+          <a href="expiry-recording.json" data-copy="expiryRaw"
+            >Separate JSON recording for the follow-up</a
+          >
+        </p>
+      </section>
+      <noscript
+        ><p>
+          JavaScript is required to read the interactive comparison. / 기록
+          비교에는 JavaScript가 필요합니다.
+          <a href="recording.json">Raw JSON</a>
+        </p></noscript
+      >
+    </main>
+    <footer class="wrap research-footer">
+      <a href="../../" data-copy="home">← All engineering notes</a
+      ><span data-copy="footer">An independent experiment · Minjae Lee</span>
+    </footer>
+  </body>
+</html>

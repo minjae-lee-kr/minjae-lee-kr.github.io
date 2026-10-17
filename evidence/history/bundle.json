@@ -7,7 +7,8 @@
   "evidenceSha256": "abe23117465e57ec65c7b2d7954480c4ff7dc4da70ee255ba9df2a84d600d32d",
   "displayAdaptations": [
     "Portfolio return navigation and display-file provenance link in index.html; navigation styling in report.css",
-    "Standalone bilingual scenario, ledger definition and control-method explanation; original observations unchanged"
+    "Standalone bilingual scenario, ledger definition and control-method explanation; original observations unchanged",
+    "Explicit URL language before shared preference; language controls update the URL and reading links; restore without rendering when unchanged"
   ],
   "note": "The upstream manifest identifies original export bytes. This manifest identifies the portfolio files. Both are unsigned provenance, not attestation.",
   "files": [
@@ -49,7 +50,7 @@
     },
     {
       "path": "report.js",
-      "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+      "sha256": "35db1e50bd8bb8d370199c641830677cac4fc0515160c2ce87f9d19609284874"
     },
     {
       "path": "recording.json",

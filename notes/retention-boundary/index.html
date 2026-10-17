@@ -31,7 +31,7 @@
     <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../notes.css" />
     <link rel="stylesheet" href="retention.css" />
-    <script src="../notes.js" defer></script>
+    <script src="../notes.js" type="module"></script>
     <script type="module" src="retention.js"></script>
   </head>
   <body
@@ -49,9 +49,9 @@
         <a
           class="wordmark"
           href="../../"
-          aria-label="민재의 포트폴리오"
-          data-label-ko="민재의 포트폴리오"
-          data-label-en="Minjae’s portfolio"
+          aria-label="M·L — 민재의 포트폴리오"
+          data-label-ko="M·L — 민재의 포트폴리오"
+          data-label-en="M·L — Minjae’s portfolio"
           >M<span>·</span>L</a
         ><a class="back-link" href="../../"
           ><span data-lang="ko" lang="ko">포트폴리오로</span
@@ -111,6 +111,7 @@
               >Independent personal experiment · Recorded 2026-10-16</span
             >
           </p>
+          <p><a href="../../research/what-the-client-knows/"><span data-lang="ko" lang="ko">두 실행을 나란히 비교하기 →</span><span data-lang="en" lang="en" hidden>Compare the two recorded runs side by side →</span></a></p>
         </header>
         <div id="load-status" class="recording-status" role="status">
           <p>
@@ -353,11 +354,9 @@
             </figure>
             <div class="prose" data-lang="ko" lang="ko">
               <p>
-                감사기는 실행이 끝난 뒤 양쪽 기록을 읽어 차이를 구분할 수
-                있습니다. 재시도 정책은 같은 정보를 읽을 수 없습니다. 조회 API가
-                보여 주는 것은 보존된 중복 방지 상태이지, 과거의 모든 효과가
-                아닙니다. 감사기가 아는 사실을 정책도 조회할 수 있는 것처럼
-                그리면, 실제로는 없는 복구 수단을 만들어 낸 셈이 됩니다.
+                조회 API는 보존 중인 중복 방지 기록을 반환할 뿐, 과거의 모든
+                처리를 보여 주지는 않습니다. 감사기의 DB 접근 권한을 정책에도
+                있다고 가정하면, 구현하지 않은 복구 수단에 의존하게 됩니다.
               </p>
               <p>
                 그래서 보호 정책은 재전송 기한 이후 요청을 미확정 상태로
@@ -371,11 +370,9 @@
             </div>
             <div class="prose" data-lang="en" lang="en" hidden>
               <p>
-                The auditor can distinguish the two histories; the retry policy
-                cannot read the same information. Its lookup returns retained
-                deduplication records, not every past operation. Giving the
-                policy the auditor’s access would assume a recovery mechanism
-                that this system does not have.
+                The lookup returns retained deduplication records, not every
+                past operation. Giving the policy the auditor’s database access
+                would assume a recovery mechanism this system does not have.
               </p>
               <p>
                 The guarded policy therefore leaves the intent unresolved after
@@ -724,16 +721,17 @@
             </h2>
             <div class="prose" data-lang="ko" lang="ko">
               <p>
-                검사기는 상대 기록을 순서대로 재구성해 최소 보존 기간 이전의
-                삭제를 거절하고, 로컬 결과를 바로
+                검사기는 상대 기록을 순서대로 재구성합니다. 중복 방지 기록을
+                최소 보존 기간 전에 지운 실행은 유효한 반례로 인정하지 않습니다.
+                로컬 결과는 바로
                 그 시도에서 받은 확인 번호와 연결합니다. 같은 키로 발급된 과거
                 확인 번호가 있어도, 이번 시도의 결과라는 근거로 사용할 수는
                 없습니다. 로컬 1건의 기록이 내부적으로 일관돼도, 늦게 도착한
                 조건의 상대 효과는 2건이라고 명시합니다.
               </p>
               <p>
-                실제 제공사와 연동한 실험은 아니며, 중복 처리가 절대 없다고
-                증명하지도 않습니다. 최소 보존 기간이 지났더라도 기록이 남아 있으면,
+                실제 제공사와 연동한 실험은 아니며, 모든 요청이 정확히 한 번
+                처리된다는 증명도 아닙니다. 최소 보존 기간이 지났더라도 기록이 남아 있으면,
                 조회해서 기존 확인 번호를 복구할 수 있습니다. 기한이 지났다는
                 사실만으로 기록이 사라지지는 않습니다. 그러나 기록이 없다는
                 응답만으로는 미처리와 처리 후 중복 방지 기록 삭제를 구분할 수 없습니다.
@@ -742,8 +740,9 @@
             </div>
             <div class="prose" data-lang="en" lang="en" hidden>
               <p>
-                The checker reconstructs retained records in journal order, refuses pruning
-                before minimum retention, and binds the local grant to the
+                The checker reconstructs retained records in journal order. A run that
+                prunes before minimum retention is not a valid expiry counterexample.
+                It binds the local grant to the
                 positive receipt from that exact attempt. Merely finding some
                 earlier receipt under the same key is insufficient. The recorded
                 comparison explicitly marks the late-arrival case as two remote
@@ -815,7 +814,7 @@
                   >이 페이지는 과거 실행을 설명합니다. 현재 소스의 재실행 결과가
                   아닙니다. 페이지에 저장된 예상값은 선택한 원본 기록과 기록
                   간의 관계를 확인하는 데 사용합니다. 새로 측정한 값은 아닙니다.
-                  전체 감사기는 소스 저장소에 있고, 이 페이지는 두 대비에 필요한
+                  전체 감사기는 소스 저장소에 있고, 이 페이지는 두 비교에 필요한
                   관계만 다시 확인합니다.</span
                 ><span data-lang="en" lang="en" hidden
                   >This page describes a historical run, not a rerun of the
@@ -877,13 +876,15 @@
             </p>
             <p>
               <a
+                data-lang="ko" lang="ko"
+                href="https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/retention-boundary.ko.md"
+                rel="noreferrer"
+                >소스 코드와 재현 방법 ↗</a>
+              <a
+                data-lang="en" lang="en" hidden
                 href="https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/retention-boundary.md"
                 rel="noreferrer"
-                ><span data-lang="ko" lang="ko">소스 코드와 재현 방법</span
-                ><span data-lang="en" lang="en" hidden
-                  >Source code and reproduction guide</span
-                >
-                ↗</a
+                >Source code and reproduction guide ↗</a
               >
             </p>
           </section>

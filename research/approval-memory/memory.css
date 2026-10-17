@@ -1,0 +1,247 @@
+.stage-controls b {
+  font-weight: 600;
+  white-space: pre-line;
+}
+.stage-controls button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+.two-choices {
+  grid-template-columns: 1fr 1fr;
+}
+.record-section {
+  border-top: 1px solid #ccd8e9;
+  margin-top: 64px;
+  padding-top: 34px;
+}
+.snapshot {
+  border: 1px solid #c5d3e5;
+  border-radius: 12px;
+  padding: 24px;
+  background: #fff;
+  min-width: 0;
+}
+.snapshot .pair-caption {
+  font-size: 13px;
+  color: #53657d;
+  margin: 0 0 18px;
+}
+.snapshot dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 0;
+}
+.snapshot dl > div {
+  min-width: 0;
+}
+.snapshot dt {
+  font-size: 14px;
+  color: #53657d;
+}
+.snapshot dd {
+  margin: 4px 0 0;
+}
+.state-value {
+  display: block;
+  color: #182e50;
+  font-size: 36px;
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+}
+.code-value {
+  color: #245dd6;
+}
+.value-note {
+  display: block;
+  font-size: 13px;
+  color: #53657d;
+  margin-top: 8px;
+}
+.oid {
+  display: block;
+  font:
+    11px/1.7 ui-monospace,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  color: #53657d;
+  overflow-wrap: anywhere;
+}
+.state-oid {
+  padding-top: 16px;
+  border-top: 1px solid #e1e8f1;
+  margin: 20px 0 0;
+}
+.fence {
+  font-size: 14px;
+  color: #53657d;
+  margin: 16px 0 24px;
+}
+.observation-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.run-grid > div {
+  min-width: 0;
+}
+.reader-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+  margin: 24px 0;
+}
+.reader-grid > li {
+  min-width: 0;
+}
+.reader-grid .snapshot {
+  padding: 18px;
+  height: calc(100% - 34px);
+}
+.reader-grid .snapshot dl {
+  gap: 12px;
+}
+.reader-grid .state-value {
+  font-size: 26px;
+}
+.reader-grid .oid {
+  font-size: 10px;
+}
+.reader-explanation {
+  max-width: 800px;
+}
+.raw-records {
+  padding-top: 14px;
+}
+.raw-records pre:focus-visible {
+  outline: 3px solid #245dd6;
+  outline-offset: 3px;
+}
+.raw-records pre,
+#provenance-data {
+  overflow: auto;
+  max-height: 350px;
+  font:
+    12px/1.6 ui-monospace,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  padding: 16px;
+  background: #edf2f9;
+  border-radius: 6px;
+}
+#provenance-data {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.load-message {
+  padding: 16px;
+  background: #edf2f9;
+  border-left: 3px solid #61738e;
+}
+.stage-explanation {
+  min-height: 4.9em;
+}
+.expiry-comparison {
+  margin: 28px 0;
+}
+.expiry-comparison figcaption {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.expiry-comparison h3 {
+  font-size: 14px;
+  font-weight: 650;
+  margin: 20px 0 10px;
+}
+.expiry-comparison ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.expiry-comparison li {
+  padding: 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+  position: relative;
+}
+.expiry-comparison li + li::before {
+  content: "→";
+  position: absolute;
+  left: -14px;
+  width: 14px;
+  text-align: center;
+  color: #53657d;
+}
+@media (max-width: 480px) {
+  .expiry-comparison ol {
+    grid-template-columns: 1fr;
+  }
+  .expiry-comparison li + li::before {
+    content: "↓";
+    left: 50%;
+    top: -19px;
+  }
+}
+@media (max-width: 760px) {
+  .reader-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .reader-grid .snapshot {
+    height: auto;
+  }
+  .reader-grid .state-value {
+    font-size: 28px;
+  }
+}
+@media (max-width: 650px) {
+  .research h1 {
+    font-size: clamp(37px, 9.7vw, 48px);
+  }
+  .stage-controls {
+    grid-template-columns: 1fr;
+  }
+  .stage-controls button {
+    display: flex;
+    padding: 16px;
+    border-right: 0;
+    border-bottom: 1px solid #c9d5e6;
+    font-size: 15px;
+  }
+  .stage-controls button:last-child {
+    border-bottom: 0;
+  }
+  .stage-controls button span {
+    margin: 0;
+  }
+  .stage-controls b {
+    white-space: normal;
+  }
+  .run-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .snapshot {
+    padding: 20px;
+  }
+  .state-value {
+    font-size: 30px;
+  }
+  .stage-explanation {
+    min-height: 0;
+  }
+  .record-section {
+    margin-top: 42px;
+  }
+}

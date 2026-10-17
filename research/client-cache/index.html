@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Why does the next query have no error? — Minjae Lee</title>
+    <meta
+      name="description"
+      content="Compare actual Apollo Client results, cache contents and HTTP requests after a partial inventory response."
+    />
+    <link
+      rel="canonical"
+      href="https://minjae-lee-kr.github.io/research/client-cache/"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Why does the next query have no error?"
+    />
+    <meta
+      property="og:description"
+      content="A cached value and an error-free result do not establish a new inventory lookup."
+    />
+    <meta
+      property="og:url"
+      content="https://minjae-lee-kr.github.io/research/client-cache/"
+    />
+    <meta
+      property="og:image"
+      content="https://minjae-lee-kr.github.io/assets/social/client-cache.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../what-the-client-knows/comparison.css" />
+    <link rel="stylesheet" href="cache.css" />
+    <script type="module" src="cache.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#comparison" data-copy="skip"
+      >Skip to the query comparison</a
+    >
+    <header class="site-header wrap">
+      <a class="wordmark" href="../../"
+        >Minjae Lee
+        <span class="wordmark-role" data-copy="back"
+          >/ Engineering notes</span
+        ></a
+      >
+      <div
+        class="languages"
+        role="group"
+        aria-label="Language"
+        data-label="language"
+      >
+        <button type="button" data-language="ko" lang="ko" aria-pressed="false">
+          KO</button
+        ><span aria-hidden="true">/</span
+        ><button type="button" data-language="en" lang="en" aria-pressed="true">
+          EN
+        </button>
+      </div>
+    </header>
+    <main class="wrap research">
+      <section class="research-intro" data-reading-section>
+        <p class="eyebrow" data-copy="eyebrow">
+          APOLLO CLIENT / CACHE AFTER AN ERROR
+        </p>
+        <h1 data-copy="title">Why does the next query<br />have no error?</h1>
+        <p class="standfirst" data-copy="lead">
+          An inventory query returned partial data and an error. The next
+          cache-first query had no error and made zero HTTP requests. The first
+          response's null was still there.
+        </p>
+        <p data-copy="context">
+          Real local Apollo gateways produce healthy and failed lamp lookups.
+          Each case keeps one client and cache across successive queries. This
+          is a reader for saved observations, not a React UI experiment.
+        </p>
+        <p class="record-label" data-copy="recorded">
+          Synthetic products · Apollo Client 4.3.3 / GraphQL 16.14.2 · Recorded
+          execution
+        </p>
+      </section>
+      <section
+        id="comparison"
+        tabindex="-1"
+        aria-labelledby="comparison-title"
+        data-reading-section
+      >
+        <div class="comparison-heading">
+          <h2 id="comparison-title" data-copy="compare">
+            The failed lookup, then the next query
+          </h2>
+          <span
+            class="record-badge"
+            id="integrity"
+            role="status"
+            data-copy="checking"
+            >Checking the recording…</span
+          >
+        </div>
+        <p class="caller-scope" data-copy="policyHelp">
+          errorPolicy controls errors and partial data. fetchPolicy controls
+          cache or network reads. A stored null is a field value, not a cache
+          miss.
+        </p>
+        <div
+          class="case-controls"
+          role="group"
+          aria-label="Cache and error policy cases"
+          data-label="controls"
+        >
+          <button
+            type="button"
+            data-case="all-cold"
+            aria-pressed="true"
+            aria-controls="comparison-results"
+            disabled
+          >
+            <b>all</b><span data-copy="cold">Empty cache</span>
+          </button>
+          <button
+            type="button"
+            data-case="none-warm"
+            aria-pressed="false"
+            aria-controls="comparison-results"
+            disabled
+          >
+            <b>none</b><span data-copy="warm">Previously healthy cache</span>
+          </button>
+          <button
+            type="button"
+            data-case="all-warm"
+            aria-pressed="false"
+            aria-controls="comparison-results"
+            disabled
+          >
+            <b>all</b><span data-copy="warm">Previously healthy cache</span>
+          </button>
+          <button
+            type="button"
+            data-case="ignore-warm"
+            aria-pressed="false"
+            aria-controls="comparison-results"
+            disabled
+          >
+            <b>ignore</b><span data-copy="warm">Previously healthy cache</span>
+          </button>
+          <button
+            type="button"
+            data-case="all-no-cache"
+            aria-pressed="false"
+            aria-controls="comparison-results"
+            disabled
+          >
+            <b>all + no-cache</b
+            ><span data-copy="noCache">Do not store the first result</span>
+          </button>
+        </div>
+        <p
+          id="load-message"
+          class="recording-error"
+          role="status"
+          data-copy="loading"
+        >
+          The comparison appears after the recording is verified.
+        </p>
+        <div id="comparison-results" hidden>
+          <p id="initial-cache" class="initial-cache"></p>
+          <p class="caller-scope" data-copy="sameClient">
+            Successive client.query calls keep the same client and cache. The
+            failure server remains selected.
+          </p>
+          <div class="query-grid">
+            <article class="query-card">
+              <h3 data-copy="failedStep">
+                01 · Query the failing inventory server
+              </h3>
+              <div id="failed-policy" class="policy-code"></div>
+              <dl id="failed-values"></dl>
+              <p
+                id="error-data"
+                class="error-data"
+                data-copy="errorData"
+                hidden
+              ></p>
+            </article>
+            <article class="query-card next-query">
+              <h3 data-copy="nextStep">02 · Next cache-first query</h3>
+              <div id="next-policy" class="policy-code"></div>
+              <dl id="next-values"></dl>
+            </article>
+          </div>
+          <p class="caller-scope" data-copy="httpScope">
+            HTTP counts cover client → gateway calls, not subgraph requests.
+          </p>
+          <p
+            id="case-explanation"
+            class="case-explanation"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <details id="case-raw" class="record-detail">
+            <summary data-copy="raw">
+              Inspect this case's complete observations
+            </summary>
+            <p data-copy="rawHelp"></p>
+            <code id="case-pointer"></code>
+            <pre
+              id="case-json"
+              tabindex="0"
+              role="region"
+              aria-label="Raw case observations"
+            ></pre>
+          </details>
+        </div>
+      </section>
+      <section
+        class="judgment"
+        aria-labelledby="decision-title"
+        data-reading-section
+      >
+        <p class="eyebrow" data-copy="decisionLabel">USING THE NEXT RESULT</p>
+        <h2 id="decision-title" data-copy="decisionTitle">
+          No error is not a new confirmation.
+        </h2>
+        <p data-copy="decisionOne">
+          all can store a partial response; none can leave an earlier value in
+          place. Neither makes a later cache hit a new inventory confirmation.
+        </p>
+        <p data-copy="decisionTwo">
+          no-cache does not store that response. A subsequent cache-first
+          request can still contact the server, receive the same error and store
+          partial data.
+        </p>
+        <p data-copy="limits">
+          These observations concern promise-based client.query, not React
+          rendering. Null does not mean sold out. The previous quantity 3 was
+          not checked against current inventory.
+        </p>
+        <p>
+          <a id="design-link" aria-disabled="true" data-copy="pendingSource"
+            >Final source link pending</a
+          >
+        </p>
+        <p>
+          <a href="../partial-data/" data-copy="related"
+            >Earlier experiment: which server response values survive? →</a
+          >
+        </p>
+      </section>
+      <section
+        class="provenance"
+        aria-labelledby="provenance-title"
+        data-reading-section
+      >
+        <h2 id="provenance-title" data-copy="provenance">
+          Where the displayed values come from
+        </h2>
+        <p data-copy="provenanceBody">
+          The page verifies the fixed recording and projects its actual results
+          and cache values. This does not authenticate the recording host.
+        </p>
+        <ul>
+          <li>
+            <a id="raw-link" href="recording.json" data-copy="rawFile"
+              >Original execution recording JSON</a
+            >
+          </li>
+          <li>
+            <a id="source-link" aria-disabled="true" data-copy="pendingSource"
+              >Final source link pending</a
+            >
+          </li>
+        </ul>
+        <details id="provenance-raw">
+          <summary data-copy="provenanceRaw">
+            Runtime and raw recording hash
+          </summary>
+          <pre
+            id="provenance-json"
+            tabindex="0"
+            role="region"
+            aria-label="Recording provenance"
+          ></pre>
+        </details>
+      </section>
+      <noscript
+        ><p class="recording-error">
+          JavaScript is required to verify and compare the recording.
+          <a href="../partial-data/">Read the server-side comparison.</a>
+        </p></noscript
+      >
+    </main>
+    <footer class="wrap research-footer">
+      <a href="../../" data-copy="home">← All engineering notes</a
+      ><span data-copy="footer">An independent experiment · Minjae Lee</span>
+    </footer>
+  </body>
+</html>

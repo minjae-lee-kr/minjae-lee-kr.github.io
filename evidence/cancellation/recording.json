@@ -13,13 +13,14 @@
   "originalRecordedDataSha256": "8f5d78b5879b422d946c20542323e0d3c06a8d529f24defc23f2a84ad5f7bc1f",
   "displayAdaptations": [
     "relative asset URLs",
-    "shared persisted language preference",
-    "Back/Forward preference restoration with report state preserved",
+    "explicit URL language before shared preference; language controls update the URL and reading links",
+    "Back/Forward language restoration; no render when the language is unchanged",
     "recorded-run banner with cool-toned presentation",
     "standalone bilingual scenario, term definitions and reading guide; original evidence unchanged",
     "readable timeline width with keyboard scrolling",
     "Korean execution-slot terminology",
-    "higher-contrast focus and chart series with unchanged data"
+    "higher-contrast focus and chart series with unchanged data",
+    "language control name includes its visible label"
   ],
   "files": [
     {
@@ -32,7 +33,7 @@
     },
     {
       "path": "debt.js",
-      "sha256": "307866144523e6c310fc23fb10512ae2c56903f426decf7d43ecdfb8c21b7ca4"
+      "sha256": "6ddcaecea2c8e81775258ee3e6dd70551c720186a934b26f98c1dcbd89b4ea03"
     },
     {
       "path": "report-data.js",

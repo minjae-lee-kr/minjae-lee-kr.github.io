@@ -1,3 +1,5 @@
+import { localizeReadingLinks } from "../research/preferences.js";
+
 (() => {
   "use strict";
   const key = "minjae.portfolio.language";
@@ -17,6 +19,15 @@
       return language;
     }
   };
+  const linkedLanguage = () => {
+    const requested = new URLSearchParams(location.search).get("lang");
+    return languages.has(requested) ? requested : readPreference();
+  };
+  const reflectLanguage = () => {
+    const url = new URL(location.href);
+    url.searchParams.set("lang", language);
+    history.replaceState(history.state, "", url);
+  };
   const header = document.querySelector(".site-header");
   const sections = [...document.querySelectorAll("[data-reading-section]")];
   const capturePosition = () => {
@@ -30,6 +41,9 @@
     return {
       section,
       marker,
+      // Before a section starts, preserve the gap rather than snapping its
+      // first line to the reading marker (including a language change at top).
+      offset: bounds.top > marker ? bounds.top - marker : null,
       fraction: Math.max(
         0,
         Math.min(1, (marker - bounds.top) / Math.max(1, bounds.height)),
@@ -44,6 +58,7 @@
     const focusKey = focused?.getAttribute("data-focus-key");
     const containingSection = focused?.closest("[data-reading-section]");
     language = next;
+    localizeReadingLinks(document, language);
     document.documentElement.lang = next;
     for (const element of document.querySelectorAll("[data-lang]"))
       element.hidden = element.dataset.lang !== next;
@@ -76,7 +91,12 @@
     if (position) {
       const bounds = position.section.getBoundingClientRect();
       window.scrollBy({
-        top: bounds.top + bounds.height * position.fraction - position.marker,
+        top:
+          bounds.top +
+          (position.offset === null
+            ? bounds.height * position.fraction
+            : -position.offset) -
+          position.marker,
         behavior: "instant",
       });
     }
@@ -96,10 +116,20 @@
         /* Reading and switching still work without storage. */
       }
       apply(next, true, true);
+      reflectLanguage();
     });
-  window.addEventListener("pageshow", () => apply(readPreference(), true));
-  window.addEventListener("storage", (event) => {
-    if (event.key === key || event.key === null) apply(readPreference(), true);
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      apply(linkedLanguage(), true);
+      reflectLanguage();
+    }
   });
-  apply(readPreference(), false);
+  window.addEventListener("popstate", () => apply(linkedLanguage(), true));
+  window.addEventListener("storage", (event) => {
+    if (event.key === key || event.key === null) {
+      apply(readPreference(), true);
+      reflectLanguage();
+    }
+  });
+  apply(linkedLanguage(), false);
 })();

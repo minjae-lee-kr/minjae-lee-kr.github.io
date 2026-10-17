@@ -59,8 +59,6 @@
       <a
         class="wordmark"
         href="#top"
-        data-i18n-aria="home"
-        aria-label="Minjae Lee portfolio home"
         ><span class="monogram" aria-hidden="true">m<span>·</span>l</span
         ><span
           >Minjae Lee<span class="wordmark-role" data-i18n="role"
@@ -112,11 +110,37 @@
             7+ years in booking, ordering &amp; payments. Now building
             AI-assisted developer tools.
           </p>
-          <a class="text-link" href="#play"
-            ><span data-i18n="explore">Explore the examples</span
+          <a class="text-link" href="#research"
+            ><span data-i18n="explore">Explore the recorded results</span
             ><span aria-hidden="true">↓</span></a
           >
         </div>
+      </section>
+      <section id="research" class="record-feature wrap" aria-labelledby="record-feature-title">
+        <div class="record-feature-body">
+          <p class="eyebrow" data-i18n="recordEyebrow">INDEPENDENT LAB / RECORDED RESULTS</p>
+          <h2 id="record-feature-title" data-i18n="recordTitle">Same answer. Different outcome.</h2>
+          <p data-i18n="recordLead">Two runs leave the same local records. Only one executed the operation. Compare what the caller knew with what the final audit reveals.</p>
+          <a class="text-link" href="research/what-the-client-knows/"><span data-i18n="recordLink">Compare the two runs</span><span aria-hidden="true">↗</span></a>
+          <div class="record-pair" aria-hidden="true">
+            <span class="record-pair-label" data-i18n="recordVisualLabel">FINAL AUDIT / OPERATIONS</span>
+            <div><span>A</span><strong>0</strong></div><div><span>B</span><strong>1</strong></div>
+          </div>
+        </div>
+        <aside class="record-feature-related">
+          <div class="record-related-item">
+          <span class="mini-response" aria-hidden="true"><i>01</i><b>null</b><i>03</i></span>
+          <h3 data-i18n="partialTitle">One failed lookup. How much disappears?</h3>
+          <p data-i18n="partialLead">Compare what survives per-key errors, a failed batch and a non-null field.</p>
+          <a class="text-link" href="research/partial-data/"><span data-i18n="partialLink">Inspect the GraphQL responses</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="record-related-item">
+            <span class="mini-state" aria-hidden="true">A → B → A <b>≠</b> unused</span>
+            <h3 data-i18n="memoryTitle">Code rolled back. Approval unused?</h3>
+            <p data-i18n="memoryLead">Compare a code rollback with rewinding the record that remembers an approval was used.</p>
+            <a class="text-link" href="research/approval-memory/"><span data-i18n="memoryLink">Inspect the recorded Git states</span><span aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
       </section>
       <section id="play" class="play-section wrap" aria-labelledby="play-title">
         <div class="play-heading">
@@ -194,8 +218,8 @@
           </p>
           <p data-i18n="bioTwo">
             Lately, I’ve been building AI-assisted tools and QA/release
-            automation. I want to reduce repetitive work so a small team has
-            more time to tackle bigger problems.
+            automation. These experiments examine which checks can support an
+            automated decision, and where a person still needs to review the evidence.
           </p>
           <div class="about-links">
             <a

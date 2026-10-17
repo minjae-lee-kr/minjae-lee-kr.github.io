@@ -1,10 +1,11 @@
+import { initialLanguage, localizeReadingLinks } from "./research/preferences.js";
+
 const copy = {
   en: {
     title: "Minjae Lee — It says done. What does that prove?",
     description:
       "Interactive engineering notes on commerce recovery, automation approval and GraphQL cancellation. Independent experiments by Minjae Lee.",
     skip: "Skip to selected work",
-    home: "Minjae Lee portfolio home",
     role: "Software engineer",
     mainNav: "Main navigation",
     language: "Language",
@@ -17,9 +18,20 @@ const copy = {
       "I’m Minjae, a software engineer. I build commerce experiences and investigate what happens when the expected response never arrives.",
     specialties:
       "7+ years in booking, ordering & payments. Now building AI-assisted developer tools.",
-    explore: "Explore the examples",
+    explore: "Explore the recorded results",
     playTitle: "Three cases worth a closer look.",
     playAside: "Follow each example through its states.",
+    recordEyebrow: "INDEPENDENT LAB / RECORDED RESULTS",
+    recordTitle: "Same answer. Different outcome.",
+    recordLead: "Two runs leave the same local records. Only one executed the operation. Compare what the caller knew with what the final audit reveals.",
+    recordLink: "Compare the two runs",
+    recordVisualLabel: "FINAL AUDIT / OPERATIONS",
+    partialTitle: "One failed lookup. How much disappears?",
+    partialLead: "Compare what survives per-key errors, a failed batch and a non-null field.",
+    partialLink: "Inspect the GraphQL responses",
+    memoryTitle: "Code rolled back. Approval unused?",
+    memoryLead: "Compare a code rollback with rewinding the record that remembers an approval was used.",
+    memoryLink: "Inspect the recorded Git states",
     workbenchUnavailable:
       "The examples could not load. The notes below include the code and recorded results.",
     workEyebrow: "ENGINEERING NOTES",
@@ -33,7 +45,7 @@ const copy = {
     approachTitle: "Building the product and the tools behind it.",
     bio: "I have spent 7+ years building booking, ordering, payments and merchant tools. I work with React, TypeScript and GraphQL API servers built with Apollo Federation.",
     bioTwo:
-      "Lately, I’ve been building AI-assisted tools and QA/release automation. I want to reduce repetitive work so a small team has more time to tackle bigger problems.",
+      "Lately, I’ve been building AI-assisted tools and QA/release automation. These experiments examine which checks can support an automated decision, and where a person still needs to review the evidence.",
     contact: "Continue the conversation",
     article: "More on verification →",
     footer: "Engineering notes by Minjae Lee.",
@@ -79,7 +91,6 @@ const copy = {
     description:
       "예약 복구, 자동화 승인, GraphQL 요청 취소. 결과를 확인하는 기준을 코드로 살펴보는 이민재의 개인 프로젝트.",
     skip: "대표 작업으로 이동",
-    home: "Minjae Lee 포트폴리오 홈",
     role: "소프트웨어 엔지니어",
     mainNav: "주요 메뉴",
     language: "언어 선택",
@@ -92,9 +103,20 @@ const copy = {
       "예약·주문·결제 서비스를 만드는 이민재입니다. 예상한 대로 동작하지 않는 순간에 관심이 많습니다.",
     specialties:
       "7년 이상의 커머스 개발 경험 · AI를 활용한 개발 도구와 업무 자동화",
-    explore: "세 가지 사례 살펴보기",
+    explore: "실행 결과부터 살펴보기",
     playTitle: "결과를 다시 확인해야 하는 세 가지 순간",
     playAside: "예제에서 상태가 달라지는 과정을 확인해 보세요.",
+    recordEyebrow: "독립 실험 · 실제 실행 기록",
+    recordTitle: "응답은 같은데, 결과는 다릅니다.",
+    recordLead: "로컬에 같은 기록을 남긴 두 실행. 실제로 작업이 실행된 쪽은 하나뿐입니다. 요청을 보낸 쪽이 알던 정보와 종료 후 감사 기록을 비교해 보세요.",
+    recordLink: "두 실행 비교하기",
+    recordVisualLabel: "종료 후 확인한 실행 횟수",
+    partialTitle: "재고 조회 하나가 실패했는데, 상품까지 사라졌습니다.",
+    partialLead: "키별 오류, 배치 전체 오류, 필수 필드. 응답에 어떤 값이 남는지 비교합니다.",
+    partialLink: "GraphQL 응답 비교하기",
+    memoryTitle: "코드를 되돌리면, 승인도 다시 쓸 수 있을까?",
+    memoryLead: "코드만 되돌리는 것과 승인 사용 기록까지 되감는 것은 다릅니다. 실제 Git 상태를 비교합니다.",
+    memoryLink: "승인 사용 기록 비교하기",
     workbenchUnavailable:
       "예제를 불러오지 못했습니다. 아래 실험 노트에서 코드와 실행 기록을 확인할 수 있습니다.",
     workEyebrow: "실험과 설계 기록",
@@ -109,7 +131,7 @@ const copy = {
     approachTitle: "서비스를 만들고, 만드는 방식도 개선합니다.",
     bio: "7년 이상 예약·주문·결제와 사업자 도구를 개발해 왔습니다. React·TypeScript 프론트엔드와 Apollo Federation 기반 GraphQL API 서버를 다룹니다.",
     bioTwo:
-      "최근에는 AI를 활용한 개발 도구와 QA·릴리스 자동화를 만들고 있습니다. 반복 작업에 쓰는 시간을 줄여, 작은 팀도 더 큰 문제에 도전할 수 있도록 돕고 싶습니다.",
+      "최근에는 AI를 활용한 개발 도구와 QA·릴리스 자동화를 만들고 있습니다. 어떤 검사를 근거로 자동화할 수 있는지, 어디서 사람이 다시 확인해야 하는지 실험하고 있습니다.",
     contact: "LinkedIn에서 만나기",
     article: "검증에 관한 글 더 읽기 →",
     footer: "이민재의 개발 기록",
@@ -183,12 +205,11 @@ const projects = [
   },
 ];
 const key = "minjae.portfolio.language";
-let language = navigator.language.toLowerCase().startsWith("ko") ? "ko" : "en";
-try {
-  const saved = localStorage.getItem(key);
-  if (saved === "ko" || saved === "en") language = saved;
-} catch {
-  /* Browser preference also works without storage. */
+let language = initialLanguage(location.search);
+function reflectLanguage() {
+  const url = new URL(location.href);
+  url.searchParams.set("lang", language);
+  history.replaceState(history.state, "", url);
 }
 const element = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -324,6 +345,7 @@ function render() {
   renderProjects(t);
   workbench?.setLanguage(language);
   if (workbenchFallback) renderWorkbenchFallback(t);
+  localizeReadingLinks(document, language);
 }
 document.querySelectorAll("[data-language]").forEach((button) =>
   button.addEventListener("click", () => {
@@ -333,6 +355,7 @@ document.querySelectorAll("[data-language]").forEach((button) =>
     } catch {
       /* Switching works without storage. */
     }
+    reflectLanguage();
     render();
   }),
 );
@@ -342,13 +365,19 @@ render();
 import("./workbench.js")
   .then(({ mountWorkbench }) => {
     workbench = mountWorkbench(document.querySelector("#workbench"), { language });
+    localizeReadingLinks(document, language);
   })
   .catch(() => renderWorkbenchFallback(copy[language]));
-window.addEventListener("pageshow", () => {
+window.addEventListener("popstate", () => {
+  language = initialLanguage(location.search);
+  render();
+});
+window.addEventListener("pageshow", (event) => {
   try {
-    const saved = localStorage.getItem(key);
-    if ((saved === "ko" || saved === "en") && saved !== language) {
-      language = saved;
+    const restored = initialLanguage(location.search);
+    if (event.persisted && restored !== language) {
+      language = restored;
+      reflectLanguage();
       render();
     }
   } catch {

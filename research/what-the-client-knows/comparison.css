@@ -1,0 +1,352 @@
+.research {
+  max-width: 1120px;
+}
+.site-header {
+  display: flex;
+  justify-content: space-between;
+}
+html[lang="ko"] .research {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.research-intro {
+  max-width: 810px;
+  padding: 76px 0 54px;
+}
+.research h1 {
+  font-size: clamp(44px, 6.5vw, 78px);
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+  margin: 20px 0 28px;
+  text-wrap: balance;
+  white-space: pre-line;
+}
+.research-intro > p:not(.eyebrow) {
+  max-width: 710px;
+}
+.standfirst {
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.5;
+  color: var(--ink, #18263d);
+}
+.record-label,
+.record-badge {
+  font:
+    12px/1.5 ui-monospace,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  color: #53657d;
+}
+.record-label {
+  margin-top: 26px;
+}
+.comparison-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.research h2 {
+  font-size: clamp(23px, 3vw, 33px);
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+.record-badge {
+  border: 1px solid #ccd8e9;
+  padding: 6px 9px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.caller-scope {
+  font-size: 14px;
+  color: #53657d;
+  max-width: 800px;
+}
+.stage-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #c9d5e6;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 24px 0 0;
+}
+.stage-controls button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border: 0;
+  border-right: 1px solid #c9d5e6;
+  background: white;
+  color: #53657d;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.stage-controls button:last-child {
+  border-right: 0;
+}
+.stage-controls button[aria-pressed="true"] {
+  background: #182e50;
+  color: white;
+}
+.stage-controls button span {
+  font:
+    12px ui-monospace,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+.stage-controls button:focus-visible {
+  outline-offset: -5px;
+  outline-color: #4f9bff;
+}
+.stage-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.recording-error {
+  grid-column: 1 / -1;
+  padding: 24px;
+  border-left: 3px solid #53657d;
+  background: #edf3fb;
+  color: #182e50;
+  line-height: 1.7;
+}
+.stage-explanation {
+  min-height: 3.4em;
+  max-width: 820px;
+  margin: 20px 0;
+}
+.run-grid,
+.audit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.run-card {
+  padding: 25px;
+  border: 1px solid #d2ddec;
+  border-radius: 14px;
+  background: #fff;
+  min-width: 0;
+}
+.run-card h3 {
+  font-size: 15px;
+  margin: 0 0 24px;
+  font-weight: 600;
+  color: #53657d;
+}
+.event-name {
+  display: block;
+  font:
+    600 clamp(17px, 2.2vw, 23px) / 1.3 ui-monospace,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+  color: #182e50;
+}
+.clock {
+  font:
+    12px/1.6 ui-monospace,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  color: #53657d;
+  margin: 12px 0 24px;
+}
+.record-detail {
+  border-top: 1px solid #e1e8f1;
+  padding-top: 14px;
+}
+.record-detail summary,
+.provenance summary {
+  cursor: pointer;
+  font-size: 14px;
+}
+.record-detail code,
+.provenance code {
+  overflow-wrap: anywhere;
+  font-size: 11px;
+}
+.record-detail pre {
+  overflow: auto;
+  background: #f4f7fb;
+  padding: 14px;
+  font-size: 12px;
+  line-height: 1.6;
+  max-height: 350px;
+}
+.record-detail pre:focus-visible {
+  outline: 3px solid #245dd6;
+  outline-offset: 3px;
+}
+.equality {
+  text-align: center;
+  color: #245dd6;
+  font-weight: 600;
+  margin: 18px 0 32px;
+}
+.audit-control {
+  border-top: 1px solid #ccd8e9;
+  padding: 22px 0;
+}
+.audit-control label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 650;
+}
+.audit-control input {
+  width: 20px;
+  height: 20px;
+  accent-color: #245dd6;
+}
+.audit-control p {
+  margin: 8px 0 0 32px;
+  max-width: 750px;
+  font-size: 14px;
+  color: #53657d;
+}
+.audit-card {
+  background: #edf3fb;
+  border-color: #b9cee9;
+}
+.effect-count {
+  display: block;
+  font-size: 54px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin: 12px 0;
+  color: #245dd6;
+}
+.audit-card p {
+  font-size: 14px;
+}
+.audit-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+.audit-timeline li {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  align-items: baseline;
+  padding: 0 0 20px 18px;
+  border-left: 1px solid #afc4e1;
+  font-size: 13px;
+}
+.audit-timeline li::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -4px;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: #245dd6;
+}
+.audit-timeline li:last-child {
+  padding-bottom: 0;
+}
+.audit-time {
+  font:
+    11px/1.5 ui-monospace,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  color: #53657d;
+}
+.judgment {
+  max-width: 780px;
+  padding: 70px 0 38px;
+}
+.judgment p,
+.provenance p {
+  line-height: 1.8;
+}
+.provenance {
+  border-top: 1px solid #ccd8e9;
+  padding: 24px 0 50px;
+  max-width: 780px;
+}
+.provenance h2 {
+  font-size: 23px;
+}
+.provenance li {
+  margin: 9px 0;
+}
+.research-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid #dce3ee;
+  padding-top: 24px;
+  padding-bottom: 36px;
+  font-size: 13px;
+  color: #53657d;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 650px) {
+  .research-intro {
+    padding-top: 42px;
+  }
+  .comparison-heading {
+    display: block;
+  }
+  .record-badge {
+    display: inline-block;
+  }
+  .stage-controls button {
+    padding: 15px 9px;
+    display: block;
+    font-size: 13px;
+  }
+  .stage-controls button span {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .run-grid,
+  .audit-grid {
+    gap: 9px;
+  }
+  .run-card {
+    padding: 16px 12px;
+  }
+  .run-card h3 {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .event-name {
+    font-size: 15px;
+  }
+  .clock {
+    font-size: 10px;
+  }
+  .record-detail summary {
+    font-size: 12px;
+  }
+  .audit-timeline li {
+    display: block;
+    font-size: 12px;
+    padding-left: 12px;
+  }
+  .audit-time {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .stage-explanation {
+    min-height: 6.5em;
+    font-size: 15px;
+  }
+  .research-footer {
+    flex-direction: column;
+  }
+}

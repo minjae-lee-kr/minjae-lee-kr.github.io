@@ -10,8 +10,8 @@
   "evidenceFile": "evidence.json",
   "displayAdaptations": [
     "relative asset URLs",
-    "shared persisted language preference",
-    "Back/Forward preference restoration with report state preserved",
+    "explicit URL language before shared preference; language controls update the URL and reading links",
+    "Back/Forward language restoration; no render when the language is unchanged",
     "recorded-run banner with cool-toned presentation",
     "standalone bilingual scenario, term definitions and reading guide; original evidence unchanged"
   ],
@@ -26,7 +26,7 @@
     },
     {
       "path": "report.js",
-      "sha256": "289e5d5d34557615fc96f29536d4326bca0b22415549ecac62d734cb9bcaa19b"
+      "sha256": "401a6306058d25979d8ed75b09674af505fa4532fc3cd7fbde5293d2bedac433"
     },
     {
       "path": "evidence.json",
