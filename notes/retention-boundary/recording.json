@@ -9,9 +9,9 @@
   "mappingSha256": "e6624ccc2bb61ce48d61924bb98c02e3f326ec51f5174d0d2d08866688a35f6e",
   "runId": "retention-2026-10-16T18-29-07-589Z-a96f9a01",
   "capturedAt": "2026-10-16T18:29:09.869Z",
-  "bundledAt": "2026-10-17T01:56:37.341Z",
+  "bundledAt": "2026-10-17T02:26:45.976Z",
   "sourceCheckoutAtImport": {
-    "revision": "9e00c46eb463a722e274b01e13d4ee4a054b307e",
+    "revision": "5c7278c25f5929176305968da7044f0855d89f32",
     "dirty": false,
     "note": "Checkout at import; the evidence remains attributed to the historical sourceRevision."
   },
@@ -24,7 +24,7 @@
     },
     {
       "path": "retention.css",
-      "sha256": "2824d5e5bc97a12554337878c8507dfcf50ce0738396a11c8e38c2297fea5a51"
+      "sha256": "a8c043d80be40988eaf22205d4518c977bebe6f06944a6604226d0ff669f1a2b"
     },
     {
       "path": "retention.js",

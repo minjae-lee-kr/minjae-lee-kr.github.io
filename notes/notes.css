@@ -7,13 +7,13 @@
 }
 :root {
   color-scheme: light;
-  --paper: #faf9f6;
-  --ink: #20211f;
-  --muted: #696b65;
-  --green: #1a6558;
-  --line: #dedfd8;
-  --accent: #dc4c2f;
-  --blue: #386bdb;
+  --paper: #f7f9fc;
+  --ink: #18263d;
+  --muted: #53657d;
+  --green: #176779;
+  --line: #dce3ee;
+  --accent: #245dd6;
+  --blue: #245dd6;
   --focus: var(--blue);
 }
 * {
@@ -38,8 +38,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: #ffd6a9;
-  color: #25211c;
+  background: #dbe7ff;
+  color: #18263d;
 }
 [hidden] {
   display: none !important;
@@ -238,7 +238,7 @@ code {
     SFMono-Regular,
     Consolas,
     monospace;
-  background: #eeede8;
+  background: #eaf0f8;
   padding: 2px 4px;
   border-radius: 3px;
   overflow-wrap: anywhere;
@@ -254,7 +254,7 @@ pre {
   overflow: auto;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: #f0efeb;
+  background: #edf2f9;
   font-size: 13px;
   line-height: 1.8;
   tab-size: 2;
@@ -282,8 +282,8 @@ pre code {
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: #f4f3ec;
-  scrollbar-color: #748a7d #e7eadf;
+  background: #f1f5fb;
+  scrollbar-color: #7b8fae #e3ebf6;
   scrollbar-width: auto;
 }
 .figure-scroll img {

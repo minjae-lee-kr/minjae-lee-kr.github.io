@@ -15,7 +15,7 @@
     "relative asset URLs",
     "shared persisted language preference",
     "Back/Forward preference restoration with report state preserved",
-    "recorded-run banner",
+    "recorded-run banner with cool-toned presentation",
     "readable timeline width with keyboard scrolling",
     "Korean execution-slot terminology"
   ],
@@ -26,7 +26,7 @@
     },
     {
       "path": "debt.css",
-      "sha256": "7ba8b382903c11690d7ae614d6bb1ebac50906110e186da70028fff48f0a5cc0"
+      "sha256": "1639741374cb23f05041e5f27799ed8c065ebae6bd4d998550bc7a21c25148ad"
     },
     {
       "path": "debt.js",

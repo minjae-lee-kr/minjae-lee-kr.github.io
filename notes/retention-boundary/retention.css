@@ -2,7 +2,7 @@
   margin: 32px 0 14px;
   padding: 18px 20px;
   border-left: 3px solid var(--green);
-  background: #eaeee5;
+  background: #eaf1fc;
 }
 .raw-availability,
 .record-help {
@@ -33,11 +33,11 @@
   font-weight: 650;
   line-height: 1.7;
   letter-spacing: 0.06em;
-  color: #49615a;
+  color: #46617f;
 }
 .policy-view {
   padding: 24px;
-  background: #e8eee4;
+  background: #eaf1fc;
 }
 .policy-view > p:last-child {
   font-size: 13px;
@@ -114,8 +114,8 @@
   gap: 18px;
   flex-wrap: wrap;
   padding: 18px 22px;
-  background: #f3e7de;
-  color: #7a3827;
+  background: #eef0fa;
+  color: #484f83;
   font-size: 15px;
 }
 .outcome-pair .outcome-label {
@@ -144,9 +144,9 @@
   max-width: 100%;
   min-width: 0;
   padding: 13px 34px 13px 12px;
-  border: 1px solid #8d9a8b;
+  border: 1px solid #93a5bf;
   border-radius: 0;
-  background: #fafaf5;
+  background: #f9fbff;
   color: var(--ink);
   font: inherit;
   font-size: 14px;

@@ -687,4 +687,4 @@ footer p {
   }
 }
 
-.portfolio-return{max-width:1160px;margin:auto;padding:14px 28px 0;font:12px/1.6 system-ui,sans-serif}.portfolio-return a{color:#36564b;text-decoration:none}.portfolio-return a:hover{text-decoration:underline}.portfolio-return a:focus-visible{outline:2px solid #36564b;outline-offset:4px}html[lang=ko] .return-en,html:not([lang=ko]) .return-ko{display:none}
+.portfolio-return{max-width:1160px;margin:auto;padding:14px 28px 0;font:12px/1.6 system-ui,sans-serif}.portfolio-return a{color:#294b7a;text-decoration:none}.portfolio-return a:hover{text-decoration:underline}.portfolio-return a:focus-visible{outline:2px solid #294b7a;outline-offset:4px}html[lang=ko] .return-en,html:not([lang=ko]) .return-ko{display:none}

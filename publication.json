@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "0e066bf74d818b64c5425e9fd21069892b55ed28",
+  "sourceCommit": "db62e444c5c0e868bacc7a96e677800f5f889030",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 63,
   "copiedRootFiles": [
@@ -39,82 +39,82 @@
     {
       "path": "assets/mark.svg",
       "sourcePath": "docs/assets/mark.svg",
-      "gitBlob": "0d37cb66c689b649478e1acc733893ae3f23f916",
+      "gitBlob": "4d476524454fa780963b63746548a9e0b718038b",
       "gitMode": "100644",
       "size": 255,
-      "sha256": "06a2507ee0984d481c4fb4b5476bded353e801393fd5435fa5121fb2b01da6ab"
+      "sha256": "70b9b04fa6c5c5953440b1f5a1b7fac86e2c3c7c12e50778b72fa36af587a44d"
     },
     {
       "path": "assets/social/cancellation.png",
       "sourcePath": "docs/assets/social/cancellation.png",
-      "gitBlob": "fce3ebbf819084abf3c639d1708b1e86609c3ce6",
+      "gitBlob": "c0b9b340fc56d924da85ec7decbcacb5145c9294",
       "gitMode": "100644",
-      "size": 46288,
-      "sha256": "d9ee2276f7cf72681c26bd99ee6d709cb4cf818bc59db420882176473eedaea1"
+      "size": 46221,
+      "sha256": "1a98f6e129083a3ed4bc81e3238a074eb6925756a61d82b11bfc48237d4bf409"
     },
     {
       "path": "assets/social/cancellation.svg",
       "sourcePath": "docs/assets/social/cancellation.svg",
-      "gitBlob": "f008b99e81d5c336f6c19246040ee4591e4cb41e",
+      "gitBlob": "4e19928ad0654a439c6e4bcbbb36ff22a2669069",
       "gitMode": "100644",
       "size": 57005,
-      "sha256": "2a1f066f09fab7ec78bb3f3314beac01c8f94026c4c98cd4c1aa01575bbf0bbd"
+      "sha256": "f64146b68753b0e4d316db98cd7ee09fbfd7767c0f121556869327df6e73eb37"
     },
     {
       "path": "assets/social/change.png",
       "sourcePath": "docs/assets/social/change.png",
-      "gitBlob": "28a2c47fc09082093d3d4e81171b5553d919ae06",
+      "gitBlob": "714aba8c7f79c354052c391c030372467b574229",
       "gitMode": "100644",
-      "size": 53964,
-      "sha256": "0df9c526216e7ba07df5160a3ce168d34be0e2209d62c5375274aa6cf9b24b66"
+      "size": 53739,
+      "sha256": "756c892dadade32b4b845a4fbf988a40b9ad05456958a81f8c6d14a4d20e57c6"
     },
     {
       "path": "assets/social/change.svg",
       "sourcePath": "docs/assets/social/change.svg",
-      "gitBlob": "134ebc7c5e5026e830bedefebb99f749a74a5ce0",
+      "gitBlob": "d24d3c570f6cad99f1282b3f3097610485913c96",
       "gitMode": "100644",
       "size": 59709,
-      "sha256": "32f4f199d20f8060f1814f63080f35022680a44bc066f6ee1b2f5e76e8f30db4"
+      "sha256": "8688f76e17a11ef416a8ab0a55f7f9c7a42a9c5bd8901514807fa4e1de7ab3ab"
     },
     {
       "path": "assets/social/home.png",
       "sourcePath": "docs/assets/social/home.png",
-      "gitBlob": "6dea1a19a10a400746e19fe99f8b5a27b0d509cd",
+      "gitBlob": "44afe9ac4259a2a6968aab41537730a0914466d6",
       "gitMode": "100644",
-      "size": 51613,
-      "sha256": "2ecdb8410b06d2ee5faffb474709aacaa83f6086426715a96730c2c34cddae6d"
+      "size": 51649,
+      "sha256": "61482fc6a20ba9191087861a7a48d8b8a9f79cc6a831095965c96e443c39c94d"
     },
     {
       "path": "assets/social/home.svg",
       "sourcePath": "docs/assets/social/home.svg",
-      "gitBlob": "9d4b935054f5b71b18b1308409639baa6f1e064f",
+      "gitBlob": "b3141b06d5a64a736160072c716c4f462004364a",
       "gitMode": "100644",
       "size": 60205,
-      "sha256": "602430c99be896ee400018ab424fb2159c81a7bbd8e04745a110080b4eb80073"
+      "sha256": "921bfaa660982cd79d7757712691e8aeccc70e27682e2c8242c1b0816c3e2548"
     },
     {
       "path": "assets/social/intent.png",
       "sourcePath": "docs/assets/social/intent.png",
-      "gitBlob": "e245d44c6c27f1cb5d30c846a861ebf84d8bd7e9",
+      "gitBlob": "56574d8afbeace7d6f26c624b4a2509e0ecb5fcd",
       "gitMode": "100644",
-      "size": 44658,
-      "sha256": "1fc22423ffadf07141f1fe7e87e59f7d2904d29db4e97ca96e0de14c2f93ac7a"
+      "size": 44620,
+      "sha256": "97bb1e985849f224af604595e30f9fb15df05dfa7e94ff530c8e01268763ff88"
     },
     {
       "path": "assets/social/intent.svg",
       "sourcePath": "docs/assets/social/intent.svg",
-      "gitBlob": "dadc8a74fe1eeec78d0ed9ac6a177d115f58f8aa",
+      "gitBlob": "e797f6c3b1a56d308ac3f8b63e576530f4d7f917",
       "gitMode": "100644",
       "size": 51630,
-      "sha256": "ca743dcfcf5fe10f98a1ea75db1d58736517ab9004384ca46190e3db68546601"
+      "sha256": "7bdf5616a2d0156d9364fa2342d721f25f2654a46e5b087d1aba45bd9db309e8"
     },
     {
       "path": "evidence/cancellation/debt.css",
       "sourcePath": "docs/evidence/cancellation/debt.css",
-      "gitBlob": "941e5e794af91d0eb558b56caed9650370d46214",
+      "gitBlob": "797f4fa301b09b1c7d70101b2c5ce38020ec7220",
       "gitMode": "100644",
       "size": 6444,
-      "sha256": "7ba8b382903c11690d7ae614d6bb1ebac50906110e186da70028fff48f0a5cc0"
+      "sha256": "1639741374cb23f05041e5f27799ed8c065ebae6bd4d998550bc7a21c25148ad"
     },
     {
       "path": "evidence/cancellation/debt.js",
@@ -143,10 +143,10 @@
     {
       "path": "evidence/cancellation/recording.json",
       "sourcePath": "docs/evidence/cancellation/recording.json",
-      "gitBlob": "1caad78c5fdc255b222350f7e41cc6f9e30202b3",
+      "gitBlob": "5e88b911390d73460d8ad843924c82b611491bbb",
       "gitMode": "100644",
-      "size": 1683,
-      "sha256": "12a55bee91587baf7dc555f06cf0ddc4222118f8c2ce6eb52dec06d2b49ceada"
+      "size": 1712,
+      "sha256": "918a2f09db4bd195bfa2a887467b1ea506c89922a7370908a7d294451d515510"
     },
     {
       "path": "evidence/cancellation/report-data.js",
@@ -183,10 +183,10 @@
     {
       "path": "evidence/change/recording.json",
       "sourcePath": "docs/evidence/change/recording.json",
-      "gitBlob": "110f5e7327d8c992cd1dde91bbf8b1320ab15f8e",
+      "gitBlob": "8f8d4d5e6abe222ce37fff836d0e58d8536d4961",
       "gitMode": "100644",
-      "size": 1193,
-      "sha256": "60950771e6510a4e500ad50fe3ba047b989ccb09d21e26f6162e4e30fc7a07a4"
+      "size": 1222,
+      "sha256": "5d9d145717f1ca7eb868ccb8dcc09b8ac1041959b50cc4134eb89f5a1ce8f5fb"
     },
     {
       "path": "evidence/change/report.json",
@@ -199,18 +199,18 @@
     {
       "path": "evidence/change/style.css",
       "sourcePath": "docs/evidence/change/style.css",
-      "gitBlob": "f90d2eac738fd2b0a1fca7370ac400cfc444ac46",
+      "gitBlob": "597d4dec041fae3c1bf1135aca842008bee48f96",
       "gitMode": "100644",
       "size": 8809,
-      "sha256": "fb9d1a122535debe55604a4675dee584f26ec71b647169d5569081d837f614e5"
+      "sha256": "26e3ac94c7ff95eeb71796826bd0095d9648abdd4a001ad2fa8f1c77671f9a93"
     },
     {
       "path": "evidence/history/bundle.json",
       "sourcePath": "docs/evidence/history/bundle.json",
-      "gitBlob": "a495cbcb0929070fe25bab6c58f6f355ed9870c0",
+      "gitBlob": "650d7754b339787250b2a24614ec33d098b88e2c",
       "gitMode": "100644",
       "size": 2409,
-      "sha256": "64b74920072f9853e265b6c3b1f7f96de55b5c69887f0609108c7ca84f2433eb"
+      "sha256": "f7db6d85f33ac7ff873f8d1b4ce543f4a332c49bc690ba0cb53bb1edf86db9e7"
     },
     {
       "path": "evidence/history/evidence.json",
@@ -247,10 +247,10 @@
     {
       "path": "evidence/history/report.css",
       "sourcePath": "docs/evidence/history/report.css",
-      "gitBlob": "42d2274ed90101f11e86366ad4d0f9f0b46fe87c",
+      "gitBlob": "23409caf748d4b113e3a55ee144f13fa4d45d919",
       "gitMode": "100644",
       "size": 11890,
-      "sha256": "48fae4cd0522305b2dad55c56eb6603dae3224cb47bc47ff2416a5960e1bf69e"
+      "sha256": "f8bde6b9d2fffe8a047783ef71004af6832ac5b7f27fb5da71e4aa04f47f0e77"
     },
     {
       "path": "evidence/history/report.js",
@@ -335,18 +335,18 @@
     {
       "path": "evidence/intent/recording.json",
       "sourcePath": "docs/evidence/intent/recording.json",
-      "gitBlob": "cb3c12dbfdffea5052e1f6ed3da97c95604324a2",
+      "gitBlob": "386f598f0c2fdc57b424881fb1214ea70ae0dd67",
       "gitMode": "100644",
-      "size": 1163,
-      "sha256": "cc8fd9aad2ea05a0be61379162a587d79048837e7e9761d9ca9fe165dd8b0800"
+      "size": 1192,
+      "sha256": "a29979cf1f5dcc70aa056caa140a028415caaef3e0c2c1b7e4e2381938c7b13e"
     },
     {
       "path": "evidence/intent/report.css",
       "sourcePath": "docs/evidence/intent/report.css",
-      "gitBlob": "b449b85cd35e58994262551774a415d0f87b5413",
+      "gitBlob": "1c7abb1e83e84343894bfd8d58bec5a477fa085f",
       "gitMode": "100644",
       "size": 5335,
-      "sha256": "95a8fd7c2e3a52ff46a60e26318b974754551c5baba69df213506eaa7a90773a"
+      "sha256": "b1b76f0f89c7a6ae1367426f3782ed4f436ba9cd55979d97f3ad0b2b8b09ca47"
     },
     {
       "path": "evidence/intent/report.js",
@@ -391,18 +391,18 @@
     {
       "path": "notes/assets/verified-change.en.svg",
       "sourcePath": "docs/notes/assets/verified-change.en.svg",
-      "gitBlob": "96c4631a06715ba715b47b6b57fff828c5080123",
+      "gitBlob": "b41a2d51cc32e858846ef8939df3a7ce1bf76ce7",
       "gitMode": "100644",
       "size": 6608,
-      "sha256": "935c33f977b441635be60b15f86bf1ad90a95d61fd3ea3f4a023ef0c641c32ae"
+      "sha256": "dc283edfe9747db727a82775c3ad9f1ca0605bca8d24f12fa776354adb1f5a68"
     },
     {
       "path": "notes/assets/verified-change.ko.svg",
       "sourcePath": "docs/notes/assets/verified-change.ko.svg",
-      "gitBlob": "65cab7c4acfc3db6e74b799656b6f79e350fa842",
+      "gitBlob": "4bf2104af356261b677f264923fc22022324dde9",
       "gitMode": "100644",
       "size": 6859,
-      "sha256": "1a8ce2d19ed892f7042184ffac4ca7ed2be1e437bacc811a1b9d945c1c0cc54e"
+      "sha256": "999a4d118b5b781208703407683ad0990b4837043b4ed7dc098404a0e9e38c36"
     },
     {
       "path": "notes/cancellation-debt/index.html",
@@ -415,10 +415,10 @@
     {
       "path": "notes/notes.css",
       "sourcePath": "docs/notes/notes.css",
-      "gitBlob": "07ccee3d56a812ff6dfc0e37b5ab2228758d390f",
+      "gitBlob": "eabceadcc953d15e394a9153a5880f34be495dfb",
       "gitMode": "100644",
       "size": 8308,
-      "sha256": "365f013bf488cb9d4d4ccfa46b5e6bf3ea5992ac5bacab4866ad519c07fcecd1"
+      "sha256": "5d973383a278d986ad518f1344f5aaae99879268c9873ad4a5f6f6d536a030b7"
     },
     {
       "path": "notes/notes.js",
@@ -455,10 +455,10 @@
     {
       "path": "notes/retention-boundary/recording.json",
       "sourcePath": "docs/notes/retention-boundary/recording.json",
-      "gitBlob": "014a85c106b468f11578161f005837d95bcb1c70",
+      "gitBlob": "c07ab8f33ea5d3bf78d5c908131ca860bf1e7bb8",
       "gitMode": "100644",
       "size": 1845,
-      "sha256": "51afebb758c81b97cd9878b34a8a66ae2256a85904a62a87163778dc974c3f41"
+      "sha256": "e0517a6b96cafe9731806c018296efed40dba7e70fb06ed69f7748ef2156f372"
     },
     {
       "path": "notes/retention-boundary/recording/evidence.json",
@@ -471,10 +471,10 @@
     {
       "path": "notes/retention-boundary/retention.css",
       "sourcePath": "docs/notes/retention-boundary/retention.css",
-      "gitBlob": "08bfa106186aeecada2b08fb0dc2c34162a81ac4",
+      "gitBlob": "acd62caaccaa8ffaec19b39cef8e6ce05242c506",
       "gitMode": "100644",
       "size": 3620,
-      "sha256": "2824d5e5bc97a12554337878c8507dfcf50ce0738396a11c8e38c2297fea5a51"
+      "sha256": "a8c043d80be40988eaf22205d4518c977bebe6f06944a6604226d0ff669f1a2b"
     },
     {
       "path": "notes/retention-boundary/retention.js",
@@ -503,18 +503,18 @@
     {
       "path": "styles.css",
       "sourcePath": "docs/styles.css",
-      "gitBlob": "719e39f7eb49a44ed37fdc2303b49bd219fd8c8c",
+      "gitBlob": "f5b49dd11b9a3f2a0c9b34aadb761950330eb9d2",
       "gitMode": "100644",
       "size": 13119,
-      "sha256": "ffe303afd421930e84719f14a686dbfd88a68caf697c533ca4dccf541e907fae"
+      "sha256": "6140df653eb75b22df4b0ebebe9cc083c09420f13b60bb374277daffa9948fc3"
     },
     {
       "path": "workbench.css",
       "sourcePath": "docs/workbench.css",
-      "gitBlob": "bb87358a3ef528e9d721a1fead98440104d93914",
+      "gitBlob": "d20465f2b9b8dffac2891f7e9dc6f8e525a2846e",
       "gitMode": "100644",
-      "size": 12054,
-      "sha256": "4bbd4b1544d34bcb9fc509c84ed25bf2b8f07db196b3cc1813018d50c4c5b43f"
+      "size": 12063,
+      "sha256": "76ad65f72c64bfd236e3c37f225038a292eda21f725ba7c69cd473b3239fe6b6"
     },
     {
       "path": "workbench.js",
@@ -543,7 +543,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "18c4418c06c49c5ab63d338eb7ea7360bc29d2cb89af5fb26bd147bcd4a9b3b4"
+      "sha256": "5c62a237bc4da64aeba947059846663d4e593acab2e2a3d415aef0b0cbe7c048"
     }
   ]
 }

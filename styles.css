@@ -7,12 +7,12 @@
 }
 :root {
   color-scheme: light;
-  --ink: #20211f;
-  --muted: #696b65;
-  --paper: #faf9f6;
-  --line: #dedfd8;
-  --accent: #dc4c2f;
-  --blue: #386bdb;
+  --ink: #18263d;
+  --muted: #53657d;
+  --paper: #f7f9fc;
+  --line: #dce3ee;
+  --accent: #245dd6;
+  --blue: #245dd6;
   --ease: cubic-bezier(0.2, 0.65, 0.3, 1);
 }
 * {
@@ -36,8 +36,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: #ffd6a9;
-  color: #25211c;
+  background: #dbe7ff;
+  color: #18263d;
 }
 a {
   color: inherit;
@@ -109,7 +109,7 @@ summary:focus-visible {
   letter-spacing: -1.8px;
 }
 .monogram span {
-  color: #ffb399;
+  color: #8ab6ff;
 }
 .wordmark-role {
   display: block;
@@ -152,7 +152,7 @@ nav a:hover::after {
   align-items: center;
   gap: 1px;
   font-size: 10px;
-  color: #a8a9a3;
+  color: #8290a5;
   border-left: 1px solid var(--line);
   padding-left: 21px;
 }
@@ -315,7 +315,7 @@ h2 {
   line-height: 1;
   font-weight: 380;
   letter-spacing: -5px;
-  color: #b5b5ad;
+  color: #94a3b8;
   font-variant-numeric: tabular-nums;
   transition: color 160ms ease-out;
 }

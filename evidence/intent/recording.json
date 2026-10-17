@@ -12,7 +12,7 @@
     "relative asset URLs",
     "shared persisted language preference",
     "Back/Forward preference restoration with report state preserved",
-    "recorded-run banner"
+    "recorded-run banner with cool-toned presentation"
   ],
   "files": [
     {
@@ -21,7 +21,7 @@
     },
     {
       "path": "report.css",
-      "sha256": "95a8fd7c2e3a52ff46a60e26318b974754551c5baba69df213506eaa7a90773a"
+      "sha256": "b1b76f0f89c7a6ae1367426f3782ed4f436ba9cd55979d97f3ad0b2b8b09ca47"
     },
     {
       "path": "report.js",
