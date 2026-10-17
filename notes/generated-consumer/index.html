@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>검사는 통과했지만, 생성 타입은 예전 것이었다 — Minjae Lee</title>
+  <meta name="description" content="후보 스키마로 쿼리를 검증하고, 이전 생성 타입으로 코드를 컴파일하면 둘 다 통과할 수 있습니다. 두 결과가 같은 변경을 검사했는지 대조합니다." />
+  <link rel="canonical" href="https://minjae-lee-kr.github.io/notes/generated-consumer/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Minjae Lee — Engineering Notes" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:title" content="검사는 통과했지만, 생성 타입은 예전 것이었다 — Minjae Lee" />
+  <meta property="og:description" content="후보 스키마로 쿼리를 검증하고, 이전 생성 타입으로 코드를 컴파일하면 둘 다 통과할 수 있습니다. 두 결과가 같은 변경을 검사했는지 대조합니다." />
+  <meta property="og:url" content="https://minjae-lee-kr.github.io/notes/generated-consumer/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="검사는 통과했지만, 생성 타입은 예전 것이었다 — Minjae Lee" />
+  <meta name="twitter:description" content="후보 스키마로 쿼리를 검증하고, 이전 생성 타입으로 코드를 컴파일하면 둘 다 통과할 수 있습니다. 두 결과가 같은 변경을 검사했는지 대조합니다." />
+  <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+  <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../notes.css" />
+  <link rel="stylesheet" href="consumer.css" />
+  <script src="../notes.js" defer></script>
+</head>
+<body data-title-ko="검사는 통과했지만, 생성 타입은 예전 것이었다" data-title-en="The checks passed. The generated types were stale." data-description-ko="후보 스키마로 쿼리를 검증하고, 이전 생성 타입으로 코드를 컴파일하면 둘 다 통과할 수 있습니다. 두 결과가 같은 변경을 검사했는지 대조합니다." data-description-en="Query validation used the candidate schema. Compilation used baseline generated types. Both passed, but they did not cover the same contract.">
+  <a class="skip" href="#note"><span data-lang="ko" lang="ko">본문으로 이동</span><span data-lang="en" lang="en" hidden>Skip to the note</span></a>
+  <header class="site-header"><div class="header-inner">
+    <a class="wordmark" href="../../" aria-label="Minjae Lee 포트폴리오 홈" data-label-ko="Minjae Lee 포트폴리오 홈" data-label-en="Minjae Lee portfolio home">M<span>·</span>L</a>
+    <a class="back-link" href="../../"><span data-lang="ko" lang="ko">작업 모음으로</span><span data-lang="en" lang="en" hidden>Back to selected work</span></a>
+    <div class="languages" role="group" aria-label="언어 선택" data-label-ko="언어 선택" data-label-en="Language">
+      <button type="button" data-language="ko" lang="ko" aria-pressed="true">한국어</button><button type="button" data-language="en" lang="en" aria-pressed="false">English</button>
+    </div>
+  </div></header>
+  <main id="note" class="reading" tabindex="-1"><article>
+    <header id="opening" data-reading-section>
+      <p class="eyebrow">GRAPHQL / GENERATED CONSUMERS</p>
+      <h1><span data-lang="ko" lang="ko">검사는 통과했지만, 생성 타입은 예전 것이었다</span><span data-lang="en" lang="en" hidden>The checks passed. The generated types were stale.</span></h1>
+      <p data-lang="ko" lang="ko" class="lead">쿼리는 후보 스키마로 검증했습니다. 생성 타입을 사용하는 코드(consumer)는 이전 스키마의 타입으로 컴파일했습니다. 둘 다 통과했지만, 같은 계약을 검사한 것은 아니었습니다.</p><p data-lang="en" lang="en" hidden class="lead">Query validation used the candidate schema. Consumer compilation used baseline generated types. Both passed, but they did not check the same contract.</p>
+      <div class="byline"><span>Minjae Lee</span><span data-lang="ko" lang="ko">개인 엔지니어링 실험</span><span data-lang="en" lang="en" hidden>Independent engineering experiment</span><span data-lang="ko" lang="ko">2026년 10월 17일 실행 기록</span><span data-lang="en" lang="en" hidden>Recorded 17 October 2026</span></div>
+    </header>
+    <nav class="contents" aria-label="이 글의 내용" data-label-ko="이 글의 내용" data-label-en="In this note">
+      <a href="#inputs"><span data-lang="ko" lang="ko">두 검사의 입력</span><span data-lang="en" lang="en" hidden>Inputs to the checks</span></a>
+      <a href="#controls"><span data-lang="ko" lang="ko">대조군 비교</span><span data-lang="en" lang="en" hidden>The controls</span></a>
+      <a href="#evidence"><span data-lang="ko" lang="ko">근거와 한계</span><span data-lang="en" lang="en" hidden>Evidence and limits</span></a>
+    </nav>
+    <noscript><p class="publication">현재 한국어 본문입니다. 언어 전환에는 JavaScript가 필요합니다. / Language switching requires JavaScript.</p></noscript>
+
+    <section id="inputs" class="reading-section" data-reading-section tabindex="-1">
+      <h2><span class="section-number">01</span><span data-lang="ko" lang="ko">두 검사에 들어간 입력</span><span data-lang="en" lang="en" hidden>The inputs behind two passing checks</span></h2>
+      <figure class="hash-figure">
+        <div class="hash-pair">
+          <div><p><span data-lang="ko" lang="ko">쿼리 검증: 통과</span><span data-lang="en" lang="en" hidden>Query validation: pass</span></p><code data-hash="candidateSchemaSha256" data-full-hash="040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c">040ea438a171…</code><span><span data-lang="ko" lang="ko">후보 스키마 / name: String</span><span data-lang="en" lang="en" hidden>Candidate schema / name: String</span></span></div>
+          <span class="hash-divider" aria-hidden="true">≠</span>
+          <div><p><span data-lang="ko" lang="ko">상품명 함수 컴파일: 통과</span><span data-lang="en" lang="en" hidden>Name function compilation: pass</span></p><code data-hash="generatedFromSchemaSha256" data-full-hash="5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f">5dac235c739c…</code><span><span data-lang="ko" lang="ko">타입을 만든 스키마 / name: String!</span><span data-lang="en" lang="en" hidden>Schema used for types / name: String!</span></span></div>
+        </div>
+        <figcaption><span data-lang="ko" lang="ko">이전 타입 대조군에서 기록한 각 스키마의 SHA-256 앞 12자리입니다. 전체 값은 아래 근거에서 확인할 수 있습니다.</span><span data-lang="en" lang="en" hidden>First 12 characters of the schema SHA-256 values recorded in the stale-type control. Full values appear below.</span></figcaption>
+      </figure>
+      <div class="prose">
+        <p data-lang="ko" lang="ko">개인 Apollo Federation 실험에서 <code>name</code>을 nullable로 바꿨습니다. 두 쿼리는 여전히 유효했지만, 스키마 비교에서는 non-null 보장 약화를 <strong>breaking</strong>으로 분류했습니다. 여기서 통과한 것은 쿼리 검증과 이전 타입에 대한 컴파일입니다.</p><p data-lang="en" lang="en" hidden>In a personal Apollo Federation lab, I made <code>name</code> nullable. Both queries remained valid, while schema comparison classified the weakened non-null guarantee as <strong>breaking</strong>. The two passing checks were query validation and compilation against stale types.</p>
+        <p data-lang="ko" lang="ko">이전 생성 타입의 <code>name</code>은 여전히 <code>string</code>이었습니다. 따라서 컴파일 성공은 새 계약을 처리한다는 근거가 아니었습니다. 새 계약이 컴파일 입력에 반영되지 않은 상태였습니다.</p><p data-lang="en" lang="en" hidden>The old generated type still declared <code>name</code> as <code>string</code>. A passing compile did not establish that the code handled the new contract: that contract had not reached the compiler input.</p>
+      </div>
+      <p class="takeaway"><span data-lang="ko" lang="ko">두 통과 결과를 묶기 전에, 같은 변경을 검사했는지 확인해야 합니다.</span><span data-lang="en" lang="en" hidden>Before combining two passing results, check that they cover the same change.</span></p>
+    </section>
+
+    <section id="controls" class="reading-section" data-reading-section tabindex="-1">
+      <h2><span class="section-number">02</span><span data-lang="ko" lang="ko">재생성·정책·선택 필드를 따로 비교하기</span><span data-lang="en" lang="en" hidden>Separate freshness, policy and selected fields</span></h2>
+      <div class="prose"><p data-lang="ko" lang="ko"><a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/fixtures/consumers/strict-name.ts">상품명 함수</a>의 <code data-source-excerpt="strict-name.ts">return product.name.toUpperCase();</code>는 그대로 두었습니다. 공식 Codegen으로 타입을 다시 만들자 실제 TypeScript 컴파일 결과가 달라졌습니다.</p><p data-lang="en" lang="en" hidden>The <a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/fixtures/consumers/strict-name.ts">name function</a> kept the same <code>return product.name.toUpperCase();</code>. Regenerating its types with official Codegen changed the real TypeScript compilation result.</p></div>
+      <div class="comparison-wrap" role="region" tabindex="0" aria-label="같은 상품명 함수를 세 조건에서 컴파일한 결과" data-label-ko="같은 상품명 함수를 세 조건에서 컴파일한 결과" data-label-en="The same name function compiled under three conditions">
+        <table class="comparison">
+          <caption><span data-lang="ko" lang="ko">전체 8개 조건 중 세 조건입니다. 위 코드는 수정하지 않았습니다.</span><span data-lang="en" lang="en" hidden>Three of eight recorded cases. The code above is unchanged.</span></caption>
+          <thead><tr><th scope="col"><span data-lang="ko" lang="ko">스키마 / 사용한 타입</span><span data-lang="en" lang="en" hidden>Schema / types used</span></th><th scope="col"><span data-lang="ko" lang="ko">쿼리 검증</span><span data-lang="en" lang="en" hidden>Query validation</span></th><th scope="col"><span data-lang="ko" lang="ko">상품명 함수 컴파일</span><span data-lang="en" lang="en" hidden>Name function compilation</span></th></tr></thead>
+          <tbody>
+            <tr data-case="unchanged"><th scope="row"><code>name: String!</code><small><span data-lang="ko" lang="ko">새로 생성</span><span data-lang="en" lang="en" hidden>Regenerated</span></small></th><td><span data-lang="ko" lang="ko">유효</span><span data-lang="en" lang="en" hidden>Valid</span></td><td><span data-lang="ko" lang="ko">성공</span><span data-lang="en" lang="en" hidden>Pass</span></td></tr>
+            <tr data-case="weaken-name-nullability"><th scope="row"><code>name: String</code><small><span data-lang="ko" lang="ko">새로 생성</span><span data-lang="en" lang="en" hidden>Regenerated</span></small></th><td><span data-lang="ko" lang="ko">유효</span><span data-lang="en" lang="en" hidden>Valid</span></td><td><strong>TS18047</strong></td></tr>
+            <tr data-case="weaken-name-nullability-stale-types"><th scope="row"><code>name: String</code><small><span data-lang="ko" lang="ko">이전 타입 재사용</span><span data-lang="en" lang="en" hidden>Stale baseline types</span></small></th><td><span data-lang="ko" lang="ko">유효</span><span data-lang="en" lang="en" hidden>Valid</span></td><td><span data-lang="ko" lang="ko">성공 — 변경 미반영</span><span data-lang="en" lang="en" hidden>Pass — change not covered</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <pre class="diagnostic" tabindex="0" data-report-case="weaken-name-nullability" data-report-consumer="strict-name"><code>strict-name.ts(6,10): error TS18047: 'product.name' is possibly 'null'.</code></pre>
+      <div class="prose">
+        <p data-lang="ko" lang="ko">생성 정책도 별도 변수였습니다. <code>futureProofEnums: true</code>는 enum 유니온에 <code>"%future added value"</code>를 추가합니다. <strong>스키마를 바꾸지 않아도</strong> <a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/fixtures/consumers/exhaustive-status.ts"><code>assertNever</code>를 쓰는 재고 상태 함수</a>는 컴파일에 실패했고, 대체 문구를 반환하는 함수는 통과했습니다. 이 설정이 런타임 응답을 변환해 주는 것은 아닙니다.</p><p data-lang="en" lang="en" hidden>Generation policy was a separate variable. <code>futureProofEnums: true</code> adds <code>"%future added value"</code> to the enum union. <strong>Even without a schema change</strong>, the <a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/fixtures/consumers/exhaustive-status.ts">stock function using <code>assertNever</code></a> failed to compile; the fallback function passed. The setting does not transform runtime responses.</p>
+        <p data-lang="ko" lang="ko">반대로, 쿼리가 선택하지 않는 nullable 필드를 추가하면 스키마 해시가 달라져도 두 생성 타입 파일의 바이트는 같았습니다. <strong>해시 차이는 입력 차이의 근거이지, 곧바로 breaking 판정은 아닙니다.</strong></p><p data-lang="en" lang="en" hidden>Adding an unselected nullable field changed the schema hash but left both generated type files byte-identical. <strong>A different hash establishes different input, not automatically a breaking change.</strong></p>
+      </div>
+    </section>
+
+    <section id="evidence" class="reading-section" data-reading-section tabindex="-1">
+      <h2><span class="section-number">03</span><span data-lang="ko" lang="ko">직접 확인할 수 있는 근거</span><span data-lang="en" lang="en" hidden>Evidence you can inspect</span></h2>
+      <div class="prose"><p data-lang="ko" lang="ko">전체 실행은 <strong>8개 조건, 실제 컴파일 28회</strong>이며, 이 글은 주요 대조군을 골라 설명합니다. 코드·쿼리·스키마는 개인 실험용입니다. 리졸버와 예제 함수는 실행하지 않았으며, 회사나 실서비스의 성과를 주장하지 않습니다.</p><p data-lang="en" lang="en" hidden>The full run contains <strong>8 cases and 28 actual compilations</strong>; this note presents selected controls. Code, queries and schemas are synthetic personal fixtures. Resolvers and consumer functions were not executed; these are not employer or production results.</p></div>
+      <div class="evidence-actions">
+        <a href="report.json"><span data-lang="ko" lang="ko">실행 보고서 JSON ↗</span><span data-lang="en" lang="en" hidden>Recorded report JSON ↗</span></a>
+        <a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/docs/consumer-impact.md" data-lang="en" lang="en" hidden data-focus-key="reproduce">Reproduce the experiment ↗</a>
+        <a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/docs/consumer-impact.ko.md" data-lang="ko" lang="ko" data-focus-key="reproduce">재현 방법과 전체 비교 ↗</a>
+      </div>
+      <details>
+        <summary><span data-lang="ko" lang="ko">전체 해시·도구·추가 대조군</span><span data-lang="en" lang="en" hidden>Full hashes, tools and other controls</span></summary>
+        <dl>
+          <dt><span data-lang="ko" lang="ko">소스 커밋</span><span data-lang="en" lang="en" hidden>Source revision</span></dt><dd><a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/src/consumer-impact.ts"><code>a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb</code></a></dd>
+          <dt>Report SHA-256</dt><dd><code>454db54e059216006aec76c0ab35b4e75ee244a7b06824205d4d9018d1c0a39a</code></dd>
+          <dt>Generated from</dt><dd><code>5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f</code></dd>
+          <dt>Candidate schema</dt><dd><code>040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c</code></dd>
+          <dt>Fixed consumer</dt><dd><code>6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411</code></dd>
+          <dt><span data-lang="ko" lang="ko">도구 버전</span><span data-lang="en" lang="en" hidden>Tool versions</span></dt><dd>Codegen core 6.2.2 · TypeScript operations 6.1.10 · TypeScript 7.0.2 · GraphQL 16.14.2</dd>
+        </dl>
+        <div class="prose details-prose">
+          <p data-lang="ko" lang="ko">예제의 <code>NonNullable</code>은 제품이나 재고 정보 자체가 없는 경우를 호출부에서 처리한다고 전제합니다. 도구 실패나 예상 밖의 진단은 실험 실패로 처리합니다. 의도한 타입 오류를 관찰했을 때의 종료 코드 0은 배포 승인을 뜻하지 않습니다.</p><p data-lang="en" lang="en" hidden>The fixtures use <code>NonNullable</code>, leaving absent product or availability handling to the caller. Tool failures and unexpected diagnostics fail the experiment. Exit 0 after observing deliberate type errors is not deployment approval.</p>
+          <p><a href="recording.json"><span data-lang="ko" lang="ko">파일 출처와 해시 기록 ↗</span><span data-lang="en" lang="en" hidden>File provenance and hashes ↗</span></a></p>
+        </div>
+      </details>
+      <p class="sources"><span data-lang="ko" lang="ko">공식 자료</span><span data-lang="en" lang="en" hidden>Primary references</span>: <a href="https://www.graphql.org/learn/validation/">GraphQL validation</a> · <a href="https://the-guild.dev/graphql/codegen/docs/advanced/programmatic-usage">Codegen API</a> · <a href="https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-operations">Operation types</a> · <a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking">TypeScript exhaustiveness</a></p>
+    </section>
+    <nav class="next-note" aria-label="관련 글" data-label-ko="관련 글" data-label-en="Related note"><span><span data-lang="ko" lang="ko">같은 Federation 실험의 다른 경계</span><span data-lang="en" lang="en" hidden>Another boundary in the same Federation lab</span></span><a href="../cancellation-debt/"><span data-lang="ko" lang="ko">타임아웃 뒤의 실제 작업 →</span><span data-lang="en" lang="en" hidden>Work that outlives a timeout →</span></a></nav>
+  </article></main>
+  <footer class="note-footer"><span>Minjae Lee · Engineering Notes</span><a href="../../"><span data-lang="ko" lang="ko">작업 모음으로</span><span data-lang="en" lang="en" hidden>Back to selected work</span></a></footer>
+  <div id="language-status" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,443 @@
+{
+  "version": 1,
+  "mode": "generated-consumer-compilation",
+  "tooling": {
+    "node": "v24.19.0",
+    "packages": {
+      "@apollo/composition": "2.14.4",
+      "@apollo/federation-internals": "2.14.4",
+      "graphql": "16.14.2",
+      "@graphql-codegen/core": "6.2.2",
+      "@graphql-codegen/typescript-operations": "6.1.10",
+      "graphql-sock": "1.0.1",
+      "typescript": "7.0.2"
+    },
+    "compilerOptions": {
+      "strict": true,
+      "noCheck": false,
+      "noEmit": true,
+      "skipLibCheck": false,
+      "noUncheckedIndexedAccess": true,
+      "exactOptionalPropertyTypes": true,
+      "target": "ES2022",
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "types": [],
+      "lib": [
+        "ES2022"
+      ]
+    }
+  },
+  "inputs": [
+    {
+      "path": "schemas/api-baseline.graphql",
+      "sha256": "5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f"
+    },
+    {
+      "path": "schemas/catalog.graphql",
+      "sha256": "8ab1ce0098989f02dc5575e6f93bea9a840b1ac5856241f16a1474cdc4d1f7fd"
+    },
+    {
+      "path": "schemas/inventory.graphql",
+      "sha256": "1d50b805994e81e7a99e76b1fa0659073d64243e66f9f946515f1fc53c0af920"
+    },
+    {
+      "path": "schemas/merchants.graphql",
+      "sha256": "b331099e3d9f927bb412540960275ccfc8c4a1453772da058ffd6a3d81279920"
+    },
+    {
+      "path": "operations/CatalogOnly.graphql",
+      "sha256": "54eaa3cae5b24cc5b39a320633ca1d32a99fc3019e01e2f3433950642dfc3b35"
+    },
+    {
+      "path": "operations/CatalogCards.graphql",
+      "sha256": "cad6ae2b4a9a405d27657ff9effe546d24eea03669099f295479d0b5dc806933"
+    },
+    {
+      "path": "fixtures/consumers/strict-name.ts",
+      "sha256": "6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411"
+    },
+    {
+      "path": "fixtures/consumers/nullable-name.ts",
+      "sha256": "a1eaf8da35a0477cb0a3ec3a399fc1c14be539dd6f2f92062a12aea6aeecfd6f"
+    },
+    {
+      "path": "fixtures/consumers/exhaustive-status.ts",
+      "sha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+    },
+    {
+      "path": "fixtures/consumers/fallback-status.ts",
+      "sha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+    }
+  ],
+  "inputsUnchanged": true,
+  "cases": [
+    {
+      "id": "unchanged",
+      "schema": "compatible",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": false
+      },
+      "regenerated": true,
+      "candidateSchemaSha256": "5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f",
+      "generatedFromSchemaSha256": "5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "9052efd0b55fb3cbee7ef028d8a5c36d9351561dcfcca12291b68691c7c10e23",
+        "CatalogCards": "d781f533956b3c360dd1e9054ef5aab8e0f06cf83435615d8711eb190943476b"
+      },
+      "consumers": {
+        "strict-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411"
+        },
+        "nullable-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "a1eaf8da35a0477cb0a3ec3a399fc1c14be539dd6f2f92062a12aea6aeecfd6f"
+        },
+        "exhaustive-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    },
+    {
+      "id": "unchanged-future-proof-enums",
+      "schema": "compatible",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": true
+      },
+      "regenerated": true,
+      "candidateSchemaSha256": "5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f",
+      "generatedFromSchemaSha256": "5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "9052efd0b55fb3cbee7ef028d8a5c36d9351561dcfcca12291b68691c7c10e23",
+        "CatalogCards": "76a1f08dc4c7bba3eb2985c0976ffd144dbcddd600d0e0c49e5bba29dce31d3f"
+      },
+      "consumers": {
+        "exhaustive-status": {
+          "exitCode": 1,
+          "diagnosticCodes": [
+            2345
+          ],
+          "diagnostics": "exhaustive-status.ts(14,33): error TS2345: Argument of type '\"%future added value\"' is not assignable to parameter of type 'never'.",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    },
+    {
+      "id": "add-optional-field",
+      "schema": "compatible",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": false
+      },
+      "regenerated": true,
+      "candidateSchemaSha256": "8d0ef0f3a200bfc505ed02ee3d3ed2bcd5100f9f7883f149510d4a724e958006",
+      "generatedFromSchemaSha256": "8d0ef0f3a200bfc505ed02ee3d3ed2bcd5100f9f7883f149510d4a724e958006",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "9052efd0b55fb3cbee7ef028d8a5c36d9351561dcfcca12291b68691c7c10e23",
+        "CatalogCards": "d781f533956b3c360dd1e9054ef5aab8e0f06cf83435615d8711eb190943476b"
+      },
+      "consumers": {
+        "strict-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411"
+        },
+        "nullable-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "a1eaf8da35a0477cb0a3ec3a399fc1c14be539dd6f2f92062a12aea6aeecfd6f"
+        },
+        "exhaustive-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    },
+    {
+      "id": "weaken-name-nullability",
+      "schema": "breaking",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": false
+      },
+      "regenerated": true,
+      "candidateSchemaSha256": "040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c",
+      "generatedFromSchemaSha256": "040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "f592c8023e0105bdc2047fac5f8ab45dac62dbf9acb7426719bfaf083f57a0e3",
+        "CatalogCards": "d6a930d3ac2f89c98776293bbf9684f2177985b3b5a81458fa68ba4693cd5d6c"
+      },
+      "consumers": {
+        "strict-name": {
+          "exitCode": 1,
+          "diagnosticCodes": [
+            18047
+          ],
+          "diagnostics": "strict-name.ts(6,10): error TS18047: 'product.name' is possibly 'null'.",
+          "consumerSha256": "6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411"
+        },
+        "nullable-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "a1eaf8da35a0477cb0a3ec3a399fc1c14be539dd6f2f92062a12aea6aeecfd6f"
+        },
+        "exhaustive-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    },
+    {
+      "id": "weaken-name-nullability-stale-types",
+      "schema": "breaking",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": false
+      },
+      "regenerated": false,
+      "candidateSchemaSha256": "040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c",
+      "generatedFromSchemaSha256": "5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "9052efd0b55fb3cbee7ef028d8a5c36d9351561dcfcca12291b68691c7c10e23",
+        "CatalogCards": "d781f533956b3c360dd1e9054ef5aab8e0f06cf83435615d8711eb190943476b"
+      },
+      "consumers": {
+        "strict-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411"
+        },
+        "nullable-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "a1eaf8da35a0477cb0a3ec3a399fc1c14be539dd6f2f92062a12aea6aeecfd6f"
+        },
+        "exhaustive-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    },
+    {
+      "id": "add-stock-enum-value",
+      "schema": "review-required",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": false
+      },
+      "regenerated": true,
+      "candidateSchemaSha256": "6bc4d77147087998943fe2abda7629fe8510d77e4e9cdd7703842819821f3e00",
+      "generatedFromSchemaSha256": "6bc4d77147087998943fe2abda7629fe8510d77e4e9cdd7703842819821f3e00",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "9052efd0b55fb3cbee7ef028d8a5c36d9351561dcfcca12291b68691c7c10e23",
+        "CatalogCards": "e12991776373344f597aaf125636b57e60788799a1155f93ade058eba7080bc3"
+      },
+      "consumers": {
+        "strict-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411"
+        },
+        "nullable-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "a1eaf8da35a0477cb0a3ec3a399fc1c14be539dd6f2f92062a12aea6aeecfd6f"
+        },
+        "exhaustive-status": {
+          "exitCode": 1,
+          "diagnosticCodes": [
+            2345
+          ],
+          "diagnostics": "exhaustive-status.ts(14,33): error TS2345: Argument of type '\"PREORDER\"' is not assignable to parameter of type 'never'.",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    },
+    {
+      "id": "add-stock-enum-value-future-proof-enums",
+      "schema": "review-required",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": true
+      },
+      "regenerated": true,
+      "candidateSchemaSha256": "6bc4d77147087998943fe2abda7629fe8510d77e4e9cdd7703842819821f3e00",
+      "generatedFromSchemaSha256": "6bc4d77147087998943fe2abda7629fe8510d77e4e9cdd7703842819821f3e00",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "9052efd0b55fb3cbee7ef028d8a5c36d9351561dcfcca12291b68691c7c10e23",
+        "CatalogCards": "18727332e8c21c7cb93c32c27382ab11d60523951b481aa84b7e56b96ec6ffd8"
+      },
+      "consumers": {
+        "exhaustive-status": {
+          "exitCode": 1,
+          "diagnosticCodes": [
+            2345
+          ],
+          "diagnostics": "exhaustive-status.ts(14,33): error TS2345: Argument of type '\"%future added value\" | \"PREORDER\"' is not assignable to parameter of type 'never'.\n  Type '\"%future added value\"' is not assignable to type 'never'.",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    },
+    {
+      "id": "add-stock-enum-value-stale-types",
+      "schema": "review-required",
+      "generatorPolicy": {
+        "enumType": "string-literal",
+        "maybeValue": "T | null",
+        "immutableTypes": true,
+        "futureProofEnums": false
+      },
+      "regenerated": false,
+      "candidateSchemaSha256": "6bc4d77147087998943fe2abda7629fe8510d77e4e9cdd7703842819821f3e00",
+      "generatedFromSchemaSha256": "5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f",
+      "operationValidation": {
+        "CatalogOnly": "valid",
+        "CatalogCards": "valid"
+      },
+      "generatedSha256": {
+        "CatalogOnly": "9052efd0b55fb3cbee7ef028d8a5c36d9351561dcfcca12291b68691c7c10e23",
+        "CatalogCards": "d781f533956b3c360dd1e9054ef5aab8e0f06cf83435615d8711eb190943476b"
+      },
+      "consumers": {
+        "strict-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411"
+        },
+        "nullable-name": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "a1eaf8da35a0477cb0a3ec3a399fc1c14be539dd6f2f92062a12aea6aeecfd6f"
+        },
+        "exhaustive-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "20cfd628333411a2e1ba743c55c117639731483807f779f6697cdbcaece35109"
+        },
+        "fallback-status": {
+          "exitCode": 0,
+          "diagnosticCodes": [],
+          "diagnostics": "",
+          "consumerSha256": "4dfba12c8773c42a7bb1c1de0c0c809bcd18018955b3580e97eb1b3c5c04aa7c"
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Synthetic fixed consumers; no employer code or production results.",
+    "Real composition, GraphQL validation, official Codegen and TypeScript compilation; no resolver or consumer runtime execution.",
+    "Results depend on these consumers, generated types and explicit strict compiler settings. This is not a deployment gate.",
+    "Stale-type controls deliberately compile baseline types against changed candidate schemas; their passing result does not cover the change.",
+    "Fallback compilation does not establish product correctness. futureProofEnums adds a type entry, not a wire-value decoder."
+  ]
+}

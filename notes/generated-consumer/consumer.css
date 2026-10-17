@@ -1,0 +1,39 @@
+.languages button { min-height: 44px; }
+.comparison-wrap { margin: 26px 0; }
+.comparison { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.65; }
+.comparison caption { text-align: left; color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+.comparison th, .comparison td { text-align: left; vertical-align: top; padding: 15px 13px; border-bottom: 1px solid var(--line); }
+.comparison thead th { color: var(--muted); font-size: 12px; font-weight: 550; border-top: 1px solid var(--ink); }
+.comparison tbody th { width: 43%; font-weight: 550; }
+.comparison tbody td:nth-child(2) { width: 22%; }
+.comparison small { display: block; color: var(--muted); font-size: 12px; margin-top: 5px; }
+.comparison tr[data-case="weaken-name-nullability"] { background: #eaf0fb; }
+.comparison td strong { color: #204ea5; }
+.diagnostic { margin: 18px 0 22px; border-left: 3px solid var(--accent); }
+.diagnostic code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.hash-figure { margin: 26px 0; }
+.hash-pair { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 12px; align-items: center; border-block: 1px solid var(--line); padding: 24px 0; }
+.hash-pair p { font-size: 12px; line-height: 1.6; color: var(--muted); margin-bottom: 8px; }
+.hash-pair code { font-size: 18px; letter-spacing: -0.5px; background: none; padding: 0; }
+.hash-pair div > span { display: block; color: var(--muted); font-size: 12px; line-height: 1.6; margin-top: 8px; }
+.hash-divider { font-size: 27px; text-align: center; color: var(--blue); }
+.hash-figure figcaption { margin-top: 12px; font-size: 12px; }
+.details-prose { font-size: 14px; margin-top: 23px; }
+.details-prose p + p { margin-top: 14px; }
+pre:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; }
+.reading-section:focus-visible, .reading:focus-visible { outline: none; }
+.reading-section:focus-visible > h2, .reading:focus-visible h1 { outline: 3px solid var(--focus); outline-offset: 8px; }
+@media (max-width: 600px) {
+  .comparison { font-size: 13px; }
+  .comparison th, .comparison td { padding: 13px 7px; }
+  .comparison thead th, .comparison small { font-size: 11px; }
+  .hash-pair { grid-template-columns: 1fr 25px 1fr; gap: 8px; }
+  .hash-pair code { font-size: 14px; letter-spacing: -0.3px; }
+  .hash-pair p, .hash-pair div > span { font-size: 11px; }
+  .hash-divider { font-size: 23px; }
+}
+@media (forced-colors: active) {
+  .comparison tr[data-case="weaken-name-nullability"] { outline: 1px solid CanvasText; }
+  .comparison td strong, .hash-divider { color: CanvasText; }
+  .diagnostic { border-color: CanvasText; }
+}

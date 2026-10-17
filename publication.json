@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "a08737c5878f0d3bd3efaff41c44eafcfd6d7152",
+  "sourceCommit": "d5a0eb144f488bda7330e89895d2960843408e6f",
   "sourceDirectory": "docs/",
-  "copiedSiteFileCount": 63,
+  "copiedSiteFileCount": 67,
   "copiedRootFiles": [
     "LICENSE"
   ],
@@ -407,10 +407,42 @@
     {
       "path": "notes/cancellation-debt/index.html",
       "sourcePath": "docs/notes/cancellation-debt/index.html",
-      "gitBlob": "fa8201ae94aeef89c0f436d559c99386550d0559",
+      "gitBlob": "5ae10b643177851dc48102c1f4d5f20969436f88",
       "gitMode": "100644",
-      "size": 29139,
-      "sha256": "e8071fccba8d9206af4d881524f99ed22e756365cc9861362562c28862cf34da"
+      "size": 29756,
+      "sha256": "1fae9b490549b39687cf0d2ba70589c9b5befbdd4dfb8b0347e090cc7f6ffeab"
+    },
+    {
+      "path": "notes/generated-consumer/consumer.css",
+      "sourcePath": "docs/notes/generated-consumer/consumer.css",
+      "gitBlob": "7d2484ed32757e0063941f932d67a409f9666656",
+      "gitMode": "100644",
+      "size": 2606,
+      "sha256": "7c648a80d14bc2929f72ccffd0251a7d0b9e6b6fd0d435bbb2163c916417adea"
+    },
+    {
+      "path": "notes/generated-consumer/index.html",
+      "sourcePath": "docs/notes/generated-consumer/index.html",
+      "gitBlob": "2b2f6874bdc59414f3e3935468544d6f5f8a28fb",
+      "gitMode": "100644",
+      "size": 19575,
+      "sha256": "8141c6764d8b8460b873a9d923e77928c94187fd4cbb0e9451568c7e035315a8"
+    },
+    {
+      "path": "notes/generated-consumer/recording.json",
+      "sourcePath": "docs/notes/generated-consumer/recording.json",
+      "gitBlob": "ea743eeab9d51657431f601c844f5e041eaffaad",
+      "gitMode": "100644",
+      "size": 1313,
+      "sha256": "94ab542e6f76a24b2459b4e49c0c4f331aa31176ffae98e9739fcaa237b096a2"
+    },
+    {
+      "path": "notes/generated-consumer/report.json",
+      "sourcePath": "docs/notes/generated-consumer/report.json",
+      "gitBlob": "58a547965ac81632c051f16b44017ae0397496f2",
+      "gitMode": "100644",
+      "size": 16465,
+      "sha256": "454db54e059216006aec76c0ab35b4e75ee244a7b06824205d4d9018d1c0a39a"
     },
     {
       "path": "notes/notes.css",
@@ -543,7 +575,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "f668d983f59bf3baa764aad4e3b7488043094bc2ff6cc0ac7fa560198eb69423"
+      "sha256": "8ee87816fe98107f3e574d4b112ba76bfce27c8b79317d710dbfb89f68fdef30"
     }
   ]
 }

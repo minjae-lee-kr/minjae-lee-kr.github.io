@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "kind": "recorded-generated-consumer-experiment",
+  "sourceRepository": "https://github.com/minjae-lee-kr/federated-catalog-lab",
+  "sourceRevision": "a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb",
+  "command": "node src/consumer-impact-cli.ts --format json --report-dir NEW_DIRECTORY",
+  "files": [
+    {
+      "path": "report.json",
+      "sha256": "454db54e059216006aec76c0ab35b4e75ee244a7b06824205d4d9018d1c0a39a",
+      "bytes": 16465
+    }
+  ],
+  "selectedCases": [
+    "unchanged",
+    "weaken-name-nullability",
+    "weaken-name-nullability-stale-types",
+    "unchanged-future-proof-enums",
+    "add-optional-field"
+  ],
+  "reportPreservedByteForByte": true,
+  "limits": [
+    "Synthetic fixed consumers; no employer code or production results.",
+    "Real composition, GraphQL validation, official Codegen and TypeScript compilation; no resolver or consumer runtime execution.",
+    "Results depend on these consumers, generated types and explicit strict compiler settings. This is not a deployment gate.",
+    "Stale-type controls deliberately compile baseline types against changed candidate schemas; their passing result does not cover the change.",
+    "Fallback compilation does not establish product correctness. futureProofEnums adds a type entry, not a wire-value decoder."
+  ]
+}
