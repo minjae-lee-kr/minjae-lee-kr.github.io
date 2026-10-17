@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "6989711da231fb9b24d4b7e6734422bda6c563f9",
+  "sourceCommit": "0e066bf74d818b64c5425e9fd21069892b55ed28",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 63,
   "copiedRootFiles": [
@@ -111,18 +111,18 @@
     {
       "path": "evidence/cancellation/debt.css",
       "sourcePath": "docs/evidence/cancellation/debt.css",
-      "gitBlob": "6d0bc85e50188c44ccc5f95dfff858bff5fba811",
+      "gitBlob": "941e5e794af91d0eb558b56caed9650370d46214",
       "gitMode": "100644",
-      "size": 6264,
-      "sha256": "263102153bf7078b0436a2707d9af3b29a3b1c85b20fefbdcdd39bb03ee7af94"
+      "size": 6444,
+      "sha256": "7ba8b382903c11690d7ae614d6bb1ebac50906110e186da70028fff48f0a5cc0"
     },
     {
       "path": "evidence/cancellation/debt.js",
       "sourcePath": "docs/evidence/cancellation/debt.js",
-      "gitBlob": "b26489a06f8cff634cc080b716787ed7361749d1",
+      "gitBlob": "dc1a41d9aa9077849999db4729ecab20c5cecb5f",
       "gitMode": "100644",
-      "size": 16896,
-      "sha256": "6ba24767f9d90ea2746e2c24a367ab7a4db9c9e9068041e84dddaa11ca27b3f1"
+      "size": 17211,
+      "sha256": "307866144523e6c310fc23fb10512ae2c56903f426decf7d43ecdfb8c21b7ca4"
     },
     {
       "path": "evidence/cancellation/export.json",
@@ -135,18 +135,18 @@
     {
       "path": "evidence/cancellation/index.html",
       "sourcePath": "docs/evidence/cancellation/index.html",
-      "gitBlob": "d906ed96d0ab8673f2a7d9ccb9f36a1834395315",
+      "gitBlob": "523bc3f05368b827714de41479b78d00187e8d9d",
       "gitMode": "100644",
-      "size": 3889,
-      "sha256": "3e14ad0797468c0e5a02acdcbc332283ea0509886509c89e29b93230c7d55aaf"
+      "size": 4035,
+      "sha256": "825ec9905ef26c6a07c7269df39d1457c06c9ba7dc37a1e1677116253ae63b61"
     },
     {
       "path": "evidence/cancellation/recording.json",
       "sourcePath": "docs/evidence/cancellation/recording.json",
-      "gitBlob": "4d4389a9de6a1c2882b54b75c5226720536b24de",
+      "gitBlob": "1caad78c5fdc255b222350f7e41cc6f9e30202b3",
       "gitMode": "100644",
-      "size": 1587,
-      "sha256": "6c6beed59ce2fe31c9357a75700537b238fb464484e7974c5e0ea5bcaa1e88d1"
+      "size": 1683,
+      "sha256": "12a55bee91587baf7dc555f06cf0ddc4222118f8c2ce6eb52dec06d2b49ceada"
     },
     {
       "path": "evidence/cancellation/report-data.js",
@@ -543,7 +543,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "8552ac1d5c1bb1ba879f8f42b15d8e2a5c912921c66ba7ca3fd791e45f14649d"
+      "sha256": "18c4418c06c49c5ab63d338eb7ea7360bc29d2cb89af5fb26bd147bcd4a9b3b4"
     }
   ]
 }

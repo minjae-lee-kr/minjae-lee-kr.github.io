@@ -15,20 +15,22 @@
     "relative asset URLs",
     "shared persisted language preference",
     "Back/Forward preference restoration with report state preserved",
-    "recorded-run banner"
+    "recorded-run banner",
+    "readable timeline width with keyboard scrolling",
+    "Korean execution-slot terminology"
   ],
   "files": [
     {
       "path": "index.html",
-      "sha256": "3e14ad0797468c0e5a02acdcbc332283ea0509886509c89e29b93230c7d55aaf"
+      "sha256": "825ec9905ef26c6a07c7269df39d1457c06c9ba7dc37a1e1677116253ae63b61"
     },
     {
       "path": "debt.css",
-      "sha256": "263102153bf7078b0436a2707d9af3b29a3b1c85b20fefbdcdd39bb03ee7af94"
+      "sha256": "7ba8b382903c11690d7ae614d6bb1ebac50906110e186da70028fff48f0a5cc0"
     },
     {
       "path": "debt.js",
-      "sha256": "6ba24767f9d90ea2746e2c24a367ab7a4db9c9e9068041e84dddaa11ca27b3f1"
+      "sha256": "307866144523e6c310fc23fb10512ae2c56903f426decf7d43ecdfb8c21b7ca4"
     },
     {
       "path": "report-data.js",

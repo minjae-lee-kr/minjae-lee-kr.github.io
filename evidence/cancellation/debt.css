@@ -4,3 +4,6 @@ h1{word-break:keep-all;overflow-wrap:break-word}.table-wrap:focus-visible{outlin
 tr.bad td:nth-child(2){color:#b44e2e}
 
 .recorded-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px max(20px,calc((100% - 1100px)/2));background:#e6ecdf;border-bottom:1px solid #c9d4c3;color:#254b41;font:12px/1.6 system-ui,sans-serif}.recorded-banner a{color:inherit;font-weight:600;white-space:nowrap}.recorded-banner p{margin:0}html[lang=ko] .recorded-en,html:not([lang=ko]) .recorded-ko{display:none}@media(max-width:680px){.recorded-banner{flex-wrap:wrap;gap:8px 16px}.recorded-banner p{order:3;flex-basis:100%}}
+
+/* Keep the frozen 880-unit plot readable on narrow screens. */
+#chart{overflow:auto}#chart svg{min-width:880px}#chart:focus-visible{outline:3px solid #7aa5ff;outline-offset:4px}
