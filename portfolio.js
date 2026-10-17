@@ -33,7 +33,7 @@ const copy = {
     approachTitle: "Building the product and the tools behind it.",
     bio: "I have spent 7+ years building booking, ordering, payments and merchant tools. I work with React, TypeScript and GraphQL API servers built with Apollo Federation.",
     bioTwo:
-      "Lately, I’ve been building AI-assisted tools and QA/release automation. I’m interested in how a small team can attempt bigger things without losing its grip on the details.",
+      "Lately, I’ve been building AI-assisted tools and QA/release automation. I want to reduce repetitive work so a small team has more time to tackle bigger problems.",
     contact: "Continue the conversation",
     article: "More on verification →",
     footer: "Engineering notes by Minjae Lee.",
@@ -52,7 +52,7 @@ const copy = {
         category: "COMMERCE / RECOVERY",
         question: "No response. Is it safe to reserve again?",
         description:
-          "Recover a reservation after a lost response, without letting a superseded request overwrite the current screen. A separate experiment examines retries after deduplication records are deleted.",
+          "Keep the same reservation request through retries and reloads, while ignoring responses that no longer belong to the current screen. A separate experiment asks when the server can no longer recognize a repeated request.",
         cta: "Recovery UI decisions",
         tags: ["React + TypeScript", "HTTP + SQLite", "Crash recovery"],
       },
@@ -60,7 +60,7 @@ const copy = {
         category: "AI / DEVELOPER AUTOMATION",
         question: "The code passed. Who set the rules?",
         description:
-          "A scripted candidate makes its compiler check green by changing the check. Compare that result with a fixed policy, then bind approval to the exact Git candidate.",
+          "A scripted patch passes its compiler check by weakening the checking rules. Compare it against independently fixed rules, then approve only the commit that was checked. No LLM is called.",
         cta: "Read the experiment",
         tags: ["Git CAS", "Verification policy", "Approval boundaries"],
       },
@@ -68,7 +68,7 @@ const copy = {
         category: "GRAPHQL / EXECUTION",
         question: "After a timeout, when should the permit be released?",
         description:
-          "Releasing a permit before its work ends can exceed the execution limit. Four policies compare cancellation, permit lifetime and rejection of later attempts.",
+          "A timeout ends the caller’s wait, but its work can keep running. Four policies compare releasing a concurrency slot early with holding it until the work ends—even if later requests must be rejected.",
         cta: "Read the experiment",
         tags: ["Apollo Federation", "AbortSignal", "Admission control"],
       },
@@ -128,7 +128,7 @@ const copy = {
         category: "커머스 / 복구",
         question: "응답을 못 받은 예약, 다시 요청해도 될까?",
         description:
-          "응답이 끊겨도 예약 결과를 다시 확인하고, 이전 요청의 응답이 현재 화면을 덮지 않도록 합니다. 중복 방지 기록이 삭제된 뒤의 재시도도 별도 실험으로 살펴봤습니다.",
+          "재시도·새로고침에도 같은 예약 요청을 유지하고, 현재 화면과 맞지 않는 이전 응답은 무시합니다. 서버가 중복 요청을 더는 알아볼 수 없게 되는 조건도 별도 실험으로 살펴봤습니다.",
         cta: "복구 UI의 설계 판단",
         tags: ["React + TypeScript", "HTTP + SQLite", "프로세스 종료 후 복구"],
       },
@@ -136,7 +136,7 @@ const copy = {
         category: "AI / 개발 자동화",
         question: "검사를 통과한 코드, 검사 기준도 바뀌었다면?",
         description:
-          "수정 코드가 검사 설정까지 바꾸는 상황을 재현했습니다. 별도로 정한 기준으로 검증하고, 확인한 커밋에만 승인이 적용되도록 구성했습니다. LLM을 호출하지 않는 스크립트 실험입니다.",
+          "검사 기준을 약하게 바꿔 통과한 변경안을, 별도로 정한 기준으로 다시 검사합니다. 실제로 검사한 커밋에만 승인이 적용되도록 했습니다. LLM을 호출하지 않는 스크립트 실험입니다.",
         cta: "실험 내용 읽기",
         tags: ["Git CAS", "검사 정책", "자동화 승인 경계"],
       },
@@ -144,7 +144,7 @@ const copy = {
         category: "GRAPHQL / 실행 제어",
         question: "타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까?",
         description:
-          "작업이 끝나기 전에 슬롯을 반환하면 실제 작업 수가 한도를 넘을 수 있습니다. 네 가지 정책으로 취소와 슬롯 반환 시점, 뒤따르는 요청의 거절을 비교했습니다.",
+          "타임아웃으로 기다림이 끝나도 작업은 계속될 수 있습니다. 실행 슬롯을 먼저 반환하는 정책과, 뒤의 요청을 거절하더라도 작업이 끝날 때까지 점유하는 정책 등 네 가지를 비교했습니다.",
         cta: "실험 내용 읽기",
         tags: ["Apollo Federation", "AbortSignal", "진입 제어"],
       },

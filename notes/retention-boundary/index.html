@@ -230,7 +230,8 @@
                 두 실행의 로컬 HTTP 응답 본문과 전체 DB 테이블이 그대로
                 같습니다. 비교를 위해 식별자를 바꾸지도 않았습니다. 하지만 상대
                 기록의 효과는 한쪽이 0건, 다른 쪽이 1건입니다. 두 실행 모두
-                로컬에는 확인 번호가 남아 있지 않습니다.
+                로컬에는 확인 번호가 남아 있지 않습니다. 아래 그림의 감사기는
+                실행 후 양쪽 DB를 읽는 검증 프로그램입니다.
               </p>
             </div>
             <div class="prose" data-lang="en" lang="en" hidden>
@@ -247,7 +248,8 @@
                 identical local database tables, without renaming identifiers.
                 Yet the downstream journals contain zero effects in one
                 execution and one in the other. The local owner has no receipt
-                in either case.
+                in either case. The auditor in the figure below is a checking
+                program that reads both databases after the run.
               </p>
             </div>
             <figure class="evidence-figure">
@@ -369,12 +371,11 @@
             </div>
             <div class="prose" data-lang="en" lang="en" hidden>
               <p>
-                An auditor can distinguish them because it reads both journals
-                after the processes stop. The retry policy cannot: its lookup
-                exposes retained deduplication state, not an eternal history of
-                effects. Showing the auditor’s knowledge as though it were
-                available to the policy would make reconciliation look easier
-                than it is.
+                The auditor can distinguish the two histories; the retry policy
+                cannot read the same information. Its lookup returns retained
+                deduplication records, not every past operation. Giving the
+                policy the auditor’s access would assume a recovery mechanism
+                that this system does not have.
               </p>
               <p>
                 The guarded policy therefore leaves the intent unresolved after
@@ -427,7 +428,7 @@
                 it.
               </p>
               <p>
-                In the second decisive contrast, an actual HTTP relay holds that
+                In the second comparison, an HTTP relay holds that
                 retry. The parent advances both fixture clocks to 12,000 and
                 instructs the downstream owner to prune the expired key. Only
                 then does the relay forward the same request. The receiver no
@@ -572,8 +573,8 @@
             </div>
             <div class="prose" data-lang="en" lang="en" hidden>
               <p>
-                The local cutoff was obeyed. The remote uniqueness property
-                still failed. These numbers are injected logical clock values,
+                The retry was sent before the local cutoff, yet the receiver
+                processed the same key twice. These numbers are injected logical clock values,
                 not measured network delay or a benchmark. The relay controls
                 the schedule; the configured margin establishes no real transit
                 bound. A request already in flight is not revoked when its
@@ -716,34 +717,32 @@
             <h2>
               <span class="section-number">04</span
               ><span data-lang="ko" lang="ko"
-                >기억의 경계를 설계에 드러내기</span
+                >기록이 없을 때 내릴 수 있는 판단</span
               ><span data-lang="en" lang="en" hidden
-                >Make the memory boundary explicit.</span
+                >Deciding what to do when the record is missing</span
               >
             </h2>
             <div class="prose" data-lang="ko" lang="ko">
               <p>
-                검사기는 이 경계를 따라 근거를 확인합니다. 상대 기록을 순서대로
-                재구성해 최소 보존 기간 이전의 삭제를 거절하고, 로컬 결과를 바로
+                검사기는 상대 기록을 순서대로 재구성해 최소 보존 기간 이전의
+                삭제를 거절하고, 로컬 결과를 바로
                 그 시도에서 받은 확인 번호와 연결합니다. 같은 키로 발급된 과거
                 확인 번호가 있어도, 이번 시도의 결과라는 근거로 사용할 수는
                 없습니다. 로컬 1건의 기록이 내부적으로 일관돼도, 늦게 도착한
                 조건의 상대 효과는 2건이라고 명시합니다.
               </p>
               <p>
-                범위를 정한 가상 실행이며 실제 제공사 연동이나 exactly-once
-                증명이 아닙니다. 최소 보존 기간이 지났더라도 기록이 남아 있으면,
+                실제 제공사와 연동한 실험은 아니며, 중복 처리가 절대 없다고
+                증명하지도 않습니다. 최소 보존 기간이 지났더라도 기록이 남아 있으면,
                 조회해서 기존 확인 번호를 복구할 수 있습니다. 기한이 지났다는
-                사실만으로 기록이 사라지지는 않습니다. 그러나 조회에서 기록을
-                찾지 못한 순간에는 키를 유지했는지만 물어서는 부족합니다. 효과를
-                만드는 시스템이 그 키를 구별할 기억을 아직 갖고 있는지까지
-                확인해야 합니다.
+                사실만으로 기록이 사라지지는 않습니다. 그러나 기록이 없다는
+                응답만으로는 미처리와 처리 후 중복 방지 기록 삭제를 구분할 수 없습니다.
+                이 조건에서는 조회 결과만 보고 재시도를 결정할 수 없습니다.
               </p>
             </div>
             <div class="prose" data-lang="en" lang="en" hidden>
               <p>
-                The checker follows the evidence across that boundary. It
-                reconstructs retained records in journal order, refuses pruning
+                The checker reconstructs retained records in journal order, refuses pruning
                 before minimum retention, and binds the local grant to the
                 positive receipt from that exact attempt. Merely finding some
                 earlier receipt under the same key is insufficient. The recorded
@@ -751,13 +750,13 @@
                 effects, even though one local grant is internally consistent.
               </p>
               <p>
-                These are bounded synthetic executions, not a provider
-                integration or an exactly-once proof. A retained positive lookup
-                can still recover a receipt after the minimum retention period;
-                expiry alone does not erase a record. But once the record is
-                absent, the right question is not just whether the key stayed
-                the same. It is whether the effect owner still has the memory
-                needed to make that key meaningful.
+                These synthetic runs do not integrate with a real provider or
+                prove exactly-once processing. A record that remains after the
+                minimum retention period can still return the original receipt;
+                expiry alone does not erase it. But a missing record cannot
+                distinguish an unprocessed request from a completed one whose
+                deduplication record was deleted. Under these conditions, the lookup alone cannot tell
+                the sender whether to retry.
               </p>
             </div>
             <p class="takeaway">
@@ -765,8 +764,8 @@
                 >같은 키만으로는 부족합니다. 효과를 만드는 시스템이 그 키를
                 구별할 기록을 아직 갖고 있어야 합니다.</span
               ><span data-lang="en" lang="en" hidden
-                >The key is not enough. The effect owner must still retain the
-                memory that makes it meaningful.</span
+                >Reusing the key is not enough. The receiver must still retain
+                the record that identifies its previous result.</span
               >
             </p>
             <p>

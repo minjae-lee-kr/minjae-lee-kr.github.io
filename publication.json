@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static publication of the portfolio site on GitHub Pages.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "cda7e68c3776294e4d2ca70de58521a3702e40d2",
+  "sourceCommit": "5d34509816cda7373f0fc858e4e6bb04e7925ed8",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 73,
   "copiedRootFiles": [
@@ -407,10 +407,10 @@
     {
       "path": "index.html",
       "sourcePath": "docs/index.html",
-      "gitBlob": "c7f5dcfcf404852132c51b092018a7aa6b0c14b4",
+      "gitBlob": "6d447992f6187fbe438bbb887ba42675cf4f7a54",
       "gitMode": "100644",
-      "size": 8807,
-      "sha256": "7024d99c93ac972f50c856e2e5dca5a735832bf2cbec1731ec672c22ac7f53d1"
+      "size": 8794,
+      "sha256": "d976de6dfded2a4982a8dd0830a4d973f800e264d32fbf0fc84e20f9c92c72bd"
     },
     {
       "path": "LICENSE",
@@ -455,10 +455,10 @@
     {
       "path": "notes/cancellation-debt/index.html",
       "sourcePath": "docs/notes/cancellation-debt/index.html",
-      "gitBlob": "fd36e4589cd34d8cadb120edaec6b670173fc3a7",
+      "gitBlob": "693cb848af23457578799e322e3198e91879bd65",
       "gitMode": "100644",
-      "size": 31141,
-      "sha256": "7f98c2a12968bb0cb5545481480561a750abd69519aeb49db295b1074df02dd2"
+      "size": 30982,
+      "sha256": "532322f15abf76c02e84486ab0701d2757a3aa84e80ef8b6f6bf2520a94e83aa"
     },
     {
       "path": "notes/generated-consumer/consumer.css",
@@ -471,10 +471,10 @@
     {
       "path": "notes/generated-consumer/index.html",
       "sourcePath": "docs/notes/generated-consumer/index.html",
-      "gitBlob": "86cbb94d802958ed7688d222a3fc09b5a6971974",
+      "gitBlob": "22a57bc8a81c73dbeab4871f2693c824c3ee7446",
       "gitMode": "100644",
-      "size": 20767,
-      "sha256": "7349ec6c01b20d0bc77d41c083ed949a5bc5e026523b6fc1a802df42a0a48937"
+      "size": 21010,
+      "sha256": "638108bdd1ec7c34329615881f58d5f22752e3a68682e92c25a9df46fb84fc20"
     },
     {
       "path": "notes/generated-consumer/recording.json",
@@ -519,10 +519,10 @@
     {
       "path": "notes/retention-boundary/index.html",
       "sourcePath": "docs/notes/retention-boundary/index.html",
-      "gitBlob": "c6d37f752f27f4ec497873c9885406b0f4a031b3",
+      "gitBlob": "728184482e2ff10f7232f4752dfc1fabc1f9e58d",
       "gitMode": "100644",
-      "size": 45071,
-      "sha256": "e0ebfa716f2813d34f92d1d523292fcca4dfada1d3fcaa8633e72a69535b9117"
+      "size": 45154,
+      "sha256": "2006803cd231d3a8731096478231cb4d461ac9755a6258a59282685c34ddd242"
     },
     {
       "path": "notes/retention-boundary/mapping.json",
@@ -535,10 +535,10 @@
     {
       "path": "notes/retention-boundary/recording.json",
       "sourcePath": "docs/notes/retention-boundary/recording.json",
-      "gitBlob": "114c61ef6834314eeb9062272a98b6914d68a036",
+      "gitBlob": "d9d139f7617bf9a5774bd3193fe6cfe814da3d05",
       "gitMode": "100644",
       "size": 1845,
-      "sha256": "21fa1c28a394914ea90c41147aaccaf9da1bd77793a4fb560a0554f79c2de1e0"
+      "sha256": "4147b845f21bcdf8047c45988781f31168272c42cbac4bf33dd8ba9c7dc55075"
     },
     {
       "path": "notes/retention-boundary/recording/evidence.json",
@@ -567,18 +567,18 @@
     {
       "path": "notes/verified-change/index.html",
       "sourcePath": "docs/notes/verified-change/index.html",
-      "gitBlob": "eb56244dade05aa16dc56df0770628f2fa665d50",
+      "gitBlob": "ec5450e6fead81591c6c65ea0d81dc5771baade9",
       "gitMode": "100644",
-      "size": 32427,
-      "sha256": "8abd98e818a03efcfbd54605a0042e141c7d1f3015af2f5e6b765f3e8f1864d2"
+      "size": 32736,
+      "sha256": "e961aee92fc9f699727fad36126885794d4f889c86e2d006829bb6bf81ce23cf"
     },
     {
       "path": "portfolio.js",
       "sourcePath": "docs/portfolio.js",
-      "gitBlob": "2302759bb5a837449f3abec32326701b43aa9b72",
+      "gitBlob": "099d69ab122e5399c2c311da9112f3462ac887d4",
       "gitMode": "100644",
-      "size": 16112,
-      "sha256": "e360b0b6442bfc532df8d0d8e1fb5dee30daf77d131a35c9f1c2445490c40cea"
+      "size": 16247,
+      "sha256": "c5c12cfbde0d265db2004b26018b5419a7b8d5d70aa0afa46bf9a2527401a43c"
     },
     {
       "path": "styles.css",
@@ -623,7 +623,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 1766,
-      "sha256": "fe015d50f70504d63b030a954012eba1c210d6b77afef16cb2620cd4acae5a8c"
+      "sha256": "e885c2b3c449012f792458a43ace40954460c505cd27b0f9ade0d227080bfbf6"
     }
   ]
 }

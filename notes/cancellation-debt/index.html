@@ -300,9 +300,7 @@
             <p>
               실제 작업이 종료될 때까지 슬롯을 점유하자, 취소를 무시하는 같은
               조건에서도 최대 동시 작업은 두 개였습니다. 대신 남아 있는 작업이
-              자리를 차지하는 동안 뒤의 두 시도를 거절했습니다. 하위 작업을
-              중단할 수 없으므로, 실행 한도를 지키려면 뒤의 요청을 거절해야
-              했습니다.
+              자리를 차지하는 동안 뒤의 두 시도를 거절했습니다.
             </p>
             <p>
               취소 신호가 하위 HTTP 요청까지 전달되도록 Apollo의 서브그래프
@@ -395,7 +393,7 @@
               Cancellation does not automatically stop a database query, CPU
               task, remote service or committed effect. All services share an
               event loop; blocking it delays cancellation and timeouts too.
-              Capacity belongs to one inventory process. The checker cannot
+              The limit applies to one inventory process. The checker cannot
               detect uninstrumented work, and source hashes are not execution
               attestations.
             </p>
@@ -406,8 +404,8 @@
           실행 슬롯은 그 작업이 끝난 뒤에 반환해야 합니다.
         </blockquote>
         <blockquote class="takeaway" data-lang="en" lang="en" hidden>
-          An admission permit belongs to the operation that consumes
-          capacity—not to the caller that stopped waiting.
+          A caller can stop waiting while its work continues.
+          Release the permit only when that work ends.
         </blockquote>
         <section
           id="evidence"
