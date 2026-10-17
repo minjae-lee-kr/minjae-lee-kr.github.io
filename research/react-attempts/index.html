@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>
+      You ignored the late response. Who wrote the cache? — Minjae Lee
+    </title>
+    <meta
+      name="description"
+      content="Compare a request-status guard with guarded cache writes using controlled HTTP response order and actual React DOM observations."
+    />
+    <link
+      rel="canonical"
+      href="https://minjae-lee-kr.github.io/research/react-attempts/"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="You ignored the late response. Who wrote the cache?"
+    />
+    <meta
+      property="og:description"
+      content="A request guard protects the code after it. Compare what happens before it writes."
+    />
+    <meta
+      property="og:url"
+      content="https://minjae-lee-kr.github.io/research/react-attempts/"
+    />
+    <meta
+      property="og:image"
+      content="https://minjae-lee-kr.github.io/assets/social/react-attempts.png?v=fa09f5fa2fc6"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="reader.css" />
+    <script type="module" src="reader.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#comparison" data-copy="skip"
+      >Skip to the comparison</a
+    >
+    <header class="site-header wrap">
+      <a class="wordmark" href="../../"
+        >Minjae Lee
+        <span class="wordmark-role" data-copy="back"
+          >/ Engineering notes</span
+        ></a
+      >
+      <div
+        class="languages"
+        role="group"
+        aria-label="Language"
+        data-label="language"
+      >
+        <button type="button" data-language="ko" lang="ko" aria-pressed="false">
+          KO</button
+        ><span aria-hidden="true">/</span
+        ><button type="button" data-language="en" lang="en" aria-pressed="true">
+          EN
+        </button>
+      </div>
+    </header>
+    <main class="wrap reader">
+      <section class="intro" data-reading-section>
+        <p class="eyebrow" data-copy="eyebrow">
+          REACT / A RESPONSE ARRIVES LATE
+        </p>
+        <h1 data-copy="title">
+          You ignored the late response. Who wrote the cache?
+        </h1>
+        <p class="standfirst" data-copy="lead">
+          The state code accepts only the latest request. But if the library
+          writes to the cache before that response reaches the guard, what does
+          the guard actually protect?
+        </p>
+        <p data-copy="context"></p>
+        <p class="record-label" data-copy="recorded"></p>
+      </section>
+      <section
+        id="comparison"
+        tabindex="-1"
+        aria-labelledby="comparison-title"
+        data-reading-section
+      >
+        <div class="heading">
+          <h2 id="comparison-title" data-copy="compare">
+            Same response order. Different write boundary.
+          </h2>
+          <span id="integrity" role="status">Checking recording</span>
+        </div>
+        <fieldset>
+          <legend data-copy="cases">Situation to compare</legend>
+          <div class="scenarios">
+            <button
+              type="button"
+              data-case="late-success"
+              data-copy="caseLate"
+              aria-pressed="true"
+              disabled
+            >
+              Late success / newer failure</button
+            ><button
+              type="button"
+              data-case="product-switch"
+              data-copy="caseSwitch"
+              aria-pressed="false"
+              disabled
+            >
+              A → B / late A response</button
+            ><button
+              type="button"
+              data-case="variable-switch"
+              data-copy="caseVariable"
+              aria-pressed="false"
+              disabled
+            >
+              Same product / different warehouse</button
+            ><button
+              type="button"
+              data-case="aba"
+              data-copy="caseABA"
+              aria-pressed="false"
+              disabled
+            >
+              A → B → A / old A response</button
+            ><button
+              type="button"
+              data-case="cache-read"
+              data-copy="caseCache"
+              aria-pressed="false"
+              disabled
+            >
+              Read cache after failure
+            </button>
+          </div>
+        </fieldset>
+        <p id="load-message" role="status">
+          Checking the original bytes and source provenance.
+        </p>
+        <div id="results" hidden>
+          <p id="case-intro" class="case-intro"></p>
+          <p class="legend" data-copy="checkpoints"></p>
+          <div class="release">
+            <h3 data-copy="order">
+              Order in which the server released responses
+            </h3>
+            <ol id="release-order"></ol>
+          </div>
+          <div class="implementation-pair">
+            <article class="implementation" aria-labelledby="baseline-title">
+              <div class="implementation-heading">
+                <span class="number">01 / STATUS GUARD</span>
+                <h3 id="baseline-title" data-copy="baseline">
+                  Guard request status only
+                </h3>
+                <p data-copy="baselineMethod"></p>
+              </div>
+              <dl id="baseline-values"></dl>
+              <div class="decisions">
+                <h4 data-copy="decisions">Response acceptance decisions</h4>
+                <ul id="baseline-decisions"></ul>
+              </div>
+            </article>
+            <article
+              class="implementation managed"
+              aria-labelledby="managed-title"
+            >
+              <div class="implementation-heading">
+                <span class="number">02 / WRITE GUARD</span>
+                <h3 id="managed-title" data-copy="managed">
+                  Accept the response, then write
+                </h3>
+                <p data-copy="managedMethod"></p>
+              </div>
+              <dl id="managed-values"></dl>
+              <div class="decisions">
+                <h4 data-copy="decisions">Response acceptance decisions</h4>
+                <ul id="managed-decisions"></ul>
+              </div>
+            </article>
+          </div>
+          <p id="case-takeaway" class="explanation"></p>
+          <p class="legend" data-copy="terms"></p>
+          <details id="case-detail">
+            <summary data-copy="detail">
+              Raw values and DOM observations for this case
+            </summary>
+            <pre
+              id="case-json"
+              tabindex="0"
+              aria-label="Selected case JSON"
+            ></pre>
+          </details>
+        </div>
+      </section>
+      <section data-reading-section aria-labelledby="design-title">
+        <h2 id="design-title" data-copy="designTitle">
+          There was more to protect than a state variable
+        </h2>
+        <p data-copy="designIntro"></p>
+        <div class="choices">
+          <article>
+            <span class="choice-number">01</span>
+            <h3 data-copy="choice1"></h3>
+            <p data-copy="cost1"></p>
+          </article>
+          <article>
+            <span class="choice-number">02</span>
+            <h3 data-copy="choice2"></h3>
+            <p data-copy="cost2"></p>
+          </article>
+          <article>
+            <span class="choice-number">03</span>
+            <h3 data-copy="choice3"></h3>
+            <p data-copy="cost3"></p>
+          </article>
+        </div>
+      </section>
+      <section
+        class="method"
+        data-reading-section
+        aria-labelledby="method-title"
+      >
+        <h2 id="method-title" data-copy="methodTitle">
+          How to read this recording
+        </h2>
+        <p data-copy="method"></p>
+        <p data-copy="intermediate"></p>
+        <p data-copy="limits"></p>
+        <details id="provenance-detail">
+          <summary data-copy="provenance">
+            Execution environment and source
+          </summary>
+          <pre
+            id="provenance-json"
+            tabindex="0"
+            aria-label="Recording provenance JSON"
+          ></pre>
+        </details>
+      </section>
+      <section class="reading" data-reading-section>
+        <h2 data-copy="readMore">Design decisions and reproduction</h2>
+        <ul>
+          <li>
+            <a id="notes-link" data-copy="notes">Design notes · English</a>
+          </li>
+          <li>
+            <a id="source-link" data-copy="source"
+              >Experiment source · pinned revision</a
+            >
+          </li>
+          <li id="raw-item" hidden>
+            <a href="./recording.json" data-copy="rawLink"
+              >Full raw recording · JSON</a
+            >
+          </li>
+          <li>
+            <a href="../react-recheck/" data-copy="prior"
+              >Earlier experiment · inventory after a failed recheck</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+    <noscript
+      ><p class="wrap">
+        JavaScript is required to verify the recording.
+        <a href="https://github.com/minjae-lee-kr/federated-catalog-lab"
+          >Read the repository notes.</a
+        >
+      </p></noscript
+    >
+  </body>
+</html>

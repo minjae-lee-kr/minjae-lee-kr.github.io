@@ -36,6 +36,7 @@ const copy = {
     reactTitle: "The error disappeared. The recheck still failed.",
     reactLead: "The screen kept an earlier quantity. A cache read cleared the error without another request. Compare the Promise, hook values and recorded DOM—and what each can tell the user.",
     reactLink: "Follow the React observations",
+    reactAttemptsLink: "Compare late responses and cache writes",
     workbenchUnavailable:
       "The examples could not load. The notes below include the code and recorded results.",
     workEyebrow: "ENGINEERING NOTES",
@@ -125,6 +126,7 @@ const copy = {
     reactTitle: "오류는 사라졌는데, 재확인은 실패했습니다.",
     reactLead: "화면에는 이전 수량이 남았습니다. 캐시에서 다시 읽자 새 요청 없이 오류도 사라졌습니다. Promise, hook 값, 실제 DOM을 비교하며 사용자에게 무엇을 안내할 수 있는지 살펴봅니다.",
     reactLink: "React 관측 따라가기",
+    reactAttemptsLink: "늦게 도착한 응답과 캐시 쓰기 비교하기",
     workbenchUnavailable:
       "예제를 불러오지 못했습니다. 아래 실험 노트에서 코드와 실행 기록을 확인할 수 있습니다.",
     workEyebrow: "실험과 설계 기록",

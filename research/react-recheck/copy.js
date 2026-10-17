@@ -75,6 +75,7 @@ export const copy = {
     source: "실험 소스 · 고정 리비전",
     rawLink: "전체 원본 기록 · JSON",
     prior: "앞선 실험 · query와 캐시",
+    next: "후속 구현 · 늦게 도착한 응답과 캐시 쓰기",
     pending: "공개 소스 연결 준비 중",
     legend:
       "data는 현재 hook이 돌려준 데이터, previousData는 hook이 별도로 제공한 이전 데이터입니다. error.data는 실패 응답에 포함된 부분 데이터입니다. 세 값은 서로 바꿔 읽을 수 없습니다.",
@@ -155,6 +156,7 @@ export const copy = {
     source: "Experiment source · pinned revision",
     rawLink: "Full raw recording · JSON",
     prior: "Earlier experiment · query and cache",
+    next: "Follow-up · Late responses and guarded cache writes",
     pending: "Public source link pending",
     legend:
       "data is the hook’s current data. previousData is the previous data the hook exposes separately. error.data is partial data from the failed response. These fields are not interchangeable.",

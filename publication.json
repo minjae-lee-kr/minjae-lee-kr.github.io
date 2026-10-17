@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "purpose": "Static GitHub Pages publication from committed Git blobs.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "30a8b244513730e76bbe05f86c47206184123bc2",
+  "sourceCommit": "91bad83ec7350e5c483e45dd3f85875a97f7a011",
   "sourceDirectory": "docs/",
-  "copiedSiteFileCount": 119,
+  "copiedSiteFileCount": 129,
   "copiedRootFiles": [
     "LICENSE"
   ],
@@ -39,7 +39,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 769,
-      "sha256": "7514245f41b4036016b7067498658f47d5919d6b5153f81fa1f54b8a68e20060"
+      "sha256": "603eea3191f8296d1bbdc88ec2b8a57776a8004bebcea5e91c0415b8dc29f606"
     },
     {
       "path": "assets/fonts/README.txt",
@@ -248,6 +248,22 @@
       "gitMode": "100644",
       "size": 2456,
       "sha256": "6989cfab412be404c3b41d378a64b3fcaab91f7e686433f6e12ff852dde8423f"
+    },
+    {
+      "path": "assets/social/react-attempts.png",
+      "sourcePath": "docs/assets/social/react-attempts.png",
+      "gitBlob": "7ccd0033d0aa66b68a45f6bff6d9506e08515db4",
+      "gitMode": "100644",
+      "size": 51009,
+      "sha256": "fa09f5fa2fc6834f8693b57e88714cc1e7127675e90aae007bce060c0d3d44e6"
+    },
+    {
+      "path": "assets/social/react-attempts.svg",
+      "sourcePath": "docs/assets/social/react-attempts.svg",
+      "gitBlob": "b86ab7e7aa0ce67166da6dc2d2c1aa4572b83848",
+      "gitMode": "100644",
+      "size": 73099,
+      "sha256": "aa18f8fd4f6aa2bf932064de810fc10886b2b008784d016deb3d37a9984b5450"
     },
     {
       "path": "assets/social/react-recheck.png",
@@ -516,10 +532,10 @@
     {
       "path": "index.html",
       "sourcePath": "docs/index.html",
-      "gitBlob": "d1d25daa744b889d5ad6f7fdc436c54d6fe3d231",
+      "gitBlob": "09c94749412bb5c21eb73a0c55c2a2cc1194b8d2",
       "gitMode": "100644",
-      "size": 11622,
-      "sha256": "701ed0bae3314a4a022c25a3ae68b27f18c2aa261b8a8aa3da57f33c45fdf712"
+      "size": 11872,
+      "sha256": "886304e8340e0f6ad1a8476e53849c9c7e1a7404a06321516618d83f1cb0bbd8"
     },
     {
       "path": "notes/assets/cancellation-trace.en.svg",
@@ -676,10 +692,10 @@
     {
       "path": "portfolio.js",
       "sourcePath": "docs/portfolio.js",
-      "gitBlob": "51e9353f01553139bc6b8e9f9086a01b476c75a5",
+      "gitBlob": "2be227386eac90541f7a9c9146fc442ea68516c9",
       "gitMode": "100644",
-      "size": 19066,
-      "sha256": "497edca12b8a69090d537fe17f81aadc2db98f423bcd8e8cec42a1d1146c9819"
+      "size": 19212,
+      "sha256": "742b2f223ec1d8a15df5ada68613f9b80e2427282ec9cbea1f33b43bb33dd89e"
     },
     {
       "path": "research/approval-memory/copy.js",
@@ -882,20 +898,84 @@
       "sha256": "dc373b2aeb1d600f571e555304f54533541593d0eb3c03ada907614cc24944b3"
     },
     {
+      "path": "research/react-attempts/cases.js",
+      "sourcePath": "docs/research/react-attempts/cases.js",
+      "gitBlob": "baefd2e7a5b350ab1dfae4bf9b6698f214234e9a",
+      "gitMode": "100644",
+      "size": 4818,
+      "sha256": "141f67b721ae2aac5c239fa8596f6c414a5dd09e708e763b6361d4c75ab5284c"
+    },
+    {
+      "path": "research/react-attempts/copy.js",
+      "sourcePath": "docs/research/react-attempts/copy.js",
+      "gitBlob": "b86e220ba51a6fe05dd987ee85ca0b03e4e0b10e",
+      "gitMode": "100644",
+      "size": 12058,
+      "sha256": "cf5d5c2f1f455ca892cb039682a109402ee1824e2d8eecacca4fb4d4ee127b15"
+    },
+    {
+      "path": "research/react-attempts/index.html",
+      "sourcePath": "docs/research/react-attempts/index.html",
+      "gitBlob": "de9eeb130904f5b41a58c6bf16e786dc3717bad6",
+      "gitMode": "100644",
+      "size": 9571,
+      "sha256": "950f955fe38a4ec937df4b31f2bd3e8b1b8a17a4e0dabcf1903959bf08b62afe"
+    },
+    {
+      "path": "research/react-attempts/model.js",
+      "sourcePath": "docs/research/react-attempts/model.js",
+      "gitBlob": "e60518261bfac1e4a1f6f01a7abc3bf41b5a6c99",
+      "gitMode": "100644",
+      "size": 15525,
+      "sha256": "3ccac39143ca49780d530f13e6629e0c2800bd2bead64d34a9048031dfa0e005"
+    },
+    {
+      "path": "research/react-attempts/pin.js",
+      "sourcePath": "docs/research/react-attempts/pin.js",
+      "gitBlob": "94b033a197b30f73b835307abc97d07bbf493be3",
+      "gitMode": "100644",
+      "size": 329,
+      "sha256": "f14aba59cbf541ae1e0ebb40e25956e51d45c1436401ec27d3f8d09b491b4bc4"
+    },
+    {
+      "path": "research/react-attempts/reader.css",
+      "sourcePath": "docs/research/react-attempts/reader.css",
+      "gitBlob": "f9b62d9d9a6919685c8b04ed2bb390ce5fcb4c8a",
+      "gitMode": "100644",
+      "size": 3044,
+      "sha256": "fe109310c13899db79bdd20f552620fc2e18849900b548decc165124efbd27b3"
+    },
+    {
+      "path": "research/react-attempts/reader.js",
+      "sourcePath": "docs/research/react-attempts/reader.js",
+      "gitBlob": "6c1ceaea35d7950735c91bdd2dd01c6c1b7c70f7",
+      "gitMode": "100644",
+      "size": 6987,
+      "sha256": "0382f3d32dec07472881f309f4db2ad8a4d45212480a6cbeafe6247af87f597e"
+    },
+    {
+      "path": "research/react-attempts/recording.json",
+      "sourcePath": "docs/research/react-attempts/recording.json",
+      "gitBlob": "f64a5db6d4c99c06fd420d7377ce8fee30e20f7d",
+      "gitMode": "100644",
+      "size": 537913,
+      "sha256": "e1fc7b48b39726a4604477036f50b18eee46b97d65ed895b0b92045cdc12b3f5"
+    },
+    {
       "path": "research/react-recheck/copy.js",
       "sourcePath": "docs/research/react-recheck/copy.js",
-      "gitBlob": "af7be5a7bd8717aa1e8641987295363469d0e8f9",
+      "gitBlob": "9d253c71ba8080f31ab588bb1adc1e8b262f430e",
       "gitMode": "100644",
-      "size": 11368,
-      "sha256": "6a8ed213e4b6a4293421382f32b2c99a9ef0eee8764987676c9b237a69030a32"
+      "size": 11505,
+      "sha256": "cc0cd909c1f206b21cc589764362877ffa354b8ca9c5edee6218b1e8bbcf54c4"
     },
     {
       "path": "research/react-recheck/index.html",
       "sourcePath": "docs/research/react-recheck/index.html",
-      "gitBlob": "7bfd90b066461a99b604e749d64fda73dbc44f07",
+      "gitBlob": "a878f0305e10cae4df77f841f9bb842bfb0cd94b",
       "gitMode": "100644",
-      "size": 8261,
-      "sha256": "fb37bdcd835959db158d005b3898d2bb08c0520917a089e6c1027a71eef6adb4"
+      "size": 8407,
+      "sha256": "affe1ddfd6fc5e510b2760c4adf17f24e368817addb78ba5581e366a59c1ff20"
     },
     {
       "path": "research/react-recheck/model.js",
@@ -972,10 +1052,10 @@
     {
       "path": "styles.css",
       "sourcePath": "docs/styles.css",
-      "gitBlob": "60f9c3a343a0314a125347074de787bc57ffa138",
+      "gitBlob": "3dd08f4f5fe13741f5841cc5c99a733cc819d363",
       "gitMode": "100644",
-      "size": 16215,
-      "sha256": "ed9d9573d3f3426622a9df9d9199db93fdca47a4b76e653455e90197c7e3821b"
+      "size": 16313,
+      "sha256": "b9a78201a9d4c636d1c00226fe5b447b289dda918651c8fa20c3079f5e226a33"
     },
     {
       "path": "workbench.css",
