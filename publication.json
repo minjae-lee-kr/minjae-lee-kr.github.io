@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Static GitHub Pages publication from committed Git blobs.",
   "canonicalRepository": "https://github.com/minjae-lee-kr/minjae-lee-kr",
-  "sourceCommit": "91bad83ec7350e5c483e45dd3f85875a97f7a011",
+  "sourceCommit": "ecef008163ffc2dd0d6386fc91938c864b6967bc",
   "sourceDirectory": "docs/",
   "copiedSiteFileCount": 129,
   "copiedRootFiles": [
@@ -39,7 +39,7 @@
       "sourcePath": null,
       "generated": true,
       "size": 769,
-      "sha256": "603eea3191f8296d1bbdc88ec2b8a57776a8004bebcea5e91c0415b8dc29f606"
+      "sha256": "23c69869bbc83bfb14843a6e8beeda7556eed0ff460a8a880dab2efb04af3da1"
     },
     {
       "path": "assets/fonts/README.txt",
@@ -532,10 +532,10 @@
     {
       "path": "index.html",
       "sourcePath": "docs/index.html",
-      "gitBlob": "09c94749412bb5c21eb73a0c55c2a2cc1194b8d2",
+      "gitBlob": "fd1ef8b03b2df8cfbde25e3ccc50666e016429a8",
       "gitMode": "100644",
-      "size": 11872,
-      "sha256": "886304e8340e0f6ad1a8476e53849c9c7e1a7404a06321516618d83f1cb0bbd8"
+      "size": 14275,
+      "sha256": "db4107220959cff2eaccc2c71db50be5a66beeb8da0b7a2c60b9672b84b0ff5a"
     },
     {
       "path": "notes/assets/cancellation-trace.en.svg",
@@ -692,10 +692,10 @@
     {
       "path": "portfolio.js",
       "sourcePath": "docs/portfolio.js",
-      "gitBlob": "2be227386eac90541f7a9c9146fc442ea68516c9",
+      "gitBlob": "2d3ba8e5a1f40191bf1bb52d5a7e975aeca402bd",
       "gitMode": "100644",
-      "size": 19212,
-      "sha256": "742b2f223ec1d8a15df5ada68613f9b80e2427282ec9cbea1f33b43bb33dd89e"
+      "size": 22368,
+      "sha256": "7098a4883c4db04e59a7eb89a1fbe7b8cbf99ff4b8012e179c81b4211179d832"
     },
     {
       "path": "research/approval-memory/copy.js",
@@ -1052,10 +1052,10 @@
     {
       "path": "styles.css",
       "sourcePath": "docs/styles.css",
-      "gitBlob": "3dd08f4f5fe13741f5841cc5c99a733cc819d363",
+      "gitBlob": "00dc90f4f0b989a9ff05d50330b2c86c77d338a4",
       "gitMode": "100644",
-      "size": 16313,
-      "sha256": "b9a78201a9d4c636d1c00226fe5b447b289dda918651c8fa20c3079f5e226a33"
+      "size": 18075,
+      "sha256": "d1d5478d87544fba6338b5420c67b26dc2c64acd28fe944c137e4262a5001004"
     },
     {
       "path": "workbench.css",

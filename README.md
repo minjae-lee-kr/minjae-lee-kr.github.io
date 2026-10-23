@@ -1,7 +1,7 @@
 # Minjae Lee — engineering notes
 
 This repository serves https://minjae-lee-kr.github.io/.
-Canonical source: https://github.com/minjae-lee-kr/minjae-lee-kr/tree/91bad83ec7350e5c483e45dd3f85875a97f7a011/docs
+Canonical source: https://github.com/minjae-lee-kr/minjae-lee-kr/tree/ecef008163ffc2dd0d6386fc91938c864b6967bc/docs
 
 Edit the canonical source, then publish a new committed snapshot. Site files and LICENSE keep their exact Git blob bytes. publication.json records hashes; README, .gitattributes, .nojekyll and publication.json are generated publication metadata.
 

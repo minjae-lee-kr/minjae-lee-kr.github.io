@@ -2,6 +2,21 @@ import { initialLanguage, localizeReadingLinks } from "./research/preferences.js
 
 const copy = {
   en: {
+    vfStatus: "IN DEVELOPMENT · API / DB CHECKED IN CI",
+    vfTitle: "A passing test. For which change?",
+    vfLead: "VerifyFlow connects a verification request to its execution and the evidence it leaves behind. I’m building it to keep a plausible result from being mistaken for proof.",
+    vfDesign: "The design question",
+    vfQuestion: "If a worker loses its response, can the next worker safely take over without accepting the old result?",
+    vfLocal: "Verified in CI",
+    vfEvidence: "On GitHub Actions with Linux and PostgreSQL 17, checks passed for request replay, result isolation and denied evidence writes.",
+    vfNext: "Still to connect",
+    vfRemaining: "Running the lab workflow remotely, connecting provider results, AI integration and AWS deployment. The API / DB checks do not establish a remote result’s origin.",
+    vfDetails: "Scope and trade-offs",
+    vfCost: "When execution is uncertain, the design keeps the execution slot occupied instead of automatically dispatching again. This gives up availability until the uncertainty is resolved.",
+    vfChecks: "The CI run recorded 323 passed tests, 5 skipped tests and 21 subtests. Separate local experiments cover worker handoff, late results and malformed result archives.",
+    vfScope: "Independent project with synthetic inputs. Code and execution records are not public yet.",
+    vfLink: "Related public experiment: who controls the check?",
+
     title: "Minjae Lee — It says done. What does that prove?",
     description:
       "Interactive engineering notes on commerce recovery, automation approval and GraphQL cancellation. Independent experiments by Minjae Lee.",
@@ -92,6 +107,21 @@ const copy = {
     },
   },
   ko: {
+    vfStatus: "개발 중 · API / DB CI 검증 완료",
+    vfTitle: "테스트는 통과했다. 어떤 변경을 검사했을까?",
+    vfLead: "VerifyFlow는 검증 요청과 실행, 그 실행이 남긴 근거를 연결하는 프로젝트입니다. 그럴듯한 결과를 믿고 다음 단계로 넘어가지 않도록 만드는 중입니다.",
+    vfDesign: "고민하는 문제",
+    vfQuestion: "응답을 잃은 작업을 다른 워커가 이어받을 때, 이전 워커의 늦은 결과는 어떻게 막을까?",
+    vfLocal: "CI에서 확인한 것",
+    vfEvidence: "GitHub Actions의 Linux·PostgreSQL 17 환경에서 요청 재전송, 결과 격리, 근거 데이터 쓰기 권한 거절을 확인했습니다.",
+    vfNext: "아직 남은 단계",
+    vfRemaining: "검증 대상 lab의 원격 실행, provider 결과 연동, AI 기능, AWS 배포는 아직 남아 있습니다. API / DB 검사 통과가 원격 결과의 출처까지 보증하지는 않습니다.",
+    vfDetails: "실험 범위와 설계의 비용",
+    vfCost: "실행 여부가 불확실하면 자동으로 다시 실행하지 않고 실행 자리를 유지합니다. 중복 실행을 피하는 대신, 불확실성을 해소할 때까지 다음 작업이 기다리는 비용을 감수합니다.",
+    vfChecks: "CI에서 테스트 323개 통과, 5개 건너뜀, 서브테스트 21개가 기록됐습니다. 별도의 로컬 실험에서는 워커 인계, 늦은 결과, 잘못된 결과 압축 파일을 다뤘습니다.",
+    vfScope: "가상 입력을 사용한 개인 프로젝트입니다. 코드와 실행 기록은 아직 공개하지 않았습니다.",
+    vfLink: "연결된 공개 실험: 검사 기준은 누가 정할까?",
+
     title: "Minjae Lee — 완료됐다는 말, 어디까지 믿어도 될까요?",
     description:
       "예약 복구, 자동화 승인, GraphQL 요청 취소. 결과를 확인하는 기준을 코드로 살펴보는 이민재의 개인 프로젝트.",

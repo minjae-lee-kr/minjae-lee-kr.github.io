@@ -892,3 +892,26 @@ html:lang(ko) .record-feature {
   align-items: flex-start;
   gap: 16px 28px;
 }
+
+/* Work in progress stays distinct from the recorded public experiments. */
+.verifyflow { margin-block: 12px 72px; }
+.vf-surface { word-break: keep-all; overflow-wrap: anywhere; border: 1px solid var(--line); border-top: 3px solid var(--accent); background: #fff; padding: 38px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px 56px; }
+.vf-status { color: var(--accent); font-size: 11px; letter-spacing: .1em; }
+.vf-name { font-size: 19px; font-weight: 750; margin: 22px 0 10px; }
+.vf-name span { color: var(--muted); font-size: 12px; font-weight: 450; }
+.vf-intro h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.25; letter-spacing: -.04em; margin: 0 0 18px; word-break: keep-all; }
+.vf-intro > p:not(.vf-name):not(.vf-status) { color: var(--muted); margin-bottom: 24px; }
+.vf-intro .text-link { font-size: 13px; }
+.vf-notebook > div { position: relative; padding: 0 0 18px 32px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.vf-notebook > div:last-child { margin-bottom: 0; padding-bottom: 0; border: 0; }
+.vf-index { position: absolute; left: 0; top: 2px; color: var(--accent); font-size: 11px; font-variant-numeric: tabular-nums; }
+.vf-notebook h3 { font-size: 14px; margin: 0 0 6px; }
+.vf-notebook p { font-size: 14px; line-height: 1.7; margin: 0; color: var(--muted); }
+.vf-scope { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 18px; font-size: 13px; color: var(--muted); }
+.vf-scope summary { cursor: pointer; color: var(--ink); font-weight: 650; width: fit-content; }
+.vf-scope p { max-width: 78ch; margin: 14px 0 0; }
+@media (max-width: 720px) {
+  .vf-surface { padding: 24px 20px; grid-template-columns: 1fr; gap: 28px; }
+  .verifyflow { margin-bottom: 48px; }
+  .vf-name { margin-top: 16px; }
+}
